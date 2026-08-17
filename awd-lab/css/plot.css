@@ -193,7 +193,7 @@ svg.plot-d6a7b5 g[aria-label="y-axis tick label"] {
 }
 
 .y-axis-labels span:nth-child(even) {
-  visibility: hidden;
+  opacity: 0;
 }
 
 #chart {
@@ -205,6 +205,11 @@ svg.plot-d6a7b5 g[aria-label="y-axis tick label"] {
   grid-column: 2;
   grid-row: 2;
   text-align: right;
+}
+
+#chart .sp-scatterplot__axis-labels,
+#chart .sp-scatterplot__x-axis {
+  display: none;
 }
 
 /* Hover state for scatterplot dots — SVG-safe */

@@ -108,8 +108,8 @@
         <!-- Section: React -->
         <section class="section" aria-labelledby="react">
           <div class="container pad-vt">
-            <div class="cols-2" style="place-items: center;">
-              <header>
+            <div class="cols-2 apply-tracker-layout" style="place-items: center;">
+              <header class="apply-tracker-layout__content">
                 <h2 class="section-heading heading--display" style="flex-direction: row; margin-bottom: 1rem;">
                   <span class="heading-main">Apply</span>
                   <span class="heading-accent" style="margin: 8px 0 0 -4px;">tracker</span>
@@ -119,7 +119,7 @@
                 <a class="primary-btn-small" href="https://angelawallace.net/apply-tracker/" target="_blank">Launch web app <!--<img src="assets/icons/icon-ui_chevron-up-right.svg" alt="opens in new tab" />--></a>
                 </div>
               </header>
-              <div role="list" aria-label="Service cards">
+              <div class="apply-tracker-layout__media">
                 <img style="width: 600px;" src="assets/apps/apply-tracker-mockup.webp" alt="Apply Tracker App by Angela Wallace" />
               </div>
             </div>
@@ -163,15 +163,30 @@
               <!-- Toggle container 2 of 2: Plot Chart -->
               <div class="toggle-wrapper" data-visible="false">
                 <div class="chart-container section-inner">
-                    <div class="y-axis-labels">
-                        <span>5</span>
-                        <span>4</span>
-                        <span>3</span>
-                        <span>2</span>
-                        <span>1</span>
+                    <h3 id="chart-title" class="visually-hidden">Project visualization chart</h3>
+                    <p id="chart-desc" class="visually-hidden">
+                      Projects plotted by year on the horizontal axis and complexity, from 1 to 5, on the vertical axis. Each data point opens project details.
+                    </p>
+                    <div
+                      id="chart-y-axis-label"
+                      class="y-axis-labels"
+                      role="list"
+                      aria-label="Complexity scale, from 1 to 5"
+                    >
+                        <span role="listitem" aria-label="Complexity 5">5</span>
+                        <span role="listitem" aria-label="Complexity 4">4</span>
+                        <span role="listitem" aria-label="Complexity 3">3</span>
+                        <span role="listitem" aria-label="Complexity 2">2</span>
+                        <span role="listitem" aria-label="Complexity 1">1</span>
                     </div>
-                    <div id="chart" data-scatterplot role="img" aria-labelledby="chart-title chart-desc"></div>
-                    <div class="x-axis-label">Year</div>
+                    <div
+                      id="chart"
+                      data-scatterplot
+                      role="group"
+                      aria-labelledby="chart-title"
+                      aria-describedby="chart-desc chart-y-axis-label chart-x-axis-label"
+                    ></div>
+                    <div id="chart-x-axis-label" class="x-axis-label">Year</div>
                 </div>
                 <!--<div class="plot-bottom">
                   <aside class="chart-legend" aria-labelledby="chart-legend-title">

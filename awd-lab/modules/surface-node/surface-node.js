@@ -156,6 +156,7 @@ async function initializeWhenMeasured(state) {
   state.motion = state.options.interactive
     ? initSurfaceMotion({
       surface: state.surface,
+      nodeField: state.nodesRoot,
       nodes: state.nodes
     })
     : null;
@@ -189,7 +190,11 @@ function applyNodePositions(state, metrics = measureSurfaceNode(state)) {
     node.style.left = position?.left ?? "";
     node.style.right = position?.right ?? "";
     node.style.bottom = position?.bottom ?? "";
-    node.style.transform = position?.transform ?? "";
+    if (position?.transform) {
+      node.style.setProperty("--sn-node-position-transform", position.transform);
+    } else {
+      node.style.removeProperty("--sn-node-position-transform");
+    }
   });
 }
 

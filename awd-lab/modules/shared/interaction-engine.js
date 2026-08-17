@@ -67,13 +67,35 @@ export function createActiveState(elements, options = {}) {
   };
 }
 
-export function initSurfaceMotion({ surface, nodes = [], maxRotation = 38 }) {
+export function initSurfaceMotion({ surface, nodeField, nodes = [], maxRotation = 38 }) {
   const disposables = createDisposables();
+  const root = surface.closest("[data-sn-root]");
+  const activeState = createActiveState(nodes, {
+    className: "is-active",
+    onChange: (activeNode) => {
+      root?.classList.toggle("is-responding", Boolean(activeNode));
+    }
+  });
   let isInteracting = false;
 
-  function projectPointer(clientX, clientY, xMultiplier, yMultiplier) {
-    const rect = surface.getBoundingClientRect();
+  function nodeVerticalRotation(normY) {
+    const centeredY = normY * 2;
+    const direction = Math.sign(centeredY);
+    const deadZone = 0.2;
+    const distance = clamp((Math.abs(centeredY) - deadZone) / (1 - deadZone), 0, 1);
+
+    return direction * Math.sqrt(distance) * -18;
+  }
+
+  function projectPointer(clientX, clientY, rect, options = {}) {
     if (!rect.width || !rect.height) return;
+
+    const {
+      xMultiplier = 1,
+      yMultiplier = 1,
+      scale = 1.05,
+      resolveY
+    } = options;
 
     const rawX = (clientX - rect.left) / rect.width;
     const rawY = (clientY - rect.top) / rect.height;
@@ -81,19 +103,39 @@ export function initSurfaceMotion({ surface, nodes = [], maxRotation = 38 }) {
     const normY = clamp(rawY, 0, 1) - 0.5;
 
     const x = easeSigned(normX) * maxRotation * xMultiplier;
-    const y = easeSigned(normY) * -maxRotation * yMultiplier;
+    const y = resolveY
+      ? resolveY(normY)
+      : easeSigned(normY) * -maxRotation * yMultiplier;
 
     surface.style.setProperty("--light-x", normX);
+    surface.style.setProperty("--light-y", normY);
     surface.style.transform = `
       rotateY(${x}deg)
       rotateX(${y}deg)
-      scale(1.05)
+      scale(${scale})
     `;
+  }
+
+  function resetSurface() {
+    activeState.clear();
+    root?.classList.remove("is-responding");
+    surface.style.setProperty("--light-x", 0);
+    surface.style.setProperty("--light-y", 0);
+    surface.style.transform = "rotateY(0deg) rotateX(0deg) scale(1)";
   }
 
   disposables.listen(surface, "pointermove", (event) => {
     if (event.pointerType === "mouse" || isInteracting) {
-      projectPointer(event.clientX, event.clientY, 2.6, 2.6);
+      root?.classList.add("is-responding");
+      projectPointer(
+        event.clientX,
+        event.clientY,
+        surface.getBoundingClientRect(),
+        {
+          xMultiplier: 2.6,
+          yMultiplier: 2.6
+        }
+      );
     }
   });
 
@@ -107,25 +149,42 @@ export function initSurfaceMotion({ surface, nodes = [], maxRotation = 38 }) {
 
   disposables.listen(surface, "pointerleave", () => {
     isInteracting = false;
+    resetSurface();
   });
 
   disposables.listen(window, "pointercancel", () => {
     isInteracting = false;
+    resetSurface();
   });
 
   nodes.forEach((node) => {
     disposables.listen(node, "mouseenter", () => {
-      const rect = node.getBoundingClientRect();
-      projectPointer(rect.left + rect.width / 2, rect.top + rect.height / 2, 1.6, 0.6);
-      node.style.transition = "transform var(--motion-fast, 160ms) var(--ease-standard, ease), opacity 400ms ease";
+      const nodeRect = node.getBoundingClientRect();
+      const fieldRect = nodeField?.getBoundingClientRect() ?? surface.getBoundingClientRect();
+
+      activeState.setActive(node);
+      projectPointer(
+        nodeRect.left + nodeRect.width / 2,
+        nodeRect.top + nodeRect.height / 2,
+        fieldRect,
+        {
+          xMultiplier: 1.8,
+          scale: 1.06,
+          resolveY: nodeVerticalRotation
+        }
+      );
     });
 
     disposables.listen(node, "mouseleave", () => {
-      node.style.transform = "translate(0px, 0px)";
+      resetSurface();
     });
   });
 
   return {
-    destroy: disposables.cleanup
+    destroy() {
+      activeState.destroy();
+      root?.classList.remove("is-responding");
+      disposables.cleanup();
+    }
   };
 }

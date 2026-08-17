@@ -102,8 +102,15 @@ img, svg { max-width: 100%; height: auto; display: block; }
 }
 
 .visually-hidden {
-  visibility: hidden;
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 
@@ -152,6 +159,33 @@ img, svg { max-width: 100%; height: auto; display: block; }
 @media (max-width: 480px) {
   .cols-2 {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Keep the Apply Tracker visual between its heading and copy on responsive layouts. */
+@media (max-width: 768px) {
+  .apply-tracker-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .apply-tracker-layout__content {
+    display: contents;
+  }
+
+  .apply-tracker-layout .section-heading {
+    order: 1;
+  }
+
+  .apply-tracker-layout__media {
+    order: 2;
+  }
+
+  .apply-tracker-layout__content p {
+    order: 3;
+  }
+
+  .apply-tracker-layout__content > div {
+    order: 4;
   }
 }
 
@@ -640,6 +674,10 @@ AI LAB
     padding-bottom: 8px;
     margin-bottom: 8px;
   }
+
+  .cols-2.apply-tracker-layout {
+  gap: 0;
+}
   article.project-card {
     padding: 0 0 40px;
     gap: 1rem;
@@ -676,4 +714,3 @@ AI LAB
 
 
   
-

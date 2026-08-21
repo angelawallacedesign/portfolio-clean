@@ -53,42 +53,38 @@ function animateFrameColor(fromColor, toColor, duration = 750) {
 // --- INTRO MODE --- //
 
 if (IS_INTRO) {
-  console.log("intro fix running");
-  
-  const frame = document.getElementById("frame");
-  
-  // set initial visible color
-  if (frame) {
-    frame.style.setProperty("--color-secondary", "rgb(230,230,230)");
-  }
-  
-  // listen on ALL nav links
-  document.querySelectorAll("[data-nav]").forEach(link => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      
-      console.log("nav click detected:", link.dataset.nav);
-      
-      if (!frame) return;
-      
-      // animate via CSS variable
-      frame.style.transition = "border-color 400ms ease";
-      
-      let color = "rgb(217,217,217)"; // work
-      
-      if (link.dataset.nav === "services") {
-        color = "rgb(20,20,20)";
-      }
-      
-      if (link.dataset.nav === "about") {
-        color = "rgb(250,77,126)";
-      }
-      
-      frame.style.setProperty("--color-secondary", color);
-      
-      // do nothing — let the rail/nav system handle it
+  const navLinks = [...document.querySelectorAll(".global-nav [data-nav]")];
+  const sections = navLinks
+    .map((link) => ({ link, section: document.getElementById(link.dataset.nav) }))
+    .filter(({ section }) => section);
+
+  const setActiveLink = (activeLink) => {
+    navLinks.forEach((link) => {
+      const isActive = link === activeLink;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
     });
+  };
+
+  const updateActiveLink = () => {
+    const marker = Math.min(window.innerHeight * 0.42, 360);
+    let active = null;
+
+    sections.forEach((item) => {
+      if (item.section.getBoundingClientRect().top <= marker) active = item.link;
+    });
+
+    setActiveLink(active);
+  };
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => setActiveLink(link));
   });
+
+  window.addEventListener("scroll", updateActiveLink, { passive: true });
+  window.addEventListener("resize", updateActiveLink);
+  updateActiveLink();
   
 } else {
   
@@ -431,4 +427,3 @@ if (IS_INTRO) {
   }
   
 }
-

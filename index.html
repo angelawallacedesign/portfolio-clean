@@ -16,7 +16,7 @@
         <meta property="og:image" content="awd.png"/>
         <meta property="og:description" content="Angela Wallace Design Portfolio"/>
         <meta property="og:url" content="https://www.angelawallace.net/index.html"/>
-        <title>Angela Wallace // Senior UI Designer</title>
+        <title>Angela Wallace // Senior Visual Designer</title>
         <meta name="viewport" content="width=device-width,initial-scale=1"/> 
         <meta name="description" content="Angela Wallace Design Portfolio"/>
         <meta name="author" content="Angela Wallace"/>
@@ -35,9 +35,10 @@
     <link rel="stylesheet" href="css/main.css" />
     <!-- Layer 3 Case Studies -->
     <link rel="stylesheet" href="css/case-study-layout.css" />
-    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/components.css?v=brand-watermark-height" />
     <link rel="stylesheet" href="css/logos.css" />
     <link rel="stylesheet" href="css/intro-layout.css" />
+    <link rel="stylesheet" href="modules/designing-with-ai-hero/pass-4/designing-ai-hero.css" />
 </head>
 <body class="long-page intro-layout" data-page="intro" id="top">
     
@@ -45,22 +46,27 @@
                 <div class="global-header">
                     <div class="header-inner">
                         
-                        <div class="designer-name">
-                            <p><a href="#top">Angela Wallace</a></p>
-                            <p>Senior UI Designer</p>
+                        <div class="designer-brand">
+                            <!--<a class="designer-brand__watermark" href="#top" aria-label="Angela Wallace Design home">
+                                <img src="assets/AWD-sticky-logo.svg" alt="" />
+                            </a>-->
+                            <div class="designer-name">
+                                <p><a href="#top">Angela Wallace</a></p>
+                                <p>Senior Visual Designer</p>
+                            </div>
                         </div>
                         
                         <div class="global-links">
                             <nav class="global-nav" aria-label="Primary">
                                 <ul class="global-nav__list" id="navList">
-                                    <li><a href="#work">Work</a></li>
-                                    <li><a href="#services">Services</a></li>
-                                    <li><a href="#about">About</a></li>
+                                    <li><a href="#work" data-nav="work">Work</a></li>
+                                    <li><a href="#services" data-nav="services">Services</a></li>
+                                    <li><a href="#about" data-nav="about">About</a></li>
                                     <!--<li><a class="js-page-transition" href="method.html">Method</a></li>-->
                                 </ul>
                             </nav>
                             
-                            <a href="awd-lab/" class="global-nav__button">
+                            <a href="awd-lab/" class="global-nav__button" aria-label="Explore AWD Lab">
                                 <span class="global-nav__button-label">AWD Lab</span>
                                 <img
                                 class="global-nav__button-icon"
@@ -102,25 +108,26 @@
             <!-- Intro Middle -->
             <div class="intro-middle">
                 <div class="intro-copy">
-                    <h1 class="intro-title" aria-label="UI Designer Systems focused">  
+                    <h1 class="intro-title" aria-label="Senior Visual Designer">
                         <span class="stack-group">
-                            <span class="stack">USER</span>
+                            <span class="stack">SEN</span>
+                            <span class="stack">IOR</span>
                         </span>
                         <span class="stack-group">
-                            <span class="stack">INTER</span>
-                            <span class="stack">FACE</span>
+                            <span class="stack">VIS</span>
+                            <span class="stack">UAL</span>
                         </span>
                         
                         <span class="accent-stack">designer</span>
                     </h1>
                     
                     <p class="intro-description">
-                        I design and develop user interfaces, translating design systems into front-end production code.
+                        I turn business, user, and technical requirements into cohesive visual interfaces aligned with brand, design systems, and engineering feasibility.
                     </p>
                     
                     <div class="intro-buttons">
                         <a class="primary-btn intro" href="#work">View work</a>
-                        <a class="resume" href="assets/pdf/angela-wallace-resume.pdf" target="_blank">Download resume</a>
+                        <!--<a class="resume" href="assets/pdf/angela-wallace-resume.pdf" target="_blank">Download resume</a>-->
                     </div>
                 </div>
                 <div class="hero-visual">
@@ -147,19 +154,6 @@
                 </div>
             </div>
             
-            <!-- Back to top -->
-            <div class="bottom-nav__right">
-                <a
-                    href="#top"
-                    class="control control--fixed is-bottom-right">
-                    <span
-                        class="icon rotate-0"
-                        data-icon="arrow"
-                        aria-hidden="true">
-                    </span>
-                    <span class="sr-only">Back to top</span>
-                </a>
-            </div>
         </section>
         
         
@@ -207,42 +201,51 @@
                     <div class="container section-shell pad-vt">
                         <header class="section-slot section-slot--header">
                             <h2 class="section-heading large">
-                                <span class="heading-main">I bridge</span>
-                                <span class="heading-accent">the gap</span>
+                                <span class="heading-main">How I contribute</span>
+                                <span class="heading-accent">to design teams</span>
                             </h2>
                         </header>
                         
                         <div>
                             <p class="tagline pad-vt align-right">
                                 
-                                I align UI, system logic, and front-end implementation by mapping design systems to front-end components, ensuring that what ships matches what was designed.
+                                Visual product designer bridging interface craft, design systems, and AI-assisted front-end development.
                             </p>
                             
                             <div class="cards" role="list" aria-label="Service cards">
                                 <article class="card" role="listitem">
-                                    <h3>INTERFACE</h3>
+                                    <h3>DESIGN</h3>
                                     <ul>
-                                        <li>Web & native UI</li>
-                                        <li>State-driven interfaces</li>
-                                        <li>User flows & behaviors</li>
+                                        <li>Visual Design</li>
+                                        <li>Product Design</li>
+                                        <li>Interface Design</li>
+                                        <li>Interaction Design</li>
+                                        <li>Layout &amp; Typography</li>
+                                        <li>Accessibility Design</li>
                                     </ul>
                                 </article>
                                 
                                 <article class="card" role="listitem">
                                     <h3>SYSTEMS</h3>
                                     <ul>
-                                        <li>Design system architecture</li>
-                                        <li>Component libraries</li>
-                                        <li>Tokens & theming</li>
+                                        <li>Design Systems</li>
+                                        <li>Component Libraries</li>
+                                        <li>Design Tokens</li>
+                                        <li>System Architecture</li>
+                                        <li>Pattern Documentation</li>
+                                        <li>Design Validation</li>
                                     </ul>
                                 </article>
                                 
                                 <article class="card" role="listitem">
-                                    <h3>DELIVERY</h3>
+                                    <h3>PROTOTYPING</h3>
                                     <ul>
-                                        <li>Front-end implementation</li>
-                                        <li>Component validation</li>
-                                        <li>Design-to-code alignment</li>
+                                        <li>Coded Prototypes</li>
+                                        <li>AI Workflows</li>
+                                        <li>Context Engineering</li>
+                                        <li>AI Steering</li>
+                                        <li>Agentic Workflows</li>
+                                        <li>Front-end Development</li>
                                     </ul>
                                 </article>
                             </div>
@@ -344,26 +347,23 @@
                 <section class="section" id="about" aria-labelledby="about-title"  data-section="about">
                     <div class="container section-shell">
                         <div class="media about">
-                            <!-- Row 1 -->
-                            <header class="layout-section-header section-slot section-slot--header">
-                                <h2 class="section-heading heading--display">
-                                    <span class="heading-accent">About me</span>
+                            <img class="ph-media" src="assets/angela-wallace-portrait.jpg" alt="Angela Wallace" loading="lazy" />
+                            <article>
+                                <h2 class="section-heading medium about-me" id="about-title">
+                                    <span class="heading-main">About</span>
+                                    <span class="heading-accent">me</span>
                                 </h2>
-                            </header>
-                           
-                            <!-- Row 2 -->
-                            <article class="about">
-                                <p>Hi, I'm Angela. I design and deliver user interfaces that align design systems with front-end implementation.</p>
-
-                                <p>Over the past 15 years, I’ve worked across healthcare, hospitality, SaaS, education, and consumer products—focusing on improving clarity, reducing rework, and ensuring what gets designed can actually be built and scaled.</p>
-
-                                <p>My work connects visual design, system structure, and production code to create interfaces that are consistent, usable, and ready for delivery.
+                                <p>
+                                    I design production-ready interfaces and work closely with engineers to make sure what ships matches the design. My visual design and front-end background helps me account for technical constraints early, not after handoff.
                                 </p>
-                               <p><a href="method.html" class="primary-btn-small js-page-transition">View My Methodology</a></p>
 
-
+                                <p>I use AI to extend that work—prototyping in code, auditing design systems, creating documentation, and exploring new ways to validate design-to-code.
+                                </p>
+                                <p class="about-actions">
+                                    <button class="primary-btn-small" type="button" data-copy-email="hello@angelawallace.net">Copy Email</button>
+                                    <a class="link-btn" href="https://www.linkedin.com/in/angelawallacedesign" target="_blank" rel="noreferrer">LinkedIn Profile ↗</a>
+                                </p>
                             </article>
-                            <div class="profile-image-trigger" aria-hidden="true"></div>
                         </div>
                     </div>
                 </section>
@@ -372,6 +372,14 @@
         </div>
     </main>
 
+    <!-- Back to top -->
+    <div class="bottom-nav__right" data-back-to-top aria-hidden="true">
+        <a href="#top" class="control control--fixed is-bottom-right">
+            <span class="icon rotate-0" data-icon="arrow" aria-hidden="true"></span>
+            <span class="sr-only">Back to top</span>
+        </a>
+    </div>
+
     <footer>
         <p>&#169; 2026 Angela Wallace Design</p>
         <div class="theme-switcher" aria-label="Color theme">
@@ -379,13 +387,7 @@
             <button class="theme-switcher__button" type="button" data-theme-option="dark" aria-pressed="false">Dark</button>
             <button class="theme-switcher__button" type="button" data-theme-option="night" aria-pressed="false">Night</button>
         </div>
-        
-        <!--<img src="assets/AWD-sticky-logo.svg" class="simple-watermark" alt="Angela Wallace Design" />-->
     </footer>
-    
-    <div class="profile profile--fixed">
-        <img class="profile__img" src="assets/angela-profile_490h_2x.webp" alt="Angela Wallace profile image" />
-    </div>
 
     
 
@@ -397,6 +399,14 @@
 <script type="module" src="./js/modal.js"></script>
 <!-- Load navigation logic -->
 <script type="module" src="./js/navigation.js?v=2"></script>
-<script type="module" src="../../../shared/js/base.js"></script>
+<script>
+    document.querySelector('[data-copy-email]')?.addEventListener('click', async (event) => {
+        const button = event.currentTarget;
+        await navigator.clipboard.writeText(button.dataset.copyEmail);
+        button.textContent = 'Copied!';
+        window.setTimeout(() => { button.textContent = 'Copy Email'; }, 2000);
+    });
+</script>
+<script type="module" src="../shared/js/base.js"></script>
 </body>
 </html>

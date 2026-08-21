@@ -1,5 +1,31 @@
 [
   {
+    "id": "designing-with-ai",
+    "featured": true,
+    "layout": "left",
+    "heading": {
+      "title": "Designing with AI",
+      "main": "Designing",
+      "accent": "with AI"
+    },
+    "year": 2026,
+    "users": 0,
+    "complexity": 5,
+    "opacity": 1,
+    "hasCaseStudy": false,
+    "meta": {
+      "type": "AI-assisted design practice",
+      "client": "Independent R&D",
+      "role": "Designer and front-end developer",
+      "impact": "A growing collection of designer-directed AI workflows that move product ideas from early sketches to refined interfaces, coded prototypes, and implementation-ready documentation.",
+      "disciplines": "AI workflows, Interface design, Design engineering",
+      "notes": "Case study in progress.",
+      "caption": "Designer-directed AI workflow",
+      "imageUrl": "",
+      "featuredUrl": ""
+    }
+  },
+  {
     "id": "florida-blue-data-sharing",
     "featured": true,
     "layout": "right",

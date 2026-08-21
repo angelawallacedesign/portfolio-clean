@@ -1,0 +1,1005 @@
+/* Designing with AI hero — Pass 4 white-page transition. */
+
+.designing-ai-hero {
+  --dai-stage-min-height: 23rem;
+  --dai-stage-height: clamp(23rem, 40svh, 27rem);
+  --dai-panel-inline-start: clamp(10rem, 23.75vw, 24rem);
+  --dai-panel-inline-end: clamp(2rem, 6vw, 6rem);
+  --dai-panel-block-start: clamp(1.25rem, 3svh, 2rem);
+  --dai-panel-block-end: clamp(2.5rem, 5svh, 3.5rem);
+  --dai-extrusion-inline: clamp(10rem, 23vw, 24rem);
+  --dai-extrusion-block: clamp(2.75rem, 6vw, 5.5rem);
+  --dai-runway-overflow: clamp(3rem, 5vw, 4.5rem);
+  --dai-extrusion-total: calc(var(--dai-extrusion-block) + var(--dai-runway-overflow));
+  --dai-enter-duration: 900ms;
+  --dai-enter-delay: 120ms;
+  --dai-enter-ease: cubic-bezier(0.22, 0.75, 0.18, 1);
+  --dai-content-ease: cubic-bezier(0.2, 0.72, 0.2, 1);
+  --dai-content-eyebrow-delay: 900ms;
+  --dai-content-title-delay: 1040ms;
+  --dai-content-copy-delay: 1190ms;
+  --dai-content-cta-delay: 1320ms;
+  --dai-content-duration: 420ms;
+  --dai-system-cycle: 12s;
+  --dai-system-start: 1650ms;
+  --dai-page-surface: var(--theme-bg, #ffffff);
+
+  --dai-field-surface: var(--color-case-study-frame, #202023);
+  --dai-field-depth: color-mix(in srgb, var(--dai-field-surface) 88%, var(--color-accent, #a0a0a8));
+  --dai-field-ink: rgb(255 255 255 / 20%);
+  --dai-field-grid: rgb(255 255 255 / 6%);
+  --dai-panel-surface: var(--color-surface, #ffffff);
+  --dai-panel-fade-edge: color-mix(in srgb, var(--theme-text-muted, #6f6f73) 18%, var(--dai-panel-surface));
+  --dai-extrusion-surface: color-mix(in srgb, var(--theme-text-muted, #6f6f73) 44%, var(--dai-page-surface));
+
+  position: relative;
+  isolation: isolate;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  min-height: var(--dai-stage-min-height);
+  height: var(--dai-stage-height);
+  overflow: visible;
+  background-color: var(--dai-page-surface);
+}
+
+.designing-ai-hero__technical-field,
+.designing-ai-hero__activity-layer {
+  display: none;
+}
+
+.designing-ai-hero,
+.designing-ai-hero * {
+  box-sizing: border-box;
+}
+
+.designing-ai-hero__technical-field,
+.designing-ai-hero__blueprint {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.designing-ai-hero__blueprint {
+  max-width: none;
+}
+
+.designing-ai-hero__grid,
+.designing-ai-hero__diagram {
+  fill: none;
+  stroke: var(--dai-field-ink);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.designing-ai-hero__grid {
+  stroke: var(--dai-field-grid);
+  stroke-dasharray: 2 5;
+}
+
+.designing-ai-hero__diagram--left,
+.designing-ai-hero__diagram--right {
+  opacity: 0.62;
+}
+
+.designing-ai-hero__diagram--corners {
+  opacity: 0.34;
+}
+
+.designing-ai-hero__dashed {
+  stroke-dasharray: 5 5;
+}
+
+.designing-ai-hero__diagram circle,
+.designing-ai-hero__diagram rect {
+  fill: var(--dai-field-ink);
+  stroke: none;
+}
+
+.designing-ai-hero__diagram text {
+  fill: var(--dai-field-ink);
+  stroke: none;
+  font: 15px/1 var(--font-sans, Inter, system-ui, sans-serif);
+}
+
+.designing-ai-hero__diagram--right > path:nth-of-type(2) {
+  stroke: color-mix(in srgb, var(--color-accent) 48%, var(--dai-field-ink));
+  stroke-dasharray: 8 18;
+  animation: designing-ai-trace 9s linear 2.2s infinite;
+}
+
+.designing-ai-hero__diagram--left > circle:nth-of-type(2),
+.designing-ai-hero__diagram--right > circle:last-of-type {
+  animation: designing-ai-node-event 7.4s ease-in-out 2.8s infinite;
+}
+
+.designing-ai-hero__activity-layer {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.designing-ai-sparkle {
+  --dai-sparkle-size: 0.65rem;
+  position: absolute;
+  display: block;
+  width: var(--dai-sparkle-size);
+  height: var(--dai-sparkle-size);
+  color: var(--color-accent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.designing-ai-sparkle::before,
+.designing-ai-sparkle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: currentColor;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+}
+
+.designing-ai-sparkle::before {
+  width: 1px;
+  height: 100%;
+}
+
+.designing-ai-sparkle::after {
+  width: 100%;
+  height: 1px;
+}
+
+.designing-ai-sparkle--field-one {
+  --dai-sparkle-size: 0.5rem;
+  left: 7.5%;
+  top: 24%;
+  color: color-mix(in srgb, var(--color-accent) 66%, white);
+  animation: designing-ai-sparkle-event 5.8s ease-in-out 2.1s infinite;
+}
+
+.designing-ai-sparkle--field-two {
+  --dai-sparkle-size: 0.42rem;
+  right: 2.8%;
+  bottom: 21%;
+  color: var(--dai-field-ink);
+  animation: designing-ai-sparkle-event 7.1s ease-in-out 4.35s infinite;
+}
+
+.designing-ai-hero__orbit {
+  position: absolute;
+  right: 3.6%;
+  top: 26%;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 42%, transparent);
+  border-radius: 50%;
+  opacity: 0.38;
+}
+
+.designing-ai-hero__orbit span {
+  position: absolute;
+  left: 50%;
+  top: -0.16rem;
+  width: 0.28rem;
+  height: 0.28rem;
+  background: var(--color-accent);
+  border-radius: 50%;
+  transform-origin: 0 0.72rem;
+  animation: designing-ai-orbit 8.6s linear 2.6s infinite;
+}
+
+.designing-ai-hero__panel-shell {
+  position: absolute;
+  z-index: 1;
+  inset:
+    var(--dai-panel-block-start)
+    var(--dai-panel-inline-end)
+    var(--dai-panel-block-end)
+    var(--dai-panel-inline-start);
+  will-change: transform, opacity;
+  animation: designing-ai-panel-enter var(--dai-enter-duration) var(--dai-enter-ease) var(--dai-enter-delay) both;
+}
+
+.designing-ai-hero__panel-shell::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: calc(-1 * var(--dai-extrusion-total));
+  left: calc(-1 * var(--dai-extrusion-inline));
+  background: linear-gradient(
+    to bottom,
+    var(--dai-extrusion-surface) 0 54%,
+    color-mix(in srgb, var(--dai-extrusion-surface) 52%, transparent) 76%,
+    transparent 100%
+  );
+  clip-path: polygon(
+    var(--dai-extrusion-inline) 0,
+    100% 0,
+    100% calc(100% - var(--dai-extrusion-total)),
+    calc(100% - var(--dai-extrusion-total)) 100%,
+    0 100%
+  );
+  opacity: 1;
+}
+
+.designing-ai-hero__panel {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    var(--dai-panel-surface) 0 66%,
+    var(--dai-panel-fade-edge) 100%
+  );
+  overflow: hidden;
+}
+
+.designing-ai-hero__content {
+  position: relative;
+  display: grid;
+  grid-template-columns: max-content minmax(12rem, 1fr);
+  grid-template-rows: auto auto auto minmax(3.5rem, 1fr);
+  align-items: start;
+  height: 100%;
+  padding: clamp(1.25rem, 2.8vw, 2rem) clamp(2rem, 4vw, 4rem);
+  color: var(--theme-text, var(--color-text, #111111));
+}
+
+.designing-ai-hero__eyebrow,
+.designing-ai-hero__copy {
+  margin: 0;
+  font-family: var(--font-sans, Inter, system-ui, sans-serif);
+}
+
+.designing-ai-hero__eyebrow {
+  grid-column: 1 / -1;
+  justify-self: end;
+  color: var(--color-accent);
+  font-size: clamp(0.7rem, 0.9vw, 0.875rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+  animation: designing-ai-eyebrow-enter var(--dai-content-duration) var(--dai-content-ease) var(--dai-content-eyebrow-delay) both;
+}
+
+.designing-ai-hero__title.section-heading {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin: clamp(0.65rem, 1.5svh, 0.9rem) 0 0;
+  line-height: 0.88;
+  animation: designing-ai-title-enter var(--dai-content-duration) var(--dai-content-ease) var(--dai-content-title-delay) both;
+}
+
+.designing-ai-hero__title.heading--display .heading-main {
+  font-size: clamp(2.5rem, 3.8vw, 4rem);
+}
+
+.designing-ai-hero__title.heading--display .heading-accent {
+  position: relative;
+  margin: 0 0 0 0.12em;
+  font-size: clamp(2.25rem, 3.35vw, 3.55rem);
+  white-space: nowrap;
+}
+
+.designing-ai-sparkle--title {
+  --dai-sparkle-size: 0.32em;
+  right: -0.22em;
+  top: -0.06em;
+  animation: designing-ai-sparkle-event 4.9s ease-in-out 1.55s infinite;
+}
+
+.designing-ai-hero__copy {
+  grid-column: 1 / -1;
+  max-width: 68rem;
+  margin-top: clamp(0.75rem, 1.8svh, 1rem);
+  color: var(--theme-text, var(--color-text, #111111));
+  font-size: clamp(0.84rem, 1.08vw, 1rem);
+  font-weight: 300;
+  line-height: 1.45;
+  animation: designing-ai-copy-enter var(--dai-content-duration) var(--dai-content-ease) var(--dai-content-copy-delay) both;
+}
+
+.designing-ai-hero__cta.primary-btn {
+  grid-column: 1;
+  grid-row: 4;
+  align-self: start;
+  justify-self: start;
+  display: inline-block;
+  margin-top: clamp(0.8rem, 2svh, 1rem);
+  padding: clamp(0.8rem, 1.4vw, 0.95rem) clamp(1.5rem, 2.4vw, 2.25rem);
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  animation: designing-ai-cta-enter var(--dai-content-duration) var(--dai-content-ease) var(--dai-content-cta-delay) both;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+  transition:
+    translate 150ms var(--dai-content-ease),
+    color 150ms ease,
+    background-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.designing-ai-hero__cta.primary-btn::before,
+.designing-ai-hero__cta.primary-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.designing-ai-hero__cta.primary-btn::before {
+  z-index: -1;
+  background: linear-gradient(112deg, transparent 36%, color-mix(in srgb, var(--color-accent) 22%, transparent) 50%, transparent 64%);
+  transform: translateX(-125%);
+  transition: transform 360ms var(--dai-content-ease);
+}
+
+.designing-ai-hero__cta.primary-btn::after {
+  border: 1px solid var(--color-accent);
+  opacity: 0;
+  transform: scaleX(0.25);
+  transform-origin: left center;
+  transition: transform 180ms var(--dai-content-ease), opacity 120ms ease;
+}
+
+.designing-ai-hero__cta-label {
+  position: relative;
+  z-index: 1;
+}
+
+.designing-ai-hero__cta.primary-btn:hover {
+  translate: -0.125rem -0.125rem;
+}
+
+.designing-ai-hero__cta.primary-btn:hover::before {
+  transform: translateX(125%);
+}
+
+.designing-ai-hero__cta.primary-btn:hover::after,
+.designing-ai-hero__cta.primary-btn:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.designing-ai-hero__cta.primary-btn:focus-visible {
+  outline: 2px solid var(--color-focus, var(--color-accent));
+  outline-offset: 4px;
+}
+
+.designing-ai-hero__cta.primary-btn:active {
+  translate: 0.08rem 0.08rem;
+  box-shadow: none;
+}
+
+.designing-ai-sparkle--cta {
+  --dai-sparkle-size: 0.6rem;
+  right: -0.35rem;
+  top: -0.35rem;
+}
+
+.designing-ai-hero__cta.primary-btn:hover .designing-ai-sparkle--cta,
+.designing-ai-hero__cta.primary-btn:focus-visible .designing-ai-sparkle--cta {
+  animation: designing-ai-cta-sparkle 540ms var(--dai-content-ease) both;
+}
+
+.designing-ai-hero__future-visual {
+  grid-column: 2;
+  grid-row: 4;
+  align-self: stretch;
+  min-width: min(24rem, 100%);
+  min-height: 3.5rem;
+  opacity: 0;
+  transform: translate3d(0, 0.4rem, 0);
+  animation: designing-ai-workflow-enter 420ms var(--dai-content-ease) 1480ms both;
+}
+
+.designing-ai-workflow {
+  display: grid;
+  grid-template-rows: auto auto minmax(1.75rem, 1fr);
+  gap: 0.18rem;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0.28rem 0 0 0.75rem;
+  border-top: 1px solid color-mix(in srgb, var(--theme-divider) 56%, transparent);
+  color: color-mix(in srgb, var(--theme-text) 56%, transparent);
+  font-family: var(--font-sans, Inter, system-ui, sans-serif);
+}
+
+.designing-ai-workflow__header,
+.designing-ai-workflow__pipeline {
+  display: flex;
+  align-items: center;
+}
+
+.designing-ai-workflow__header {
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-width: 0;
+  min-height: 0.4rem;
+  opacity: 0.64;
+}
+
+.designing-ai-workflow__mode {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.22rem;
+  width: 2.8rem;
+}
+
+.designing-ai-workflow__mode > span {
+  width: 0.35rem;
+  height: 0.35rem;
+  background: var(--color-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.18rem color-mix(in srgb, var(--color-accent) 12%, transparent);
+}
+
+.designing-ai-workflow__mode::after {
+  content: "";
+  width: 1.8rem;
+  border-top: 1px solid color-mix(in srgb, var(--theme-text-muted) 62%, transparent);
+}
+
+.designing-ai-workflow__status {
+  position: relative;
+  width: 4rem;
+  height: 0.45rem;
+  min-width: 0;
+  color: var(--color-accent);
+}
+
+.designing-ai-workflow__status-state {
+  position: absolute;
+  right: 0;
+  top: 0.2rem;
+  width: 3.4rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+}
+
+.designing-ai-workflow__status-state--two { width: 2.7rem; }
+.designing-ai-workflow__status-state--three { width: 2rem; }
+.designing-ai-workflow__status-state--four { width: 3rem; }
+
+.designing-ai-workflow__status-state--one,
+.designing-ai-workflow__artifact-state--sketch {
+  animation: designing-ai-workflow-state var(--dai-system-cycle) linear var(--dai-system-start) infinite;
+}
+
+.designing-ai-workflow__status-state--two,
+.designing-ai-workflow__artifact-state--interface {
+  animation: designing-ai-workflow-state var(--dai-system-cycle) linear calc(var(--dai-system-start) + 3s) infinite;
+}
+
+.designing-ai-workflow__status-state--three,
+.designing-ai-workflow__artifact-state--validate {
+  animation: designing-ai-workflow-state var(--dai-system-cycle) linear calc(var(--dai-system-start) + 6s) infinite;
+}
+
+.designing-ai-workflow__status-state--four,
+.designing-ai-workflow__artifact-state--code {
+  animation: designing-ai-workflow-state var(--dai-system-cycle) linear calc(var(--dai-system-start) + 9s) infinite;
+}
+
+.designing-ai-workflow__pipeline {
+  position: relative;
+  justify-content: space-between;
+  gap: 0.45rem;
+  min-width: 0;
+  padding-inline: 0.2rem;
+  opacity: 0.62;
+}
+
+.designing-ai-workflow__pipeline::before {
+  content: "";
+  position: absolute;
+  left: 0.18rem;
+  right: 0.18rem;
+  top: 50%;
+  height: 1px;
+  background: var(--theme-divider);
+}
+
+.designing-ai-workflow__step {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.12rem;
+  background: var(--dai-panel-surface);
+}
+
+.designing-ai-workflow__step i {
+  display: block;
+  width: 0.34rem;
+  height: 0.34rem;
+  background: var(--dai-panel-surface);
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.designing-ai-workflow__step--one {
+  animation: designing-ai-workflow-step var(--dai-system-cycle) linear var(--dai-system-start) infinite;
+}
+
+.designing-ai-workflow__step--two {
+  animation: designing-ai-workflow-step var(--dai-system-cycle) linear calc(var(--dai-system-start) + 3s) infinite;
+}
+
+.designing-ai-workflow__step--three {
+  animation: designing-ai-workflow-step var(--dai-system-cycle) linear calc(var(--dai-system-start) + 6s) infinite;
+}
+
+.designing-ai-workflow__step--four {
+  animation: designing-ai-workflow-step var(--dai-system-cycle) linear calc(var(--dai-system-start) + 9s) infinite;
+}
+
+.designing-ai-workflow__artifact {
+  position: relative;
+  min-height: 1.75rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--theme-divider) 56%, transparent);
+  background: color-mix(in srgb, var(--theme-surface-muted) 22%, transparent);
+  opacity: 0.7;
+}
+
+.designing-ai-workflow__artifact-state {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.designing-ai-workflow__artifact-state--sketch {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.6rem;
+}
+
+.designing-ai-workflow__artifact-state--sketch i {
+  width: 24%;
+  border-top: 1px solid color-mix(in srgb, var(--theme-text-muted) 66%, transparent);
+  transform: rotate(-3deg);
+}
+
+.designing-ai-workflow__artifact-state--sketch i:nth-child(2) {
+  width: 39%;
+  transform: rotate(2deg);
+}
+
+.designing-ai-workflow__artifact-state--interface {
+  display: grid;
+  grid-template-columns: 0.36fr 1fr 0.58fr;
+  gap: 0.3rem;
+  padding: 0.28rem;
+}
+
+.designing-ai-workflow__artifact-state--interface i {
+  border: 1px solid color-mix(in srgb, var(--theme-divider) 68%, transparent);
+  background: var(--dai-panel-surface);
+}
+
+.designing-ai-workflow__artifact-state--interface i:nth-child(2) {
+  background:
+    linear-gradient(var(--theme-divider) 1px, transparent 1px) 0 0 / 100% 0.42rem,
+    var(--dai-panel-surface);
+}
+
+.designing-ai-workflow__artifact-state--validate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.28rem 18%;
+}
+
+.designing-ai-workflow__artifact-state--validate i {
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+}
+
+.designing-ai-workflow__artifact-state--validate::before,
+.designing-ai-workflow__artifact-state--validate::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid color-mix(in srgb, var(--theme-divider) 72%, transparent);
+}
+
+.designing-ai-workflow__artifact-state--validate i::after {
+  content: "";
+  display: block;
+  width: 0.35rem;
+  height: 0.18rem;
+  margin: 0.25rem 0 0 0.22rem;
+  border-left: 1px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+  transform: rotate(-45deg);
+}
+
+.designing-ai-workflow__artifact-state--code {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.28rem 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.designing-ai-workflow__artifact-state--code i {
+  width: 58%;
+  border-top: 1px solid var(--theme-text-muted);
+}
+
+.designing-ai-workflow__artifact-state--code i:nth-child(2) { width: 78%; }
+.designing-ai-workflow__artifact-state--code i:nth-child(3) { width: 44%; }
+
+@keyframes designing-ai-panel-enter {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, calc(100svh + var(--dai-extrusion-total)), 0);
+  }
+
+  /* The entrance easing reaches half of its travel distance at ~14.25% timeline progress. */
+  14.25% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes designing-ai-eyebrow-enter {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    transform: translate3d(0, 0.4rem, 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes designing-ai-title-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(-0.875rem, 0.875rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes designing-ai-copy-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.5rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes designing-ai-cta-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.375rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes designing-ai-workflow-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.4rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes designing-ai-sparkle-event {
+  0%, 12%, 100% {
+    opacity: 0;
+    transform: scale(0.45) rotate(0deg);
+  }
+  18% {
+    opacity: 0.92;
+    transform: scale(1) rotate(45deg);
+  }
+  25% {
+    opacity: 0;
+    transform: scale(0.58) rotate(90deg);
+  }
+}
+
+@keyframes designing-ai-cta-sparkle {
+  0% {
+    opacity: 0;
+    transform: scale(0.35) rotate(0deg);
+  }
+  48% {
+    opacity: 1;
+    transform: scale(1) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.6) rotate(90deg);
+  }
+}
+
+@keyframes designing-ai-node-event {
+  0%, 72%, 100% { opacity: 0.32; }
+  77% { opacity: 1; fill: var(--color-accent); }
+  84% { opacity: 0.32; }
+}
+
+@keyframes designing-ai-trace {
+  to { stroke-dashoffset: -104; }
+}
+
+@keyframes designing-ai-orbit {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes designing-ai-workflow-state {
+  0%, 20% { opacity: 1; }
+  24%, 100% { opacity: 0; }
+}
+
+@keyframes designing-ai-workflow-step {
+  0%, 20% { color: var(--color-accent); }
+  24%, 100% { color: color-mix(in srgb, var(--theme-text) 62%, transparent); }
+}
+
+@media (max-width: 75rem) and (min-width: 48.0625rem) {
+  .designing-ai-workflow {
+    gap: 0.28rem;
+    padding: 0.55rem 0 0 0.75rem;
+  }
+
+  .designing-ai-workflow__status { width: 4.5rem; }
+}
+
+@media (max-width: 48rem) {
+  .designing-ai-hero {
+    --dai-stage-min-height: 32rem;
+    --dai-stage-height: clamp(32rem, 68svh, 36rem);
+    --dai-panel-inline-start: clamp(4rem, 13vw, 6rem);
+    --dai-panel-inline-end: clamp(1.5rem, 4vw, 2.5rem);
+    --dai-panel-block-start: 2rem;
+    --dai-panel-block-end: clamp(3.5rem, 8svh, 4.5rem);
+    --dai-extrusion-inline: clamp(4rem, 13vw, 6rem);
+    --dai-extrusion-block: clamp(3.5rem, 12vw, 6rem);
+  }
+
+  .designing-ai-hero__blueprint {
+    width: 100%;
+    left: 0;
+  }
+
+  .designing-ai-hero__content {
+    grid-template-columns: max-content minmax(9rem, 1fr);
+    grid-template-rows: auto auto auto minmax(6rem, 1fr);
+    padding: 2rem clamp(2rem, 5vw, 3rem);
+  }
+
+  .designing-ai-hero__title.heading--display .heading-main {
+    font-size: clamp(2.7rem, 7.2vw, 3.5rem);
+  }
+
+  .designing-ai-hero__title.heading--display .heading-accent {
+    font-size: clamp(2.4rem, 6.4vw, 3.1rem);
+  }
+
+  .designing-ai-hero__copy {
+    font-size: clamp(0.85rem, 1.9vw, 0.95rem);
+  }
+
+  .designing-ai-hero__diagram--left,
+  .designing-ai-hero__diagram--right {
+    opacity: 0.44;
+  }
+
+  .designing-ai-hero__diagram--corners {
+    display: none;
+  }
+
+  .designing-ai-workflow {
+    grid-template-rows: auto auto minmax(4rem, 1fr);
+    gap: 0.45rem;
+    padding: 0.75rem 0 0 1rem;
+  }
+
+  .designing-ai-workflow__status { width: 5rem; }
+  .designing-ai-workflow__artifact { min-height: 4rem; }
+}
+
+@media (max-width: 30rem) {
+  .designing-ai-hero {
+    --dai-stage-min-height: 42rem;
+    --dai-stage-height: clamp(42rem, 82svh, 46rem);
+    --dai-panel-inline-start: 2.25rem;
+    --dai-panel-inline-end: 1rem;
+    --dai-panel-block-start: 3rem;
+    --dai-panel-block-end: 4rem;
+    --dai-extrusion-inline: 2.25rem;
+    --dai-extrusion-block: 2.75rem;
+    --dai-runway-overflow: 4.5rem;
+    --dai-field-grid: rgb(255 255 255 / 4%);
+  }
+
+  .designing-ai-hero__diagram--left,
+  .designing-ai-hero__diagram--right {
+    opacity: 0.28;
+  }
+
+  .designing-ai-hero__content {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto auto minmax(6rem, 1fr);
+    padding: 1.5rem;
+  }
+
+  .designing-ai-hero__eyebrow {
+    font-size: 0.7rem;
+  }
+
+  .designing-ai-hero__title.section-heading {
+    grid-column: 1;
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+
+  .designing-ai-hero__title.heading--display .heading-main {
+    font-size: clamp(2.4rem, 11.5vw, 3rem);
+  }
+
+  .designing-ai-hero__title.heading--display .heading-accent {
+    margin: -0.08em 0 0;
+    font-size: clamp(2.2rem, 10.6vw, 2.8rem);
+  }
+
+  .designing-ai-hero__copy {
+    grid-column: 1;
+    margin-top: 1rem;
+    font-size: clamp(0.8rem, 3.4vw, 0.9rem);
+    line-height: 1.42;
+  }
+
+  .designing-ai-hero__cta.primary-btn {
+    grid-column: 1;
+    grid-row: 4;
+    margin-top: 1rem;
+    padding: 1rem 1.5rem;
+    font-size: 1.05rem;
+  }
+
+  .designing-ai-hero__future-visual {
+    grid-column: 1;
+    grid-row: 5;
+    min-width: 0;
+    min-height: 6rem;
+  }
+
+  .designing-ai-workflow {
+    gap: 0.55rem;
+    padding: 0.9rem 0 0;
+  }
+
+  .designing-ai-workflow__status {
+    width: 4.5rem;
+  }
+
+  .designing-ai-workflow__pipeline {
+    gap: 0.28rem;
+  }
+
+  .designing-ai-workflow__step {
+    padding: 0.1rem;
+  }
+
+  .designing-ai-workflow__artifact {
+    min-height: 5rem;
+  }
+
+  .designing-ai-sparkle--field-two,
+  .designing-ai-hero__orbit {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .designing-ai-hero__panel-shell {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+
+  .designing-ai-hero__eyebrow,
+  .designing-ai-hero__title.section-heading,
+  .designing-ai-hero__copy,
+  .designing-ai-hero__cta.primary-btn {
+    animation: none;
+    clip-path: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .designing-ai-hero__future-visual {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .designing-ai-hero__cta.primary-btn {
+    transition: none;
+  }
+
+  .designing-ai-hero__cta.primary-btn:hover,
+  .designing-ai-hero__cta.primary-btn:active {
+    translate: none;
+  }
+
+  .designing-ai-hero__cta.primary-btn::before,
+  .designing-ai-sparkle--cta,
+  .designing-ai-sparkle--field-one,
+  .designing-ai-sparkle--field-two,
+  .designing-ai-hero__orbit {
+    display: none;
+  }
+
+  .designing-ai-sparkle--title {
+    animation: none;
+    opacity: 0.8;
+    transform: rotate(45deg);
+  }
+
+  .designing-ai-hero__diagram--right > path:nth-of-type(2),
+  .designing-ai-hero__diagram--left > circle:nth-of-type(2),
+  .designing-ai-hero__diagram--right > circle:last-of-type,
+  .designing-ai-workflow__status-state,
+  .designing-ai-workflow__step,
+  .designing-ai-workflow__artifact-state {
+    animation: none;
+  }
+
+  .designing-ai-workflow__status-state,
+  .designing-ai-workflow__artifact-state {
+    opacity: 0;
+  }
+
+  .designing-ai-workflow__status-state--four,
+  .designing-ai-workflow__artifact-state--code {
+    opacity: 1;
+  }
+
+  .designing-ai-workflow__step {
+    color: var(--theme-text);
+  }
+
+  .designing-ai-workflow__step i {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+}

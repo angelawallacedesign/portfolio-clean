@@ -151,11 +151,6 @@ PATTERNS
   z-index: 2;
 }
 
-.intro-layout .about .heading--display .heading-accent {
-  font-size: calc(var(--type-display) * 1);
-}
-
-
 /* =========================
 VERTICAL CONTAINERS
 ========================= */
@@ -171,6 +166,10 @@ VERTICAL CONTAINERS
   display: flex;
   flex-direction: column;
   gap: var(--gap-4);
+}
+
+.intro-layout .work .projects-wrapper {
+  margin-block-start: clamp(6.25rem, 8vw, 9.375rem);
 }
 
 .intro-layout .project-card .section-heading, 
@@ -244,6 +243,18 @@ body.show-section-nav .intro-hide {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  isolation: isolate;
+}
+
+.intro-stage::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -125px -40px -7rem;
+  background:
+    radial-gradient(ellipse at 74% 36%, rgba(167, 216, 242, 0.34), transparent 48%),
+    linear-gradient(180deg, rgba(226, 244, 252, 0.5) 0%, rgba(244, 249, 252, 0.18) 56%, transparent 100%);
+  pointer-events: none;
 }
 
 /* Top Intro section */
@@ -255,7 +266,7 @@ body.show-section-nav .intro-hide {
 .intro-middle {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   
   flex: 1; /* fills available height */
 }
@@ -263,7 +274,7 @@ body.show-section-nav .intro-hide {
 .intro-copy {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1.5rem;
   
   /* Intro middle child constraints */
   flex: 1;
@@ -301,23 +312,12 @@ body.show-section-nav .intro-hide {
   gap: var(--gap-5);
 }
 
-.intro-layout .about {
-  display: grid;
-  grid-template-columns: 1fr; /* single column */
-  grid-template-rows: auto auto;
-  /*gap: var(--gap-3);*/
-}
-
 .intro-layout .about p {
-  max-width: 60ch;
+  max-width: none;
 }
 
 .intro-layout .about p {
   padding: 0;
-}
-
-.media {
-  gap: 0;
 }
 
 /* =========================
@@ -514,6 +514,31 @@ WORK FEATURE - (LANDING PAGE ONLY)
   transform: translateY(0);
 }
 
+/* The standalone hero is observed directly; a work-feature wrapper would
+   incorrectly apply the project cards' flex layout and 80vh minimum height. */
+.intro-layout .designing-ai-hero {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 760ms var(--motion-ease-apple),
+    transform 820ms var(--motion-ease-apple);
+  will-change: opacity, transform;
+}
+
+.intro-layout .designing-ai-hero.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-layout .designing-ai-hero {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}
+
 .intro-layout .work-feature__copy {
   flex: 0 0 35%;
   max-width: 420px;
@@ -571,7 +596,7 @@ WORK FEATURE - (LANDING PAGE ONLY)
 }
 
 .feature--payments img {
-  margin-right: -80px;
+  margin-right: -20px;
 }
 
 /* PRIVACY → component needs punch (not tiny card) */
@@ -618,7 +643,7 @@ WORK FEATURE - (LANDING PAGE ONLY)
 /* Services */
 
 .intro-layout .services .section-heading {
-  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 /* =========================
@@ -680,6 +705,12 @@ BREAKPOINT QUERIES
     align-items: center;
     flex-direction: column;
   }  
+  .designer-brand {
+    justify-content: center;
+  }
+  .intro-layout .about > .ph-media {
+    width: min(48vw, 260px);
+  }
   .intro-layout .section {
     padding-bottom: 0;
   }
@@ -728,6 +759,14 @@ BREAKPOINT QUERIES
     width: 100%;
     height: auto;
   }
+  .intro-layout .about > .ph-media {
+    width: 100%;
+    max-height: none;
+  }
+  .about-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
   
   .intro-layout .global-nav__button span {
     display: none;
@@ -755,10 +794,6 @@ BREAKPOINT QUERIES
     padding: 20px;
   }
 
-  .intro-layout .work .layout-section-header {
-    padding-bottom: 100px;
-  }
-  
   .intro-layout .work-feature {
     gap: 0;
   }

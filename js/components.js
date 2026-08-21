@@ -102,7 +102,11 @@ export function renderProjectCard(data) {
 }
 
 
-export function renderWorkFeature(data, index) {
+export function renderWorkFeature(data, index, modules = {}) {
+  if (data.id === "designing-with-ai" && modules.designingAiHero) {
+    return modules.designingAiHero;
+  }
+
   const isRight =
     data.layout === "right" ||
     (data.layout !== "left" && index % 2 !== 0);
@@ -146,10 +150,7 @@ export function renderWorkFeature(data, index) {
       </div>
 
       <div class="work-feature__media">
-        <img 
-          src="${data.meta.featuredUrl}" 
-          alt="${data.title}"
-        />
+        <img src="${data.meta.featuredUrl}" alt="${data.heading.title}" />
       </div>
 
     </article>

@@ -22,9 +22,14 @@ document.addEventListener("click", (e) => {
   openCaseStudy(project);
 });
 
-fetch("./js/data.json")
-  .then((res) => res.json())
-  .then((projects) => {
+Promise.all([
+  fetch("./js/data.json").then((res) => res.json()),
+  fetch("./modules/designing-with-ai-hero/pass-4/component.html").then((res) => {
+    if (!res.ok) throw new Error("Unable to load the Designing with AI hero module.");
+    return res.text();
+  })
+])
+  .then(([projects, designingAiHero]) => {
     projectsCache = projects;
 
 
@@ -33,7 +38,7 @@ fetch("./js/data.json")
 
     listRoot.innerHTML = featuredProjects
       .map((data, index) => {
-        let html = renderWorkFeature(data, index);
+        let html = renderWorkFeature(data, index, { designingAiHero });
 
         if (data.id === "florida-blue-payments-experience") {
           html = html.replace('work-feature"', 'work-feature feature--payments"');
@@ -51,7 +56,7 @@ fetch("./js/data.json")
   });
 
   function initWorkReveal() {
-  const items = document.querySelectorAll(".work-feature");
+  const items = document.querySelectorAll(".work-feature, .designing-ai-hero");
 
   if (!items.length) return;
 

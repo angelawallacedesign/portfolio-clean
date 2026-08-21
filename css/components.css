@@ -161,6 +161,10 @@ a.utility {
     filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
 }
 
+.media.about .primary-btn-small {
+  margin-top: 0;
+}
+
 .cta {
   font-size: 30px;
 }
@@ -273,6 +277,36 @@ a.utility {
   gap: 10px;
 }
 
+.designer-brand {
+  display: flex;
+  height: 3.25rem;
+  align-items: center;
+  gap: 14px;
+}
+
+.designer-brand__watermark {
+  display: inline-flex;
+  height: 100%;
+  width: auto;
+  aspect-ratio: 119 / 37;
+  flex: 0 0 auto;
+  opacity: 0.72;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.designer-brand__watermark:hover,
+.designer-brand__watermark:focus-visible {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.designer-brand__watermark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .designer-name {
   display: flex;
   flex-direction: column;
@@ -328,6 +362,32 @@ a.utility {
   text-transform: uppercase;
 }
 
+.global-nav__list a {
+  position: relative;
+  display: inline-block;
+  padding-block: 6px;
+}
+
+.global-nav__list a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 220ms var(--motion-ease-apple, ease);
+}
+
+.global-nav__list a:hover::after,
+.global-nav__list a:focus-visible::after,
+.global-nav__list a.is-active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
 
 .global-nav__button {
   display: inline-flex;
@@ -342,12 +402,40 @@ a.utility {
 
   border-radius: 3px;
 
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   text-decoration: none;
+  box-shadow: 0 0 0 rgba(250, 77, 127, 0);
+  transition: transform 180ms ease, box-shadow 240ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.global-nav__button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -2px;
+  background: linear-gradient(110deg, transparent 24%, rgba(255,255,255,.92) 46%, rgba(255,79,135,.22) 53%, transparent 72%);
+  transform: translateX(-135%);
+  animation: awd-lab-scan 5.2s ease-in-out 1.4s infinite;
+}
+
+.global-nav__button::after {
+  content: "✦";
+  position: absolute;
+  top: -8px;
+  right: -5px;
+  color: var(--color-accent);
+  font-size: 10px;
+  opacity: 0;
+  animation: awd-lab-spark 5.2s ease-in-out 1.4s infinite;
 }
 
 .global-nav__button:hover {
   background: #FFD8E3;
   border: 1px solid var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 20px rgba(250, 77, 127, 0.2);
 }
 
 .global-nav__button.disabled {
@@ -400,6 +488,22 @@ a.utility {
 /* icon swap */
 .global-nav__button:hover .global-nav__button-icon {
   background-image: url("../assets/components/icon--ai-hover.svg");
+  transform: rotate(-6deg) scale(1.08);
+}
+
+@keyframes awd-lab-scan {
+  0%, 68%, 100% { transform: translateX(-135%); }
+  82% { transform: translateX(135%); }
+}
+
+@keyframes awd-lab-spark {
+  0%, 69%, 88%, 100% { opacity: 0; transform: scale(.4) rotate(0); }
+  76% { opacity: 1; transform: scale(1) rotate(45deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .global-nav__button::before,
+  .global-nav__button::after { animation: none; }
 }
 
 .c-utility-nav {
@@ -551,18 +655,41 @@ a.utility {
   bottom: 10px;
   right: 10px;
   z-index: 10;
+  width: 48px;
+  height: 48px;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    visibility 0s linear 180ms;
+}
+
+.bottom-nav__right.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition-delay: 0s;
 }
 
 /* turn anchor into the button */
 .bottom-nav__right a {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 48px;
-  height: 48px;
+  width: 100%;
+  height: 100%;
 
   text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
 
   /* hide text visually but keep it accessible */
   font-size: 0;
@@ -571,6 +698,10 @@ a.utility {
   /*filter: drop-shadow(0 0 6px rgba(255,255,255,0.8));*/
 
   transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.bottom-nav__right a > * {
+  pointer-events: none;
 }
 
 .bottom-nav__right a:hover {
@@ -584,6 +715,12 @@ a.utility {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bottom-nav__right {
+    transition: none;
+  }
 }
 
 
@@ -813,6 +950,12 @@ a.utility {
 
 .card {
   padding: var(--gap-3) 0;
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .services .card h3 {
+    font-size: clamp(1.625rem, 3.4vw, 1.875rem);
+  }
 }
 
 /* Services variant */

@@ -1,0 +1,51 @@
+.designing-ai-demo {
+  margin: 0;
+  background: var(--theme-bg);
+  color: var(--theme-text);
+  font-family: var(--font-sans);
+}
+
+.designing-ai-demo__docs {
+  width: min(68rem, calc(100% - 2rem));
+  margin-inline: auto;
+  padding: clamp(3rem, 8vw, 7rem) 0;
+}
+
+.designing-ai-demo__docs h1,
+.designing-ai-demo__docs h2,
+.designing-ai-demo__docs p,
+.designing-ai-demo__docs ul,
+.designing-ai-demo__docs pre {
+  margin-top: 0;
+}
+
+.designing-ai-demo__docs h1 {
+  margin-bottom: 1rem;
+  font: 900 clamp(2.5rem, 6vw, 5rem)/0.95 var(--font-sans);
+  letter-spacing: var(--ls-tight);
+  text-transform: uppercase;
+}
+
+.designing-ai-demo__docs h2 {
+  margin: 3rem 0 0.75rem;
+  font: 400 italic 2rem/1 var(--font-serif);
+  color: var(--color-accent);
+}
+
+.designing-ai-demo__docs p,
+.designing-ai-demo__docs li {
+  max-width: 48rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.designing-ai-demo__docs code {
+  font-size: 0.92em;
+}
+
+.designing-ai-demo__docs pre {
+  overflow-x: auto;
+  padding: 1.25rem;
+  background: var(--theme-surface-muted);
+  border-left: 0.25rem solid var(--color-accent);
+}

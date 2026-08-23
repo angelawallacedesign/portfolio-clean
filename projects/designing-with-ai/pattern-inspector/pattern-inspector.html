@@ -1,0 +1,95 @@
+<div class="interaction-callout">🟢 Live Prototype</div>
+<section class="pattern-inspector" aria-labelledby="pattern-inspector-title" data-pattern-inspector>
+        <div class="pattern-inspector__viewer">
+          <header class="pattern-inspector__heading">
+            <div class="pattern-inspector__heading-content">
+              <p class="pattern-inspector__kicker">Current Pattern</p>
+              <h1 class="pattern-inspector__title" id="pattern-inspector-title" data-pattern-name>CTA Banner</h1>
+            </div>
+          </header>
+
+          <figure class="pattern-inspector__preview">
+            <div class="pattern-inspector__stage" data-pattern-stage></div>
+
+            <figcaption class="pattern-inspector__navigation">
+              <button
+                class="pattern-inspector__nav-button pattern-inspector__nav-button--previous"
+                type="button"
+                aria-label="Previous pattern"
+                data-pattern-previous
+                disabled
+              ><span aria-hidden="true">&lt;</span> Prev</button>
+              <span class="pattern-inspector__position" data-pattern-position>Pattern 1 of 4</span>
+              <button
+                class="pattern-inspector__nav-button"
+                type="button"
+                aria-label="Next pattern"
+                data-pattern-next
+              >Next <span aria-hidden="true">&gt;</span></button>
+            </figcaption>
+          </figure>
+        </div>
+
+        <aside class="pattern-inspector__panel" aria-labelledby="pattern-inspector-heading">
+          <h2 class="pattern-inspector__panel-title" id="pattern-inspector-heading">Inspector Panel</h2>
+
+          <div class="pattern-inspector__panel-body">
+            <div class="pattern-inspector__tabs" role="tablist" aria-label="Inspection category">
+              <button
+                class="pattern-inspector__tab is-active"
+                id="pattern-inspector-tab-token"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="pattern-inspector-content"
+                tabindex="0"
+                data-inspector-category="token"
+              >Token</button>
+              <button
+                class="pattern-inspector__tab"
+                id="pattern-inspector-tab-state"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="pattern-inspector-content"
+                tabindex="-1"
+                data-inspector-category="state"
+              >State</button>
+              <button
+                class="pattern-inspector__tab"
+                id="pattern-inspector-tab-a11y"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="pattern-inspector-content"
+                tabindex="-1"
+                data-inspector-category="a11y"
+              >A11y</button>
+              <button
+                class="pattern-inspector__tab"
+                id="pattern-inspector-tab-class"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="pattern-inspector-content"
+                tabindex="-1"
+                data-inspector-category="class"
+              >Class</button>
+            </div>
+
+            <div
+              class="pattern-inspector__content"
+              id="pattern-inspector-content"
+              role="tabpanel"
+              aria-labelledby="pattern-inspector-tab-token"
+            >
+              <ol class="pattern-inspector__parts" aria-label="Pattern annotations" data-inspector-parts></ol>
+
+              <section class="pattern-inspector__detail" id="pattern-inspector-detail" aria-live="polite" aria-atomic="true">
+                <p class="pattern-inspector__detail-label">Token</p>
+                <h3 class="pattern-inspector__detail-value">--color-surface-raised</h3>
+              </section>
+            </div>
+          </div>
+        </aside>
+      </section>

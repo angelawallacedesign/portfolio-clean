@@ -12,14 +12,15 @@
     "users": 0,
     "complexity": 5,
     "opacity": 1,
-    "hasCaseStudy": false,
+    "hasCaseStudy": true,
+    "htmlInclude": "projects/designing-with-ai/",
     "meta": {
       "type": "AI-assisted design practice",
       "client": "Independent R&D",
       "role": "Designer and front-end developer",
       "impact": "A growing collection of designer-directed AI workflows that move product ideas from early sketches to refined interfaces, coded prototypes, and implementation-ready documentation.",
       "disciplines": "AI workflows, Interface design, Design engineering",
-      "notes": "Case study in progress.",
+      "notes": "A full-page case study of a designer-directed AI workflow.",
       "caption": "Designer-directed AI workflow",
       "imageUrl": "",
       "featuredUrl": ""

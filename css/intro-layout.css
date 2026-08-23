@@ -17,10 +17,10 @@ body {
   margin:0;
 }
 
-/* Unlock scrolling for intro page */
-.intro-layout {
+/* Keep document scrolling on the root so responsive sticky positioning works in Chrome. */
+body.intro-layout {
   height: auto !important;
-  overflow-y: auto !important;
+  overflow: visible !important;
 }
 body.intro-layout .section {
   height: auto;

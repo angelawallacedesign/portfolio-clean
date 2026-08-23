@@ -42,6 +42,11 @@
    Do not refactor existing styles above this line
 ====================================================== */
 
+body.case-study-page {
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
 .layer-3-overlay {
   position: fixed;
   inset: 0;

@@ -5,6 +5,13 @@
    Notes: Separation of concerns, validates component portability
 ========================= */
 
+/* ======================================================
+   THEME SWITCHERS ARE TEMPORARILY HIDDEN ACROSS THE SITE
+====================================================== */
+.theme-switcher {
+  display: none;
+}
+
 body {
   margin: 0;
   padding: 0;

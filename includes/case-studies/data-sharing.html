@@ -16,13 +16,13 @@
     <link rel="stylesheet" href="../../../shared/css/utilities.css" />
     <link rel="stylesheet" href="../../../shared/css/motion.css" />
     <link rel="stylesheet" href="../../css/tokens.css" />
-    <link rel="stylesheet" href="../../css/case-study-layout.css" />
-    <link rel="stylesheet" href="../../css/components.css" />
+    <link rel="stylesheet" href="../../css/case-study-layout.css?v=back-to-top" />
+    <link rel="stylesheet" href="../../css/components.css?v=hide-theme-switcher" />
 </head>
-<body id="top">
+<body id="top" class="case-study-page">
 
 
-    <div class="bottom-nav__right">
+    <div class="bottom-nav__right" data-back-to-top aria-hidden="true">
         <a
             href="#top"
             class="control control--fixed is-bottom-right">
@@ -677,7 +677,7 @@
                 map.forEach(item => observer.observe(item.target));
             }
     </script>
-    <script type="module" src="../../js/case-study.js?v=motion"></script>
+    <script type="module" src="../../js/case-study.js?v=back-to-top"></script>
     <script type="module" src="../../../shared/js/base.js"></script>
 </body>
 </html>

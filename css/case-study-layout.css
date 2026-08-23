@@ -43,6 +43,7 @@
 ====================================================== */
 
 body.case-study-page {
+  max-width: 100%;
   overflow-x: clip;
   overflow-y: visible;
 }
@@ -108,7 +109,10 @@ body.case-study-page {
 }
 
 .layer-3 main.case-body {
+  box-sizing: border-box;
   display: flex;
+  width: 100%;
+  min-width: 0;
   flex-direction: column;
   gap: 50px;
   padding-inline: 40px;
@@ -117,6 +121,7 @@ body.case-study-page {
 }
 
 .layer-3 main.case-body > section.case-section {
+  min-width: 0;
   padding-top: 70px;
 }
 

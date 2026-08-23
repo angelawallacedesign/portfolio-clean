@@ -1,0 +1,96 @@
+:root {
+
+/* =========================
+   GLOBAL COLOR TOKENS \\ SHARED BY ALL PRODUCTS (DO NOT DUPLICATE INTO PRODUCT FOLDERS)
+   Initial move (to global state): 5/7/2026 (Big win)
+   *****!!! Product tokens live in product repos !!!*****
+   Shared folder hosted via Github pages: 6/27/26 (Another Big win)
+========================= */
+
+    /* Primary Brand Colors */
+    --color-primary: #000;  /* Core brand / text */
+    --color-secondary: #d9d9d9;  /* Neutral surfaces, dividers */
+    --color-accent:  #FA4D7E;  /* Emphasis / highlights */
+    /* --color-secondary: #fff (update!) QA Apply Tracker first. release TBA */
+    /* --color-neutral: #D9D9D9 (new!) release TBA */
+
+    /* Interaction */
+    --color-focus:  #dd3353;  /* Focus rings, active states */
+    --color-control: #23CDCD;  /* Controls, affordances */
+    --color-disabled: #A7A7A7;
+
+    /* Frame + surfaces */
+    --color-frame: var(--color-primary);
+    --color-frame-default: #C3C3C3;
+    --color-frame-accent: var(--color-accent);
+    --color-frame-muted: var(--color-secondary);
+    --color-case-study-frame: #313131;
+    --color-surface: #fff;
+    --color-surface-muted: #E7DBDD;
+    --color-divider: #D9D9D9;
+
+    /* Text */
+    --color-text: #111;
+    --color-text-contrast: #fff;
+    --color-text-muted: #C3C3C3;
+
+    /* icons */
+    --color-icon: #565656;
+
+    /* Theme aliases
+       These mirror the authored AWD palette by default. Alternate themes only
+       override these variables, so existing component styles remain portable. */
+    --theme-bg: var(--color-surface);
+    --theme-surface: var(--color-surface);
+    --theme-surface-muted: var(--color-surface-muted);
+    --theme-text: var(--color-text);
+    --theme-text-muted: var(--color-text-muted);
+    --theme-divider: var(--color-divider);
+    --theme-frame: var(--color-frame);
+    --theme-accent: var(--color-accent);
+}
+
+html[data-theme="dark"] {
+    --color-primary: #f7f4f5;
+    --color-secondary: #303033;
+    --color-case-study-frame: #17171a;
+    --color-surface: #17171a;
+    --color-surface-muted: #242428;
+    --color-divider: #3b3b40;
+    --color-text: #f7f4f5;
+    --color-text-contrast: #111;
+    --color-text-muted: #a9a4a7;
+    --color-icon: #dedade;
+
+    --theme-bg: #17171a;
+    --theme-surface: #1f1f23;
+    --theme-surface-muted: #2a2a30;
+    --theme-text: #f7f4f5;
+    --theme-text-muted: #a9a4a7;
+    --theme-divider: #3b3b40;
+    --theme-frame: #303033;
+}
+
+html[data-theme="night"] {
+    --color-primary: #f1f6ff;
+    --color-secondary: #141a28;
+    --color-case-study-frame: #080b12;
+    --color-surface: #0c111d;
+    --color-surface-muted: #151d2c;
+    --color-divider: #273149;
+    --color-text: #f1f6ff;
+    --color-text-contrast: #07101e;
+    --color-text-muted: #9ca8c0;
+    --color-icon: #d9e4f8;
+
+    --theme-bg: #0c111d;
+    --theme-surface: #111827;
+    --theme-surface-muted: #182238;
+    --theme-text: #f1f6ff;
+    --theme-text-muted: #9ca8c0;
+    --theme-divider: #273149;
+    --theme-frame: #141a28;
+}
+
+/******** TO DO *********/
+/* Reason about body background color tokens (AW 5/8/26). Done 6/27/26. Surface can be panel bgs, theme bg is the page bg */

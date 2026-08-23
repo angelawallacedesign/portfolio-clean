@@ -1,0 +1,68 @@
+/* =========================
+   AWD Shared Motion Primitives
+   Reusable timing, reveal, hover, and interaction utilities.
+========================= */
+
+:root {
+  --motion-hover-duration: var(--motion-medium, 240ms);
+  --motion-reveal-duration: 460ms;
+  --motion-page-load-duration: 860ms;
+  --motion-hero-duration: 980ms;
+  --motion-hero-delay-copy: 80ms;
+  --motion-hero-delay-laptop: 240ms;
+  --motion-hero-delay-phone: 420ms;
+  --motion-ease-standard: var(--ease-standard, cubic-bezier(0.22, 1, 0.36, 1));
+  --motion-ease-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --motion-ease-apple: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity var(--motion-page-load-duration) var(--motion-ease-apple),
+    transform var(--motion-page-load-duration) var(--motion-ease-apple);
+  will-change: opacity, transform;
+}
+
+body.is-loaded,
+body.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.motion-reveal {
+  opacity: 0;
+  transform: translateY(15px);
+  transition:
+    opacity var(--motion-reveal-duration) var(--motion-ease-standard),
+    transform var(--motion-reveal-duration) var(--motion-ease-standard);
+}
+
+.motion-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.motion-hover-lift {
+  transition:
+    transform var(--motion-hover-duration) var(--motion-ease-standard),
+    box-shadow var(--motion-hover-duration) var(--motion-ease-standard),
+    opacity var(--motion-hover-duration) var(--motion-ease-standard);
+}
+
+.motion-hover-lift:hover,
+.motion-hover-lift:focus-visible {
+  transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+}

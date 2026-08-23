@@ -706,10 +706,21 @@ BREAKPOINT QUERIES
     width: calc(100dvw - var(--frame-thickness) *2 );
     height: auto;
     background: #fff;
-  }  
+  }
+
+  .intro-layout .global-header::after {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    flex: none;
+  }
+
   .intro-layout .global-header .header-inner {
     align-items: center;
     flex-direction: column;
+    gap: 4px;
+    padding-bottom: 8px;
   }  
   .designer-brand {
     justify-content: center;

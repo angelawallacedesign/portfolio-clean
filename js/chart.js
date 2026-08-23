@@ -4,7 +4,12 @@ import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm"
 import { openModal } from "./modal.js";
 
 async function loadData() {
-  const response = await fetch("js/data.json");
+  const response = await fetch(new URL("./data.json", import.meta.url));
+
+  if (!response.ok) {
+    throw new Error(`Unable to load chart data: ${response.status}`);
+  }
+
   return response.json();
 }
 

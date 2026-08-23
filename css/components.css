@@ -1240,6 +1240,11 @@ footer a {
     width: 100%;
     z-index: 100;
   }
+
+  .global-header.sub-nav .global-nav__list a::after {
+    display: none;
+  }
+
   .tagline.pad-vt {
     padding-bottom: 0;
   }

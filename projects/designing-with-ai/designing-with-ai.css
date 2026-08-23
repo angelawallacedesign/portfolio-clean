@@ -69,6 +69,10 @@
   text-transform: uppercase;
 }
 
+.designing-ai-case-study__title > .tagline {
+  display: none;
+}
+
 .designing-ai-case-study .case-body {
   display: flex;
   width: min(100% - clamp(2rem, 8vw, 8rem), 65rem);

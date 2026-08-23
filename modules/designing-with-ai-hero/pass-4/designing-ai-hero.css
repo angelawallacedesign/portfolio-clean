@@ -1,8 +1,6 @@
 /* Designing with AI hero — Pass 4 white-page transition. */
 
 .designing-ai-hero {
-  --dai-stage-min-height: 23rem;
-  --dai-stage-height: clamp(23rem, 40svh, 27rem);
   --dai-panel-inline-start: clamp(10rem, 23.75vw, 24rem);
   --dai-panel-inline-end: clamp(2rem, 6vw, 6rem);
   --dai-panel-block-start: clamp(1.25rem, 3svh, 2rem);
@@ -36,8 +34,8 @@
   isolation: isolate;
   width: 100vw;
   margin-inline: calc(50% - 50vw);
-  min-height: var(--dai-stage-min-height);
-  height: var(--dai-stage-height);
+  min-height: 0;
+  height: auto;
   overflow: visible;
   background-color: var(--dai-page-surface);
 }
@@ -193,12 +191,12 @@
 }
 
 .designing-ai-hero__panel-shell {
-  position: absolute;
+  position: relative;
   z-index: 1;
-  inset:
+  margin:
     var(--dai-panel-block-start)
     var(--dai-panel-inline-end)
-    var(--dai-panel-block-end)
+    calc(var(--dai-panel-block-end) + var(--dai-extrusion-total))
     var(--dai-panel-inline-start);
   will-change: transform, opacity;
   animation: designing-ai-panel-enter var(--dai-enter-duration) var(--dai-enter-ease) var(--dai-enter-delay) both;
@@ -229,8 +227,7 @@
 }
 
 .designing-ai-hero__panel {
-  position: absolute;
-  inset: 0;
+  position: relative;
   background: linear-gradient(
     90deg,
     var(--dai-panel-surface) 0 66%,
@@ -244,7 +241,7 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  height: 100%;
+  height: auto;
   padding: clamp(1.25rem, 2.8vw, 2rem) clamp(2rem, 4vw, 4rem);
   color: var(--theme-text, var(--color-text, #111111));
 }
@@ -792,8 +789,6 @@
 
 @media (max-width: 48rem) {
   .designing-ai-hero {
-    --dai-stage-min-height: 32rem;
-    --dai-stage-height: clamp(32rem, 68svh, 36rem);
     --dai-panel-inline-start: clamp(4rem, 13vw, 6rem);
     --dai-panel-inline-end: clamp(1.5rem, 4vw, 2.5rem);
     --dai-panel-block-start: 2rem;
@@ -852,8 +847,6 @@
 
 @media (max-width: 30rem) {
   .designing-ai-hero {
-    --dai-stage-min-height: 42rem;
-    --dai-stage-height: clamp(42rem, 82svh, 46rem);
     --dai-panel-inline-start: 2.25rem;
     --dai-panel-inline-end: 1rem;
     --dai-panel-block-start: 3rem;

@@ -627,7 +627,6 @@ WORK FEATURE - (LANDING PAGE ONLY)
     
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.06), 0 1px 10px rgba(0, 0, 0, 0.10);
   }
   
   .feature--payments .work-feature__media img {
@@ -699,7 +698,11 @@ BREAKPOINT QUERIES
     margin-bottom: auto;
   }
   .intro-layout .global-header {
+    position: sticky;
+    top: 0;
     width: calc(100dvw - var(--frame-thickness) *2 );
+    height: auto;
+    background: #fff;
   }  
   .intro-layout .global-header .header-inner {
     align-items: center;

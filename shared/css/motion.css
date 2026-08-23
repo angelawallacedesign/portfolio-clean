@@ -16,19 +16,19 @@
   --motion-ease-apple: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   opacity: 0;
-  transform: translateY(8px);
-  transition:
-    opacity var(--motion-page-load-duration) var(--motion-ease-apple),
-    transform var(--motion-page-load-duration) var(--motion-ease-apple);
-  will-change: opacity, transform;
+  transition: opacity var(--motion-page-load-duration) var(--motion-ease-apple);
+  will-change: opacity;
 }
 
 body.is-loaded,
 body.fade-in {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .motion-reveal {

@@ -159,6 +159,7 @@
   gap: var(--space-sm);
   padding: 1.75rem 1.65rem 1.5rem;
   border: var(--border-width-hairline) solid var(--color-border-strong);
+  border-radius: 0;
   background: var(--color-surface-raised);
   box-shadow: 0 0 0 0.35rem var(--color-accent-action-soft);
 }
@@ -174,17 +175,22 @@
 }
 
 [data-pattern-inspector] .cta-banner__title {
+  color: var(--color-text-primary);
   font-family: var(--font-family-display);
   font-size: var(--font-size-4);
   font-weight: var(--font-weight-black);
   letter-spacing: -0.035em;
   line-height: 1.02;
+  text-align: start;
   text-transform: uppercase;
 }
 
 [data-pattern-inspector] .cta-banner__description {
+  font-family: var(--font-family-sans);
   font-size: var(--font-size-1);
+  font-weight: var(--font-weight-regular);
   line-height: 1.5;
+  text-align: start;
 }
 
 [data-pattern-inspector] .cta-banner__actions {
@@ -297,6 +303,8 @@
 }
 
 [data-pattern-inspector] .status-card__title {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
   font-size: var(--font-size-3);
 }
 

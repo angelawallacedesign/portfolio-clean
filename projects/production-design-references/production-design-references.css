@@ -1,14 +1,12 @@
 .production-reference {
-  --reference-line: rgba(17, 17, 17, 0.12);
-  --reference-line-soft: rgba(17, 17, 17, 0.07);
-  --reference-muted: #5c5c5c;
-  --reference-soft: #f7f7f7;
-  --reference-accent: var(--color-accent, #fa4d7e);
+  --reference-line: color-mix(in srgb, var(--theme-text, #111) 12%, transparent);
+  --reference-line-soft: color-mix(in srgb, var(--theme-text, #111) 7%, transparent);
+  --reference-accent: var(--color-accent);
   --reference-shell: 70rem;
 
   width: 100%;
-  background: #fff;
-  color: #111;
+  background: var(--theme-surface, #fff);
+  color: var(--theme-text, #111);
   font-family: var(--font-sans, Inter, system-ui, sans-serif);
 }
 
@@ -24,97 +22,59 @@
 }
 
 .reference-hero {
-  position: relative;
-  display: grid;
-  min-height: clamp(32rem, 68svh, 45rem);
-  place-items: center;
-  overflow: hidden;
-  border-bottom: 1px solid var(--reference-line-soft);
-  background:
-    radial-gradient(circle at 76% 28%, rgba(250, 77, 126, 0.035), transparent 26rem),
-    #fff;
+  --dai-stage-min-height: 31rem;
+  --dai-stage-height: clamp(31rem, 54svh, 36rem);
+  --dai-panel-inline-start: clamp(9rem, 21vw, 21rem);
+  --dai-panel-inline-end: clamp(3rem, 13vw, 13rem);
+  --dai-panel-block-start: clamp(3rem, 7svh, 4.75rem);
+  --dai-panel-block-end: clamp(3rem, 7svh, 4.75rem);
+  --dai-extrusion-inline: clamp(9rem, 21vw, 21rem);
 }
 
-.reference-hero::after {
-  position: absolute;
-  right: 6vw;
-  bottom: 4.5rem;
-  width: min(18vw, 12rem);
-  height: 1px;
-  background: var(--reference-accent);
-  content: "";
-  opacity: 0.7;
+.reference-hero .designing-ai-hero__eyebrow {
+  color: var(--theme-text, #111);
+  font-size: clamp(0.62rem, 0.72vw, 0.75rem);
+  letter-spacing: 0.12em;
 }
 
-.reference-hero__inner {
-  padding-block: clamp(7rem, 13vw, 11rem) clamp(5rem, 9vw, 8rem);
+.reference-hero__content {
+  padding: clamp(2rem, 3.4vw, 3.25rem) clamp(2.25rem, 4.5vw, 4.75rem);
 }
 
-.reference-eyebrow {
+.reference-hero .reference-hero__title {
+  display: flex;
+  max-width: none;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  margin-top: clamp(0.5rem, 1.2svh, 0.8rem);
   text-align: left;
-  margin: 0 0 1rem;
-  color: #333;
-  font-size: 0.75rem;
-  font-weight: 650;
-  letter-spacing: 0.14em;
-  line-height: 1.2;
+}
+
+.reference-hero .reference-hero__title .heading-main {
+  font-size: clamp(2.75rem, 4.25vw, 4.65rem);
+  letter-spacing: -0.07em;
+  line-height: 0.86;
   text-transform: uppercase;
 }
 
-.reference-hero h1 {
-  max-width: 12ch;
-  margin: 0;
-  font-size: clamp(3.25rem, 8.8vw, 7rem);
-  font-weight: 700;
-  letter-spacing: -0.07em;
-  line-height: 0.88;
-}
-
-.production-reference .reference-hero .section-heading {
-  display: block;
-  max-width: 12ch;
-  text-align: left;
-}
-
-.reference-hero h1 > span {
-  display: block;
-}
-
-.reference-hero h1 .reference-hero__serif {
-  margin-top: 0.08em;
-  font-family: var(--font-serif, "DM Serif Display", Georgia, serif);
-  font-size: 0.78em;
-  font-style: italic;
-  font-weight: 400;
+.reference-hero .reference-hero__title .heading-accent {
+  margin: 0.04em 0 0;
+  color: var(--color-accent);
+  font-size: clamp(2.45rem, 3.9vw, 4.1rem);
   letter-spacing: -0.055em;
-  color: #111;
+  line-height: 0.88;
+  white-space: normal;
 }
 
 .reference-hero__lede {
-  max-width: 47rem;
-  margin: clamp(2rem, 4vw, 3.25rem) 0 0;
-  color: #343434;
-  font-size: clamp(1.1rem, 2vw, 1.45rem);
-  font-weight: 350;
-  letter-spacing: -0.025em;
-  line-height: 1.5;
-}
-
-.accent-underline {
-  position: relative;
-  display: inline-block;
-  color: inherit;
-}
-
-.accent-underline::after {
-  position: absolute;
-  right: 0;
-  bottom: 0.05em;
-  left: 0;
-  z-index: -1;
-  height: 0.18em;
-  background: rgba(250, 77, 126, 0.42);
-  content: "";
+  max-width: 45rem;
+  margin-top: clamp(1rem, 2.2svh, 1.35rem);
+  color: color-mix(in srgb, var(--theme-text, #111) 78%, transparent);
+  font-size: clamp(0.82rem, 1vw, 1rem);
+  font-weight: 300;
+  letter-spacing: -0.015em;
+  line-height: 1.45;
 }
 
 .reference-summary {
@@ -122,7 +82,7 @@
   max-width: 58rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
-  margin: clamp(2.5rem, 5vw, 4.5rem) 0 0;
+  margin: auto 0 0;
   padding: 0;
   border-top: 1px solid var(--reference-line);
   border-bottom: 1px solid var(--reference-line);
@@ -139,7 +99,7 @@
 
 .reference-summary dt {
   margin-bottom: 0.35rem;
-  color: #666;
+  color: color-mix(in srgb, var(--theme-text, #111) 62%, transparent);
   font-size: 0.67rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -148,15 +108,15 @@
 
 .reference-summary dd {
   margin: 0;
-  color: #181818;
+  color: var(--theme-text, #111);
   font-size: 0.88rem;
   line-height: 1.45;
 }
 
 .production-reference > .impact-metrics {
   width: min(calc(100% - clamp(2rem, 7vw, 7rem)), var(--reference-shell));
-  margin-top: clamp(3rem, 7vw, 5.5rem);
-  margin-bottom: clamp(4.5rem, 9vw, 8rem);
+  margin-top: var(--space-lg, 5rem);
+  margin-bottom: clamp(var(--gap-4, 3.125rem), 13vw, var(--gap-5, 12.5rem));
 }
 
 .production-reference main {
@@ -165,47 +125,15 @@
 
 .production-reference .reference-section {
   scroll-margin-top: 7rem;
-  margin-bottom: clamp(5rem, 10vw, 9rem);
+  margin-bottom: var(--space-lg, 5rem);
 }
 
-.reference-section__intro {
-  display: grid;
-  max-width: 62rem;
-  grid-template-columns: minmax(15rem, 0.75fr) minmax(20rem, 1fr);
-  column-gap: clamp(2rem, 7vw, 7rem);
-  align-items: start;
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+.production-reference #reference {
+  margin-bottom: var(--space-lg, 5rem);
 }
 
-.reference-section__intro h2,
-.reference-closing h2 {
-  margin: 0;
-  font-size: clamp(2rem, 4vw, 3.4rem);
-  font-weight: 650;
-  letter-spacing: -0.055em;
-  line-height: 1;
-}
-
-.production-reference .reference-section__intro .section-header > *,
-.production-reference .reference-closing .section-header > * {
-  margin-bottom: 0;
-  padding: 0 0 0.8rem;
-  font-size: inherit;
-  line-height: inherit;
-  text-align: left;
-  text-transform: none;
-}
-
-.reference-section__intro > p:last-child {
-  max-width: 42rem;
-  margin: 0;
-  color: var(--reference-muted);
-  font-size: 1rem;
-  line-height: 1.65;
-}
-
-.reference-section__intro--compact {
-  margin-bottom: 2.25rem;
+.production-reference #evidence {
+  margin-bottom: var(--gap-5, 12.5rem);
 }
 
 .lifecycle-rail {
@@ -488,24 +416,60 @@
   outline-offset: 4px;
 }
 
-.reference-closing {
-  display: grid;
-  grid-template-columns: minmax(16rem, 0.85fr) minmax(20rem, 1fr);
-  gap: clamp(2rem, 7vw, 7rem);
-  align-items: end;
-  padding: clamp(2.5rem, 6vw, 5rem);
+.production-reference .reference-closing {
+  display: block;
+  gap: 0;
+  padding: clamp(2rem, 4.5vw, 4rem);
   border: 1px solid var(--reference-line-soft);
-  background:
-    linear-gradient(120deg, rgba(250, 77, 126, 0.025), transparent 34%),
-    #fafafa;
+  background: color-mix(in srgb, var(--theme-text, #111) 2.5%, var(--theme-surface, #fff));
+}
+
+.reference-closing__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.reference-closing__header h2 {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  font-weight: 720;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.reference-closing__header span {
+  height: 1px;
+  flex: 1;
+  background: var(--reference-line);
 }
 
 .reference-closing > p {
-  max-width: 42rem;
-  margin: 0;
-  color: #3d3d3d;
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
-  line-height: 1.65;
+  max-width: 62rem;
+  margin: 1.25rem 0 0;
+  color: color-mix(in srgb, var(--theme-text, #111) 78%, transparent);
+  font-size: clamp(0.9rem, 1.15vw, 1rem);
+  line-height: 1.6;
+}
+
+.reference-closing > .reference-closing__statement {
+  max-width: none;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  color: color-mix(in srgb, var(--theme-text, #111) 68%, transparent);
+  font-size: clamp(1rem, 1.45vw, 1.2rem);
+  font-weight: 350;
+  text-align: center;
+}
+
+.reference-thanks .section-heading {
+  align-items: center;
+  text-align: center;
+}
+
+.reference-thanks .heading-accent {
+  margin-top: -0.18em;
 }
 
 .reference-footer {
@@ -557,27 +521,20 @@
 
 @media (max-width: 48rem) {
   .reference-hero {
-    min-height: auto;
+    --dai-stage-min-height: 38rem;
+    --dai-stage-height: clamp(38rem, 76svh, 43rem);
+    --dai-panel-inline-start: clamp(3.5rem, 11vw, 5rem);
+    --dai-panel-inline-end: clamp(1.25rem, 4vw, 2rem);
+    --dai-panel-block-start: 2rem;
+    --dai-panel-block-end: 3.5rem;
+    --dai-extrusion-inline: clamp(3.5rem, 11vw, 5rem);
   }
 
-  .reference-hero::after {
-    right: 1.25rem;
-    bottom: 2.5rem;
-    width: 5rem;
+  .reference-hero__content {
+    padding: 2rem clamp(1.5rem, 5vw, 2.5rem);
   }
 
-  .reference-hero h1 {
-    font-size: clamp(3rem, 14vw, 5rem);
-  }
-
-  .production-reference .reference-hero .section-heading {
-    align-items: flex-start;
-    text-align: left;
-  }
-
-  .reference-summary,
-  .reference-section__intro,
-  .reference-closing {
+  .reference-summary {
     grid-template-columns: 1fr;
   }
 
@@ -585,10 +542,6 @@
     padding-left: 0;
     border-top: 1px solid var(--reference-line-soft);
     border-left: 0;
-  }
-
-  .reference-section__intro {
-    row-gap: 1.25rem;
   }
 
   .reference-table-wrap {
@@ -643,9 +596,12 @@
     text-transform: uppercase;
   }
 
-  .reference-closing {
-    gap: 1.75rem;
+  .production-reference .reference-closing {
     padding: 2rem;
+  }
+
+  .production-reference #evidence {
+    margin-bottom: var(--space-lg, 5rem);
   }
 }
 
@@ -655,8 +611,17 @@
     width: min(calc(100% - 2rem), var(--reference-shell));
   }
 
-  .reference-hero__inner {
-    padding-top: 6.5rem;
+  .reference-hero {
+    --dai-stage-min-height: 43rem;
+    --dai-stage-height: clamp(43rem, 84svh, 47rem);
+  }
+
+  .reference-hero .reference-hero__title .heading-main {
+    font-size: clamp(2.1rem, 10vw, 2.8rem);
+  }
+
+  .reference-hero .reference-hero__title .heading-accent {
+    font-size: clamp(2rem, 9.6vw, 2.7rem);
   }
 
   .lifecycle-rail {
@@ -703,15 +668,38 @@
   }
 
   .reference-hero {
-    min-height: auto;
+    --dai-stage-min-height: 20rem;
+    --dai-stage-height: 20rem;
+    background: var(--theme-surface, #fff);
   }
 
-  .reference-hero__inner {
-    padding-block: 2rem;
+  .reference-hero .designing-ai-hero__technical-field,
+  .reference-hero .designing-ai-hero__activity-layer,
+  .reference-hero .designing-ai-hero__panel-shell::before {
+    display: none;
+  }
+
+  .reference-hero .designing-ai-hero__panel-shell,
+  .reference-hero .designing-ai-hero__panel {
+    position: absolute;
+    inset: 0;
+    animation: none;
+  }
+
+  .reference-hero__content {
+    padding: 1.5rem 2rem;
+  }
+
+  .reference-thanks {
+    display: none;
   }
 
   .production-reference > .impact-metrics,
-  .reference-section {
+  .production-reference .reference-section {
+    margin-bottom: 2rem;
+  }
+
+  .production-reference #evidence {
     margin-bottom: 2rem;
   }
 

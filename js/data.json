@@ -92,7 +92,7 @@
     "complexity": 5,
     "opacity": 1.0,
     "hasCaseStudy": true,
-    "htmlInclude": "includes/case-studies/payments-experience.html",
+    "htmlInclude": "includes/case-studies/fb-payments-experience.html",
     "meta": {
       "type": "Enterprise Platform",
       "client": "Florida Blue",

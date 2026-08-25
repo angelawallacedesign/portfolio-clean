@@ -17,10 +17,10 @@ body {
   margin:0;
 }
 
-/* Unlock scrolling for intro page */
-.intro-layout {
+/* Keep document scrolling on the root so responsive sticky positioning works in Chrome. */
+body.intro-layout {
   height: auto !important;
-  overflow-y: auto !important;
+  overflow: visible !important;
 }
 body.intro-layout .section {
   height: auto;
@@ -46,6 +46,7 @@ COMPONENTS
 ========================= */
 
 .intro-layout .global-header {
+  --global-nav-fade-height: 40px;
   position: relative; /* required */
   width: 100svw;
 }
@@ -56,7 +57,8 @@ COMPONENTS
   left: 0;
   top: 0;
   width: 100%;
-  height: 40px;
+  flex: 0 0 var(--global-nav-fade-height);
+  height: var(--global-nav-fade-height);
   
   pointer-events: none; /* important so it doesn't block clicks */
   
@@ -627,7 +629,6 @@ WORK FEATURE - (LANDING PAGE ONLY)
     
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.06), 0 1px 10px rgba(0, 0, 0, 0.10);
   }
   
   .feature--payments .work-feature__media img {
@@ -699,11 +700,27 @@ BREAKPOINT QUERIES
     margin-bottom: auto;
   }
   .intro-layout .global-header {
+    --global-nav-fade-height: 18px;
+    position: sticky;
+    top: 0;
     width: calc(100dvw - var(--frame-thickness) *2 );
-  }  
+    height: auto;
+    background: #fff;
+  }
+
+  .intro-layout .global-header::after {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    flex: none;
+  }
+
   .intro-layout .global-header .header-inner {
     align-items: center;
     flex-direction: column;
+    gap: 4px;
+    padding-bottom: 8px;
   }  
   .designer-brand {
     justify-content: center;

@@ -121,6 +121,10 @@ export function renderWorkFeature(data, index, modules = {}) {
     featureClass = "feature--privacy";
   }
 
+  const mediaTreatmentClass = data.id === "florida-blue-payments-experience"
+    ? " image-treatment--soft-shadow"
+    : "";
+
   return `
     <article class="work-feature ${isRight ? 'right-mode' : ''} ${featureClass}">
 
@@ -149,7 +153,7 @@ export function renderWorkFeature(data, index, modules = {}) {
 
       </div>
 
-      <div class="work-feature__media">
+      <div class="work-feature__media${mediaTreatmentClass}">
         <img src="${data.meta.featuredUrl}" alt="${data.heading.title}" />
       </div>
 

@@ -56,7 +56,66 @@ export function renderOverlayPanel(data) {
 }
 
 
-export function renderProjectCard(data) {
+function resolveProjectPath(path, basePath = "") {
+  if (!path || /^(?:[a-z]+:|\/|#)/i.test(path)) return path;
+  return `${basePath}${path}`;
+}
+
+export function renderProjectCard(data, options = {}) {
+  const {
+    basePath = "",
+    variant = "default",
+    buttonLabel = "View Case Study"
+  } = options;
+  const isArchiveList = variant === "archive-list";
+  const imageUrl = resolveProjectPath(
+    data.meta.archiveImageUrl || data.meta.imageUrl,
+    basePath
+  );
+  const projectUrl = resolveProjectPath(
+    data.projectUrl || data.htmlInclude,
+    basePath
+  );
+
+  if (isArchiveList) {
+    return `
+    <article class="project-card">
+      <a
+        href="${imageUrl}"
+        class="project-card-thumb work-lightbox-trigger"
+        data-lightbox
+        aria-label="Expand ${data.heading.title} project image"
+      >
+        <img
+          src="${imageUrl}"
+          alt="${data.heading.title} project thumbnail"
+          class="project-card-image"
+        />
+      </a>
+
+      <div class="project-card-body">
+        <h2 class="section-heading">
+          <span class="heading-main">${data.heading.main}</span>
+          <span class="heading-accent">${data.heading.accent}</span>
+        </h2>
+
+        <dl class="project-meta">
+          <dt>Client</dt>
+          <dd>${data.meta.client}</dd>
+        </dl>
+
+        <p>${data.meta.notes}</p>
+
+        <div class="project-card-actions">
+          <a href="${projectUrl}" class="primary-btn-small">
+            ${buttonLabel}
+          </a>
+        </div>
+      </div>
+    </article>
+    `;
+  }
+
   return `
   <article class="project-card">
     <a 
@@ -65,7 +124,7 @@ export function renderProjectCard(data) {
       data-lightbox-src="${data.meta.imageUrl}"
     >
       <img 
-        src="${data.meta.imageUrl}" 
+        src="${imageUrl}"
         alt="${data.title}" 
         class="project-card-image"
       />
@@ -89,7 +148,7 @@ export function renderProjectCard(data) {
       data.hasCaseStudy
         ? `
         <div class="project-card-actions">
-          <a href="${data.htmlInclude}" class="primary-btn-small">
+          <a href="${projectUrl}" class="primary-btn-small">
             View Case Study
           </a>
         </div>

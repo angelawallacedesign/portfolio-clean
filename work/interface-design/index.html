@@ -1,11 +1,65 @@
 <!doctype html>
-<html lang="en" class="work-page"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Interface design projects by Angela Wallace."><title>Interface Design // Angela Wallace</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Serif+Text:ital@0;1&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="../../shared/css/global-tokens.css"><link rel="stylesheet" href="../../css/tokens.css"><link rel="stylesheet" href="../../css/main.css"><link rel="stylesheet" href="../../css/components.css"><link rel="stylesheet" href="../../css/work-gallery.css"></head>
-<body class="long-page work-archive" id="top"><header class="global-header" data-nav-root><div class="header-inner"><div class="designer-brand"><div class="designer-name"><p><a href="../../index.html">Angela Wallace</a></p><p>Senior Visual Designer</p></div></div><div class="global-links"><nav class="global-nav" aria-label="Primary"><ul class="global-nav__list" id="navList"><li><a href="../../index.html">Home</a></li><li><a href="../" class="is-active">Work</a></li><li><a href="../../index.html#services">Services</a></li><li><a href="../../index.html#about">About</a></li></ul></nav></div></div></header>
-<main id="main" class="page-main work-main"><nav class="work-breadcrumb" aria-label="Breadcrumb"><a href="../">Work</a><span>Interface Design</span></nav><header class="work-heading"><h1>Interface Design</h1></header><div class="work-card-grid">
-<article class="work-card"><a href="norwegian.html"><img src="../../assets/work/2019/interface-design/thumbnails/norwegian580.jpg" alt="View Norwegian iConcierge project"><h2>Norwegian iConcierge App</h2></a></article>
-<article class="work-card"><a href="am-resorts.html"><img src="../../assets/work/2019/interface-design/thumbnails/amresorts580.jpg" alt="View AM Resorts project"><h2>AM Resorts App</h2></a></article>
-<article class="work-card"><a href="allin-demo.html"><img src="../../assets/work/2019/interface-design/thumbnails/allindemo.jpg" alt="View Allin Demo Skin project"><h2>Demo Mobile Skin</h2></a></article>
-<article class="work-card"><a href="interactive-tv.html"><img src="../../assets/work/2019/interface-design/thumbnails/samsung580.jpg" alt="View Interactive TV project"><h2>TV Interface Design</h2></a></article>
-<article class="work-card"><a href="mobile-wireframes.html"><img src="../../assets/work/2019/interface-design/thumbnails/mobile-wireframes.jpg" alt="View mobile wireframes"><h2>Mobile Wireframes</h2></a></article>
-</div></main><footer class="work-footer">© Angela Wallace Design</footer></body></html>
+<html lang="en" class="work-page">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Interface design projects by Angela Wallace.">
+  <title>Interface Design // Angela Wallace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Serif+Text:ital@0;1&amp;family=Inter:ital,wght@0,300;0,400;0,700;0,900;1,300&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/css/global-tokens.css">
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/work-gallery.css">
+</head>
+<body class="long-page work-archive project-list-page" id="top">
+  <script type="module" src="../../js/interface-projects.js"></script>
+  <header class="global-header" data-nav-root>
+    <div class="header-inner">
+      <div class="designer-brand">
+        <div class="designer-name">
+          <p><a href="../../index.html">Angela Wallace</a></p>
+          <p>Senior Visual Designer</p>
+        </div>
+      </div>
+      <div class="global-links">
+        <nav class="global-nav" aria-label="Primary">
+          <ul class="global-nav__list" id="navList">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../" class="is-active" aria-current="page">Work</a></li>
+            <li><a href="../../index.html#services">Services</a></li>
+            <li><a href="../../index.html#about">About</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page-main work-main">
+    <nav class="work-breadcrumb" aria-label="Breadcrumb">
+      <a href="../">Work</a>
+      <span>Interface Design</span>
+    </nav>
+    <header class="work-heading">
+      <h1 class="section-heading hero">
+        <span class="heading-main">Interface</span>
+        <span class="heading-accent">design</span>
+      </h1>
+    </header>
+    <div id="project-list" class="interface-project-list" aria-live="polite"></div>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox__inner">
+      <figure class="lightbox__content">
+        <img alt="">
+        <figcaption></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <footer class="work-footer">© Angela Wallace Design</footer>
+</body>
+</html>

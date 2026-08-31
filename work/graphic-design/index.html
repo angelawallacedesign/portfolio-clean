@@ -1,8 +1,71 @@
 <!doctype html>
-<html lang="en" class="work-page"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Graphic design projects by Angela Wallace."><title>Graphic Design // Angela Wallace</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Serif+Text:ital@0;1&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="../../shared/css/global-tokens.css"><link rel="stylesheet" href="../../css/tokens.css"><link rel="stylesheet" href="../../css/main.css"><link rel="stylesheet" href="../../css/components.css"><link rel="stylesheet" href="../../css/work-gallery.css"></head>
-<body class="long-page work-archive" id="top"><header class="global-header" data-nav-root><div class="header-inner"><div class="designer-brand"><div class="designer-name"><p><a href="../../index.html">Angela Wallace</a></p><p>Senior Visual Designer</p></div></div><div class="global-links"><nav class="global-nav" aria-label="Primary"><ul class="global-nav__list" id="navList"><li><a href="../../index.html">Home</a></li><li><a href="../" class="is-active">Work</a></li><li><a href="../../index.html#services">Services</a></li><li><a href="../../index.html#about">About</a></li></ul></nav></div></div></header>
-<main id="main" class="page-main work-main"><nav class="work-breadcrumb" aria-label="Breadcrumb"><a href="../">Work</a><span>Graphic Design</span></nav><header class="work-heading"><h1>Graphic Design</h1><p>2 projects</p></header><div class="work-card-grid">
-<article class="work-card"><a href="outside-in.html"><img src="../../assets/work/2019/graphic-design/outside-in/AngelaWallace_OutsideIn_Ticket_2of3.webp" alt="View Outside In project"><h2>Outside In Campaign</h2></a></article>
-<article class="work-card"><a href="exposed.html"><img src="../../assets/work/2019/graphic-design/exposed/AngelaWallace_Exposed_Mailer.webp" alt="View Exposed project"><h2>Exposed Campaign</h2></a></article>
-</div></main><footer class="work-footer">© 2026 Angela Wallace Design</footer></body></html>
+<html lang="en" class="work-page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Graphic design projects by Angela Wallace.">
+    <title>Graphic Design // Angela Wallace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Serif+Text:ital@0;1&amp;family=Inter:ital,wght@0,300;0,400;0,700;0,900;1,300&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../shared/css/global-tokens.css">
+    <link rel="stylesheet" href="../../css/tokens.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/work-gallery.css">
+</head>
+
+<body class="long-page work-archive project-list-page" id="top">
+    <script type="module" src="../../js/interface-projects.js"></script>
+    <header class="global-header" data-nav-root>
+        <div class="header-inner">
+            <div class="designer-brand">
+                <div class="designer-name">
+                    <p><a href="../../index.html">Angela Wallace</a></p>
+                    <p>Senior Visual Designer</p>
+                </div>
+            </div>
+            <div class="global-links">
+                <nav class="global-nav" aria-label="Primary">
+                    <ul class="global-nav__list" id="navList">
+                        <li><a href="../../index.html">Home</a></li>
+                        <li><a href="../" class="is-active">Work</a></li>
+                        <li><a href="../../index.html#services">Services</a></li>
+                        <li><a href="../../index.html#about">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main id="main" class="page-main work-main">
+        <nav class="work-breadcrumb" aria-label="Breadcrumb"><a href="../">Work</a><span>Graphic Design</span></nav>
+        <header class="work-heading">
+            <h1 class="section-heading hero">
+                <span class="heading-main">Graphic</span>
+                <span class="heading-accent">design</span>
+            </h1>
+        </header>
+        <div
+            id="project-list"
+            class="interface-project-list"
+            data-project-ids="outside-in-art-exhibition-campaign,exposed-exhibition-campaign"
+            aria-live="polite"
+        ></div>
+    </main>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <div class="lightbox__inner">
+            <figure class="lightbox__content">
+                <img alt="">
+                <figcaption></figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <footer class="work-footer">© 2026 Angela Wallace Design</footer>
+</body>
+
+</html>

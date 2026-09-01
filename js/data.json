@@ -2,6 +2,7 @@
   {
     "id": "designing-with-ai",
     "featured": true,
+    "category": "interface-design",
     "layout": "left",
     "heading": {
       "title": "Designing with AI",
@@ -22,13 +23,14 @@
       "disciplines": "AI workflows, Interface design, Design engineering",
       "notes": "A full-page case study of a designer-directed AI workflow.",
       "caption": "Designer-directed AI workflow",
-      "imageUrl": "",
+      "imageUrl": "assets/work/awd/design-inspector/ai-assisted-inspector_hero-dark_thumb2.webp",
       "featuredUrl": ""
     }
   },
   {
     "id": "florida-blue-data-sharing",
     "featured": true,
+    "category": "interface-design",
     "layout": "right",
     "heading": {
       "title": "Privacy & Data Interface",
@@ -85,6 +87,7 @@
 {
     "id": "florida-blue-payments-experience",
     "featured": true,
+    "category": "interface-design",
     "heading": {
       "title": "Payments Experience",
       "main": "Payments",
@@ -215,6 +218,33 @@
       "caption": "Above: Catalouge design by AWD",
       "imageUrl": "assets/work/acch/exposed.jpg",
       "archiveImageUrl": "assets/work/2019/graphic-design/exposed/AngelaWallace_Exposed_Mailer.webp"
+    }
+  },
+  {
+    "id": "flamingo-gardens-style-guide",
+    "featured": false,
+    "category": "branding",
+    "projectUrl": "work/branding/flamingo-gardens.html",
+    "heading": {
+      "title": "Flamingo Gardens Style Guide",
+      "main": "Flamingo Gardens",
+      "accent": "style guide"
+    },
+    "year": 2017,
+    "users": 5000,
+    "complexity": 3,
+    "opacity": 0.5,
+    "hasCaseStudy": false,
+    "htmlInclude": null,
+    "meta": {
+      "type": "Brand Identity",
+      "client": "Flamingo Gardens",
+      "role": "Brand Designer",
+      "impact": "Created a comprehensive rebrand proposal for a South Florida wildlife sanctuary.",
+      "disciplines": "Brand strategy, Visual identity, Style guide design",
+      "notes": "Developed a proposal to rebrand Flamingo Gardens Wildlife Sanctuary in Davie, Florida, translating the organization’s natural setting and educational mission into a cohesive visual identity system.",
+      "caption": "Flamingo Gardens brand style guide",
+      "imageUrl": "assets/work/2019/branding/flamingo-gardens/flamingo-gardens-category.webp"
     }
   },
   {

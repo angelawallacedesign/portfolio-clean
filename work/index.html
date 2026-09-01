@@ -12,9 +12,11 @@
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/plot.css">
+  <link rel="stylesheet" href="../css/case-study-layout.css">
   <link rel="stylesheet" href="../css/work-gallery.css">
 </head>
-<body class="long-page work-archive work-index" id="top">
+<body class="long-page work-archive work-index" data-page="main" id="top">
   <header class="global-header" data-nav-root>
     <div class="header-inner">
       <div class="designer-brand"><div class="designer-name"><p><a href="../index.html">Angela Wallace</a></p><p>Senior Visual Designer</p></div></div>
@@ -22,14 +24,84 @@
     </div>
   </header>
   <main id="main" class="page-main work-main">
-    <header class="work-heading"><h1>Work</h1></header>
-    <div class="work-card-grid">
-      <article class="work-card"><a href="interface-design/"><img src="../assets/work/2019/interface-design/thumbnails/allindemo.jpg" alt="AM Resorts mobile interface"><h2>Interface Design</h2></a></article>
-      <article class="work-card"><a href="graphic-design/"><img src="../assets/work/2019/graphic-design/exposed/AngelaWallace_Exposed_Brochure_2of3.webp" alt="Exposed campaign graphic design"><h2>Graphic Design</h2></a></article>
-      <article class="work-card"><a href="branding/flamingo-gardens.html"><img src="../assets/work/2019/branding/flamingo-gardens/flamingo-gardens-category.webp" alt="Flamingo Gardens branding and style guide"><h2>Branding</h2></a></article>
-    </div>
+    <header class="work-heading work-intro">
+      <h1>Work</h1>
+    </header>
+
+    <div class="work-sticky-sentinel" data-work-sticky-sentinel aria-hidden="true"></div>
+
+    <nav class="work-local-nav" data-work-local-nav aria-label="Work projects">
+      <div class="work-local-nav__inner">
+        <span class="work-local-nav__label" aria-hidden="true">Work</span>
+
+        <div class="work-filter-list" role="group" aria-label="Filter projects by category">
+          <button class="work-nav-control is-active" type="button" data-work-filter="all" aria-pressed="true">All</button>
+          <button class="work-nav-control" type="button" data-work-filter="interface-design" aria-pressed="false">Interface Design</button>
+          <button class="work-nav-control" type="button" data-work-filter="graphic-design" aria-pressed="false">Graphic Design</button>
+          <button class="work-nav-control" type="button" data-work-filter="branding" aria-pressed="false">Branding</button>
+        </div>
+
+        <div class="work-view-toggle" role="group" aria-label="Project view">
+          <button class="work-nav-control is-active" type="button" data-work-view="list" aria-pressed="true">List</button>
+          <button class="work-nav-control" type="button" data-work-view="chart" aria-pressed="false" disabled aria-disabled="true" title="Project visualization — coming soon">Chart</button>
+        </div>
+      </div>
+    </nav>
+
+    <section class="work-collection" aria-label="Work projects">
+      <p class="visually-hidden" data-work-results-status aria-live="polite"></p>
+
+      <div class="toggle-wrapper" data-work-panel="list" data-visible="true">
+        <div id="project-list" class="work-project-list" aria-busy="false"></div>
+      </div>
+
+      <div class="toggle-wrapper" data-work-panel="chart" data-visible="false">
+        <div class="work-chart-panel">
+          <div class="chart-container section-inner">
+            <p id="chart-desc" class="visually-hidden">Projects plotted by year and complexity. Select a point for project details.</p>
+            <div class="y-axis-labels" aria-hidden="true">
+              <span>5</span><span>4</span><span>3</span><span>2</span><span>1</span>
+            </div>
+            <div id="chart" role="img" aria-labelledby="chart-title chart-desc"></div>
+            <div class="x-axis-label">Year</div>
+          </div>
+          <div class="plot-bottom">
+            <aside class="chart-legend" aria-labelledby="chart-legend-title">
+              <h3 id="chart-legend-title" class="visually-hidden">Chart legend</h3>
+              <dl>
+                <dt data-icon="→">Year</dt>
+                <dt data-icon="↑">Complexity</dt>
+                <dt data-icon="↔">Deliverables</dt>
+              </dl>
+            </aside>
+            <h2 id="chart-title">Design work timeline</h2>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <div id="modal-root" class="modal-overlay"></div>
+
+  <div class="layer-3-overlay" id="layer-3-overlay" aria-hidden="true">
+    <div class="layer-3-frame">
+      <button class="layer-3-close" id="layer-3-close" aria-label="Close case study" type="button">×</button>
+      <div class="layer-3-watermark" aria-hidden="true">
+        <img src="../assets/AWD-sticky-logo.svg" alt="" class="logo">
+      </div>
+    </div>
+    <div class="layer-3-stage">
+      <article class="case-study layer-3" id="case-study-root"></article>
+    </div>
+    <div class="layer-3-lightbox">
+      <img class="lightbox-image" src="" alt="">
+      <iframe class="lightbox-pdf" src="about:blank" title="Project document"></iframe>
+    </div>
+  </div>
+
   <footer class="work-footer">© 2026 Angela Wallace Design</footer>
-  
+
+  <script type="module" src="../js/work-index.js"></script>
+  <script type="module" src="../js/chart.js"></script>
 </body>
 </html>

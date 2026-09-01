@@ -66,7 +66,7 @@ html.work-page body.work-archive {
 .work-main {
   max-width: var(--work-content-width);
   margin: 0 auto;
-  padding: calc(125px + clamp(3rem, 8vw, 7rem)) clamp(1.25rem, 4vw, 3rem) 6rem;
+  padding: calc(125px + clamp(3rem, 2vw, 7rem)) clamp(1.25rem, 4vw, 3rem) 6rem;
 }
 
 .work-heading {
@@ -104,6 +104,9 @@ html.work-page body.work-archive {
   font-size: var(--type-small);
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  background: linear-gradient(to right, #f2f2f2, #ffffff);
+  padding: 5px 10px;
+  border-radius: 10px;
 }
 
 .work-breadcrumb a {
@@ -118,7 +121,7 @@ html.work-page body.work-archive {
 
 .work-card-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1.5rem, 4vw, 3rem);
 }
 

@@ -68,6 +68,7 @@ export function renderProjectCard(data, options = {}) {
     buttonLabel = "View Case Study"
   } = options;
   const isArchiveList = variant === "archive-list";
+  const isSrvdWorkList = variant === "srvd-work-list";
   const imageUrl = resolveProjectPath(
     data.meta.archiveImageUrl || data.meta.imageUrl,
     basePath
@@ -76,6 +77,52 @@ export function renderProjectCard(data, options = {}) {
     data.projectUrl || data.htmlInclude,
     basePath
   );
+
+  if (isSrvdWorkList) {
+    const primaryAction = projectUrl
+      ? `
+        <a href="${projectUrl}" class="primary-btn-small">
+          ${buttonLabel}
+        </a>
+      `
+      : "";
+    const textLinkAction = data.textLink?.label && data.textLink?.url
+      ? `
+        <a class="project-card-text-link" href="${resolveProjectPath(data.textLink.url, basePath)}">
+          ${data.textLink.label}
+        </a>
+      `
+      : "";
+    const actions = primaryAction || textLinkAction
+      ? `<div class="project-card-actions">${primaryAction}${textLinkAction}</div>`
+      : "";
+
+    return `
+    <article class="project-card" data-project-category="${data.category || ""}">
+      <img
+        src="${imageUrl}"
+        alt="${data.heading.title}"
+        class="project-card-image"
+        loading="lazy"
+        decoding="async"
+      />
+
+      <div class="project-card-body">
+        <h2 class="section-heading">
+          <span class="heading-main">${data.heading.main}</span>
+          <span class="heading-accent">${data.heading.accent}</span>
+        </h2>
+
+        <dl class="project-meta">
+          <dt>Description</dt>
+          <dd>${data.meta.notes}</dd>
+        </dl>
+
+        ${actions}
+      </div>
+    </article>
+    `;
+  }
 
   if (isArchiveList) {
     return `

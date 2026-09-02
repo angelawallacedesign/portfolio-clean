@@ -73,23 +73,21 @@ export function renderProjectCard(data, options = {}) {
     data.meta.archiveImageUrl || data.meta.imageUrl,
     basePath
   );
-  const projectUrl = resolveProjectPath(
-    data.projectUrl || data.htmlInclude,
-    basePath
-  );
+  const caseStudyUrl = resolveProjectPath(data.htmlInclude, basePath);
+  const projectUrl = resolveProjectPath(data.projectUrl, basePath);
 
   if (isSrvdWorkList) {
-    const primaryAction = projectUrl
+    const primaryAction = data.hasCaseStudy && caseStudyUrl
       ? `
-        <a href="${projectUrl}" class="primary-btn-small">
-          ${buttonLabel}
+        <a href="${caseStudyUrl}" class="primary-btn-small">
+          View Case Study
         </a>
       `
       : "";
-    const textLinkAction = data.textLink?.label && data.textLink?.url
+    const textLinkAction = projectUrl
       ? `
-        <a class="project-card-text-link" href="${resolveProjectPath(data.textLink.url, basePath)}">
-          ${data.textLink.label}
+        <a class="link-btn" href="${projectUrl}">
+          View Project &#8594;
         </a>
       `
       : "";
@@ -114,7 +112,6 @@ export function renderProjectCard(data, options = {}) {
         </h2>
 
         <dl class="project-meta">
-          <dt>Description</dt>
           <dd>${data.meta.notes}</dd>
         </dl>
 
@@ -195,7 +192,7 @@ export function renderProjectCard(data, options = {}) {
       data.hasCaseStudy
         ? `
         <div class="project-card-actions">
-          <a href="${projectUrl}" class="primary-btn-small">
+          <a href="${caseStudyUrl}" class="primary-btn-small">
             View Case Study
           </a>
         </div>

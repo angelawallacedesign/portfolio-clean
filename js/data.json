@@ -21,7 +21,7 @@
       "role": "Designer and front-end developer",
       "impact": "A growing collection of designer-directed AI workflows that move product ideas from early sketches to refined interfaces, coded prototypes, and implementation-ready documentation.",
       "disciplines": "AI workflows, Interface design, Design engineering",
-      "notes": "A full-page case study of a designer-directed AI workflow.",
+      "notes": "I take product ideas from concept to working solution through a designer-directed AI workflow combining product thinking, visual design, front-end prototyping, and structured implementation guidance.",
       "caption": "Designer-directed AI workflow",
       "imageUrl": "assets/work/awd/design-inspector/ai-assisted-inspector_hero-dark_thumb2.webp",
       "featuredUrl": ""
@@ -49,7 +49,7 @@
       "role": "Lead Designer",
       "impact": "Designed a compliant user interface for managing sensitive data access, enabling transparency and reducing risk in regulated environments.",
       "disciplines": "Interface design, Product iteration, Agile teams",
-      "notes": "Highly regulated data-sharing control interface for sensitive information",
+      "notes": "Designed a privacy-focused data-sharing interface that gives members clear visibility and control over which applications can access sensitive health and wellness information, including active, expired, and revoked permissions.",
       "caption": "Above: Data-sharing table",
       "imageUrl": "assets/work/fb/data-sharing/data-sharing-thumb.png",
       "featuredUrl": "assets/work/fb/data-sharing/data-sharing-hero.png"
@@ -105,7 +105,7 @@
       "role": "Visual designer",
       "impact": "Increased payment conversion by 30% by redesigning key payment flows and improving UI clarity within the dashboard experience.",
       "disciplines": "Design systems, Accessibility, Cross-functional collaboration",
-      "notes": "Led production-ready visual and UI design across web, mobile apps, and AI chat experiences in a highly regulated healthcare environment. Designed and maintained WCAG 2.1–compliant components, layouts, and visual systems supporting marketing, product, and communications initiatives. Partnered cross-functionally with UX, Product, Engineering, Content, and Marketing to deliver dev-ready designs with minimal oversight, balancing accessibility, brand integrity, and speed at enterprise scale.",
+      "notes": "Designed accessible, production-ready experiences across web, mobile, and AI chat for a highly regulated healthcare environment, balancing WCAG compliance, brand integrity, and enterprise product needs.",
       "caption": "Above: Florida Blue Mobile App",
       "imageUrl": "assets/work/fb/payments/payments-thumb.jpg",
       "featuredUrl": "assets/work/fb/payments/payments_1.png"

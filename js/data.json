@@ -28,31 +28,28 @@
     }
   },
   {
-    "id": "florida-blue-data-sharing",
-    "featured": true,
+    "id": "norwegian-iconcierge",
+    "featured": false,
     "category": "interface-design",
-    "layout": "right",
+    "projectUrl": "work/interface-design/norwegian.html",
     "heading": {
-      "title": "Privacy & Data Interface",
-      "main": "Privacy & Data",
-      "accent": "interface"
+      "title": "Norwegian iConcierge App",
+      "main": "Norwegian iConcierge",
+      "accent": "app"
     },
-    "year": 2023,
-    "users": 6000000,
+    "year": 2014,
+    "users": 50000,
     "complexity": 4,
-    "opacity": 0.8,
-    "hasCaseStudy": true,
-    "htmlInclude": "includes/case-studies/data-sharing.html",
+    "opacity": 0.6,
+    "hasCaseStudy": false,
     "meta": {
-      "type": "Regulated Platform Design",
-      "client": "Florida Blue",
-      "role": "Lead Designer",
-      "impact": "Designed a compliant user interface for managing sensitive data access, enabling transparency and reducing risk in regulated environments.",
-      "disciplines": "Interface design, Product iteration, Agile teams",
-      "notes": "Designed a privacy-focused data-sharing interface that gives members clear visibility and control over which applications can access sensitive health and wellness information, including active, expired, and revoked permissions.",
-      "caption": "Above: Data-sharing table",
-      "imageUrl": "assets/work/fb/data-sharing/data-sharing-thumb.png",
-      "featuredUrl": "assets/work/fb/data-sharing/data-sharing-hero.png"
+      "type": "Hospitality App",
+      "client": "Norwegian Cruise Line",
+      "role": "UI Designer",
+      "disciplines": "Interface design, Brand implementation, Cross-platform UI",
+      "notes": "Following brand guidelines, I designed skins for an app that allowed guests to explore activities and events during their cruise.",
+      "caption": "Norwegian iConcierge app interface",
+      "imageUrl": "assets/work/2019/interface-design/thumbnails/male-sitting-looking-phone_norwegian.webp"
     }
   },
   {
@@ -84,7 +81,63 @@
       "featuredUrl": "assets/work/allin/amr-project-hero.webp"
     }
   },
-{
+  {
+    "id": "florida-blue-data-sharing",
+    "featured": true,
+    "category": "interface-design",
+    "layout": "right",
+    "heading": {
+      "title": "Privacy & Data Interface",
+      "main": "Privacy & Data",
+      "accent": "interface"
+    },
+    "year": 2023,
+    "users": 6000000,
+    "complexity": 4,
+    "opacity": 0.8,
+    "hasCaseStudy": true,
+    "htmlInclude": "includes/case-studies/data-sharing.html",
+    "meta": {
+      "type": "Regulated Platform Design",
+      "client": "Florida Blue",
+      "role": "Lead Designer",
+      "impact": "Designed a compliant user interface for managing sensitive data access, enabling transparency and reducing risk in regulated environments.",
+      "disciplines": "Interface design, Product iteration, Agile teams",
+      "notes": "Designed a privacy-focused data-sharing interface that gives members clear visibility and control over which applications can access sensitive health and wellness information, including active, expired, and revoked permissions.",
+      "caption": "Above: Data-sharing table",
+      "imageUrl": "assets/work/fb/data-sharing/data-sharing-thumb.png",
+      "featuredUrl": "assets/work/fb/data-sharing/data-sharing-hero.png"
+    }
+  },
+  {
+    "id": "allin-interactive-material-design-skin",
+    "featured": true,
+    "category": "interface-design",
+    "projectUrl": "work/interface-design/allin-demo.html",
+    "heading": {
+      "title": "Material Interface Design",
+      "main": "Material Interface",
+      "accent": "design"
+    },
+    "year": 2014,
+    "users": 50000,
+    "complexity": 2,
+    "opacity": 0.4,
+    "hasCaseStudy": false,
+    "meta": {
+      "type": "Material Design",
+      "client": "Allin Interactive",
+      "role": "UI Design",
+      "impact": "Developed a flexible UI concept that allowed real-time interface customization, supporting sales conversations and product adaptability.",
+      "disciplines": "User interface design, Prototyping",
+      "notes": "Designed a custom Material Design based visual skin for an internal sales and client-facing prototype platform. Focused on visual clarity, brand adaptability, and front-end feasibility to support rapid demos, stakeholder presentations, and iterative product conversations.",
+      "caption": "Above: AWD custom skin for internal sales platform",
+      "imageUrl": "assets/work/allin/charcoal.jpg",
+      "archiveImageUrl": "assets/work/2019/interface-design/thumbnails/allindemo.jpg",
+      "featuredUrl": "assets/work/allin/allin-charcoal_android-hero.webp"
+    }
+  },
+  {
     "id": "florida-blue-payments-experience",
     "featured": true,
     "category": "interface-design",
@@ -166,34 +219,6 @@
       "archiveImageUrl": "assets/work/2019/graphic-design/outside-in/AngelaWallace_OutsideIn_Ticket_2of3.webp"
     }
   },
-    {
-    "id": "allin-interactive-material-design-skin",
-    "featured": true,
-    "category": "interface-design",
-    "projectUrl": "work/interface-design/allin-demo.html",
-    "heading": {
-      "title": "Material Interface Design",
-      "main": "Material Interface",
-      "accent": "design"
-    },
-    "year": 2014,
-    "users": 50000,
-    "complexity": 2,
-    "opacity": 0.4,
-    "hasCaseStudy": false,
-    "meta": {
-      "type": "Material Design",
-      "client": "Allin Interactive",
-      "role": "UI Design",
-      "impact": "Developed a flexible UI concept that allowed real-time interface customization, supporting sales conversations and product adaptability.",
-      "disciplines": "User interface design, Prototyping",
-      "notes": "Designed a custom Material Design based visual skin for an internal sales and client-facing prototype platform. Focused on visual clarity, brand adaptability, and front-end feasibility to support rapid demos, stakeholder presentations, and iterative product conversations.",
-      "caption": "Above: AWD custom skin for internal sales platform",
-      "imageUrl": "assets/work/allin/charcoal.jpg",
-      "archiveImageUrl": "assets/work/2019/interface-design/thumbnails/allindemo.jpg",
-      "featuredUrl": "assets/work/allin/allin-charcoal_android-hero.webp"
-    }
-  },
   {
     "id": "exposed-exhibition-campaign",
     "featured": false,
@@ -245,31 +270,6 @@
       "notes": "Developed a proposal to rebrand Flamingo Gardens Wildlife Sanctuary in Davie, Florida, translating the organization’s natural setting and educational mission into a cohesive visual identity system.",
       "caption": "Flamingo Gardens brand style guide",
       "imageUrl": "assets/work/2019/branding/flamingo-gardens/flamingo-gardens-category.webp"
-    }
-  },
-  {
-    "id": "norwegian-iconcierge",
-    "featured": false,
-    "category": "interface-design",
-    "projectUrl": "work/interface-design/norwegian.html",
-    "heading": {
-      "title": "Norwegian iConcierge App",
-      "main": "Norwegian iConcierge",
-      "accent": "app"
-    },
-    "year": 2014,
-    "users": 50000,
-    "complexity": 4,
-    "opacity": 0.6,
-    "hasCaseStudy": false,
-    "meta": {
-      "type": "Hospitality App",
-      "client": "Norwegian Cruise Line",
-      "role": "UI Designer",
-      "disciplines": "Interface design, Brand implementation, Cross-platform UI",
-      "notes": "Following brand guidelines, I designed skins for an app that allowed guests to explore activities and events during their cruise.",
-      "caption": "Norwegian iConcierge app interface",
-      "imageUrl": "assets/work/2019/interface-design/thumbnails/male-sitting-looking-phone_norwegian.webp"
     }
   },
   {

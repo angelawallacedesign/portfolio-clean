@@ -109,34 +109,7 @@
       "featuredUrl": "assets/work/fb/data-sharing/data-sharing-hero.png"
     }
   },
-{
-    "id": "florida-blue-payments-experience",
-    "featured": true,
-    "category": "interface-design",
-    "heading": {
-      "title": "Payments Experience",
-      "main": "Payments",
-      "accent": "experience"
-    },
-    "year": 2023,
-    "users": 2000000,
-    "complexity": 5,
-    "opacity": 1.0,
-    "hasCaseStudy": true,
-    "htmlInclude": "includes/case-studies/fb-payments-experience.html",
-    "meta": {
-      "type": "Enterprise Platform",
-      "client": "Florida Blue",
-      "role": "Visual designer",
-      "impact": "Increased payment conversion by 30% by redesigning key payment flows and improving UI clarity within the dashboard experience.",
-      "disciplines": "Design systems, Accessibility, Cross-functional collaboration",
-      "notes": "Designed accessible, production-ready experiences across web, mobile, and AI chat for a highly regulated healthcare environment, balancing WCAG compliance, brand integrity, and enterprise product needs.",
-      "caption": "Above: Florida Blue Mobile App",
-      "imageUrl": "assets/work/fb/payments/payments-thumb.jpg",
-      "featuredUrl": "assets/work/fb/payments/payments_1.png"
-    }
-  },
-    {
+  {
     "id": "allin-interactive-material-design-skin",
     "featured": true,
     "category": "interface-design",
@@ -162,6 +135,33 @@
       "imageUrl": "assets/work/allin/charcoal.jpg",
       "archiveImageUrl": "assets/work/2019/interface-design/thumbnails/allindemo.jpg",
       "featuredUrl": "assets/work/allin/allin-charcoal_android-hero.webp"
+    }
+  },
+  {
+    "id": "florida-blue-payments-experience",
+    "featured": true,
+    "category": "interface-design",
+    "heading": {
+      "title": "Payments Experience",
+      "main": "Payments",
+      "accent": "experience"
+    },
+    "year": 2023,
+    "users": 2000000,
+    "complexity": 5,
+    "opacity": 1.0,
+    "hasCaseStudy": true,
+    "htmlInclude": "includes/case-studies/fb-payments-experience.html",
+    "meta": {
+      "type": "Enterprise Platform",
+      "client": "Florida Blue",
+      "role": "Visual designer",
+      "impact": "Increased payment conversion by 30% by redesigning key payment flows and improving UI clarity within the dashboard experience.",
+      "disciplines": "Design systems, Accessibility, Cross-functional collaboration",
+      "notes": "Designed accessible, production-ready experiences across web, mobile, and AI chat for a highly regulated healthcare environment, balancing WCAG compliance, brand integrity, and enterprise product needs.",
+      "caption": "Above: Florida Blue Mobile App",
+      "imageUrl": "assets/work/fb/payments/payments-thumb.jpg",
+      "featuredUrl": "assets/work/fb/payments/payments_1.png"
     }
   },
   {

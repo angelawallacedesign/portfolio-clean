@@ -411,14 +411,6 @@ html.work-page body.work-archive {
   line-height: var(--lh-body);
 }
 
-.project-hero .primary-btn-small {
-  width: 160px;
-  height: 32px;
-  margin-top: 0;
-  padding: 5px 10px;
-  font-size: 15px;
-}
-
 .project-hero .work-note {
   font-size: var(--type-small);
   line-height: var(--lh-body);

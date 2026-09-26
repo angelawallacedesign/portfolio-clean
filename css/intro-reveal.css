@@ -1,0 +1,38 @@
+/*
+ * Concept A: Intro Reveal
+ * Desktop-only experimental scroll stage.
+ */
+
+@media (min-width: 769px) {
+
+  .intro-stage {
+    min-height: 240dvh;
+  }
+
+  .intro-middle {
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+    flex: none;
+  }
+
+  /* Temporary spike test: separate screen content from device hardware 
+    .mockup-base {
+        opacity: 0 !important;
+    }
+  */
+
+  .intro-copy {
+    opacity: calc(1 - var(--intro-reveal-progress, 0)) !important;
+    }
+
+    .screen--laptop {
+    scale: calc(1 + (var(--intro-expansion-progress, 0) * 0.45));
+    transform-origin: right center;
+    }
+
+    .screen--phone {
+    scale: calc(1 + (var(--intro-expansion-progress, 0) * 0.45));
+    transform-origin: left center;
+    }
+}

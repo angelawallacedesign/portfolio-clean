@@ -1,137 +1,167 @@
 /*
- * Concept A: Intro Reveal
- * Desktop-only experimental reveal sequence.
- */
+* Concept A: Intro Reveal
+* Desktop-only experimental reveal sequence.
+*/
 
 @media (min-width: 769px) {
+    
+    html.intro-reveal-locked,
+    html.intro-reveal-locked body {
+        overflow: hidden;
+        overscroll-behavior: none;
+    }
+    
+    /*
+    * Scroll stage
+    */
+    .intro-stage {
+        position: relative;
+        min-height: calc(100dvh - var(--header-height));
+    }
+    
+    .intro-middle {
+        min-height: calc(100dvh - var(--header-height));
+        display: flex;
+        align-items: center;
+    }
+    
+    
+    /*
+    * Full-viewport reveal layer
+    */
+    .intro-reveal {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        pointer-events: none;
+        
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    .intro-stage.is-reveal-ready .intro-reveal {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    
+    /*
+    * Reveal panels
+    *
+    * Start in the device-screen rectangles.
+    * Once .is-expanding is added, CSS transitions them
+    * into the final viewport composition.
+    */
+    .intro-reveal__panel {
+        position: absolute;
+        overflow: hidden;
+        
+        transition:
+        left 1500ms cubic-bezier(0.22, 1, 0.36, 1),
+        top 1500ms cubic-bezier(0.22, 1, 0.36, 1),
+        width 1500ms cubic-bezier(0.22, 1, 0.36, 1),
+        height 1500ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    
+    
+    /*
+    * Frame 1
+    * A = laptop screen
+    * B = phone screen
+    */
+    .intro-reveal__panel--a {
+        left: var(--intro-a-start-left);
+        top: var(--intro-a-start-top);
+        width: var(--intro-a-start-width);
+        height: var(--intro-a-start-height);
+    }
+    
+    .intro-reveal__panel--b {
+        left: var(--intro-b-start-left);
+        top: var(--intro-b-start-top);
+        width: var(--intro-b-start-width);
+        height: var(--intro-b-start-height);
+    }
+    
+    
+    /*
+    * Frame 3
+    * A fills the remaining viewport width.
+    * B preserves the iPhone recording proportion.
+    */
+    .intro-stage.is-expanding .intro-reveal__panel--a {
+        left: 0;
+        top: 0;
+        width: var(--intro-a-target-width);
+        height: var(--intro-target-height);
+    }
+    
+    .intro-stage.is-expanding .intro-reveal__panel--b {
+        left: var(--intro-a-target-width);
+        top: 0;
+        width: var(--intro-b-target-width);
+        height: var(--intro-target-height);
+    }
+    
+    
+    /*
+    * Temporary still-image treatment.
+    * Final media behavior will be handled separately.
+    */
+    .intro-reveal__panel img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+    
+    
+    /*
+    * Hide the original slideshow screens while the
+    * reveal copies occupy their positions.
+    */
+    .is-reveal-ready .hero-visual .screen {
+        visibility: hidden;
+    }
 
-  html.intro-reveal-locked,
-  html.intro-reveal-locked body {
-    overflow: hidden;
-    overscroll-behavior: none;
-  }
-
-  /*
-   * Scroll stage
-   */
-  .intro-stage {
-    position: relative;
-    min-height: calc(100dvh - var(--header-height));
-  }
-
-  .intro-middle {
-    min-height: calc(100dvh - var(--header-height));
-    display: flex;
-    align-items: center;
-  }
-
-
-  /*
-   * Full-viewport reveal layer
-   */
-  .intro-reveal {
-    position: fixed;
-    inset: 0;
-    z-index: 10;
-    pointer-events: none;
-
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  .intro-stage.is-reveal-ready .intro-reveal {
-    opacity: 1;
+    .intro-stage.is-reveal-complete .hero-visual .screen {
     visibility: visible;
-  }
+    }
 
-
-  /*
-   * Reveal panels
-   *
-   * Start in the device-screen rectangles.
-   * Once .is-expanding is added, CSS transitions them
-   * into the final viewport composition.
-   */
-  .intro-reveal__panel {
-    position: absolute;
-    overflow: hidden;
-
-    transition:
-      left 1500ms cubic-bezier(0.22, 1, 0.36, 1),
-      top 1500ms cubic-bezier(0.22, 1, 0.36, 1),
-      width 1500ms cubic-bezier(0.22, 1, 0.36, 1),
-      height 1500ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-
-  /*
-   * Frame 1
-   * A = laptop screen
-   * B = phone screen
-   */
-  .intro-reveal__panel--a {
-    left: var(--intro-a-start-left);
-    top: var(--intro-a-start-top);
-    width: var(--intro-a-start-width);
-    height: var(--intro-a-start-height);
-  }
-
-  .intro-reveal__panel--b {
-    left: var(--intro-b-start-left);
-    top: var(--intro-b-start-top);
-    width: var(--intro-b-start-width);
-    height: var(--intro-b-start-height);
-  }
-
-
-  /*
-   * Frame 3
-   * A fills the remaining viewport width.
-   * B preserves the iPhone recording proportion.
-   */
-  .intro-stage.is-expanding .intro-reveal__panel--a {
-    left: 0;
-    top: 0;
-    width: var(--intro-a-target-width);
-    height: var(--intro-target-height);
-  }
-
-  .intro-stage.is-expanding .intro-reveal__panel--b {
-    left: var(--intro-a-target-width);
-    top: 0;
-    width: var(--intro-b-target-width);
-    height: var(--intro-target-height);
-  }
-
-
-  /*
-   * Temporary still-image treatment.
-   * Final media behavior will be handled separately.
-   */
-  .intro-reveal__panel img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-  }
-
-
-  /*
-   * Hide the original slideshow screens while the
-   * reveal copies occupy their positions.
-   */
-  .is-reveal-ready .hero-visual .screen {
+    .intro-stage.is-reveal-complete .intro-reveal {
     visibility: hidden;
-  }
+    }
+    
+    
+    /*
+    * Concept A owns the primary device motion.
+    * Keep the production hardware geometrically stable.
+    */
+    body.intro-layout .hero-visual .mockup-base,
+    body.intro-layout .hero-visual .screen--laptop,
+    body.intro-layout .hero-visual .screen--phone {
+        transform: none;
+    }
+    
+    .intro-reveal__still,
+    .intro-reveal__video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+    
+    .intro-reveal__video {
+        opacity: 0;
+        transition: opacity 300ms ease;
+    }
+    
+    .intro-stage.is-video-playing .intro-reveal__video {
+        opacity: 1;
+    }
 
-
-  /*
-   * Concept A owns the primary device motion.
-   * Keep the production hardware geometrically stable.
-   */
-  body.intro-layout .hero-visual .mockup-base,
-  body.intro-layout .hero-visual .screen--laptop,
-  body.intro-layout .hero-visual .screen--phone {
-    transform: none;
-  }
+    
+    
 }

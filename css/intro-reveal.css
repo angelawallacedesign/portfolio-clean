@@ -26,6 +26,7 @@
     opacity: calc(1 - var(--intro-reveal-progress, 0)) !important;
     }
 
+    /* Remove temporary rules for image scaling
     .screen--laptop {
     scale: calc(1 + (var(--intro-expansion-progress, 0) * 0.45));
     transform-origin: right center;
@@ -34,5 +35,93 @@
     .screen--phone {
     scale: calc(1 + (var(--intro-expansion-progress, 0) * 0.45));
     transform-origin: left center;
+    }
+    */
+
+    .intro-reveal {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    
+    opacity: 0;
+    visibility: hidden;
+    }
+
+    .intro-reveal__panel {
+    position: absolute;
+    overflow: hidden;
+    }
+
+    .intro-stage.is-reveal-ready .intro-reveal {
+    opacity: 1;
+    visibility: visible;
+    }
+
+    .intro-reveal__panel--a {
+    left: calc(
+        var(--intro-a-start-left) *
+        (1 - var(--intro-expansion-progress))
+    );
+
+    top: calc(
+        var(--intro-a-start-top) *
+        (1 - var(--intro-expansion-progress))
+    );
+
+    width: calc(
+        var(--intro-a-start-width) +
+        (var(--intro-a-target-width) - var(--intro-a-start-width)) *
+        var(--intro-expansion-progress)
+    );
+
+    height: calc(
+        var(--intro-a-start-height) +
+        (100dvh - var(--intro-a-start-height)) *
+        var(--intro-expansion-progress)
+    );
+    }
+
+    .intro-reveal__panel--b {
+    left: calc(
+        var(--intro-b-start-left) +
+        (
+        var(--intro-a-target-width) -
+        var(--intro-b-start-left)
+        ) *
+        var(--intro-expansion-progress)
+    );
+
+    top: calc(
+        var(--intro-b-start-top) *
+        (1 - var(--intro-expansion-progress))
+    );
+
+    width: calc(
+        var(--intro-b-start-width) +
+        (
+        var(--intro-b-target-width) -
+        var(--intro-b-start-width)
+        ) *
+        var(--intro-expansion-progress)
+    );
+
+    height: calc(
+        var(--intro-b-start-height) +
+        (100dvh - var(--intro-b-start-height)) *
+        var(--intro-expansion-progress)
+    );
+    }
+
+    .intro-reveal__panel img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    }
+
+    /* temporarily hide the original slideshow screens so only overlay copies are visible */
+    .hero-visual .screen {
+    visibility: hidden;
     }
 }

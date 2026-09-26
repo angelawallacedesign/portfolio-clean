@@ -7,7 +7,7 @@
 
 html, body {
   height: auto !important;
-  overflow-y: auto !important;
+  overflow-y: auto;
 }
 
 body {
@@ -20,7 +20,7 @@ body {
 /* Keep document scrolling on the root so responsive sticky positioning works in Chrome. */
 body.intro-layout {
   height: auto !important;
-  overflow: visible !important;
+  overflow: visible;
 }
 body.intro-layout .section {
   height: auto;

@@ -3,7 +3,63 @@
 * Desktop-only experimental reveal sequence.
 */
 
+.intro-play-overlay,
+.intro-close {
+    display: none;
+}
+
 @media (min-width: 769px) {
+    .intro-stage.is-reveal-ready { z-index: 1001; }
+    .intro-play-overlay {
+        display: grid;
+        place-items: center;
+        position: absolute;
+        left: 0.714285714%;
+        top: 0.011428574%;
+        width: 57.3428571%;
+        height: 68.4782609%;
+        z-index: 2;
+        background: rgb(0 0 0 / 35%);
+        clip-path: polygon(1% 7%, 93% 1%, 100% 86%, 8% 99%);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .intro-stage[data-reveal-state="ready"] .intro-play-overlay,
+    .intro-stage[data-reveal-state="default"] .hero-visual:hover .intro-play-overlay {
+        opacity: 1;
+    }
+
+    .intro-play,
+    .intro-close {
+        width: 64px;
+        height: 64px;
+        border: 2px solid white;
+        border-radius: 50%;
+        background: #111;
+        color: white;
+        cursor: pointer;
+        font-size: 28px;
+        line-height: 1;
+    }
+
+    .intro-play:not(:disabled) { pointer-events: auto; }
+    .intro-play:hover,
+    .intro-close:hover { background: #444; }
+    .intro-play:focus-visible,
+    .intro-close:focus-visible {
+        outline: 3px solid #fa4d7e;
+        outline-offset: 5px;
+    }
+
+    .intro-close:not([hidden]) {
+        display: grid;
+        place-items: center;
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        z-index: 1000;
+    }
     
     html.intro-reveal-locked,
     html.intro-reveal-locked body {

@@ -3,26 +3,24 @@ const heroVisual = document.querySelector('.hero-visual');
 const revealVideos = document.querySelectorAll('.intro-reveal__video');
 const revealPanelA = document.querySelector('.intro-reveal__panel--a');
 const revealPanelB = document.querySelector('.intro-reveal__panel--b');
-
+const playButton = document.querySelector('.intro-play');
+const closeButton = document.querySelector('.intro-close');
 const desktopQuery = window.matchMedia('(min-width: 769px)');
-const originalScrollRestoration = window.history.scrollRestoration;
 const IPHONE_15_PRO_MAX_RATIO = 1290 / 2796;
-
 const EXPANSION_DELAY = 800;
 const EXPANSION_DURATION = 1500;
-const EXIT_WHEEL_IDLE = 200;
-
+let state = 'default';
 let expansionTimer = null;
-let hasExpanded = false;
+let videoTimer = null;
+let generation = 0;
 
-let isExitReady = false;
-let exitProgress = 0;
-let hasReturnedToStill = false;
-let isExitSettling = false;
-let isHandoffReady = false;
-let isExitWheelIdle = false;
-let exitWheelTimer = null;
-let exitGeneration = 0;
+function setState(next) {
+    state = next;
+    introStage.dataset.revealState = next;
+    playButton.disabled = next !== 'default' && next !== 'ready';
+    closeButton.hidden = next !== 'playing';
+    closeButton.disabled = next !== 'playing';
+}
 
 /**
 * Calculate the two starting rectangles from the existing
@@ -116,93 +114,44 @@ function updateRevealGeometry() {
     );
 }
 
-function startRevealVideos() {
-    revealVideos.forEach((video) => {
-        video.currentTime = 0;
-        video.play().catch(() => {});
-    });
-    
-    introStage.classList.add('is-video-playing');
-    isExitReady = true;
-}
-
-/**
-* Start the authored expansion on the first downward gesture.
-*/
 function startIntroExpansion() {
-    if (
-        !introStage ||
-        !desktopQuery.matches ||
-        hasExpanded ||
-        expansionTimer
-    ) {
-        return;
-    }
-    
+    if (!desktopQuery.matches || !['default', 'ready'].includes(state)) return;
+    setState('opening');
+    document.documentElement.classList.add('intro-reveal-locked');
+    updateRevealGeometry();
+    // Commit the device rectangles before the existing expansion transition.
+    revealPanelA.getBoundingClientRect();
+    introStage.classList.add('is-reveal-ready');
     expansionTimer = window.setTimeout(() => {
         introStage.classList.add('is-expanding');
-        
-        window.setTimeout(() => {
-            startRevealVideos();
+        videoTimer = window.setTimeout(() => {
+            revealVideos.forEach((video) => {
+                video.currentTime = 0;
+                video.play().catch(() => {});
+            });
+            introStage.classList.add('is-video-playing');
+            setState('playing');
+            closeButton.focus({ preventScroll: true });
         }, EXPANSION_DURATION);
-        
-        hasExpanded = true;
-        expansionTimer = null;
     }, EXPANSION_DELAY);
 }
 
-
-/**
-* Initialize after the page layout has settled.
-*/
-function initializeReveal() {
-    if (!introStage || !heroVisual || !desktopQuery.matches) return;
-    if (introStage.classList.contains('is-reveal-ready')) return;
-
-    // A fresh desktop reveal owns the initial viewport. Reloading after the
-    // handoff must not restore the metrics scroll position beneath its lock.
-    window.history.scrollRestoration = 'manual';
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    
+async function closeIntro() {
+    if (!desktopQuery.matches || state !== 'playing') return;
+    const currentGeneration = generation;
+    setState('closing');
+    revealVideos.forEach((video) => {
+        video.pause();
+        video.currentTime = 0;
+    });
+    introStage.classList.remove('is-video-playing');
     updateRevealGeometry();
-    introStage.classList.add('is-reveal-ready');
-    document.documentElement.style.setProperty(
-    '--intro-exit-progress',
-    '0'
-    );
-    document.documentElement.classList.add('intro-reveal-locked');
-}
-
-function lerp(start, end, progress) {
-  return start + (end - start) * progress;
-}
-
-function unlockAfterExit() {
-    if (isHandoffReady && isExitWheelIdle && desktopQuery.matches) {
-        document.documentElement.classList.remove('intro-reveal-locked');
-    }
-}
-
-function waitForExitWheelIdle() {
-    isExitWheelIdle = false;
-    window.clearTimeout(exitWheelTimer);
-    exitWheelTimer = window.setTimeout(() => {
-        isExitWheelIdle = true;
-        unlockAfterExit();
-    }, EXIT_WHEEL_IDLE);
-}
-
-async function completeIntroExit() {
-    if (isExitSettling) return;
-    isExitSettling = true;
-    const generation = exitGeneration;
-    waitForExitWheelIdle();
-
-    // Keep the stills visible until the existing geometry transitions land.
-    const geometryAnimations = [revealPanelA, revealPanelB]
-        .flatMap((panel) => panel.getAnimations());
-    await Promise.allSettled(geometryAnimations.map((animation) => animation.finished));
-    if (generation !== exitGeneration || !desktopQuery.matches) return;
+    // The same CSS geometry transition now returns automatically to its origin.
+    introStage.classList.remove('is-expanding');
+    await Promise.allSettled([revealPanelA, revealPanelB]
+        .flatMap((panel) => panel.getAnimations())
+        .map((animation) => animation.finished));
+    if (currentGeneration !== generation || !desktopQuery.matches) return;
 
     // Seek the existing CSS slideshow to its first fully opaque pair.
     // Read its authored timing/keyframes rather than duplicating fadeCycle.
@@ -222,165 +171,49 @@ async function completeIntroExit() {
         animation.currentTime = pairTime;
     });
 
-    // Give the matching production pair a rendered frame beneath the stills.
+    // Render the matching production pair before removing its reveal copy.
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-    if (generation === exitGeneration && desktopQuery.matches) {
-        introStage.classList.add('is-reveal-complete');
-        isHandoffReady = true;
-    }
     slideshowAnimations.forEach((animation) => animation.play());
-    unlockAfterExit();
+    if (currentGeneration !== generation || !desktopQuery.matches) return;
+    introStage.classList.remove('is-reveal-ready');
+    document.documentElement.classList.remove('intro-reveal-locked');
+    setState('default');
+    playButton.focus({ preventScroll: true });
 }
 
-function updateExitProgress(deltaY) {
-    const EXIT_SCROLL_DISTANCE = 700;
-    
-    exitProgress += deltaY / EXIT_SCROLL_DISTANCE;
-    exitProgress = Math.min(Math.max(exitProgress, 0), 1);
-    
-    document.documentElement.style.setProperty(
-        '--intro-exit-progress',
-        exitProgress.toString()
-    );
-
-    const heroRect = heroVisual.getBoundingClientRect();
-
-    const laptopStart = {
-    left: heroRect.left + heroRect.width * 0.00714285714,
-    top: heroRect.top + heroRect.height * 0.00011428574,
-    width: heroRect.width * 0.573428571,
-    height: heroRect.height * 0.684782609
-    };
-
-    const phoneWidth = heroRect.width * 0.164736842;
-
-    const phoneStart = {
-    left: heroRect.right - heroRect.width * 0.0115 - phoneWidth,
-    top: heroRect.top + heroRect.height * 0.23714286,
-    width: phoneWidth,
-    height: heroRect.height * 0.391304348
-    };
-
-    const phoneTargetWidth =
-    window.innerHeight * IPHONE_15_PRO_MAX_RATIO;
-
-    const laptopTargetWidth =
-    window.innerWidth - phoneTargetWidth;
-
-    /* Calculate A */
-    revealPanelA.style.left =
-    `${lerp(0, laptopStart.left, exitProgress)}px`;
-
-    revealPanelA.style.top =
-    `${lerp(0, laptopStart.top, exitProgress)}px`;
-
-    revealPanelA.style.width =
-    `${lerp(laptopTargetWidth, laptopStart.width, exitProgress)}px`;
-
-    revealPanelA.style.height =
-    `${lerp(window.innerHeight, laptopStart.height, exitProgress)}px`;
-
-    /* Calculate B */
-    revealPanelB.style.left =
-    `${lerp(laptopTargetWidth, phoneStart.left, exitProgress)}px`;
-
-    revealPanelB.style.top =
-    `${lerp(0, phoneStart.top, exitProgress)}px`;
-
-    revealPanelB.style.width =
-    `${lerp(phoneTargetWidth, phoneStart.width, exitProgress)}px`;
-
-    revealPanelB.style.height =
-    `${lerp(window.innerHeight, phoneStart.height, exitProgress)}px`;
-
-    if (exitProgress >= 1) {
-    completeIntroExit();
-    }
-}
-
-
-
-function handleIntroWheel(event) {
-    if (!desktopQuery.matches) return;
-    
-    const isLocked =
-    document.documentElement.classList.contains('intro-reveal-locked');
-    
-    if (!isLocked) return;
-    
-    event.preventDefault();
-
-    // Consume the entire finishing gesture, including its momentum tail.
-    if (isExitSettling) {
-        waitForExitWheelIdle();
-        return;
-    }
-    
-    if (isExitReady) {
-        if (!hasReturnedToStill) {
-            if (event.deltaY <= 0) return;
-
-            revealVideos.forEach((video) => {
-                video.pause();
-                video.currentTime = 0;
-            });
-            introStage.classList.remove('is-video-playing');
-            hasReturnedToStill = true;
-        }
-
-        updateExitProgress(event.deltaY);
-        return;
-    }
-    
-    if (event.deltaY > 0) {
-        startIntroExpansion();
-    }
-}
-
-window.addEventListener('wheel', handleIntroWheel, {
-    passive: false
+playButton.addEventListener('click', startIntroExpansion);
+closeButton.addEventListener('click', closeIntro);
+heroVisual.addEventListener('pointerenter', () => {
+    if (desktopQuery.matches && state === 'default') setState('ready');
+});
+heroVisual.addEventListener('pointerleave', () => {
+    if (state === 'ready' && !heroVisual.contains(document.activeElement)) setState('default');
+});
+playButton.addEventListener('focus', () => {
+    if (desktopQuery.matches && state === 'default') setState('ready');
+});
+playButton.addEventListener('blur', () => {
+    if (state === 'ready' && !heroVisual.matches(':hover')) setState('default');
 });
 
 function refreshRevealGeometry() {
-    requestAnimationFrame(() => {
-        requestAnimationFrame(updateRevealGeometry);
-    });
+    requestAnimationFrame(() => requestAnimationFrame(updateRevealGeometry));
 }
-
 window.addEventListener('resize', refreshRevealGeometry);
-window.addEventListener('load', () => {
-    refreshRevealGeometry();
-    initializeReveal();
-});
-
-window.addEventListener('pageshow', () => {
-    if (!desktopQuery.matches ||
-        !document.documentElement.classList.contains('intro-reveal-locked')) return;
-
-    // Reconcile the viewport after browser history/fragment restoration.
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    refreshRevealGeometry();
-});
-
-// Remove the experimental state entirely when returning to the mobile layout.
-desktopQuery.addEventListener('change', () => {
-    if (!desktopQuery.matches) {
-        window.history.scrollRestoration = originalScrollRestoration;
-    }
-    exitGeneration++;
-    window.clearTimeout(exitWheelTimer);
-    isExitSettling = false;
-    isHandoffReady = false;
-    isExitWheelIdle = false;
-    window.clearTimeout(expansionTimer);
-    expansionTimer = null;
-    hasExpanded = false;
-    introStage?.classList.remove('is-expanding', 'is-reveal-ready');
-    document.documentElement.classList.remove('intro-reveal-locked');
-    initializeReveal();
-});
-
-// Module scripts run after markup is parsed: lock before the first gesture,
-// then recalculate once images and fonts have finished loading.
-initializeReveal();
+window.addEventListener('load', refreshRevealGeometry);
 document.fonts.ready.then(refreshRevealGeometry);
+
+desktopQuery.addEventListener('change', () => {
+    generation++;
+    window.clearTimeout(expansionTimer);
+    window.clearTimeout(videoTimer);
+    revealVideos.forEach((video) => {
+        video.pause();
+        video.currentTime = 0;
+    });
+    introStage.classList.remove('is-expanding', 'is-video-playing', 'is-reveal-ready');
+    document.documentElement.classList.remove('intro-reveal-locked');
+    setState('default');
+    refreshRevealGeometry();
+});
+setState('default');

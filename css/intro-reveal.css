@@ -41,6 +41,8 @@
         cursor: pointer;
         font-size: 28px;
         line-height: 1;
+
+        z-index: 999; /* might not need */
     }
 
     .intro-play:not(:disabled) { pointer-events: auto; }
@@ -65,6 +67,43 @@
     html.intro-reveal-locked body {
         overflow: hidden;
         overscroll-behavior: none;
+    }
+
+    /*
+    * Intro Close Hover Overlay
+    */
+
+    .intro-close-message {
+        position: fixed;
+        inset: 0;
+        z-index: 998;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: rgb(0 0 0 / 35%);
+        color: #fff;
+
+        font-family: sans-serif;
+        font-size: clamp(2.5rem, 5vw, 5rem);
+        font-weight: 600;
+        line-height: 1;
+        text-align: center;
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        transition:
+            opacity 180ms ease,
+            visibility 180ms ease;
+    }
+
+    /* Trigger the overlay */
+    .intro-stage:has(.intro-close:hover) .intro-close-message,
+    .intro-stage:has(.intro-close:focus-visible) .intro-close-message {
+        opacity: 1;
+        visibility: visible;
     }
     
     /*
@@ -116,6 +155,13 @@
         visibility: visible;
     }
     
+    .intro-stage.is-reveal-ready .intro-reveal {
+        pointer-events: auto;
+    }
+
+    .intro-reveal__prototype {
+        pointer-events: none;
+    }
     
     /*
     * Reveal panels

@@ -25,6 +25,33 @@ let expansionTimer = null;
 let videoTimer = null;
 let generation = 0;
 
+const PROTOTYPE_DEMO_STEPS = [
+        { delay: 700, selector: '[data-inspector-part="background"]' },
+        { delay: 1600, selector: '[data-inspector-category="state"]' },
+        { delay: 2500, selector: '[data-inspector-part="button"]' },
+        { delay: 3400, selector: '[data-inspector-category="a11y"]' },
+        { delay: 4300, selector: '[data-inspector-part="description"]' },
+    ];
+
+    let prototypeDemoTimers = [];
+
+    function stopPrototypeDemo() {
+        prototypeDemoTimers.forEach(clearTimeout);
+        prototypeDemoTimers = [];
+    }
+
+    function startPrototypeDemo() {
+        stopPrototypeDemo();
+
+        PROTOTYPE_DEMO_STEPS.forEach(({ delay, selector }) => {
+            const timer = window.setTimeout(() => {
+                prototypeSlot?.querySelector(selector)?.click();
+            }, delay);
+
+            prototypeDemoTimers.push(timer);
+        });
+    }
+
 function setState(next) {
     state = next;
     introStage.dataset.revealState = next;
@@ -272,6 +299,7 @@ function startIntroExpansion() {
                 video.play().catch(() => {});
             });
             introStage.classList.add('is-video-playing');
+            startPrototypeDemo();
             setState('playing');
             closeButton.focus({ preventScroll: true });
         }, EXPANSION_DURATION);

@@ -91,7 +91,9 @@ function updateStillMorph() {
         const style = getComputedStyle(panel);
         const width = parseFloat(style.width);
         const height = parseFloat(style.height);
-        const scale = Math.max(width / shape.width, height / shape.height);
+        // Keep every source pixel available to the perspective transform.
+        // `cover` crops the replaced image before its transform is applied.
+        const scale = Math.min(width / shape.width, height / shape.height);
         const source = shape.corners.map(([x, y]) => [
             (x * scale + (width - shape.width * scale) / 2) / width,
             (y * scale + (height - shape.height * scale) / 2) / height
@@ -101,6 +103,33 @@ function updateStillMorph() {
                 parseFloat(value) / (value.endsWith('%') ? 100 : axis ? height : width)
             )
         );
+        const start = style.getPropertyValue('--intro-screen-clip').slice(8, -1)
+            .split(',').map(point => point.trim().split(/\s+/).map(value => parseFloat(value) / 100));
+        const rectangle = [[0, 0], [1, 0], [1, 1], [0, 1]];
+        let travelled = 0;
+        let distance = 0;
+        start.forEach((point, i) => point.forEach((value, axis) => {
+            const delta = rectangle[i][axis] - value;
+            travelled += (target[i][axis] - value) * delta;
+            distance += delta * delta;
+        }));
+        const progress = Math.max(0, Math.min(1, travelled / distance));
+        // Use the mean opposing source-edge lengths, excluding transparent
+        // padding, to avoid forcing the content into the viewport's aspect.
+        const edge = (a, b) => Math.hypot(
+            shape.corners[a][0] - shape.corners[b][0],
+            shape.corners[a][1] - shape.corners[b][1]
+        );
+        const aspect = (edge(0, 1) + edge(3, 2)) / (edge(0, 3) + edge(1, 2));
+        const fitWidth = Math.min(width - 4, (height - 4) * aspect);
+        const fitHeight = fitWidth / aspect;
+        const insetX = (width - fitWidth) / (2 * width);
+        const insetY = (height - fitHeight) / (2 * height);
+        const fitted = [[insetX, insetY], [1 - insetX, insetY],
+            [1 - insetX, 1 - insetY], [insetX, 1 - insetY]];
+        target.forEach((point, i) => point.forEach((value, axis) => {
+            target[i][axis] = value + progress * (fitted[i][axis] - rectangle[i][axis]);
+        }));
         return { image, transform: perspectiveMatrix(source, target, width, height) };
     });
     updates.forEach(({ image, transform }) => { image.style.transform = transform; });
@@ -221,6 +250,7 @@ function startIntroExpansion() {
     updateRevealGeometry();
     // Commit the device rectangles before the existing expansion transition.
     revealPanelA.getBoundingClientRect();
+    updateStillMorph();
     introStage.classList.add('is-reveal-ready');
     expansionTimer = window.setTimeout(() => {
         introStage.classList.add('is-expanding');

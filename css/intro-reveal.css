@@ -219,7 +219,8 @@
         opacity: 0;
     }
 
-    .intro-reveal__still {
+    .intro-reveal__panel .intro-reveal__still {
+        object-fit: contain;
         transform-origin: 0 0;
     }
     

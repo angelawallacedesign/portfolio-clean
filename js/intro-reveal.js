@@ -18,7 +18,7 @@ mountPatternInspector({
 
 const desktopQuery = window.matchMedia('(min-width: 769px)');
 const IPHONE_15_PRO_MAX_RATIO = 1290 / 2796;
-const EXPANSION_DELAY = 800;
+const EXPANSION_DELAY = 150;
 const EXPANSION_DURATION = 1500;
 let state = 'default';
 let expansionTimer = null;

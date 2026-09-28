@@ -40,6 +40,8 @@
     <link rel="stylesheet" href="css/logos.css" />
     <link rel="stylesheet" href="css/intro-layout.css?v=responsive-nav-fade-2" />
     <link rel="stylesheet" href="css/metrics-strip.css" />
+    <link rel="stylesheet" href="css/intro-reveal.css" />
+    <link rel="stylesheet" href="projects/designing-with-ai/pattern-inspector/pattern-inspector.css" />
     <link rel="stylesheet" href="modules/designing-with-ai-hero/pass-4/designing-ai-hero.css?v=responsive-fix" />
 </head>
 <body class="long-page intro-layout" data-page="intro" id="top">
@@ -156,9 +158,45 @@
                         <img src="assets/work/intro/nickelodeon-phone.webp" />
                         <img src="assets/work/intro/token-phone.webp" />
                     </div>
+                    <div class="intro-play-overlay">
+                        <button type="button" class="intro-play" aria-label="Play device demo">
+                            <span aria-hidden="true">▶</span>
+                        </button>
+                    </div>
                     
                 </div>
             </div>
+
+            <div class="intro-reveal" aria-hidden="true">
+                <div class="intro-reveal__panel intro-reveal__panel--a">
+                    <img src="assets/work/intro/design-inspector-laptop.webp" alt="" class="intro-reveal__still" />
+                    <div
+                        class="intro-reveal__prototype"
+                        data-module-slot="pattern-inspector">
+                    </div>
+                </div>
+
+                <div class="intro-reveal__panel intro-reveal__panel--b">
+                    <img src="assets/work/intro/design-inspector-phone.webp" alt="" class="intro-reveal__still" />
+                    <video
+                        class="intro-reveal__video"
+                        muted
+                        playsinline
+                        preload="auto"
+                    >
+                        <source
+                        src="assets/video/iPhone-15-pro-max-pattern-inspector_designing-with-ai.mp4"
+                        type="video/mp4"
+                        />
+                    </video>
+                </div>
+            </div>
+            <div class="intro-close-message" aria-hidden="true">
+                Close prototype demo
+            </div>
+            <button type="button" class="intro-close" aria-label="Close device demo" hidden disabled>
+                <span aria-hidden="true">×</span>
+            </button>
             
         </section>
         
@@ -535,7 +573,7 @@
     
 
 <script type="module" src="./js/site.js?v=smooth-scroll-3"></script>
-
+<script type="module" src="./js/intro-reveal.js"></script>
 <!-- Data rendering logic -->
 <script type="module" src="./js/data.js?v=2"></script>
 <!-- Preload overlay UI -->

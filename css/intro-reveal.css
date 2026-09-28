@@ -1,0 +1,342 @@
+/*
+* Concept A: Intro Reveal
+* Desktop-only experimental reveal sequence.
+*/
+
+.intro-play-overlay,
+.intro-close {
+    display: none;
+}
+
+@media (min-width: 769px) {
+    .intro-stage.is-reveal-ready { z-index: 1001; }
+    .intro-play-overlay {
+        display: grid;
+        place-items: center;
+        position: absolute;
+        left: 0.714285714%;
+        top: 0.011428574%;
+        width: 57.3428571%;
+        height: 68.4782609%;
+        z-index: 2;
+        background: rgb(0 0 0 / 35%);
+        clip-path: polygon(1% 7%, 93% 1%, 100% 86%, 8% 99%);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .intro-stage[data-reveal-state="ready"] .intro-play-overlay,
+    .intro-stage[data-reveal-state="default"] .hero-visual:hover .intro-play-overlay {
+        opacity: 1;
+    }
+
+    .intro-play,
+    .intro-close {
+        width: 64px;
+        height: 64px;
+        border: 2px solid white;
+        border-radius: 50%;
+        background: #111;
+        color: white;
+        cursor: pointer;
+        font-size: 28px;
+        line-height: 1;
+
+        z-index: 999; /* might not need */
+    }
+
+    .intro-play:not(:disabled) { pointer-events: auto; }
+    .intro-play:hover,
+    .intro-close:hover { background: #444; }
+    .intro-play:focus-visible,
+    .intro-close:focus-visible {
+        outline: 3px solid #fa4d7e;
+        outline-offset: 5px;
+    }
+
+    .intro-close:not([hidden]) {
+        display: grid;
+        place-items: center;
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        z-index: 1000;
+    }
+    
+    html.intro-reveal-locked,
+    html.intro-reveal-locked body {
+        overflow: hidden;
+        overscroll-behavior: none;
+    }
+
+    /*
+    * Intro Close Hover Overlay
+    */
+
+    .intro-close-message {
+        position: fixed;
+        inset: 0;
+        z-index: 998;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: rgb(0 0 0 / 35%);
+        color: #fff;
+
+        font-family: sans-serif;
+        font-size: clamp(2.5rem, 5vw, 5rem);
+        font-weight: 600;
+        line-height: 1;
+        text-align: center;
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        transition:
+            opacity 180ms ease,
+            visibility 180ms ease;
+    }
+
+    /* Trigger the overlay */
+    .intro-stage:has(.intro-close:hover) .intro-close-message,
+    .intro-stage:has(.intro-close:focus-visible) .intro-close-message {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /*
+    * Scroll stage
+    */
+    .intro-stage {
+        position: relative;
+        min-height: calc(100dvh - var(--header-height));
+    }
+
+    .intro-stage::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 9;
+        background: #fff;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 1500ms cubic-bezier(0.42, 0, 1, 1);
+    }
+
+    .intro-stage.is-expanding::before {
+        opacity: 1;
+    }
+
+    
+    .intro-middle {
+        min-height: calc(100dvh - var(--header-height));
+        display: flex;
+        align-items: center;
+    }
+    
+    
+    /*
+    * Full-viewport reveal layer
+    */
+    .intro-reveal {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        pointer-events: none;
+        
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    .intro-stage.is-reveal-ready .intro-reveal {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .intro-stage.is-reveal-ready .intro-reveal {
+        pointer-events: auto;
+    }
+
+    .intro-reveal__prototype {
+        pointer-events: none;
+    }
+    
+    /*
+    * Reveal panels
+    *
+    * Start in the device-screen rectangles.
+    * Once .is-expanding is added, CSS transitions them
+    * into the final viewport composition.
+    */
+    .intro-reveal__panel {
+        position: absolute;
+        overflow: hidden;
+        clip-path: var(--intro-screen-clip);
+        
+        transition:
+        left 1500ms cubic-bezier(0.22, 1, 0.36, 1),
+        top 1500ms cubic-bezier(0.22, 1, 0.36, 1),
+        width 1500ms cubic-bezier(0.22, 1, 0.36, 1),
+        height 1500ms cubic-bezier(0.22, 1, 0.36, 1),
+        clip-path 1500ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .intro-stage.is-expanding .intro-reveal__panel {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    
+    
+    /*
+    * Frame 1
+    * A = laptop screen
+    * B = phone screen
+    */
+    .intro-reveal__panel--a {
+        left: var(--intro-a-start-left);
+        top: var(--intro-a-start-top);
+        width: var(--intro-a-start-width);
+        height: var(--intro-a-start-height);
+    }
+    
+    .intro-reveal__panel--b {
+        left: var(--intro-b-start-left);
+        top: var(--intro-b-start-top);
+        width: var(--intro-b-start-width);
+        height: var(--intro-b-start-height);
+    }
+    
+    
+    /*
+    * Frame 3
+    * A fills the remaining viewport width.
+    * B preserves the iPhone recording proportion.
+    */
+    .intro-stage.is-expanding .intro-reveal__panel--a {
+        left: 0;
+        top: 0;
+        width: var(--intro-a-target-width);
+        height: var(--intro-target-height);
+    }
+    
+    .intro-stage.is-expanding .intro-reveal__panel--b {
+        left: var(--intro-a-target-width);
+        top: 0;
+        width: var(--intro-b-target-width);
+        height: var(--intro-target-height);
+    }
+    
+    
+    /*
+    * Temporary still-image treatment.
+    * Final media behavior will be handled separately.
+    */
+    .intro-reveal__panel img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+    
+    
+    /*
+    * Hide the original slideshow screens while the
+    * reveal copies occupy their positions.
+    */
+    .is-reveal-ready .hero-visual .screen {
+        visibility: hidden;
+    }
+
+    .intro-stage.is-reveal-complete .hero-visual .screen {
+    visibility: visible;
+    }
+
+    .intro-stage.is-reveal-complete .intro-reveal {
+    visibility: hidden;
+    }
+    
+    
+    /*
+    * Concept A owns the primary device motion.
+    * Keep the production hardware geometrically stable.
+    */
+    body.intro-layout .hero-visual .mockup-base,
+    body.intro-layout .hero-visual .screen--laptop,
+    body.intro-layout .hero-visual .screen--phone {
+        transform: none;
+    }
+    
+    .intro-reveal__still,
+    .intro-reveal__video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+    
+    .intro-reveal__video {
+        opacity: 0;
+    }
+
+    .intro-reveal__panel .intro-reveal__still {
+        object-fit: contain;
+        transform-origin: 0 0;
+    }
+
+    .intro-reveal__panel--a .intro-reveal__still {
+        opacity: 1;
+        transition: opacity 300ms ease;
+    }
+
+    .intro-stage.is-video-playing
+    .intro-reveal__panel--a .intro-reveal__still {
+        opacity: 0;
+    }
+    
+    .intro-stage.is-video-playing .intro-reveal__video {
+        opacity: 1;
+        transition: opacity 300ms ease;
+    }
+
+    .intro-reveal__prototype {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .intro-reveal__prototype > .pattern-inspector {
+        min-height: 100%;
+    }
+
+    .intro-stage.is-video-playing .intro-reveal__prototype {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 300ms ease;
+    }
+
+    .intro-reveal__prototype > [data-pattern-inspector] {
+        grid-template-columns: 1fr;
+    }
+
+    .intro-reveal__prototype .pattern-inspector__viewer {
+        border-right: 0;
+        border-bottom: var(--border-width-hairline) solid var(--color-border-subtle);
+    }
+
+    .intro-reveal__prototype [data-pattern-inspector] .pattern-inspector__parts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem 1.25rem;
+    }
+
+    .intro-reveal__prototype [data-pattern-inspector] .pattern-inspector__part {
+        width: auto;
+    }
+    
+}

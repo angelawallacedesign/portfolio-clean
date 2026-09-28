@@ -111,12 +111,18 @@
     .intro-reveal__panel {
         position: absolute;
         overflow: hidden;
+        clip-path: var(--intro-screen-clip);
         
         transition:
         left 1500ms cubic-bezier(0.22, 1, 0.36, 1),
         top 1500ms cubic-bezier(0.22, 1, 0.36, 1),
         width 1500ms cubic-bezier(0.22, 1, 0.36, 1),
-        height 1500ms cubic-bezier(0.22, 1, 0.36, 1);
+        height 1500ms cubic-bezier(0.22, 1, 0.36, 1),
+        clip-path 1500ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .intro-stage.is-expanding .intro-reveal__panel {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
     
     
@@ -211,6 +217,10 @@
     
     .intro-reveal__video {
         opacity: 0;
+    }
+
+    .intro-reveal__still {
+        transform-origin: 0 0;
     }
     
     .intro-stage.is-video-playing .intro-reveal__video {

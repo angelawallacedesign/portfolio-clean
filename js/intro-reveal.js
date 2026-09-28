@@ -22,6 +22,103 @@ function setState(next) {
     closeButton.disabled = next !== 'playing';
 }
 
+// Straight-edge intersections measured from the existing WebP alpha masks
+// (alpha >= 128), in source-image pixels, clockwise from top left.
+// Each edge is fitted away from its corners; maximum fit residual is 1.16px.
+const screenShapes = {
+    a: { width: 3230, height: 2520, corners: [
+        [11.1473, 184.4794], [2977.8511, 60.3231],
+        [3227.5279, 2151.2221], [252.8468, 2494.7312]
+    ] },
+    b: { width: 924, height: 1440, corners: [
+        [178.6319, 35.6689], [903.3884, 80.0206],
+        [766.4253, 1389.3513], [41.6530, 1333.0192]
+    ] }
+};
+
+function updateScreenClip(panel, rect, shape) {
+    // Match the production/reveal images' object-fit: cover and centered crop.
+    const scale = Math.max(rect.width / shape.width, rect.height / shape.height);
+    const offsetX = (rect.width - shape.width * scale) / 2;
+    const offsetY = (rect.height - shape.height * scale) / 2;
+    const points = shape.corners.map(([x, y]) =>
+        `${(x * scale + offsetX) / rect.width * 100}% ${(y * scale + offsetY) / rect.height * 100}%`
+    );
+    panel.style.setProperty('--intro-screen-clip', `polygon(${points.join(', ')})`);
+}
+
+// Map the still's four opaque corners onto the current animated clipping
+// polygon. Clipping alone cannot reshape the transparency baked into a WebP.
+function perspectiveMatrix(source, target, width, height) {
+    const rows = source.flatMap(([x, y], i) => {
+        const [u, v] = target[i];
+        return [
+            [x, y, 1, 0, 0, 0, -u * x, -u * y, u],
+            [0, 0, 0, x, y, 1, -v * x, -v * y, v]
+        ];
+    });
+    for (let col = 0; col < 8; col++) {
+        let pivot = col;
+        for (let row = col + 1; row < 8; row++) {
+            if (Math.abs(rows[row][col]) > Math.abs(rows[pivot][col])) pivot = row;
+        }
+        [rows[col], rows[pivot]] = [rows[pivot], rows[col]];
+        const divisor = rows[col][col];
+        for (let j = col; j <= 8; j++) rows[col][j] /= divisor;
+        for (let row = 0; row < 8; row++) {
+            if (row === col) continue;
+            const factor = rows[row][col];
+            for (let j = col; j <= 8; j++) rows[row][j] -= factor * rows[col][j];
+        }
+    }
+    const [a, b, c, d, e, f, g, h] = rows.map(row => row[8]);
+    return `matrix3d(${[
+        a, d * height / width, 0, g / width,
+        b * width / height, e, 0, h / height,
+        0, 0, 1, 0, c * width, f * height, 0, 1
+    ].join(',')})`;
+}
+
+let stillMorphFrame = null;
+const stillMorphs = [
+    { panel: revealPanelA, shape: screenShapes.a },
+    { panel: revealPanelB, shape: screenShapes.b }
+].map(item => ({ ...item, image: item.panel.querySelector('.intro-reveal__still') }));
+
+function updateStillMorph() {
+    // Read the browser's interpolated polygon: no separate clock or easing.
+    const updates = stillMorphs.map(({ panel, shape, image }) => {
+        const style = getComputedStyle(panel);
+        const width = parseFloat(style.width);
+        const height = parseFloat(style.height);
+        const scale = Math.max(width / shape.width, height / shape.height);
+        const source = shape.corners.map(([x, y]) => [
+            (x * scale + (width - shape.width * scale) / 2) / width,
+            (y * scale + (height - shape.height * scale) / 2) / height
+        ]);
+        const target = style.clipPath.slice(8, -1).split(',').map(point =>
+            point.trim().split(/\s+/).map((value, axis) =>
+                parseFloat(value) / (value.endsWith('%') ? 100 : axis ? height : width)
+            )
+        );
+        return { image, transform: perspectiveMatrix(source, target, width, height) };
+    });
+    updates.forEach(({ image, transform }) => { image.style.transform = transform; });
+}
+
+function startStillMorph() {
+    cancelAnimationFrame(stillMorphFrame);
+    const tick = () => {
+        stillMorphFrame = null;
+        if (!desktopQuery.matches) return;
+        updateStillMorph();
+        if (stillMorphs.some(({ panel }) => panel.getAnimations().some(animation =>
+            animation.playState === 'running' || animation.pending
+        ))) stillMorphFrame = requestAnimationFrame(tick);
+    };
+    tick();
+}
+
 /**
 * Calculate the two starting rectangles from the existing
 * production hero geometry and the final viewport split.
@@ -48,6 +145,9 @@ function updateRevealGeometry() {
         width: phoneWidth,
         height: heroRect.height * 0.391304348
     };
+
+    updateScreenClip(revealPanelA, laptopRect, screenShapes.a);
+    updateScreenClip(revealPanelB, phoneRect, screenShapes.b);
     
     document.documentElement.style.setProperty(
         '--intro-a-start-left',
@@ -124,6 +224,7 @@ function startIntroExpansion() {
     introStage.classList.add('is-reveal-ready');
     expansionTimer = window.setTimeout(() => {
         introStage.classList.add('is-expanding');
+        startStillMorph();
         videoTimer = window.setTimeout(() => {
             revealVideos.forEach((video) => {
                 video.currentTime = 0;
@@ -148,10 +249,13 @@ async function closeIntro() {
     updateRevealGeometry();
     // The same CSS geometry transition now returns automatically to its origin.
     introStage.classList.remove('is-expanding');
+    startStillMorph();
     await Promise.allSettled([revealPanelA, revealPanelB]
         .flatMap((panel) => panel.getAnimations())
         .map((animation) => animation.finished));
     if (currentGeneration !== generation || !desktopQuery.matches) return;
+
+    updateStillMorph();
 
     // Seek the existing CSS slideshow to its first fully opaque pair.
     // Read its authored timing/keyframes rather than duplicating fadeCycle.
@@ -205,6 +309,8 @@ document.fonts.ready.then(refreshRevealGeometry);
 
 desktopQuery.addEventListener('change', () => {
     generation++;
+    cancelAnimationFrame(stillMorphFrame);
+    stillMorphs.forEach(({ image }) => image.style.removeProperty('transform'));
     window.clearTimeout(expansionTimer);
     window.clearTimeout(videoTimer);
     revealVideos.forEach((video) => {

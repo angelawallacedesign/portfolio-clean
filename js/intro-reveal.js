@@ -1,3 +1,6 @@
+import { mountPatternInspector } from
+    "../projects/designing-with-ai/pattern-inspector/pattern-inspector-loader.js";
+
 const introStage = document.querySelector('.intro-stage');
 const heroVisual = document.querySelector('.hero-visual');
 const revealVideos = document.querySelectorAll('.intro-reveal__video');
@@ -5,6 +8,14 @@ const revealPanelA = document.querySelector('.intro-reveal__panel--a');
 const revealPanelB = document.querySelector('.intro-reveal__panel--b');
 const playButton = document.querySelector('.intro-play');
 const closeButton = document.querySelector('.intro-close');
+
+const prototypeSlot = document.querySelector('.intro-reveal__prototype');
+
+mountPatternInspector({
+    slot: prototypeSlot,
+    baseUrl: "../projects/designing-with-ai/pattern-inspector/",
+});
+
 const desktopQuery = window.matchMedia('(min-width: 769px)');
 const IPHONE_15_PRO_MAX_RATIO = 1290 / 2796;
 const EXPANSION_DELAY = 800;

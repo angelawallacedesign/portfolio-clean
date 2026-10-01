@@ -1,0 +1,167 @@
+/* Portfolio shell stays shared; all demo and creative rules are local. */
+.cruise-project .project-hero h1 { width: 100%; }
+.cruise-project .project-hero .heading-accent { margin-block: 8px 12px; }
+.cruise-skip { position: fixed; left: 16px; top: -100px; z-index: 100; padding: 12px; background: white; }
+.cruise-skip:focus { top: 12px; }
+.cruise-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.cruise-demo { --campaign-ink: #073c44; --campaign-sky: #c4e4df; --campaign-sea: #388e93; --campaign-accent: #f9df99; --campaign-light: #fffdf6; }
+.cruise-demo[data-brand="solara"] { --campaign-ink: #642b27; --campaign-sky: #f4c8ab; --campaign-sea: #b66048; --campaign-accent: #ffe6a7; }
+.cruise-demo[data-brand="northstar"] { --campaign-ink: #213a47; --campaign-sky: #cadbe2; --campaign-sea: #617f89; --campaign-accent: #e2edbd; }
+.campaign-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 24px; padding-block: 0 24px; }
+.campaign-controls[hidden] { display: none; }
+.campaign-controls__label { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: #656565; }
+.campaign-controls .work-nav-control { font-size: 12px; color: #535353; text-transform: none; white-space: normal; }
+.campaign-controls .is-active { color: var(--color-accent); }
+.campaign-controls .is-active::after { transform: scaleX(1); }
+.cruise-store { border-block: 1px solid #d8d9d5; }
+.cruise-store__masthead { display: flex; justify-content: space-between; gap: 16px; padding-block: 20px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.cruise-store__masthead span:first-child { font-weight: 700; }
+.cruise-store__masthead span:last-child { color: #656565; }
+.cruise-intro { display: grid; grid-template-columns: 1.1fr 1fr; background: #f2f3ef; }
+.cruise-intro > div:first-child { padding: clamp(24px, 4vw, 48px); }
+.cruise-demo .cruise-kicker { font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; line-height: 1.5; }
+.cruise-demo h2 { color: #252b2c; font-family: var(--font-serif); font-size: clamp(28px, 3.2vw, 40px); font-weight: 400; line-height: 1.12; margin-block: 12px 16px; }
+.cruise-demo p { line-height: 1.6; }
+.cruise-intro p:not(.cruise-kicker) { font-size: 14px; max-width: 36ch; }
+.cruise-intro .primary-btn-small { display: inline-flex; gap: 22px; margin-top: 24px; font-family: var(--font-sans); font-size: 11px; padding: 12px 16px; }
+.cruise-scene { position: relative; overflow: hidden; min-height: 280px; background: radial-gradient(circle at 66% 28%, #faf7e8 0 10%, transparent 10.3%), linear-gradient(175deg, #d8e2de 0 49%, #9bb9b3 49.3% 63%, #537e7b 63.3% 78%, #245954 78.3%); }
+.cruise-scene::after { content: ''; position: absolute; width: 90%; height: 35%; bottom: -18%; right: -15%; background: #e5ded0; border-radius: 50%; transform: rotate(-20deg); }
+.cruise-scene span { position: absolute; left: 24px; bottom: 24px; color: white; font-size: 10px; letter-spacing: .13em; text-transform: uppercase; }
+.ad-placement--wide { display: flex; justify-content: center; margin-block: 36px; }
+.ad { margin: 0; min-width: 0; }
+.cruise-demo .ad__label { display: flex; justify-content: space-between; margin-bottom: 7px; color: #686868; font-size: 9px; font-weight: 400; line-height: 1.4; letter-spacing: .08em; text-transform: uppercase; }
+.ad__creative { position: relative; isolation: isolate; overflow: hidden; color: var(--campaign-light); background: var(--campaign-ink); }
+/* Media is a replaceable layer for images, video, SVG, masks, or transforms. */
+.ad__media { position: absolute; inset: 0; z-index: -1; overflow: hidden; background: linear-gradient(180deg, var(--campaign-sky) 0 47%, var(--campaign-sea) 47% 65%, var(--campaign-ink) 100%); }
+.ad__sun { position: absolute; width: 90px; aspect-ratio: 1; top: 12%; right: 16%; border-radius: 50%; background: var(--campaign-accent); }
+.ad__horizon { position: absolute; width: 100%; height: 44%; top: 46%; right: -25%; background: var(--campaign-ink); opacity: .6; clip-path: polygon(0 80%, 35% 38%, 55% 56%, 80% 0, 100% 65%, 100% 100%, 0 100%); }
+.ad__content { display: flex; flex-direction: column; align-items: flex-start; position: relative; height: 100%; padding: 24px; }
+.cruise-demo .ad__eyebrow { font-size: 10px; line-height: 1.2; text-transform: uppercase; letter-spacing: .12em; font-weight: 600; }
+.cruise-demo .ad__headline { font-family: var(--font-serif); font-size: 32px; font-weight: 400; line-height: 1.05; margin-top: auto; max-width: 13ch; }
+.cruise-demo .ad__offer { font-size: 12px; font-weight: 400; margin-top: 10px; line-height: 1.3; }
+.ad__cta { display: inline-block; padding: 9px 12px; margin-top: 14px; color: var(--campaign-ink); background: var(--campaign-accent); font-size: 10px; font-weight: 700; line-height: 1.2; }
+.ad__cta:hover { color: var(--campaign-ink); background: white; }
+.cruise-demo a:focus-visible, .cruise-demo button:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; }
+.ad--leaderboard { width: 728px; }
+.ad--leaderboard .ad__creative { height: 90px; }
+.ad--leaderboard .ad__media { left: 74%; }
+.ad--leaderboard .ad__sun { width: 38px; }
+.ad--leaderboard .ad__content { display: grid; grid-template-columns: 128px 1fr 118px; grid-template-rows: 1fr 1fr; gap: 0 16px; padding: 15px 20px; padding-right: 90px; align-items: center; }
+.ad--leaderboard .ad__eyebrow { grid-row: 1 / 3; max-width: 12ch; }
+.cruise-demo .ad--leaderboard .ad__headline { font-size: 22px; max-width: none; margin: 0; }
+.ad--leaderboard .ad__offer { grid-column: 2; margin: 0; font-size: 10px; }
+.ad--leaderboard .ad__cta { grid-column: 3; grid-row: 1 / 3; margin: 0; text-align: center; }
+.ad--medium-rectangle { width: 300px; }
+.ad--medium-rectangle .ad__creative { height: 250px; }
+.ad--medium-rectangle .ad__media { opacity: .35; }
+.ad--medium-rectangle .ad__content { padding: 22px; }
+.ad--billboard { width: 970px; }
+.ad--billboard .ad__creative { height: 250px; }
+.ad--billboard .ad__media { left: 44%; }
+.ad--billboard .ad__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--campaign-ink), transparent 55%); }
+.ad--billboard .ad__content { padding: 28px 36px; }
+.cruise-demo .ad--billboard .ad__headline { font-size: 42px; }
+.ad--mobile-banner, .ad--portrait, .ad--square { display: none; }
+.cruise-section-intro { margin-block: 46px 26px; }
+.cruise-section-intro > p:last-child { font-size: 14px; }
+.cruise-destination-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 30px; align-items: start; }
+.cruise-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.cruise-card__scene { height: 150px; margin-bottom: 16px; background: linear-gradient(165deg, #d5e5e2 45%, #76aaa5 45.5% 70%, #e8dec4 70.5%); }
+.cruise-card__scene--caribbean { background: linear-gradient(155deg, #dedfd0 38%, #718c76 38.5% 55%, #abc8c1 55.5% 75%, #477b7b 75.5%); }
+.cruise-card__scene--alaska { background: linear-gradient(145deg, #e3e9e8 35%, #7e9497 35.5% 55%, #c7d5d5 55.5% 66%, #69868e 66.5%); }
+.cruise-demo .cruise-card h3 { border: 0; padding: 0; margin: 8px 0; font-size: 17px; text-transform: none; letter-spacing: -.02em; }
+.cruise-demo .cruise-card p:not(.cruise-kicker) { font-size: 12px; }
+.cruise-card > span { display: block; margin-top: 16px; color: #626967; font-size: 10px; }
+.ad-placement--embedded { padding-top: 0; }
+.ad-placement--feature { margin-block: 54px; }
+.cruise-afterword { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-block: 0 48px; }
+.cruise-afterword > div:last-child { padding-top: 24px; }
+.cruise-afterword p:not(.cruise-kicker) { font-size: 14px; }
+.cruise-afterword .text-link { display: inline-block; margin-top: 20px; font-size: 12px; padding: 0; }
+.cruise-details { border-top: 1px solid #d8d9d5; padding-block: 28px; }
+.cruise-demo .cruise-details h2 { font-size: 25px; }
+.cruise-details p { font-size: 13px; }
+.cruise-demo .cruise-details__note { margin-top: 16px; font-size: 11px; color: #656565; }
+.cruise-demo [id] { scroll-margin-top: 160px; }
+/* Motion is opt-in: static styles always show the full message.
+   Water settles within five seconds; no perpetual decorative loop. */
+.cruise-scene::before {
+  content: '';
+  position: absolute;
+  inset: 49% -20px 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(174deg, transparent 0 23px, #ffffff18 24px 25px, transparent 26px 49px);
+  opacity: .5;
+}
+.cruise-scene span { z-index: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .ad__headline { animation: cruise-headline-in 600ms var(--ease-standard) both; }
+  .ad__cta { transition: transform 180ms var(--ease-standard), background-color 180ms ease; }
+  .ad__cta:focus-visible { transform: translateY(-2px); }
+  .cruise-scene::before { animation: cruise-water-drift 4800ms ease-in-out both; }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  .ad__cta:hover { transform: translateY(-2px); }
+}
+@keyframes cruise-headline-in {
+  from { opacity: .35; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes cruise-water-drift {
+  0%, 100% { transform: translateX(0); opacity: .5; }
+  50% { transform: translateX(12px); opacity: .8; }
+}
+@media (max-width: 1065px) {
+  .ad--billboard { display: none; }
+  .ad--square { display: block; width: min(100%, 420px); }
+  .ad--square .ad__creative { aspect-ratio: 1; }
+  .ad--square .ad__media { opacity: .5; }
+  .ad--square .ad__content { padding: 28px; }
+  .cruise-cards { grid-template-columns: 1fr; }
+  .cruise-card { display: grid; grid-template-columns: 100px 1fr; column-gap: 16px; }
+  .cruise-card__scene { grid-row: 1 / 5; height: 140px; margin: 0; }
+  .cruise-card > span { margin-top: 8px; }
+}
+@media (max-width: 791px) {
+  .cruise-store__masthead span:last-child { display: none; }
+  .cruise-intro { grid-template-columns: 1fr; }
+  .cruise-scene { min-height: 190px; }
+  .cruise-intro p:not(.cruise-kicker) { max-width: 45ch; }
+  .ad--leaderboard, .ad--medium-rectangle { display: none; }
+  .ad--mobile-banner { display: block; width: 320px; }
+  .ad--mobile-banner .ad__creative { height: 100px; }
+  .ad--mobile-banner .ad__media { left: 77%; opacity: .5; }
+  .ad--mobile-banner .ad__sun { width: 35px; }
+  .ad--mobile-banner .ad__content { padding: 12px; display: grid; grid-template-columns: 1fr 85px; gap: 3px 6px; align-content: center; }
+  .cruise-demo .ad--mobile-banner .ad__eyebrow { font-size: 8px; letter-spacing: .06em; }
+  .cruise-demo .ad--mobile-banner .ad__headline { font-size: 18px; max-width: none; margin: 0; grid-column: 1; }
+  .cruise-demo .ad--mobile-banner .ad__offer { margin: 0; font-size: 9px; grid-column: 1; }
+  .ad--mobile-banner .ad__cta { grid-column: 2; grid-row: 1 / 4; align-self: center; text-align: center; margin: 0; padding: 9px 7px; font-size: 9px; }
+  .cruise-destination-layout { grid-template-columns: 1fr; gap: 36px; }
+  .cruise-cards { gap: 24px; }
+  .ad-placement--embedded { display: flex; justify-content: center; }
+  .ad--portrait { display: block; width: min(100%, 420px); }
+  .ad--portrait .ad__creative { aspect-ratio: 4 / 5; }
+  .ad--portrait .ad__media { opacity: .65; }
+  .ad--portrait .ad__content { padding: 28px; }
+  .cruise-demo .ad--portrait .ad__headline, .cruise-demo .ad--square .ad__headline { font-size: clamp(30px, 8vw, 42px); }
+  .cruise-afterword { grid-template-columns: 1fr; gap: 0; }
+  .cruise-afterword > div:last-child { padding-top: 0; }
+}
+@media (max-width: 359px) {
+  .cruise-project .work-main { padding-inline: 0; }
+  .cruise-project .project-hero { width: calc(100% - 24px); }
+  .cruise-project .work-breadcrumb, .cruise-project .project-hero, .campaign-controls, .cruise-store__masthead, .cruise-destinations, .cruise-afterword, .cruise-details { margin-inline: 12px; }
+  .ad--square { width: calc(100% - 24px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cruise-demo *, .cruise-demo *::before, .cruise-demo *::after { animation: none !important; transition: none !important; scroll-behavior: auto; }
+}
+
+/* Preserve contrast over the brighter upper media region. */
+.ad--portrait .ad__media::after, .ad--square .ad__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, #000a, transparent 45%); }
+
+/* Override the shared link active transform when motion is reduced. */
+@media (prefers-reduced-motion: reduce) {
+  .cruise-demo .ad__cta { transform: none; }
+}

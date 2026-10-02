@@ -1,0 +1,41 @@
+<section class="di-v2" data-design-inspector-v2>
+  <div class="di-v2__top-strip" aria-hidden="true"></div>
+  <button class="di-v2-reopen di-v2-reopen--left" type="button" data-di-reopen="left" hidden>Show dates</button>
+  <button class="di-v2-reopen di-v2-reopen--right" type="button" data-di-reopen="right" hidden>Show review</button>
+  <div class="di-v2__workspace" data-di-workspace>
+    <aside class="di-v2-panel di-v2-panel--dates" data-di-left-panel aria-labelledby="di-date-title">
+      <header class="di-v2-panel__header di-v2-date-header">
+        <button class="di-v2-hide" type="button" data-di-panel-control="left" aria-expanded="true"><span class="di-v2-hide__icon" aria-hidden="true">◧</span><span data-di-control-label>Hide</span></button>
+        <div class="di-v2-segmented" aria-label="Navigation view">
+          <button class="is-active" type="button" aria-pressed="true" id="di-date-title">Date</button>
+          <button type="button" aria-pressed="false">Flow</button>
+        </div>
+      </header>
+      <nav class="di-v2-date-nav" aria-label="Builds by date" data-di-date-navigation></nav>
+    </aside>
+    <main class="di-v2-main" data-di-main>
+      <div class="di-v2-breadcrumb"><p data-di-breadcrumb></p><div class="di-v2-review-status"><span aria-hidden="true"></span><strong data-di-review-state></strong></div></div>
+      <header class="di-v2-main__header"><p>Current design</p><h1 data-di-title>Promo landing pg</h1></header>
+      <figure class="di-v2-canvas" aria-label="Current design with anchored review callouts">
+        <div class="di-v2-artifact-wrap" data-di-artifact-wrap><img data-di-artifact alt="Celebrity Cruises Top Chef promotional landing page"><div data-di-stage-callouts></div></div>
+      </figure>
+    </main>
+    <button class="di-v2-backdrop" type="button" data-di-backdrop hidden aria-label="Close panel"></button>
+    <aside class="di-v2-panel di-v2-panel--review" data-di-right-panel aria-labelledby="di-review-title">
+      <header class="di-v2-panel__header di-v2-review-header">
+        <button class="di-v2-hide" type="button" data-di-panel-control="right" aria-expanded="true"><span data-di-control-label>Hide</span><span class="di-v2-hide__icon" aria-hidden="true">◨</span></button>
+        <p>Mode</p><h2 id="di-review-title">Review</h2>
+      </header>
+      <div class="di-v2-review-body">
+        <div class="di-v2-tabs" role="tablist" aria-label="Review information">
+          <button class="is-active" id="di-tab-callouts" type="button" role="tab" aria-selected="true" aria-controls="di-panel-callouts" data-di-tab="callouts">Callouts</button>
+          <button id="di-tab-history" type="button" role="tab" aria-selected="false" aria-controls="di-panel-history" tabindex="-1" data-di-tab="history">History</button>
+        </div>
+        <section id="di-panel-callouts" role="tabpanel" aria-labelledby="di-tab-callouts" data-di-tabpanel="callouts"><ol class="di-v2-callout-list" data-di-callout-list></ol></section>
+        <section id="di-panel-history" role="tabpanel" aria-labelledby="di-tab-history" data-di-tabpanel="history" hidden><ol class="di-v2-history" data-di-history-list></ol></section>
+      </div>
+    </aside>
+  </div>
+  <footer class="di-v2-statusbar"><span aria-hidden="true"><span class="icon rotate-0" data-icon="settings" aria-hidden="true"></span></span><span>PI: 3 | Sprint: 4</span><span class="di-v2-statusbar__user"><i aria-hidden="true"></i>Logged in: A Wallace</span></footer>
+  <div class="di-v2-mobile-controls" aria-label="Workspace panels"><button type="button" data-di-mobile-control="left">Dates</button><button type="button" data-di-mobile-control="right">Review</button></div>
+</section>

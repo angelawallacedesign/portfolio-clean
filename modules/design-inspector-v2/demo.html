@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Design Inspector v2 Review prototype.">
+    <title>Design Inspector v2 — Review</title>
+    <link rel="stylesheet" href="../../css/tokens.css">
+    <link rel="stylesheet" href="design-inspector.css">
+    <link rel="stylesheet" href="../../shared/css/global-components.css" />
+  </head>
+  <body class="di-v2-demo">
+    <main class="di-v2-demo__main">
+      <div data-design-inspector-v2-slot><p>Loading Design Inspector…</p></div>
+    </main>
+    <script type="module">
+      import { mountDesignInspectorV2 } from "./design-inspector.js";
+      const slot = document.querySelector("[data-design-inspector-v2-slot]");
+      const root = await mountDesignInspectorV2({ slot });
+      if (!root) slot.textContent = "Design Inspector is unavailable.";
+    </script>
+    <script type="module" src="../../shared/js/base.js"></script>
+  </body>
+</html>

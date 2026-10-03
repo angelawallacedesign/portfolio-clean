@@ -1,0 +1,64 @@
+<section class="di-v2" data-design-inspector-v2>
+  <div class="di-v2__top-strip" aria-hidden="true"></div>
+  <button class="di-v2-reopen di-v2-reopen--left" type="button" data-di-reopen="left" hidden>Show dates</button>
+  <button class="di-v2-reopen di-v2-reopen--right" type="button" data-di-reopen="right" hidden>Show review</button>
+  <div class="di-v2__workspace" data-di-workspace>
+    <aside class="di-v2-panel di-v2-panel--dates" data-di-left-panel aria-labelledby="di-date-title">
+      <header class="di-v2-panel__header di-v2-date-header">
+        <button class="di-v2-hide" type="button" data-di-panel-control="left" aria-expanded="true"><span class="di-v2-hide__icon" aria-hidden="true">◧</span><span data-di-control-label>Hide</span></button>
+        <div class="di-v2-segmented" aria-label="Navigation view">
+          <button class="is-active" type="button" aria-pressed="true" id="di-date-title">Date</button>
+          <button type="button" aria-pressed="false">Flow</button>
+        </div>
+      </header>
+      <nav class="di-v2-date-nav" aria-label="Builds by date" data-di-date-navigation></nav>
+    </aside>
+    <main class="di-v2-main" data-di-main>
+      <div class="di-v2-breadcrumb"><p data-di-breadcrumb></p><div class="di-v2-review-status" data-di-review-status hidden><span aria-hidden="true"></span><strong data-di-review-state>In review</strong></div></div>
+      <header class="di-v2-main__header" data-di-artifact-header>
+        <div class="di-v2-current-design"><p>Current design</p><h1 data-di-title>Promo landing pg</h1></div>
+        <div class="di-v2-artifact-actions">
+          <div class="di-v2-viewport-controls" data-di-viewport-controls aria-label="Artifact viewport" hidden></div>
+          <button class="di-v2-review-toggle" type="button" data-di-review-toggle disabled>Start Review</button>
+        </div>
+      </header>
+      <figure class="di-v2-canvas" aria-label="Current design with anchored review callouts">
+        <div class="di-v2-artifact-wrap di-v2-artifact-wrap--empty" data-di-artifact-wrap>
+          <div class="di-v2-artifact-empty" data-di-artifact-empty>
+            <svg class="di-v2-artifact-empty__icon" viewBox="0 0 120 96" aria-hidden="true">
+              <rect x="12" y="10" width="96" height="76" rx="7" fill="none" stroke="currentColor" stroke-width="3"/>
+              <path d="M12 30h96M31 20h.01M43 20h.01M55 20h.01" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <path d="M60 69V43m0 0L49 54m11-11 11 11" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="di-v2-local-source">
+              <label for="di-local-environment">Local development environment</label>
+              <div class="di-v2-local-source__controls">
+                <input id="di-local-environment" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="http://localhost:5173/" data-di-local-url>
+                <button type="button" data-di-load-local>Load</button>
+              </div>
+              <p class="di-v2-artifact-empty__hint" data-di-local-message>Enter a localhost or 127.0.0.1 address.</p>
+            </div>
+          </div>
+          <div data-di-stage-callouts></div>
+        </div>
+      </figure>
+    </main>
+    <button class="di-v2-backdrop" type="button" data-di-backdrop hidden aria-label="Close panel"></button>
+    <aside class="di-v2-panel di-v2-panel--review" data-di-right-panel aria-labelledby="di-review-title">
+      <header class="di-v2-panel__header di-v2-review-header">
+        <button class="di-v2-hide" type="button" data-di-panel-control="right" aria-expanded="true"><span data-di-control-label>Hide</span><span class="di-v2-hide__icon" aria-hidden="true">◨</span></button>
+        <p>Mode</p><h2 id="di-review-title">Review</h2>
+      </header>
+      <div class="di-v2-review-body">
+        <div class="di-v2-tabs" role="tablist" aria-label="Review information">
+          <button class="is-active" id="di-tab-callouts" type="button" role="tab" aria-selected="true" aria-controls="di-panel-callouts" data-di-tab="callouts">Callouts</button>
+          <button id="di-tab-history" type="button" role="tab" aria-selected="false" aria-controls="di-panel-history" tabindex="-1" data-di-tab="history">History</button>
+        </div>
+        <section id="di-panel-callouts" role="tabpanel" aria-labelledby="di-tab-callouts" data-di-tabpanel="callouts"><ol class="di-v2-callout-list" data-di-callout-list></ol></section>
+        <section id="di-panel-history" role="tabpanel" aria-labelledby="di-tab-history" data-di-tabpanel="history" hidden><ol class="di-v2-history" data-di-history-list></ol></section>
+      </div>
+    </aside>
+  </div>
+  <footer class="di-v2-statusbar"><span aria-hidden="true"><span class="icon rotate-0" data-icon="settings" aria-hidden="true"></span></span><span>PI: 3 | Sprint: 4</span><span class="di-v2-statusbar__user"><i aria-hidden="true"></i>Logged in: A Wallace</span></footer>
+  <div class="di-v2-mobile-controls" aria-label="Workspace panels"><button type="button" data-di-mobile-control="left">Dates</button><button type="button" data-di-mobile-control="right">Review</button></div>
+</section>

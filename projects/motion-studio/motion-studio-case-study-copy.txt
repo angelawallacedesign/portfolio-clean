@@ -1,0 +1,189 @@
+DESIGN ENGINEERING
+CASE STUDY
+
+A human-directed, AI-assisted 0→1 product workflow
+
+
+OPPORTUNITY
+
+After a round of interviews, I was asked to show an example of how I use AI in my design work. Rather than create an AI demonstration in isolation, I used the request as an opportunity to identify a plausible product opportunity within the cruise industry and show how I move from an ambiguous idea to a working prototype.
+
+I began with a short competitive analysis of the company and one of its competitors. Because I have previously worked as both a designer and developer in the cruise industry, I knew that one of its most abundant and valuable resources is professional photography. Cruise brands regularly commission large libraries of high-quality imagery to communicate ships, destinations, and onboard experiences.
+
+The question became: how could newer AI capabilities create additional value from an asset library that already exists?
+
+
+RESEARCH
+
+I visually reviewed public-facing cruise-industry websites, looking specifically for an opportunity that was useful, technically plausible, and small enough to demonstrate through a prototype.
+
+Across the sites, I found extensive use of static photography. Some high-priority promotional experiences used video heavily, while many other pages depended primarily on still imagery. I also encountered older imagery whose resolution was beginning to show its age.
+
+That suggested a focused opportunity: rather than generate entirely new visual content, could AI extend the value of already-approved professional photography?
+
+I chose an image of a cruise ship with large areas of water and sky—exactly the kind of professionally composed asset common in this industry. The composition created natural regions where restrained ambient motion could potentially be introduced while preserving the ship, branding, architecture, and original photographic intent.
+
+The product hypothesis became an internal motion workflow: a user selects an approved image, AI analyzes it for candidate motion regions, a restrained motion treatment is generated, and the workflow pauses for human review before the derivative can be approved.
+
+The intent was not autonomous content generation. Human judgment remained the approval boundary.
+
+
+VISUAL LANGUAGE EXTRACTION
+
+Because the prototype was intended to feel plausible within an existing company environment, I inspected the company's public-facing interface and extracted a small set of recognizable visual cues rather than inventing a new visual system.
+
+I inspected the site's CSS and interface treatments for characteristics such as primary action color, navigation color, background treatment, and button radius. I then selectively applied those cues to the prototype: the recognizable red primary action, blue interface language, pale-blue header treatment, and rounded CTA geometry.
+
+I did not attempt to reproduce the company's interface one-to-one or claim access to an internal design system. The goal was to create enough visual continuity that stakeholders could immediately understand the prototype in the context of their existing product.
+
+This approach comes from earlier client work in which I helped adapt existing product interfaces to prospective brands. Applying a client's visual language to a working product concept allowed stakeholders to evaluate an idea in a context that already felt familiar.
+
+
+DESIGN TO SPECIFICATION
+
+AI Exploration
+
+I used a reasoning model to explore the opportunity and translate the initial product idea into a low-fidelity interface concept. I described the intended workflow, the need for constrained motion, and the requirement for a human approval step.
+
+The generated mockup was not treated as a finished design. It became an input into the next round of design decisions.
+
+
+Human Design
+
+Sketching is part of my process because it lets me make interaction and hierarchy decisions faster than working directly in a design tool.
+
+Using the generated concept as a starting point, I sketched changes to the workflow and interface: asset context, control placement, progress states, and the review/approval sequence. The sketch allowed me to quickly decide what the prototype actually needed to communicate and what could remain outside the scope of a low-fidelity proof of concept.
+
+
+Figma
+
+I converted the direction into a structured Figma design and applied the human design decisions from the sketch.
+
+The interface was intentionally kept low fidelity. The purpose was not to create a production-ready visual design; it was to establish enough hierarchy, interaction, company-specific visual language, and state definition to evaluate the concept and support implementation.
+
+The prototype ultimately defined a six-state workflow:
+
+Empty → Asset Selection → Original → Processing → Review → Approved
+
+AI could identify candidate motion regions and generate a result, but the workflow deliberately stopped at Review. Approval remained a human action.
+
+
+Functional Specification
+
+Before implementation, I documented the behavior of the prototype as a functional specification.
+
+The specification defined the state model, interaction rules, constrained controls, progress behavior, human review boundary, accessibility expectations, and what was intentionally outside the scope of the prototype.
+
+During walkthrough and review, the specification was updated as missing states and requirements were discovered. This produced a second version before implementation.
+
+The specification became the contract between design intent and execution.
+
+
+AGENT HANDOFF
+
+The execution agent received the functional specification, visual state references, approved source asset, and repository context.
+
+Rather than prescribing individual implementation steps, I established the sources of truth, constraints, intended behavior, and boundaries of the prototype. The agent was instructed to inspect the existing repository architecture, state its implementation plan, build the complete interaction, and verify the result.
+
+The handoff intentionally left room for implementation decisions where the specification had already established sufficient intent.
+
+Implementation specification v0.1 [markdown file download]
+Implementation specification v0.2 [markdown file download]
+
+
+GAPS DISCOVERED
+
+Walking through the concept exposed requirements that were not obvious in the initial idea.
+
+The original flow focused on generation and approval, but a usable interaction required additional states before generation could begin. This led to the addition of an empty state and an approved-asset selection flow.
+
+The workflow evolved into:
+
+Empty → Asset Selection → Original → Processing → Review → Approved
+
+This was an important part of the process: the specification did not simply document a finished idea. It became a tool for discovering missing requirements before implementation.
+
+
+RESULT
+
+Structured conversations exposed tradeoffs earlier, preserved relevant context, and helped me make clearer decisions without treating AI output as authority.
+
+By the time the work reached the execution agent, the core ambiguity had already been reduced through research, design, walkthroughs, state definition, and functional specification.
+
+
+PROTOTYPE WALKTHROUGH
+
+After implementation, I performed the prototype walkthrough as a reviewer rather than continuing to design through code.
+
+The working prototype supported approved-asset selection, source selection, AI-suggested motion regions, constrained intensity, simulated generation, animated progress, a mandatory Review pause, human approval, and the final Approved state.
+
+The implementation was also responsive and included semantic controls, focus behavior, status communication, and reduced-motion considerations.
+
+The walkthrough confirmed that the prototype communicated the intended product idea without requiring the full production system behind it.
+
+
+LIVE PROTOTYPE: MOTION STUDIO
+
+Motion Studio is a low-fidelity internal product concept for extending the value of approved photography through restrained AI-assisted motion.
+
+A user selects an approved source image. The system identifies candidate regions such as water or sky and allows the user to select one. Motion intensity is deliberately constrained from Subtle to Restrained, and duration is fixed at 2.0 seconds for the prototype.
+
+Generate Preview moves the workflow into Processing and then stops at Review. The generated result cannot approve itself. A human must evaluate the result and explicitly select Approve before the workflow reaches its final state.
+
+The prototype simulates the motion-generation engine rather than performing real image segmentation or generative video processing. Its purpose is to demonstrate the product model, workflow, governance, and human decision boundary.
+
+AI generates. Human approves.
+
+
+FINDINGS / NEXT ITERATION
+
+Findings
+
+The low-fidelity prototype successfully demonstrated the core product hypothesis and the complete approval boundary. It also showed that substantial interaction and implementation behavior can be evaluated before investing in a production AI pipeline.
+
+The working implementation made several requirements easier to evaluate than they had been in static design alone, including responsive behavior, state transitions, focus behavior, progress timing, review-state clarity, and the relationship between generation and approval.
+
+Gaps
+
+Several interactions were intentionally left outside the prototype because they were not necessary to prove the concept.
+
+There is currently no rejection flow for an unacceptable generation. The prototype also does not define regeneration, editing an approved derivative, saving/versioning behavior, production asset management, or the interface for revisiting previously generated assets.
+
+A higher-fidelity iteration would define these additional states, along with failure handling, generation errors, asset history, and the relationship between source assets and approved derivatives.
+
+The prototype also uses simulated motion. A production exploration would require technical validation of segmentation, generation quality, model behavior, performance, file optimization, and delivery requirements.
+
+
+WHERE THE EXECUTION AGENT EXTENDED THE SPECIFICATION
+
+One of the most useful findings occurred during implementation.
+
+The functional specification established the workflow through human approval, but I did not explicitly prescribe every presentation behavior that should occur after the Approve action. Using the specification, state model, visual references, and surrounding context, the execution agent completed the final prototype cycle and produced a presentation-ready Approved state, including the simulated subtle-motion treatment.
+
+This was not unrestricted invention. The agent inferred a missing implementation detail from a strongly constrained product model.
+
+That distinction matters: the useful autonomy appeared after the product intent, state boundaries, and approval model had already been established.
+
+
+PRODUCTIVE AGENT AUTONOMY
+
+The implementation demonstrated a form of agent autonomy I want to continue testing.
+
+When intent is underspecified, autonomous implementation can create unnecessary complexity or drift away from the design problem. When the context is sufficiently structured, however, an execution agent can resolve local implementation decisions without requiring every behavior to be individually prescribed.
+
+The goal is not to remove human judgment. It is to preserve human judgment for the decisions where it matters and reduce the friction surrounding those decisions.
+
+Protect the judgment. Reduce the friction around the judgment.
+
+
+REFLECTION
+
+This process changed how I think about AI-assisted prototyping.
+
+The speed of implementation was not simply the result of asking an agent to generate a prototype. Considerable work happened upstream: identifying the opportunity, researching the existing product environment, defining a technically plausible concept, exploring with AI, sketching, applying human design judgment, extracting an appropriate visual language, building the Figma states, walking through the interaction, discovering missing requirements, and writing the functional specification.
+
+Once that ambiguity had been reduced, implementation became dramatically faster.
+
+The result was a working, reviewable, documented product direction rather than an isolated generated artifact.
+
+The value is not generation alone. It is the ability to move from an unclear idea to a working, reviewable, and documented product direction while preserving human judgment throughout the process.

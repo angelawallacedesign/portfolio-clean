@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Motion Studio prototype</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell" aria-labelledby="app-title">
+      <header class="app-header">
+        <div class="brand-mark" aria-label="Brand logo placeholder">Logo</div>
+        <h1 id="app-title">Motion Studio</h1>
+        <p>Prototype <span aria-hidden="true">|</span> Internal</p>
+      </header>
+
+      <section class="workspace" aria-label="Motion preview workspace">
+        <div class="source-column">
+          <p class="source-path">Source asset: <span id="source-path">—</span></p>
+
+          <div class="preview-frame" id="preview-frame">
+            <div class="empty-state" id="empty-state">
+              <svg class="empty-icon" viewBox="0 0 48 48" aria-hidden="true">
+                <rect x="6" y="8" width="36" height="32" rx="3"></rect>
+                <circle cx="30" cy="17" r="3"></circle>
+                <path d="m9 35 10-10 7 7 5-5 8 8"></path>
+              </svg>
+              <h2>Select source asset</h2>
+              <p>Choose an approved image<br>to create a motion preview.</p>
+              <button class="button button--select" id="open-asset-picker" type="button">Select Image</button>
+            </div>
+
+            <figure class="asset-preview" id="asset-preview" hidden>
+              <div class="motion-canvas" id="motion-canvas">
+                <img src="assets/image-asset.jpg" alt="Carnival Tropicana cruise ship near a tropical beach at sunset">
+                <div class="water-shimmer" aria-hidden="true"></div>
+              </div>
+              <figcaption class="asset-label">Source asset</figcaption>
+              <p class="asset-badge" id="asset-badge">Static master</p>
+              <div class="processing-indicator" id="processing-indicator" hidden>
+                <span class="spinner" aria-hidden="true"></span>
+                <span>Preparing motion preview</span>
+              </div>
+            </figure>
+          </div>
+        </div>
+
+        <form class="controls" id="motion-controls">
+          <h2>Motion</h2>
+
+          <fieldset class="control-group" id="region-controls" disabled>
+            <legend>Region</legend>
+            <div class="segmented-control">
+              <label>
+                <input type="radio" name="region" value="water" checked>
+                <span>Water</span>
+              </label>
+              <label>
+                <input type="radio" name="region" value="sky">
+                <span>Sky</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="control-group">
+            <label for="intensity">Intensity</label>
+            <input id="intensity" type="range" min="0" max="100" value="50" disabled>
+            <div class="range-labels" aria-hidden="true">
+              <span>Subtle</span>
+              <span>Restrained</span>
+            </div>
+          </div>
+
+          <div class="control-group duration">
+            <span class="control-label">Duration</span>
+            <strong>2.0 sec</strong>
+          </div>
+
+          <div class="options">
+            <label>
+              <input id="seamless-loop" type="checkbox" checked disabled>
+              <span>Seamless loop</span>
+            </label>
+            <label>
+              <input id="preserve-transparency" type="checkbox" checked disabled>
+              <span>Preserve transparency</span>
+            </label>
+          </div>
+
+          <button class="button primary-action" id="primary-action" type="button" disabled>Generate Preview</button>
+        </form>
+
+        <section class="workflow" aria-label="Workflow progress">
+          <div class="progress-track" aria-hidden="true">
+            <span class="progress-fill" id="progress-fill"></span>
+          </div>
+          <ol class="status-list" id="status-list">
+            <li data-status="original"><span class="status-dot"></span><span>Original</span></li>
+            <li data-status="processing"><span class="status-dot"></span><span>Processing</span></li>
+            <li data-status="review"><span class="status-dot"></span><span>Review</span></li>
+            <li data-status="approved"><span class="status-dot"></span><span>Approved</span></li>
+          </ol>
+          <p class="sr-only" id="status-announcement" role="status" aria-live="polite">No source asset selected.</p>
+        </section>
+      </section>
+    </main>
+
+    <dialog class="asset-dialog" id="asset-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+      <form method="dialog" class="dialog-panel" id="asset-form">
+        <button class="dialog-close" value="cancel" aria-label="Close approved asset selection" type="submit">×</button>
+        <h2 id="dialog-title">Select an approved asset</h2>
+        <p id="dialog-description">Choose an image to create a motion preview.</p>
+
+        <fieldset class="asset-grid">
+          <legend class="sr-only">Approved images</legend>
+          <label class="asset-option">
+            <input type="radio" name="asset" value="carnival-tropicale" checked>
+            <span class="thumbnail thumbnail--image">
+              <img src="assets/image-asset.jpg" alt="">
+              <span class="selection-check" aria-hidden="true">✓</span>
+            </span>
+            <strong>Carnival Tropicale</strong>
+            <small>1440 × 900</small>
+          </label>
+
+          <div class="asset-option asset-option--unavailable" aria-disabled="true">
+            <span class="thumbnail placeholder-thumbnail">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <rect x="8" y="10" width="32" height="28" rx="3"></rect>
+                <circle cx="29" cy="19" r="3"></circle>
+                <path d="m11 34 9-9 7 7 5-5 5 6"></path>
+              </svg>
+            </span>
+            <strong>Beach Resort</strong>
+            <small>Placeholder</small>
+          </div>
+
+          <div class="asset-option asset-option--unavailable" aria-disabled="true">
+            <span class="thumbnail placeholder-thumbnail">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <rect x="8" y="10" width="32" height="28" rx="3"></rect>
+                <circle cx="29" cy="19" r="3"></circle>
+                <path d="m11 34 9-9 7 7 5-5 5 6"></path>
+              </svg>
+            </span>
+            <strong>Ocean Deck</strong>
+            <small>Placeholder</small>
+          </div>
+        </fieldset>
+
+        <div class="dialog-actions">
+          <button class="text-button" value="cancel" type="submit">Cancel</button>
+          <button class="button button--select" id="select-asset" value="default" type="submit">Select</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

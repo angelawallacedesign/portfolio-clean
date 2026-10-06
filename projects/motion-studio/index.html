@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../css/components.css?v=responsive-fix-2">
   <link rel="stylesheet" href="../designing-with-ai/image-zoom-lightbox/image-zoom-lightbox.css">
+  <link rel="stylesheet" href="../../prototypes/motion-studio/styles.css">
   <link rel="stylesheet" href="./motion-studio.css">
 </head>
 <body id="top" class="case-study-page">
@@ -105,13 +106,13 @@
                   <span class="opportunity-signal__route" aria-hidden="true"></span>
                   <span class="opportunity-signal__approval" aria-hidden="true">✓</span>
                 </div>
-                <figcaption class="caption">Approved photography became the starting point—not material to replace.</figcaption>
+                <figcaption class="caption">Approved photography became the starting point to increase value, not replace or add complexity.</figcaption>
               </figure>
-              <div>
-                <p>After a round of interviews, I was asked to show an example of how I use AI in my design work. Rather than create an AI demonstration in isolation, I used the request as an opportunity to identify a plausible product opportunity within the cruise industry and show how I move from an ambiguous idea to a working prototype.</p>
-                <p>I began with a short competitive analysis of the company and one of its competitors. Because I have previously worked as both a designer and developer in the cruise industry, I knew that one of its most abundant and valuable resources is professional photography.</p>
-                <p class="lead-question">How could newer AI capabilities create additional value from an asset library that already exists?</p>
-              </div>
+              <p>After a round of interviews, I was asked to show an example of how I use AI in my design work. Rather than create an AI demonstration in isolation, I used the request as an opportunity to identify a plausible product opportunity within the cruise industry and show how I move from an ambiguous idea to a working prototype.</p>
+            </div>
+            <div class="opportunity-detail">
+              <p>I began with a short competitive analysis of the company and one of its competitors. Because I have previously worked as both a designer and developer in the cruise industry, I knew that <strong>one of its most abundant and valuable resources</strong> is professional photography. I thought to myself:</p>
+              <p class="opportunity-question">“How could I enhance an existing company assset with AI and increase its value while incrementally creating a workflow that was technically feasible with an enterprise team?”</p>
             </div>
           </div>
         </div>
@@ -130,13 +131,10 @@
       <section class="case-section">
         <header class="section-header"><h2>Research</h2></header>
         <div class="prose-wide">
-          <p>I visually reviewed public-facing cruise-industry websites, looking for an opportunity that was useful, technically plausible, and small enough to demonstrate through a prototype.</p>
-          <p>Across the sites, I found extensive use of static photography. Some high-priority promotional experiences used video heavily, while many other pages depended primarily on still imagery. I also encountered older imagery whose resolution was beginning to show its age.</p>
-          <p>That suggested a focused opportunity: rather than generate entirely new visual content, could AI extend the value of already-approved professional photography?</p>
-          <p>I chose an image of a cruise ship with large areas of water and sky—natural regions where restrained ambient motion could be introduced while preserving the ship, branding, architecture, and original photographic intent.</p>
+          <p>I reviewed public-facing cruise-industry websites for a useful, technically plausible opportunity small enough to prototype. Many pages relied heavily on static photography, including older imagery beginning to show its resolution, while video was concentrated in higher-priority promotional experiences. I chose an existing cruise image with large areas of water and sky to test whether restrained ambient motion could extend approved professional photography without altering the ship, branding, architecture, or original photographic intent.</p>
         </div>
         <blockquote class="component-blockquote result">
-          <span class="result-label">Hypothesis</span>
+          <span class="result-label">Result</span>
           <p>A user selects an approved image, AI identifies candidate motion regions, a restrained treatment is generated, and the workflow pauses for human review. Human judgment remains the approval boundary.</p>
         </blockquote>
       </section>
@@ -145,18 +143,16 @@
         <header class="section-header"><h2>Visual language extraction</h2></header>
         <div class="media-copy-grid">
           <div class="prose-wide">
-            <p>Because the prototype was intended to feel plausible within an existing company environment, I inspected the company’s public-facing interface and extracted a small set of recognizable visual cues rather than inventing a new visual system.</p>
-            <p>I inspected its CSS and interface treatments for primary action color, navigation color, background treatment, and button radius. I selectively applied the recognizable red action, blue interface language, pale-blue header treatment, and rounded CTA geometry.</p>
-            <p>I did not attempt to reproduce the company’s interface one-to-one or claim access to an internal design system. The goal was enough visual continuity for stakeholders to immediately understand the prototype in context.</p>
+            <p>To make the prototype plausible within an existing company environment, I inspected the company’s public-facing interface and CSS for recognizable visual cues, including action and navigation colors, background treatments, and button radius. I selectively applied those characteristics rather than reproducing the interface one-to-one or implying access to an internal design system.</p>
           </div>
           <div class="image-pair">
             <figure>
               <a class="u-image-lightbox-trigger" href="./assets/images/visual-language_border-radius-FULLSIZE.jpg" data-lightbox-image><img src="./assets/images/visual-language_border-radius-THUMB.png" alt="Reference showing the company button color and rounded corner treatment"></a>
-              <figcaption class="caption">CTA geometry and action color</figcaption>
+              <figcaption class="caption">CTA style reference</figcaption>
             </figure>
             <figure>
               <a class="u-image-lightbox-trigger" href="./assets/images/visual-language_progress-bar-FULLSIZE.jpg" data-lightbox-image><img src="./assets/images/visual-language_progress-bar-THUMB.jpg" alt="Reference showing a pale-blue progress bar treatment"></a>
-              <figcaption class="caption">Progress and status language</figcaption>
+              <figcaption class="caption">Progress bar style reference</figcaption>
             </figure>
           </div>
         </div>
@@ -169,32 +165,26 @@
             <span class="process-card__number">01</span>
             <h3>AI exploration</h3>
             <a class="u-image-lightbox-trigger" href="./assets/images/01_low-fidelity-mockup_AI.png" data-lightbox-image><img src="./assets/images/01_low-fidelity-mockup_AI.png" alt="AI-generated low-fidelity interface concept for Motion Studio"></a>
-            <p>I used a reasoning model to explore the opportunity and translate the initial idea into a low-fidelity interface concept. The output became an input into design decisions—not a finished design.</p>
+            <p>I used a reasoning model to explore the opportunity and translate the initial idea into a low-fidelity interface concept.</p>
           </article>
           <article class="process-card">
             <span class="process-card__number">02</span>
             <h3>Human design</h3>
             <a class="u-image-lightbox-trigger" href="./assets/images/02_low-fidelity-mockup-designer-sketch.jpg" data-lightbox-image><img src="./assets/images/02_low-fidelity-mockup-designer-sketch.jpg" alt="Hand-drawn interface sketch refining the Motion Studio workflow"></a>
-            <p>I sketched asset context, control placement, progress states, and the review sequence to decide what the prototype needed to communicate.</p>
+            <p>I sketched an updated UI with control placement, progress states, and the review sequence to decide what the prototype needed to communicate.</p>
           </article>
           <article class="process-card">
             <span class="process-card__number">03</span>
             <h3>Figma</h3>
-            <div class="process-card__pair">
-              <a class="u-image-lightbox-trigger" href="./assets/images/03_low-fidelity-mockup_designer-Figma-1-of-2.png" data-lightbox-image><img src="./assets/images/03_low-fidelity-mockup_designer-Figma-1-of-2.png" alt="First low-fidelity Figma state for Motion Studio"></a>
-              <a class="u-image-lightbox-trigger" href="./assets/images/04_low-fidelity-mockup_designer-Figma-2-of-2.png" data-lightbox-image><img src="./assets/images/04_low-fidelity-mockup_designer-Figma-2-of-2.png" alt="Second low-fidelity Figma state for Motion Studio"></a>
-            </div>
-            <p>I converted the direction into a structured low-fidelity design with enough hierarchy, interaction, visual language, and state definition to support implementation.</p>
+            <a class="u-image-lightbox-trigger" href="./assets/images/03_low-fidelity-mockup_3x.png" data-lightbox-image><img class="process-card__figma-image" src="./assets/images/03_low-fidelity-mockup_designer-Figma-1-of-2.png" alt="First low-fidelity Figma state for Motion Studio"></a>
+            <p>I converted initial concept into a structured low-fidelity design with enough hierarchy, interaction, visual language, and state definition to create a prototype.</p>
           </article>
           <article class="process-card">
             <span class="process-card__number">04</span>
-            <h3>Functional specification</h3>
+            <h3>Functional spec</h3>
             <div class="spec-card" aria-hidden="true"><i></i><i></i><i></i><strong>STATE MODEL</strong><span>behavior · constraints · accessibility</span></div>
-            <p>I documented state, interaction rules, constrained controls, progress behavior, the human review boundary, accessibility, and what was outside prototype scope.</p>
+            <p>I created a functional spec for the execution agent, defining state, interactions, constraints, behaviors, human review boundaries, accessibility, and scope.</p>
           </article>
-        </div>
-        <div class="state-flow" aria-label="Motion Studio workflow states">
-          <span>Empty</span><i></i><span>Asset selection</span><i></i><span>Original</span><i></i><span>Processing</span><i></i><span>Review</span><i></i><span>Approved</span>
         </div>
       </section>
 
@@ -207,8 +197,8 @@
             <p>The handoff intentionally left room for implementation decisions where the specification had already established sufficient intent.</p>
           </div>
           <div class="download-list" aria-label="Implementation specification downloads">
-            <a href="./assets/docs/motion-studio-implementation-spec-v0.1.md" download><span>v0.1</span> Initial specification <b>↓</b></a>
-            <a href="./assets/docs/motion-studio-implementation-spec-v0.2.md" download><span>v0.2</span> Revised specification <b>↓</b></a>
+            <a href="./assets/docs/motion-studio-implementation-spec-v0.1.md" download><span>v0.1</span> Initial functional spec (.md) <b>↓</b></a>
+            <a href="./assets/docs/motion-studio-implementation-spec-v0.2.md" download><span>v0.2</span> Revised functional spec (.md) <b>↓</b></a>
           </div>
         </div>
 
@@ -223,26 +213,24 @@
         </blockquote>
       </section>
 
-      <section class="case-section">
-        <header class="section-header"><h2>Prototype walkthrough</h2></header>
-        <p>After implementation, I performed the walkthrough as a reviewer rather than continuing to design through code. The working prototype supported approved-asset selection, source selection, AI-suggested motion regions, constrained intensity, simulated generation, animated progress, a mandatory Review pause, human approval, and a final Approved state.</p>
-        <div class="walkthrough-strip">
-          <figure><img src="./assets/images/Motion studio UI - Low Fidelity - Initial state_BEFORE.png" alt="Motion Studio empty state before an asset is selected"><figcaption>01 · Empty</figcaption></figure>
-          <span aria-hidden="true">→</span>
-          <figure><img src="./assets/images/Motion studio UI - Low Fidelity - Review state.png" alt="Motion Studio review state awaiting human approval"><figcaption>05 · Human review</figcaption></figure>
-        </div>
-        <p>The implementation was responsive and included semantic controls, focus behavior, status communication, and reduced-motion considerations. The walkthrough confirmed that the prototype communicated the product idea without requiring the full production system behind it.</p>
-      </section>
-
       <section id="prototype" class="case-section prototype-section">
         <header class="section-header"><h2>Live prototype: Motion Studio</h2></header>
         <p>Motion Studio is a low-fidelity internal product concept for extending the value of approved photography through restrained AI-assisted motion.</p>
-        <p>A user selects an approved source image. The system identifies candidate regions such as water or sky and allows the user to select one. Motion intensity is deliberately constrained from Subtle to Restrained, and duration is fixed at 2.0 seconds.</p>
-        <div class="prototype-frame">
-          <div class="prototype-frame__bar"><span></span><span></span><span></span><a href="../../prototypes/motion-studio/" target="_blank" rel="noopener">Open prototype ↗</a></div>
-          <iframe src="../../prototypes/motion-studio/" title="Interactive Motion Studio prototype" loading="lazy"></iframe>
+        <ul class="prototype-points list">
+          <li>A user selects an approved source image.</li>
+          <li>The system identifies candidate regions such as water or sky and allows the user to select one.</li>
+          <li>Motion intensity is deliberately constrained from Subtle to Restrained</li>
+          <li>Duration is fixed at 2.0 seconds.</li>
+        </ul>
+        <div class="state-flow" aria-label="Motion Studio workflow states">
+          <span>Empty</span><i></i><span>Asset selection</span><i></i><span>Original</span><i></i><span>Processing</span><i></i><span>Review</span><i></i><span>Approved</span>
         </div>
-        <p>Generate Preview moves the workflow into Processing and then stops at Review. The generated result cannot approve itself. A human must evaluate the result and explicitly select Approve before the workflow reaches its final state.</p>
+        <div data-module-slot="motion-studio"></div>
+        <ul class="prototype-points list">
+          <li>Generate Preview moves the workflow into Processing and then stops at Review.</li>
+          <li>The generated result cannot approve itself.</li>
+          <li>A human must evaluate the result and explicitly select Approve before the workflow reaches its final state.</li>
+        </ul>
         <aside class="principle-callout"><span>AI generates.</span><strong>Human approves.</strong></aside>
       </section>
 
@@ -251,7 +239,7 @@
         <div class="findings-grid">
           <article>
             <h3>Findings</h3>
-            <p>The low-fidelity prototype demonstrated the core product hypothesis and the complete approval boundary. It showed that substantial interaction and implementation behavior can be evaluated before investing in a production AI pipeline.</p>
+            <p>The low-fidelity prototype showed implementation feasibility before investing in a production AI pipeline.</p>
             <ul class="list">
               <li>Responsive behavior and state transitions became testable</li>
               <li>Focus behavior and progress timing could be evaluated</li>
@@ -260,7 +248,7 @@
           </article>
           <article>
             <h3>Gaps</h3>
-            <p>Several interactions were intentionally left outside the prototype because they were not necessary to prove the concept.</p>
+            <p>Several interactions were intentionally left out because they were not necessary to prove the concept.</p>
             <ul class="list">
               <li>No rejection or regeneration flow</li>
               <li>No editing, saving, versioning, or asset history</li>
@@ -271,10 +259,10 @@
         </div>
 
         <div class="subsection autonomy-section">
-          <h3>Where the execution agent extended the specification</h3>
+          <h3>Where AI extended the specification</h3>
           <div class="media-copy-grid media-copy-grid--reverse">
             <p>The functional specification established the workflow through human approval, but I did not explicitly prescribe every presentation behavior after Approve. Using the state model, visual references, and surrounding context, the execution agent completed a presentation-ready Approved state, including the simulated subtle-motion treatment. This was not unrestricted invention; it was a missing local detail inferred from a strongly constrained product model.</p>
-            <a class="u-image-lightbox-trigger" href="./assets/images/prototype-full.png" data-lightbox-image><img src="./assets/images/prototype-full.png" alt="Completed Motion Studio interface with the full approval workflow"></a>
+            <a class="u-image-lightbox-trigger" href="./assets/images/05_low-fidelity-mockup-approved.png" data-lightbox-image><img src="./assets/images/05_low-fidelity-mockup-approved.png" alt="Completed Motion Studio interface with the full approval workflow"></a>
           </div>
         </div>
 
@@ -283,15 +271,13 @@
           <p>When intent is underspecified, autonomous implementation can create unnecessary complexity or drift from the design problem. When context is sufficiently structured, an execution agent can resolve local implementation decisions without requiring every behavior to be individually prescribed.</p>
           <p>The goal is not to remove human judgment. It is to preserve human judgment for the decisions where it matters and reduce the friction surrounding those decisions.</p>
         </div>
-        <blockquote class="principle-callout principle-callout--wide"><span>Protect the judgment.</span><strong>Reduce the friction around the judgment.</strong></blockquote>
       </section>
 
       <section class="case-section reflection-section">
         <header class="section-header"><h2>Reflection</h2></header>
-        <p>This process changed how I think about AI-assisted prototyping. The speed of implementation was not simply the result of asking an agent to generate a prototype. Considerable work happened upstream: identifying the opportunity, researching the product environment, defining a plausible concept, exploring with AI, sketching, applying human design judgment, extracting an appropriate visual language, building the Figma states, walking through the interaction, discovering missing requirements, and writing the functional specification.</p>
-        <p>Once that ambiguity had been reduced, implementation became dramatically faster. The result was a working, reviewable, documented product direction rather than an isolated generated artifact.</p>
+        <p>This process changed how I think about AI-assisted prototyping. Much of the process I went through with a team could now be done with an agent: from brainstorming ideas, to generating mockups, which I would then adjust hierarchy, interaction, and states. Ultimately, the best result still requires higher-fidelity mockups, behavioral, functional, and presentation specification documents. I still provided assets that could not be inferred. I provided all the necessary context around how I ultimately wanted the prototype to behave. Once that ambiguity had been reduced, implementation became dramatically faster. The result was a working, reviewable, documented product direction rather than an isolated generated artifact.</p>
         <div class="pattern-reflection">
-          <p>“The value is not generation alone. It is the ability to move from an unclear idea to a working, reviewable, and documented product direction while preserving human judgment throughout the process.”</p>
+          <p>“What continues to amaze me is how much of a collaborative process working with AI has become for me. I can work out ideas faster and build evidence quicker than I could on my own.”</p>
         </div>
       </section>
     </main>

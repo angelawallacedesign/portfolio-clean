@@ -1,3 +1,9 @@
+import { mountMotionStudio } from "./motion-studio-loader.js";
+
+mountMotionStudio({
+  baseUrl: "../../prototypes/motion-studio/",
+});
+
 const nav = document.querySelector('#navList');
 
 if (nav) {

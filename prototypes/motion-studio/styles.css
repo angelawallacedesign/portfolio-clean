@@ -585,6 +585,8 @@ input[type="range"]:disabled {
 .dialog-panel h2 {
   margin: 0 44px 8px 0;
   font-size: 24px;
+  color: var(--color-text);
+    font-family: var(--font-sans);
 }
 
 .dialog-panel > p {

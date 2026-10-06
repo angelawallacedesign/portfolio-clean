@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../css/components.css?v=responsive-fix-2">
   <link rel="stylesheet" href="../designing-with-ai/image-zoom-lightbox/image-zoom-lightbox.css">
+  <link rel="stylesheet" href="../../prototypes/motion-studio/styles.css">
   <link rel="stylesheet" href="./motion-studio.css">
 </head>
 <body id="top" class="case-study-page">
@@ -175,7 +176,7 @@
           <article class="process-card">
             <span class="process-card__number">03</span>
             <h3>Figma</h3>
-            <a class="u-image-lightbox-trigger" href="./assets/images/03_low-fidelity-mockup_designer-Figma-1-of-2.png" data-lightbox-image><img class="process-card__figma-image" src="./assets/images/03_low-fidelity-mockup_designer-Figma-1-of-2.png" alt="First low-fidelity Figma state for Motion Studio"></a>
+            <a class="u-image-lightbox-trigger" href="./assets/images/03_low-fidelity-mockup_3x.png" data-lightbox-image><img class="process-card__figma-image" src="./assets/images/03_low-fidelity-mockup_designer-Figma-1-of-2.png" alt="First low-fidelity Figma state for Motion Studio"></a>
             <p>I converted initial concept into a structured low-fidelity design with enough hierarchy, interaction, visual language, and state definition to create a prototype.</p>
           </article>
           <article class="process-card">
@@ -224,9 +225,7 @@
         <div class="state-flow" aria-label="Motion Studio workflow states">
           <span>Empty</span><i></i><span>Asset selection</span><i></i><span>Original</span><i></i><span>Processing</span><i></i><span>Review</span><i></i><span>Approved</span>
         </div>
-        <a class="prototype-frame" href="../../prototypes/motion-studio/" target="_blank" rel="noopener" aria-label="Open the interactive Motion Studio prototype">
-          <img src="./assets/images/prototype-empty-state.png" alt="Motion Studio empty state before an approved source image is selected">
-        </a>
+        <div data-module-slot="motion-studio"></div>
         <ul class="prototype-points list">
           <li>Generate Preview moves the workflow into Processing and then stops at Review.</li>
           <li>The generated result cannot approve itself.</li>
@@ -263,7 +262,7 @@
           <h3>Where AI extended the specification</h3>
           <div class="media-copy-grid media-copy-grid--reverse">
             <p>The functional specification established the workflow through human approval, but I did not explicitly prescribe every presentation behavior after Approve. Using the state model, visual references, and surrounding context, the execution agent completed a presentation-ready Approved state, including the simulated subtle-motion treatment. This was not unrestricted invention; it was a missing local detail inferred from a strongly constrained product model.</p>
-            <a class="u-image-lightbox-trigger" href="./assets/images/04_low-fidelity-mockup_designer-Figma-2-of-2.png" data-lightbox-image><img src="./assets/images/04_low-fidelity-mockup_designer-Figma-2-of-2.png" alt="Completed Motion Studio interface with the full approval workflow"></a>
+            <a class="u-image-lightbox-trigger" href="./assets/images/05_low-fidelity-mockup-approved.png" data-lightbox-image><img src="./assets/images/05_low-fidelity-mockup-approved.png" alt="Completed Motion Studio interface with the full approval workflow"></a>
           </div>
         </div>
 

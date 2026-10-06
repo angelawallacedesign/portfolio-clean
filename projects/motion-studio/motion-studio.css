@@ -274,6 +274,7 @@
   letter-spacing: 0.22em;
   text-align: center;
   text-transform: uppercase;
+  max-width: 100%;
 }
 
 .motion-study__tagline {

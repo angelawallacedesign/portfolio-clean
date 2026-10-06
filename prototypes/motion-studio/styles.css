@@ -164,6 +164,8 @@ input:focus-visible,
 .empty-state h2 {
   margin: 0 0 12px;
   font-size: 23px;
+  font-family: var(--font-sans);
+  color: #000000;
 }
 
 .empty-state p {

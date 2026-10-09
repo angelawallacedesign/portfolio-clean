@@ -96,7 +96,7 @@ export function renderProjectCard(data, options = {}) {
       : "";
 
     return `
-    <article class="project-card" data-project-category="${data.category || ""}">
+    <article class="project-card" data-project-id="${data.id}" data-project-category="${data.category || ""}">
       <img
         src="${imageUrl}"
         alt="${data.heading.title}"

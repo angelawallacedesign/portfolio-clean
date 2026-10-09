@@ -192,6 +192,31 @@
       "featuredUrl": "assets/work/fb/payments/payments_1.png"
     }
   },
+    {
+    "id": "nickelodeon-interactive-tv",
+    "featured": false,
+    "category": "interface-design",
+    "projectUrl": "",
+    "heading": {
+      "title": "Nickelodeon Interactive TV",
+      "main": "Nickelodeon",
+      "accent": "interactive tv"
+    },
+    "year": 2014,
+    "users": 50000,
+    "complexity": 3,
+    "opacity": 0.5,
+    "hasCaseStudy": false,
+    "meta": {
+      "type": "Hospitality Interface",
+      "client": "Allin Interactive",
+      "role": "UI Designer",
+      "disciplines": "Television UI, Hospitality, Visual design",
+      "notes": "As part of a UX/UI team, I designed an interactive television experience for Nickelodeon Hotels & Resorts Punta Cana. Focused on legibility at viewing distance, intuitive remote-control navigation, and brand consistency across digital guest touchpoints.<br><br><em>Case study in development.</em>",
+      "caption": "Interactive television landing screen",
+      "imageUrl": "assets/work/allin/nick/nick-itv_thumb.webp"
+    }
+  },
   {
     "id": "allin-social-media-feature",
     "featured": false,
@@ -225,7 +250,7 @@
     "id": "outside-in-art-exhibition-campaign",
     "featured": false,
     "category": "visual-design",
-    "projectUrl": "work/graphic-design/outside-in.html",
+    "projectUrl": "work/visual-design/outside-in.html",
     "heading": {
       "title": "Outside In Campaign",
       "main": "Outside In",
@@ -251,7 +276,7 @@
     "id": "exposed-exhibition-campaign",
     "featured": false,
     "category": "visual-design",
-    "projectUrl": "work/graphic-design/exposed.html",
+    "projectUrl": "work/visual-design/exposed.html",
     "heading": {
       "title": "Exposed Campaign",
       "main": "Exposed",
@@ -277,11 +302,11 @@
     "id": "flamingo-gardens-style-guide",
     "featured": false,
     "category": "visual-design",
-    "projectUrl": "work/branding/flamingo-gardens.html",
+    "projectUrl": "work/visual-design/flamingo-gardens.html",
     "heading": {
       "title": "Flamingo Gardens Style Guide",
-      "main": "Flamingo Gardens",
-      "accent": "style guide"
+      "main": "Brand",
+      "accent": "identity"
     },
     "year": 2017,
     "users": 5000,
@@ -292,12 +317,12 @@
     "meta": {
       "type": "Brand Identity",
       "client": "Flamingo Gardens",
-      "role": "Brand Designer",
+      "role": "Visual Designer",
       "impact": "Created a comprehensive rebrand proposal for a South Florida wildlife sanctuary.",
       "disciplines": "Brand strategy, Visual identity, Style guide design",
       "notes": "Developed a proposal to rebrand Flamingo Gardens Wildlife Sanctuary in Davie, Florida, translating the organization’s natural setting and educational mission into a cohesive visual identity system.",
       "caption": "Flamingo Gardens brand style guide",
-      "imageUrl": "assets/work/2019/branding/flamingo-gardens/flamingo-gardens-category.webp"
+      "imageUrl": "assets/work/awd/flamingo-gardens-cover_thumb.webp"
     }
   },
   {

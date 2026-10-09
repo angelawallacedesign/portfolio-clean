@@ -214,7 +214,18 @@ export function renderWorkFeature(data, index, modules = {}) {
     data.layout === "right" ||
     (data.layout !== "left" && index % 2 !== 0);
 
+  const isMotionStudio = data.id === "motion-studio";
+
   let featureClass = "";
+
+  if (isMotionStudio) {
+    featureClass = "feature--motion-studio";
+  }
+
+  const featuredMedia =
+    isMotionStudio
+      ? '<div data-hero-slot="motion-studio-hero"></div>'
+      : `<img src="${data.meta.featuredUrl}" alt="${data.heading.title}" />`;
 
   if (data.id === "florida-blue-payments-experience") {
     featureClass = "feature--payments";
@@ -257,7 +268,7 @@ export function renderWorkFeature(data, index, modules = {}) {
       </div>
 
       <div class="work-feature__media${mediaTreatmentClass}">
-        <img src="${data.meta.featuredUrl}" alt="${data.heading.title}" />
+        ${featuredMedia}
       </div>
 
     </article>

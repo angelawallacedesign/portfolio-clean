@@ -55,42 +55,17 @@
 
   <article class="motion-study">
     <header class="motion-study__header">
-      <section class="motion-hero" aria-label="Motion Studio featured project">
-        <div class="motion-hero__grid" aria-hidden="true"></div>
-        <div class="motion-hero__diagram motion-hero__diagram--left" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </div>
-        <div class="motion-hero__diagram motion-hero__diagram--right" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </div>
-        <div class="motion-hero__stage">
-          <div class="motion-hero__window">
-            <div class="motion-hero__bar" aria-hidden="true"><i></i><i></i><i></i><b>Motion Studio</b><span>Prototype / Internal</span></div>
-            <div class="motion-hero__workspace">
-              <div class="motion-hero__preview">
-                <img src="./assets/images/ship-vector-subdued-v2.png" alt="Motion Studio prototype showing the source image, restrained motion controls, and human approval workflow">
-                <span class="motion-hero__scan" aria-hidden="true"></span>
-              </div>
-              <div class="motion-hero__controls" aria-hidden="true">
-                <small>Motion region</small>
-                <strong>Water</strong>
-                <i></i><i></i><i></i>
-                <span>Generate preview</span>
-              </div>
-            </div>
-          </div>
-          <span class="motion-hero__edge motion-hero__edge--side" aria-hidden="true"></span>
-          <span class="motion-hero__edge motion-hero__edge--bottom" aria-hidden="true"></span>
-        </div>
-      </section>
+
+      <!--Hero loaded here-->
+      <div data-hero-slot="motion-studio-hero"></div>
 
       <div class="motion-study__title">
         <h1 class="section-heading">
-          <span class="heading-main">Design</span>
-          <span class="heading-accent">engineering</span>
+          <span class="heading-main">Motion</span>
+          <span class="heading-accent">studio</span>
         </h1>
         <p class="cs-eyebrow">Case study</p>
-        <p class="motion-study__tagline">A human-directed, AI-assisted 0→1 product workflow</p>
+        <p class="motion-study__tagline">A human-directed, AI-assisted coded prototype</p>
       </div>
     </header>
 
@@ -222,9 +197,10 @@
           <li>Motion intensity is deliberately constrained from Subtle to Restrained</li>
           <li>Duration is fixed at 2.0 seconds.</li>
         </ul>
+        <!-- This needs to be restyled.  Looks like a mistake.
         <div class="state-flow" aria-label="Motion Studio workflow states">
           <span>Empty</span><i></i><span>Asset selection</span><i></i><span>Original</span><i></i><span>Processing</span><i></i><span>Review</span><i></i><span>Approved</span>
-        </div>
+        </div>-->
         <div data-module-slot="motion-studio"></div>
         <ul class="prototype-points list">
           <li>Generate Preview moves the workflow into Processing and then stops at Review.</li>
@@ -262,7 +238,7 @@
           <h3>Where AI extended the specification</h3>
           <div class="media-copy-grid media-copy-grid--reverse">
             <p>The functional specification established the workflow through human approval, but I did not explicitly prescribe every presentation behavior after Approve. Using the state model, visual references, and surrounding context, the execution agent completed a presentation-ready Approved state, including the simulated subtle-motion treatment. This was not unrestricted invention; it was a missing local detail inferred from a strongly constrained product model.</p>
-            <a class="u-image-lightbox-trigger" href="./assets/images/05_low-fidelity-mockup-approved.png" data-lightbox-image><img src="./assets/images/05_low-fidelity-mockup-approved.png" alt="Completed Motion Studio interface with the full approval workflow"></a>
+            <a class="u-image-lightbox-trigger" href="./assets/images/05_low-fidelity-mockup-approved.png" data-lightbox-image><img src="./assets/images/05_low-fidelity-mockup-approved.png" alt="The agent figured out how to complete the approval sequence using the context I provided."></a>
           </div>
         </div>
 

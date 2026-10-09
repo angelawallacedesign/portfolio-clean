@@ -2,6 +2,7 @@ console.log("data.js loaded");
 
 import { openCaseStudy } from "./modal.js";
 import { renderWorkFeature } from "./components.js";
+import { mountMotionStudioHero } from "../modules/motion-studio-hero/motion-studio-hero.js";
 
 let projectsCache = [];
 
@@ -52,6 +53,7 @@ Promise.all([
       })
       .join("");
 
+    mountMotionStudioHero(listRoot);
     initWorkReveal();
   });
 

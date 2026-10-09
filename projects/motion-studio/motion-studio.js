@@ -1,4 +1,7 @@
 import { mountMotionStudio } from "./motion-studio-loader.js";
+import { mountMotionStudioHero } from "../../modules/motion-studio-hero/motion-studio-hero.js";
+
+mountMotionStudioHero();
 
 mountMotionStudio({
   baseUrl: "../../prototypes/motion-studio/",

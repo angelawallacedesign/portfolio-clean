@@ -587,6 +587,37 @@ WORK FEATURE - (LANDING PAGE ONLY)
   flex-direction: row-reverse;
 }
 
+/* Motion Studio hero */
+/* MOTION STUDIO — featured homepage presentation */
+
+.intro-layout .feature--motion-studio .work-feature__media {
+  min-width: 0;
+  overflow: visible;
+}
+
+.intro-layout .feature--motion-studio .motion-hero {
+  width: 100%;
+  max-width: 900px;
+  height: 450px;
+  min-height: 0;
+  border-radius: 16px;
+}
+
+.intro-layout .feature--motion-studio .motion-hero__stage {
+  width: 82%;
+  max-width: 880px;
+}
+
+@media (max-width: 520px) {
+  .intro-layout .feature--motion-studio .motion-hero {
+    height: 320px;
+  }
+
+  .intro-layout .feature--motion-studio .motion-hero__stage {
+    width: 78%;
+  }
+}
+
 /* PAYMENTS → wide system UI should feel expansive */
 .feature--payments .work-feature__media img {
   max-width: 900px;
@@ -614,6 +645,29 @@ WORK FEATURE - (LANDING PAGE ONLY)
 
 .feature--privacy img {
   object-fit: contain;
+}
+
+/* MOTION STUDIO - Homepage featured hero */
+
+@media (min-width: 769px) {
+  .intro-layout .feature--motion-studio .work-feature__media {
+    min-width: 0;
+    overflow: visible;
+  }
+
+  .intro-layout .feature--motion-studio .motion-hero {
+    width: 800px;
+    max-width: 1200px;
+    height: 450px;
+    min-height: 0;
+    border-radius: 16px;
+
+    position: relative;
+    left: clamp(175px, 16vw, 300px);
+
+    transform: scale(1.15);
+    transform-origin: center center;
+  }
 }
 
 @media (max-width:480px) {

@@ -1145,10 +1145,11 @@ footer a {
 /* =========================
    IMAGES
 ========================= */
-.image-treatment--soft-shadow {
+
+/*.image-treatment--soft-shadow {
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.06), 0 1px 10px rgba(0, 0, 0, 0.10);
 }
-
+*/
 
 .inline-image {
   display: inline;

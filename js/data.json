@@ -1,8 +1,36 @@
 [
+   {
+    "id": "motion-studio",
+    "featured": true,
+    "category": "prototypes",
+    "layout": "left",
+    "heading": {
+      "title": "Motion Studio",
+      "main": "Motion",
+      "accent": "studio"
+    },
+    "year": 2026,
+    "users": 0,
+    "complexity": 5,
+    "opacity": 1,
+    "hasCaseStudy": true,
+    "htmlInclude": "projects/motion-studio/",
+    "meta": {
+      "type": "Coded prototype",
+      "client": "Independent R&D",
+      "role": "UX Engineer",
+      "impact": "Demonstration of product thinking which includes user flows, state management, coded prototype, and technical documentation.",
+      "disciplines": "AI workflows, Interface design, UX engineering",
+      "notes": "An AI-assisted prototyping exploration using iterative workflows to transform static visual concepts into interactive, motion-driven web experiences.",
+      "caption": "Coded prototype",
+      "imageUrl": "assets/work/prototypes/motion-studio_thumb.webp",
+      "featuredUrl": "assets/work/prototypes/motion-studio-featured.png"
+    }
+  },
   {
     "id": "designing-with-ai",
-    "featured": true,
-    "category": "interface-design",
+    "featured": false,
+    "category": "case-studies",
     "layout": "left",
     "heading": {
       "title": "Designing with AI",
@@ -83,8 +111,8 @@
   },
   {
     "id": "florida-blue-data-sharing",
-    "featured": true,
-    "category": "interface-design",
+    "featured": false,
+    "category": "case-studies",
     "layout": "right",
     "heading": {
       "title": "Privacy & Data Interface",
@@ -140,7 +168,7 @@
   {
     "id": "florida-blue-payments-experience",
     "featured": true,
-    "category": "interface-design",
+    "category": "case-studies",
     "heading": {
       "title": "Payments Experience",
       "main": "Payments",
@@ -196,7 +224,7 @@
   {
     "id": "outside-in-art-exhibition-campaign",
     "featured": false,
-    "category": "graphic-design",
+    "category": "visual-design",
     "projectUrl": "work/graphic-design/outside-in.html",
     "heading": {
       "title": "Outside In Campaign",
@@ -222,7 +250,7 @@
   {
     "id": "exposed-exhibition-campaign",
     "featured": false,
-    "category": "graphic-design",
+    "category": "visual-design",
     "projectUrl": "work/graphic-design/exposed.html",
     "heading": {
       "title": "Exposed Campaign",
@@ -248,7 +276,7 @@
   {
     "id": "flamingo-gardens-style-guide",
     "featured": false,
-    "category": "branding",
+    "category": "visual-design",
     "projectUrl": "work/branding/flamingo-gardens.html",
     "heading": {
       "title": "Flamingo Gardens Style Guide",

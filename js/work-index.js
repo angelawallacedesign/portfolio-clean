@@ -23,10 +23,13 @@ function setFilter(nextFilter) {
   });
 
   const projectCards = [...listRoot.querySelectorAll("[data-project-category]")];
+  const includedProjectIds = new Set(
+    filterButtons.find((button) => button.dataset.workFilter === activeFilter)?.dataset.projectIds?.split(",") || []
+  );
   let visibleCount = 0;
 
   projectCards.forEach((card) => {
-    const isVisible = activeFilter === "all" || card.dataset.projectCategory === activeFilter;
+    const isVisible = activeFilter === "all" || card.dataset.projectCategory === activeFilter || includedProjectIds.has(card.dataset.projectId);
     card.hidden = !isVisible;
     if (isVisible) visibleCount += 1;
   });

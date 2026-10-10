@@ -4,7 +4,9 @@
 */
 
 .intro-play-overlay,
-.intro-close {
+.intro-close,
+.intro-close-message,
+.intro-reveal {
     display: none;
 }
 
@@ -161,6 +163,7 @@
     * Full-viewport reveal layer
     */
     .intro-reveal {
+        display: block;
         position: fixed;
         inset: 0;
         z-index: 10;

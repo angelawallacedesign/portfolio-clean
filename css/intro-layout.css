@@ -167,7 +167,7 @@ VERTICAL CONTAINERS
 .intro-layout .projects-wrapper--column #project-list {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-4);
+  gap: var(--gap-5);
 }
 
 .intro-layout .work .projects-wrapper {
@@ -779,6 +779,19 @@ BREAKPOINT QUERIES
   .designer-brand {
     justify-content: center;
   }
+
+  .intro-layout .work-feature {
+    gap: 2rem;
+    min-height: 0;
+    margin-bottom: 0;
+  }
+
+  .intro-layout .work-feature__media {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+  }
+
   .intro-layout .about > .ph-media {
     width: min(48vw, 260px);
   }
@@ -865,10 +878,6 @@ BREAKPOINT QUERIES
     padding: 20px;
   }
 
-  .intro-layout .work-feature {
-    gap: 0;
-  }
-  
   .intro-layout .work-feature.right-mode {
     flex-direction: column;
   }

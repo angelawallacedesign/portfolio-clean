@@ -754,7 +754,7 @@ BREAKPOINT QUERIES
     margin-bottom: auto;
   }
   .intro-layout .global-header {
-    --global-nav-fade-height: 18px;
+    --global-nav-fade-height: 40px;
     position: sticky;
     top: 0;
     width: calc(100dvw - var(--frame-thickness) *2 );
@@ -865,7 +865,7 @@ BREAKPOINT QUERIES
   }
   
   .intro-layout .page-main {
-    padding: 170px 20px 0;
+    padding: 125px 20px 0;
   }
   
   .intro-description {

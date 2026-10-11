@@ -1,4 +1,4 @@
-import { icons } from './icons.js'
+import { icons } from '../../js/icons.js'
 
 const svgNS = 'http://www.w3.org/2000/svg'
 

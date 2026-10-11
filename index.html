@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="css/intro-reveal.css" />
     <link rel="stylesheet" href="projects/designing-with-ai/pattern-inspector/pattern-inspector.css" />
     <link rel="stylesheet" href="modules/designing-with-ai-hero/pass-4/designing-ai-hero.css?v=responsive-fix" />
+    <link rel="stylesheet" href="css/navigation-drawer.css" />
 </head>
 <body class="long-page intro-layout" data-page="intro" id="top">
     
@@ -82,9 +83,51 @@
                             </a>-->
                             
                         </div>
+
+                        <button class="navigation-drawer-trigger" type="button" data-navigation-drawer-trigger aria-controls="site-navigation-drawer" aria-expanded="false" aria-label="Open navigation menu">
+                            <span class="navigation-drawer-icon" data-navigation-drawer-icon aria-hidden="true"></span>
+                        </button>
                         
                     </div>
     </header>
+
+    <div class="navigation-drawer-root" data-navigation-drawer aria-hidden="true" hidden>
+        <button class="navigation-drawer-backdrop" type="button" data-navigation-drawer-backdrop tabindex="-1" aria-label="Close navigation menu"></button>
+        <aside class="navigation-drawer" id="site-navigation-drawer" data-navigation-drawer-panel role="dialog" aria-modal="true" aria-label="Navigation menu">
+            <div class="navigation-drawer-meta">
+                <div class="designer-name">
+                    <p><a href="#top">Angela Wallace</a></p>
+                    <p>Senior UI/UX Designer</p>
+                </div>
+                <button class="navigation-drawer-close" type="button" data-navigation-drawer-close aria-label="Close navigation menu">
+                    <span class="navigation-drawer-icon" data-navigation-drawer-icon aria-hidden="true"></span>
+                </button>
+            </div>
+            <nav class="navigation-drawer-nav" aria-label="Mobile primary">
+                <ul class="navigation-drawer-list">
+                    <li><a class="navigation-drawer-primary-link" href="index.html" aria-current="page">Home</a></li>
+                    <li>
+                        <div class="navigation-drawer-work-row">
+                            <a class="navigation-drawer-work-link" href="work/">Work</a>
+                            <button class="navigation-drawer-work-toggle" type="button" data-navigation-drawer-work-toggle aria-expanded="true" aria-controls="navigation-drawer-work-links" aria-label="Collapse Work categories">
+                                <span class="navigation-drawer-icon rotate-90" data-navigation-drawer-icon aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <ul class="navigation-drawer-work-links" id="navigation-drawer-work-links" data-navigation-drawer-work-links>
+                            <li><a href="work/">All Work</a></li>
+                            <li><a href="work/?filter=prototypes">Prototypes</a></li>
+                            <li><a href="work/?filter=case-studies">Case Studies</a></li>
+                            <li><a href="work/?filter=interface-design">Interface Design</a></li>
+                            <li><a href="work/?filter=visual-design">Visual Design</a></li>
+                        </ul>
+                    </li>
+                    <li class="navigation-drawer-divider" aria-hidden="true"></li>
+                    <li><a class="navigation-drawer-primary-link" href="#services">Services</a></li>
+                    <li><a class="navigation-drawer-primary-link" href="#about">About</a></li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
 
     <!--<div class="c-utility-nav is-bottom-left">
         <div>
@@ -580,6 +623,7 @@
 <script type="module" src="./js/modal.js"></script>
 <!-- Load navigation logic -->
 <script type="module" src="./js/navigation.js?v=2"></script>
+<script type="module" src="./js/navigation-drawer.js"></script>
 <script>
     document.querySelector('[data-copy-email]')?.addEventListener('click', async (event) => {
         const button = event.currentTarget;

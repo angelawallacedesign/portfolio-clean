@@ -781,7 +781,7 @@ BREAKPOINT QUERIES
   }
 
   .intro-layout .work-feature {
-    gap: 2rem;
+    gap: 1.5rem;
     min-height: 0;
     margin-bottom: 0;
   }
@@ -818,6 +818,54 @@ BREAKPOINT QUERIES
   }
   .intro-layout .section:last-of-type {
     padding-bottom: 0;
+  }
+
+  /* Featured Work heading — mobile */
+  #work .section-heading.heading--display {
+    --heading-size: 3rem; /* 48px */
+    line-height: 0.9167; /* 44px at 48px */
+    letter-spacing: -0.015em;
+  }
+  #work .section-heading.heading--display .heading-main {
+    letter-spacing: -0.015em;
+  }
+
+  /* Mobile featured project layout */
+  #work .work-feature {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #work .work-feature__copy {
+    display: contents;
+  }
+
+  #work .work-feature__copy .section-heading {
+    order: 1;
+  }
+
+  #work .work-feature__impact {
+    order: 2;
+  }
+
+  #work .work-feature__media {
+    order: 3;
+  }
+
+  #work .work-feature__actions {
+    order: 4;
+    align-self: center;
+  }
+
+  /* Left-align featured project headings on mobile */
+  #work .work-feature__copy .section-heading {
+    align-self: stretch;
+    text-align: left;
+  }
+
+  /* Hide Payments Featured project on mobile */
+  #work .work-feature.feature--payments {
+    display: none;
   }
 }
 
@@ -888,7 +936,45 @@ BREAKPOINT QUERIES
   .intro-layout .work-feature {
     flex-direction: column;
   }
-  
+
+  /* About Me responsive adjustmemts */
+  .intro-layout .about__portrait-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: #f2f2f2;
+  }
+
+  .intro-layout .about__portrait-frame > .ph-media {
+    width: 100%;
+    max-width: none;
+    max-height: none;
+  }
+
+  #about .section-heading {
+    justify-content: center;
+    align-items: baseline;
+  }
+
+  #about .about-actions .primary-btn-small {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1.125rem;
+  }
+
+  #about .about-actions .link-btn {
+    display: block;
+    width: fit-content;
+    margin-inline: auto;
+    font-size: 1.25rem;
+  }
+
+  .intro-layout footer > p {
+    text-align: center;
+  }
+    
   /*.feature--payments .work-feature__media img {
   
   }*/

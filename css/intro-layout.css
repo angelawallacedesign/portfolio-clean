@@ -824,6 +824,9 @@ BREAKPOINT QUERIES
 
 
 @media (max-width: 480px) {
+  .container {
+    margin-inline:unset;
+  }
   .intro-top {
     padding-bottom: 20px;
   }

@@ -109,6 +109,37 @@
   letter-spacing: -0.018em;
 }
 
+/* Featured Work — View All Projects link card */
+.projects-link-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;  
+
+  width: 100%;
+  padding: var(--impact-pad-y) var(--impact-pad-x);
+  margin-top: 2.25rem;
+
+  border: 1px solid var(--impact-border);
+  border-radius: var(--impact-radius);
+  background: var(--impact-bg);
+
+  font-family: var(--font-sans);
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.projects-link-card:hover {
+  color: var(--color-text);
+}
+
+.projects-link-card:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
 /* Medium */
 @media (max-width: 1100px) {
   .impact-metrics {

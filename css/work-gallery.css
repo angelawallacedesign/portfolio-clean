@@ -552,7 +552,7 @@ html.work-page body.work-archive {
 
   .work-archive .global-header .header-inner {
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     gap: 4px;
     padding: var(--gap-2) 4vw 8px;
   }
@@ -902,7 +902,7 @@ html.work-page body.work-archive {
   }
 
   .work-index .work-main {
-    padding-top: clamp(3rem, 8vw, 7rem);
+    padding: clamp(1rem, 2.875rem, 3rem);
   }
 
   .work-local-nav__inner,

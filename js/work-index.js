@@ -10,7 +10,10 @@ const stickySentinel = document.querySelector("[data-work-sticky-sentinel]");
 const resultStatus = document.querySelector("[data-work-results-status]");
 
 let projects = [];
-let activeFilter = "all";
+const requestedFilter = new URLSearchParams(window.location.search).get("filter");
+let activeFilter = filterButtons.some((button) => button.dataset.workFilter === requestedFilter)
+  ? requestedFilter
+  : "all";
 let activeView = "list";
 
 function setFilter(nextFilter) {
@@ -38,6 +41,12 @@ function setFilter(nextFilter) {
     const label = filterButtons.find((button) => button.dataset.workFilter === activeFilter)?.textContent.trim();
     resultStatus.textContent = `${visibleCount} ${label === "All" ? "projects" : `${label} projects`} shown.`;
   }
+
+  document.querySelectorAll("[data-drawer-work-filter]").forEach((link) => {
+    const isActive = link.dataset.drawerWorkFilter === activeFilter;
+    if (isActive) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  });
 }
 
 function setView(nextView) {

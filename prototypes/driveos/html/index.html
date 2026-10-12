@@ -4,17 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="dark" />
-    <title>DriveOS — Pass B Surface Registration</title>
+    <title>DriveOS — Pass C Cockpit Environment</title>
     <link rel="stylesheet" href="shared/reset.css" />
     <link rel="stylesheet" href="shared/tokens.css" />
     <link rel="stylesheet" href="cockpit/cockpit.css" />
     <link rel="stylesheet" href="cockpit/surface-registration.css" />
+    <link rel="stylesheet" href="cockpit/cockpit-treatment.css" />
     <link rel="stylesheet" href="prototype/status.css" />
     <link rel="stylesheet" href="prototype/controls.css" />
   </head>
   <body>
     <main class="prototype-viewport" aria-labelledby="prototype-title">
-      <section class="viewport-shell" data-pass="B" data-debug-surfaces="true">
+      <section class="viewport-shell" data-pass="C" data-debug-surfaces="false">
         <header class="status-region" id="top-status-region" aria-label="Region A: top status">
           <div class="status-bar status-bar--identity" id="identity-status-bar">
             <span class="region-key" aria-hidden="true">A</span>
@@ -60,9 +61,96 @@
             </svg>
           </div>
 
+          <div class="cockpit-treatment cockpit-materials" aria-hidden="true">
+            <svg viewBox="0 0 1600 800" preserveAspectRatio="none" role="presentation">
+              <defs>
+                <linearGradient id="headliner-material" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#0b0f13" />
+                  <stop offset="0.48" stop-color="#252b30" />
+                  <stop offset="1" stop-color="#080b0e" />
+                </linearGradient>
+                <linearGradient id="pillar-material-left" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#080b0e" />
+                  <stop offset="0.5" stop-color="#2f363c" />
+                  <stop offset="0.78" stop-color="#151a1f" />
+                  <stop offset="1" stop-color="#070a0c" />
+                </linearGradient>
+                <linearGradient id="pillar-material-right" x1="1" y1="0" x2="0" y2="0">
+                  <stop offset="0" stop-color="#080b0e" />
+                  <stop offset="0.5" stop-color="#2f363c" />
+                  <stop offset="0.78" stop-color="#151a1f" />
+                  <stop offset="1" stop-color="#070a0c" />
+                </linearGradient>
+                <linearGradient id="dash-material" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#293036" />
+                  <stop offset="0.12" stop-color="#20262b" />
+                  <stop offset="0.56" stop-color="#14191d" />
+                  <stop offset="1" stop-color="#090c0f" />
+                </linearGradient>
+                <linearGradient id="lower-dash-material" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#171c21" />
+                  <stop offset="1" stop-color="#07090b" />
+                </linearGradient>
+                <linearGradient id="metal-trim" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#b7c0c6" />
+                  <stop offset="0.18" stop-color="#707b83" />
+                  <stop offset="0.48" stop-color="#22292e" />
+                  <stop offset="0.72" stop-color="#7c858b" />
+                  <stop offset="1" stop-color="#181e22" />
+                </linearGradient>
+                <radialGradient id="mirror-glass" cx="50%" cy="25%" r="90%">
+                  <stop offset="0" stop-color="#253744" />
+                  <stop offset="0.55" stop-color="#101921" />
+                  <stop offset="1" stop-color="#05080a" />
+                </radialGradient>
+                <pattern id="speaker-mesh" width="10" height="10" patternUnits="userSpaceOnUse">
+                  <rect width="10" height="10" fill="#090c0e" />
+                  <circle cx="2.5" cy="2.5" r="1.15" fill="#59636a" />
+                  <circle cx="7.5" cy="7.5" r="1.15" fill="#454e54" />
+                </pattern>
+                <pattern id="vent-slats" width="14" height="8" patternUnits="userSpaceOnUse">
+                  <rect width="14" height="8" fill="#080a0c" />
+                  <rect width="14" height="1.2" y="1" fill="#566067" opacity="0.68" />
+                </pattern>
+                <filter id="soft-touch-texture" x="-5%" y="-5%" width="110%" height="110%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.62" numOctaves="2" seed="14" result="noise" />
+                  <feColorMatrix in="noise" values="0 0 0 0 0.46 0 0 0 0 0.5 0 0 0 0 0.53 0 0 0 .09 0" result="grain" />
+                  <feBlend in="SourceGraphic" in2="grain" mode="soft-light" />
+                </filter>
+              </defs>
+              <path class="material-headliner soft-touch" d="M0 0H1600V45H1020L970 82H630L580 45H0Z" />
+              <path class="material-mirror-shell" d="M652 8H948L930 75H670Z" />
+              <path class="material-mirror" d="M670 18H930L917 63H683Z" />
+              <path class="material-pillar material-pillar--left soft-touch" d="M0 0H92L174 500L0 615Z" />
+              <path class="material-pillar material-pillar--right soft-touch" d="M1508 0H1600V615L1426 500Z" />
+              <path class="pillar-highlight" d="M48 28Q84 214 130 477" />
+              <path class="pillar-highlight" d="M1552 28Q1516 214 1470 477" />
+              <path class="material-dash soft-touch" d="M0 575L205 500Q380 454 575 496L694 528H1384L1600 574V800H0Z" />
+              <path class="material-lower-dash" d="M0 666L252 596Q425 563 610 598L742 628H1392L1600 665V800H0Z" />
+              <path class="dash-seam" d="M18 624L246 563Q421 527 602 566L736 598H1382L1582 625" />
+              <path class="material-trim" d="M0 645L252 581Q425 547 608 582L742 613H1388L1600 645" />
+              <path class="material-trim material-trim--lower" d="M0 706H1368Q1518 706 1600 650" />
+              <path class="speaker-grille" d="M0 662H58L126 733H0Z" />
+              <path class="speaker-grille" d="M1600 662H1542L1474 733H1600Z" />
+              <path class="material-vent material-vent--left" d="M18 620H128L158 648H0Z" />
+              <path class="material-vent material-vent--right" d="M1382 622H1568L1538 651H1382Z" />
+              <path class="material-vent material-vent--center" d="M612 612H699L730 626H612Z" />
+              <path class="material-console" d="M675 762H1510L1458 800H640Z" />
+              <path class="console-highlight" d="M702 773H1454" />
+            </svg>
+          </div>
+
           <section class="surface surface--windshield" id="windshield-surface" aria-labelledby="windshield-label">
             <div class="surface-viewport">
               <div class="surface-local-canvas" data-coordinate-width="1600" data-coordinate-height="900">
+                <div class="environment-layer" id="cockpit-environment" aria-hidden="true">
+                  <img
+                    class="environment-image"
+                    src="assets/environment/forest-mountain-road-blue-hour-v1.png"
+                    alt=""
+                  />
+                  <div class="environment-atmosphere"></div>
+                </div>
                 <span class="region-key" aria-hidden="true">B</span>
                 <div class="surface-label" id="windshield-label">
                   <span class="surface-name" data-copy="regions.b"></span>
@@ -134,14 +222,35 @@
             </svg>
           </div>
 
+          <div class="cockpit-treatment cockpit-reflections" aria-hidden="true">
+            <svg viewBox="0 0 1600 800" preserveAspectRatio="none" role="presentation">
+              <path class="cluster-binnacle" d="M132 704Q154 548 332 505Q492 468 620 540L666 585" />
+              <path class="dashboard-bezel-highlight" d="M704 612H1358Q1390 612 1404 640" />
+              <path class="reflection reflection--dash" d="M36 618Q360 510 610 555L730 584H1370Q1500 584 1570 618" />
+              <path class="reflection reflection--pillar" d="M46 20L132 493" />
+              <path class="reflection reflection--pillar" d="M1554 20L1468 493" />
+              <path class="reflection reflection--console" d="M700 773H1460" />
+              <path class="reflection reflection--dash-soft" d="M742 603H1378" />
+            </svg>
+          </div>
+
           <section class="steering-wheel" id="steering-wheel" aria-labelledby="steering-wheel-label">
             <span class="region-key" aria-hidden="true">F</span>
             <div class="wheel-rim" aria-hidden="true"></div>
             <div class="wheel-spoke wheel-spoke--left" aria-hidden="true"></div>
             <div class="wheel-spoke wheel-spoke--right" aria-hidden="true"></div>
             <div class="wheel-hub" aria-hidden="true"></div>
+            <div class="steering-wheel-material" aria-hidden="true">
+              <div class="wheel-rim-material"></div>
+              <div class="wheel-spoke-material wheel-spoke-material--left"></div>
+              <div class="wheel-spoke-material wheel-spoke-material--right"></div>
+              <div class="wheel-hub-material"></div>
+              <div class="wheel-lower-spoke-material"></div>
+            </div>
             <span class="visually-hidden" id="steering-wheel-label" data-copy="regions.f"></span>
           </section>
+
+          <div class="cockpit-treatment ambient-lighting" aria-hidden="true"></div>
         </section>
 
         <footer class="controls-region" id="prototype-controls" aria-label="Region E: prototype controls">
@@ -151,8 +260,8 @@
               class="control-placeholder control-placeholder--debug"
               id="debug-surfaces-control"
               type="button"
-              aria-pressed="true"
-              data-copy="controls.hideDebug"
+              aria-pressed="false"
+              data-copy="controls.debugSurfaces"
             ></button>
           </div>
           <div class="controls-label">

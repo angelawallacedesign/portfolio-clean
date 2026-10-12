@@ -67,7 +67,6 @@
   z-index: 8;
   pointer-events: none;
   opacity: 1;
-  transition: opacity 120ms ease;
 }
 
 .surface-registration svg {
@@ -168,10 +167,4 @@
 .viewport-shell[data-debug-surfaces="false"] .registration-status {
   border-color: var(--ink-600);
   color: var(--ink-400);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .surface-registration {
-    transition: none;
-  }
 }

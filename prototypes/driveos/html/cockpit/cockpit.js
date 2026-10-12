@@ -33,7 +33,7 @@ function applyRegistration(registration) {
   document.documentElement.dataset.registration = registration.status;
 }
 
-function initializeDebugControl(content) {
+function initializeDebugControl() {
   const shell = document.querySelector(".viewport-shell");
   const control = document.getElementById("debug-surfaces-control");
 
@@ -42,7 +42,6 @@ function initializeDebugControl(content) {
 
     shell.dataset.debugSurfaces = String(nextValue);
     control.setAttribute("aria-pressed", String(nextValue));
-    control.textContent = nextValue ? content.controls.hideDebug : content.controls.showDebug;
   });
 }
 
@@ -64,7 +63,7 @@ async function initializeShell() {
 
     applyContent(content);
     applyRegistration(registration);
-    initializeDebugControl(content);
+    initializeDebugControl();
     document.documentElement.dataset.content = "ready";
   } catch (error) {
     document.documentElement.dataset.content = "error";

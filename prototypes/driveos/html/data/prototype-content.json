@@ -2,10 +2,10 @@
   "prototype": {
     "name": "DriveOS",
     "version": "v0.1",
-    "pass": "Pass B · Surface Registration"
+    "pass": "Pass C · Cockpit Environment"
   },
   "status": {
-    "shell": "Surface registration · features inactive"
+    "shell": "Cockpit treatment · features inactive"
   },
   "regions": {
     "a": "Top status region",
@@ -21,10 +21,9 @@
     "dashboard": "Independent surface placeholder"
   },
   "controls": {
-    "future": "Gate B calibration · temporary review guides",
+    "future": "Gate C material and debug review",
     "primary": "Primary action",
-    "hideDebug": "Hide guides",
-    "showDebug": "Show guides",
+    "debugSurfaces": "Debug Surfaces",
     "reset": "Reset"
   },
   "calibration": {

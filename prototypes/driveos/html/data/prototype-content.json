@@ -2,10 +2,10 @@
   "prototype": {
     "name": "DriveOS",
     "version": "v0.1",
-    "pass": "Pass A · Viewport Shell"
+    "pass": "Pass B · Surface Registration"
   },
   "status": {
-    "shell": "Structural shell · surfaces inactive"
+    "shell": "Surface registration · features inactive"
   },
   "regions": {
     "a": "Top status region",
@@ -21,10 +21,17 @@
     "dashboard": "Independent surface placeholder"
   },
   "controls": {
-    "future": "Provisional placeholders · interactions reserved for later gates",
+    "future": "Gate B calibration · temporary review guides",
     "primary": "Primary action",
-    "secondary": "Secondary action",
+    "hideDebug": "Hide guides",
+    "showDebug": "Show guides",
     "reset": "Reset"
+  },
+  "calibration": {
+    "status": "Temporary calibration",
+    "windshield": "TEMP · B · 1600 × 900 local",
+    "cluster": "TEMP · C · 1000 × 420 local",
+    "dashboard": "TEMP · D · 1600 × 540 local"
   },
   "unsupported": {
     "title": "Landscape viewport required",

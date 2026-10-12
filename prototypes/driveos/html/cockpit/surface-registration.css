@@ -1,0 +1,177 @@
+:root {
+  --registration-boundary: #39ff70;
+  --registration-safe: #ffe600;
+  --registration-exclusion: #ff304f;
+  --registration-cyan: #00e5ff;
+  --registration-magenta: #ff3cf2;
+}
+
+.surface-mask-definitions {
+  position: absolute;
+  pointer-events: none;
+}
+
+.surface {
+  display: block;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.surface-viewport,
+.surface-local-canvas,
+.surface-registration {
+  position: absolute;
+  inset: 0;
+}
+
+.surface-viewport {
+  overflow: hidden;
+  border: clamp(1px, 0.16vw, 3px) solid var(--ink-700);
+  background: #eeefed;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+.surface-local-canvas {
+  display: grid;
+  place-items: center;
+}
+
+.surface-local-canvas > .region-key {
+  position: absolute;
+  top: clamp(10px, 1vw, 18px);
+  left: clamp(10px, 1vw, 18px);
+}
+
+.surface--windshield .surface-viewport {
+  border-radius: 5.5% 5.5% 10% 10% / 7% 7% 18% 18%;
+  background: #f5f5f2;
+  clip-path: url("#windshield-clip");
+}
+
+.surface--cluster .surface-viewport {
+  border-radius: 34% 34% 12% 12% / 64% 64% 18% 18%;
+  background: #d7d8d8;
+  clip-path: url("#cluster-clip");
+}
+
+.surface--dashboard .surface-viewport {
+  border-radius: 4.5% / 12%;
+  background: #e2e3e2;
+  clip-path: inset(0 round 4.5% / 12%);
+}
+
+.surface-registration {
+  z-index: 8;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 120ms ease;
+}
+
+.surface-registration svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.registration-boundary,
+.registration-safe-zone,
+.registration-exclusion,
+.registration-guide {
+  vector-effect: non-scaling-stroke;
+}
+
+.registration-boundary,
+.registration-safe-zone,
+.registration-guide {
+  fill: none;
+}
+
+.registration-boundary {
+  stroke: var(--registration-boundary);
+  stroke-width: 3;
+}
+
+.registration-safe-zone {
+  stroke: var(--registration-safe);
+  stroke-width: 2;
+  stroke-dasharray: 9 6;
+}
+
+.registration-exclusion {
+  fill: color-mix(in srgb, var(--registration-exclusion) 18%, transparent);
+  stroke: var(--registration-exclusion);
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+}
+
+.registration-guide {
+  stroke-width: 1;
+  stroke-dasharray: 4 8;
+  opacity: 0.9;
+}
+
+.registration-guide--cyan {
+  stroke: var(--registration-cyan);
+}
+
+.registration-guide--magenta {
+  stroke: var(--registration-magenta);
+}
+
+.calibration-label {
+  position: absolute;
+  right: clamp(6px, 0.7vw, 12px);
+  bottom: clamp(6px, 0.7vw, 12px);
+  padding: 0.35em 0.55em;
+  border: 1px solid var(--registration-boundary);
+  border-radius: 2px;
+  background: rgba(9, 12, 13, 0.84);
+  color: var(--registration-boundary);
+  font-size: clamp(0.38rem, 0.52vw, 0.56rem);
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.surface--windshield .calibration-label {
+  right: 12%;
+  bottom: 13%;
+}
+
+.surface--cluster .calibration-label {
+  top: 12%;
+  right: 24%;
+  bottom: auto;
+}
+
+.registration-status {
+  padding: 0.35em 0.6em;
+  border: 1px solid color-mix(in srgb, var(--registration-boundary) 55%, transparent);
+  border-radius: 999px;
+  color: var(--registration-boundary);
+  font-size: clamp(0.4rem, 0.52vw, 0.56rem);
+  font-weight: 720;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.viewport-shell[data-debug-surfaces="false"] .surface-registration {
+  opacity: 0;
+}
+
+.viewport-shell[data-debug-surfaces="false"] .registration-status {
+  border-color: var(--ink-600);
+  color: var(--ink-400);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surface-registration {
+    transition: none;
+  }
+}

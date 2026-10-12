@@ -4,16 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="dark" />
-    <title>DriveOS — Pass A Viewport Shell</title>
+    <title>DriveOS — Pass B Surface Registration</title>
     <link rel="stylesheet" href="shared/reset.css" />
     <link rel="stylesheet" href="shared/tokens.css" />
     <link rel="stylesheet" href="cockpit/cockpit.css" />
+    <link rel="stylesheet" href="cockpit/surface-registration.css" />
     <link rel="stylesheet" href="prototype/status.css" />
     <link rel="stylesheet" href="prototype/controls.css" />
   </head>
   <body>
     <main class="prototype-viewport" aria-labelledby="prototype-title">
-      <section class="viewport-shell" data-pass="A">
+      <section class="viewport-shell" data-pass="B" data-debug-surfaces="true">
         <header class="status-region" id="top-status-region" aria-label="Region A: top status">
           <div class="status-bar status-bar--identity" id="identity-status-bar">
             <span class="region-key" aria-hidden="true">A</span>
@@ -27,11 +28,23 @@
           <div class="status-bar status-bar--context" id="context-status-bar">
             <span class="status-dot" aria-hidden="true"></span>
             <span data-copy="status.shell"></span>
+            <span class="registration-status" data-copy="calibration.status"></span>
             <span class="status-meta" data-copy="prototype.version"></span>
           </div>
         </header>
 
         <section class="cockpit-scene" id="cockpit-scene" aria-label="Cockpit scene">
+          <svg class="surface-mask-definitions" width="0" height="0" aria-hidden="true">
+            <defs>
+              <clipPath id="windshield-clip" clipPathUnits="objectBoundingBox">
+                <path d="M .055 0 H .945 Q .985 0 1 .075 L .91 .87 Q .895 1 .8 1 H .2 Q .105 1 .09 .87 L 0 .075 Q .015 0 .055 0 Z" />
+              </clipPath>
+              <clipPath id="cluster-clip" clipPathUnits="objectBoundingBox">
+                <path d="M .08 1 Q .02 .94 .03 .75 C .075 .26 .25 0 .5 0 C .75 0 .925 .26 .97 .75 Q .98 .94 .92 1 Z" />
+              </clipPath>
+            </defs>
+          </svg>
+
           <div class="cockpit-chrome cockpit-chrome--rear" aria-hidden="true">
             <svg viewBox="0 0 1600 800" preserveAspectRatio="none" role="presentation">
               <path class="chrome-fill" d="M0 0H1600V800H0Z" />
@@ -48,26 +61,69 @@
           </div>
 
           <section class="surface surface--windshield" id="windshield-surface" aria-labelledby="windshield-label">
-            <span class="region-key" aria-hidden="true">B</span>
-            <div class="surface-label" id="windshield-label">
-              <span class="surface-name" data-copy="regions.b"></span>
-              <span class="surface-role" data-copy="surfaces.windshield"></span>
+            <div class="surface-viewport">
+              <div class="surface-local-canvas" data-coordinate-width="1600" data-coordinate-height="900">
+                <span class="region-key" aria-hidden="true">B</span>
+                <div class="surface-label" id="windshield-label">
+                  <span class="surface-name" data-copy="regions.b"></span>
+                  <span class="surface-role" data-copy="surfaces.windshield"></span>
+                </div>
+              </div>
+            </div>
+            <div class="surface-registration" aria-hidden="true">
+              <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" role="presentation">
+                <path class="registration-boundary" d="M55 0H945Q985 0 1000 75L910 870Q895 1000 800 1000H200Q105 1000 90 870L0 75Q15 0 55 0Z" />
+                <path class="registration-safe-zone" d="M125 105H875L812 810Q802 875 740 875H260Q198 875 188 810Z" />
+                <path class="registration-exclusion" d="M0 0H75L150 780L90 870L0 75Z" />
+                <path class="registration-exclusion" d="M925 0H1000V75L910 870L850 780Z" />
+                <path class="registration-exclusion" d="M405 0H595L582 105H418Z" />
+                <path class="registration-guide registration-guide--cyan" d="M500 0V1000" />
+                <path class="registration-guide registration-guide--magenta" d="M0 500H1000" />
+              </svg>
+              <span class="calibration-label" data-copy="calibration.windshield"></span>
             </div>
           </section>
 
           <section class="surface surface--cluster" id="instrument-cluster-surface" aria-labelledby="cluster-label">
-            <span class="region-key" aria-hidden="true">C</span>
-            <div class="surface-label" id="cluster-label">
-              <span class="surface-name" data-copy="regions.c"></span>
-              <span class="surface-role" data-copy="surfaces.cluster"></span>
+            <div class="surface-viewport">
+              <div class="surface-local-canvas" data-coordinate-width="1000" data-coordinate-height="420">
+                <span class="region-key" aria-hidden="true">C</span>
+                <div class="surface-label" id="cluster-label">
+                  <span class="surface-name" data-copy="regions.c"></span>
+                  <span class="surface-role" data-copy="surfaces.cluster"></span>
+                </div>
+              </div>
+            </div>
+            <div class="surface-registration" aria-hidden="true">
+              <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" role="presentation">
+                <path class="registration-boundary" d="M80 1000Q20 940 30 750C75 260 250 0 500 0C750 0 925 260 970 750Q980 940 920 1000Z" />
+                <path class="registration-safe-zone" d="M185 780C225 330 335 185 500 185C665 185 775 330 815 780Z" />
+                <path class="registration-exclusion" d="M250 1000Q310 655 500 650Q690 655 750 1000Z" />
+                <path class="registration-guide registration-guide--cyan" d="M500 0V1000" />
+                <path class="registration-guide registration-guide--magenta" d="M0 500H1000" />
+              </svg>
+              <span class="calibration-label" data-copy="calibration.cluster"></span>
             </div>
           </section>
 
           <section class="surface surface--dashboard" id="wide-dashboard-surface" aria-labelledby="dashboard-label">
-            <span class="region-key" aria-hidden="true">D</span>
-            <div class="surface-label" id="dashboard-label">
-              <span class="surface-name" data-copy="regions.d"></span>
-              <span class="surface-role" data-copy="surfaces.dashboard"></span>
+            <div class="surface-viewport">
+              <div class="surface-local-canvas" data-coordinate-width="1600" data-coordinate-height="540">
+                <span class="region-key" aria-hidden="true">D</span>
+                <div class="surface-label" id="dashboard-label">
+                  <span class="surface-name" data-copy="regions.d"></span>
+                  <span class="surface-role" data-copy="surfaces.dashboard"></span>
+                </div>
+              </div>
+            </div>
+            <div class="surface-registration" aria-hidden="true">
+              <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" role="presentation">
+                <rect class="registration-boundary" x="2" y="2" width="996" height="996" rx="45" ry="120" />
+                <rect class="registration-safe-zone" x="70" y="130" width="860" height="740" rx="30" ry="85" />
+                <path class="registration-guide registration-guide--cyan" d="M500 0V1000" />
+                <path class="registration-guide registration-guide--magenta" d="M0 500H1000" />
+              </svg>
+              <span class="calibration-label" data-copy="calibration.dashboard"></span>
             </div>
           </section>
 
@@ -91,7 +147,13 @@
         <footer class="controls-region" id="prototype-controls" aria-label="Region E: prototype controls">
           <div class="controls-actions">
             <button class="control-placeholder" type="button" disabled data-copy="controls.primary"></button>
-            <button class="control-placeholder" type="button" disabled data-copy="controls.secondary"></button>
+            <button
+              class="control-placeholder control-placeholder--debug"
+              id="debug-surfaces-control"
+              type="button"
+              aria-pressed="true"
+              data-copy="controls.hideDebug"
+            ></button>
           </div>
           <div class="controls-label">
             <span class="region-key" aria-hidden="true">E</span>

@@ -53,3 +53,23 @@
   border-color: var(--ink-700);
   background: transparent;
 }
+
+.control-placeholder--debug {
+  border-color: color-mix(in srgb, var(--registration-boundary) 55%, var(--ink-600));
+  color: var(--registration-boundary);
+  cursor: pointer;
+}
+
+.control-placeholder--debug:hover {
+  border-color: var(--registration-boundary);
+}
+
+.control-placeholder--debug:focus-visible {
+  outline: 2px solid var(--registration-safe);
+  outline-offset: 3px;
+}
+
+.control-placeholder--debug[aria-pressed="false"] {
+  border-color: var(--ink-600);
+  color: var(--ink-250);
+}

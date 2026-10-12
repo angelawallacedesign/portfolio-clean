@@ -789,7 +789,7 @@ html.work-page body.work-archive {
 #project-list.work-project-list {
   height: auto;
   overflow: visible;
-  padding-top: 16px;
+  padding-top: 8px;
 }
 
 .work-project-list .project-card {
@@ -902,7 +902,7 @@ html.work-page body.work-archive {
   }
 
   .work-index .work-main {
-    padding: clamp(1rem, 2.875rem, 3rem);
+    padding: 1rem clamp(1rem, 2.875rem, 3rem) 1rem;
   }
 
   .work-local-nav__inner,

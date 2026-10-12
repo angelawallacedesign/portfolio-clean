@@ -1,0 +1,298 @@
+body {
+  background: #08090a;
+  color: var(--ink-100);
+}
+
+.prototype-viewport {
+  width: 100vw;
+  height: 100dvh;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 46%, #24272b 0, #101214 48%, #08090a 76%),
+    #08090a;
+}
+
+.viewport-shell {
+  width: min(100vw, calc(100dvh * 1.6));
+  height: min(100dvh, calc(100vw / 1.6));
+  aspect-ratio: var(--shell-aspect);
+  display: grid;
+  grid-template-rows: 9.6% 80.1% 10.3%;
+  overflow: hidden;
+  border: 1px solid rgba(247, 247, 245, 0.2);
+  border-radius: var(--shell-radius);
+  background: var(--ink-900);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.55);
+}
+
+.region-key {
+  display: inline-grid;
+  place-items: center;
+  width: clamp(22px, 2.25vw, 38px);
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  color: currentColor;
+  font-size: clamp(0.65rem, 0.9vw, 0.9rem);
+  font-weight: 720;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.eyebrow,
+.surface-name,
+.surface-role,
+.status-meta {
+  text-transform: uppercase;
+  letter-spacing: var(--letterspace-label);
+}
+
+.eyebrow {
+  color: var(--ink-400);
+  font-size: clamp(0.47rem, 0.62vw, 0.68rem);
+  font-weight: 700;
+}
+
+.cockpit-scene {
+  position: relative;
+  min-height: 0;
+  isolation: isolate;
+  overflow: hidden;
+  background: #d7d8d8;
+}
+
+.cockpit-chrome {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cockpit-chrome svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cockpit-chrome--rear {
+  z-index: 1;
+}
+
+.chrome-fill {
+  fill: transparent;
+}
+
+.headliner,
+.pillar,
+.dash-top,
+.console-sill,
+.vent {
+  stroke: var(--ink-700);
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.headliner {
+  fill: #c3c5c6;
+}
+
+.mirror {
+  fill: #ececeb;
+  stroke: var(--ink-700);
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.pillar {
+  fill: #b7b9bb;
+}
+
+.dash-top {
+  fill: #aeb1b3;
+}
+
+.dash-trim,
+.dash-edge {
+  fill: none;
+  stroke: var(--ink-600);
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.dash-trim--lower {
+  stroke: var(--ink-400);
+}
+
+.vent {
+  fill: #93979a;
+}
+
+.surface {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  border: clamp(1px, 0.16vw, 3px) solid var(--ink-700);
+  background: #eeefed;
+  color: var(--ink-800);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+.surface > .region-key {
+  position: absolute;
+  top: clamp(10px, 1vw, 18px);
+  left: clamp(10px, 1vw, 18px);
+}
+
+.surface-label {
+  display: grid;
+  justify-items: center;
+  gap: 0.45em;
+  text-align: center;
+}
+
+.surface-name {
+  font-size: clamp(0.62rem, 1.05vw, 1.12rem);
+  font-weight: 760;
+}
+
+.surface-role {
+  color: var(--ink-600);
+  font-size: clamp(0.45rem, 0.64vw, 0.68rem);
+  font-weight: 580;
+}
+
+.surface--windshield {
+  z-index: 0;
+  top: 2.2%;
+  left: 1.4%;
+  width: 97.2%;
+  height: 64.8%;
+  border-radius: 5.5% 5.5% 10% 10% / 7% 7% 18% 18%;
+  background: #f5f5f2;
+}
+
+.surface--cluster {
+  left: 9%;
+  bottom: 19%;
+  width: 31%;
+  height: 21.5%;
+  z-index: 3;
+  border-radius: 34% 34% 12% 12% / 64% 64% 18% 18%;
+  background: #d7d8d8;
+}
+
+.surface--dashboard {
+  left: 43.4%;
+  bottom: 7.1%;
+  width: 41.5%;
+  height: 27.6%;
+  z-index: 3;
+  border-radius: 4.5% / 12%;
+  background: #e2e3e2;
+  transform: perspective(1200px) rotateX(-1.5deg) rotateY(-0.8deg);
+}
+
+.cockpit-chrome--foreground {
+  z-index: 4;
+}
+
+.console-sill {
+  fill: #bcbfc0;
+  stroke-width: 2;
+}
+
+.steering-wheel {
+  position: absolute;
+  z-index: 5;
+  left: 6.6%;
+  bottom: -18.5%;
+  width: 35.5%;
+  aspect-ratio: 1;
+  color: var(--ink-800);
+}
+
+.steering-wheel > .region-key {
+  position: absolute;
+  z-index: 3;
+  top: 43%;
+  left: 46%;
+  color: var(--ink-700);
+}
+
+.wheel-rim {
+  position: absolute;
+  inset: 0;
+  border: clamp(18px, 2.2vw, 36px) solid #8d9194;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 2px var(--ink-700),
+    0 0 0 2px var(--ink-700);
+}
+
+.wheel-spoke {
+  position: absolute;
+  top: 52%;
+  width: 42%;
+  height: 18%;
+  border: 2px solid var(--ink-700);
+  background: #999da0;
+}
+
+.wheel-spoke--left {
+  left: 9%;
+  transform: rotate(17deg);
+  transform-origin: 100% 50%;
+  border-radius: 36% 8% 12% 42%;
+}
+
+.wheel-spoke--right {
+  right: 9%;
+  transform: rotate(-17deg);
+  transform-origin: 0 50%;
+  border-radius: 8% 36% 42% 12%;
+}
+
+.wheel-hub {
+  position: absolute;
+  top: 44%;
+  left: 31%;
+  width: 38%;
+  height: 34%;
+  border: 2px solid var(--ink-700);
+  border-radius: 35% 35% 47% 47%;
+  background: #a9acae;
+}
+
+.unsupported-view {
+  display: none;
+  width: min(34rem, calc(100vw - 3rem));
+  padding: clamp(1.5rem, 6vw, 3rem);
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  background: var(--ink-900);
+  text-align: center;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+}
+
+.unsupported-view h2 {
+  margin-top: 0.55rem;
+  font-size: clamp(1.55rem, 6vw, 2.4rem);
+  line-height: 1.05;
+}
+
+.unsupported-view > p:last-child {
+  margin-top: 1rem;
+  color: var(--ink-250);
+  line-height: 1.6;
+}
+
+@media (orientation: portrait), (max-width: 767px), (max-height: 500px) {
+  .viewport-shell {
+    display: none;
+  }
+
+  .unsupported-view {
+    display: block;
+  }
+}

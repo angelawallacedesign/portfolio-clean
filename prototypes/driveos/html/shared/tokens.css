@@ -1,0 +1,17 @@
+:root {
+  --shell-aspect: 8 / 5;
+  --ink-950: #0c0d0f;
+  --ink-900: #15171a;
+  --ink-850: #1e2125;
+  --ink-800: #292c31;
+  --ink-700: #3b3f45;
+  --ink-600: #575c64;
+  --ink-400: #959ba3;
+  --ink-250: #c0c4ca;
+  --ink-100: #eceeef;
+  --paper: #f7f7f5;
+  --line: rgba(236, 238, 239, 0.48);
+  --line-strong: rgba(247, 247, 245, 0.74);
+  --letterspace-label: 0.13em;
+  --shell-radius: clamp(8px, 0.8vw, 16px);
+}

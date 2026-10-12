@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>DriveOS — Pass A Viewport Shell</title>
+    <link rel="stylesheet" href="shared/reset.css" />
+    <link rel="stylesheet" href="shared/tokens.css" />
+    <link rel="stylesheet" href="cockpit/cockpit.css" />
+    <link rel="stylesheet" href="prototype/status.css" />
+    <link rel="stylesheet" href="prototype/controls.css" />
+  </head>
+  <body>
+    <main class="prototype-viewport" aria-labelledby="prototype-title">
+      <section class="viewport-shell" data-pass="A">
+        <header class="status-region" id="top-status-region" aria-label="Region A: top status">
+          <div class="status-bar status-bar--identity" id="identity-status-bar">
+            <span class="region-key" aria-hidden="true">A</span>
+            <div>
+              <p class="eyebrow" data-copy="regions.a"></p>
+              <h1 id="prototype-title" data-copy="prototype.name"></h1>
+            </div>
+            <span class="status-meta" data-copy="prototype.pass"></span>
+          </div>
+
+          <div class="status-bar status-bar--context" id="context-status-bar">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span data-copy="status.shell"></span>
+            <span class="status-meta" data-copy="prototype.version"></span>
+          </div>
+        </header>
+
+        <section class="cockpit-scene" id="cockpit-scene" aria-label="Cockpit scene">
+          <div class="cockpit-chrome cockpit-chrome--rear" aria-hidden="true">
+            <svg viewBox="0 0 1600 800" preserveAspectRatio="none" role="presentation">
+              <path class="chrome-fill" d="M0 0H1600V800H0Z" />
+              <path class="headliner" d="M0 0H1600V45H1020L970 82H630L580 45H0Z" />
+              <path class="mirror" d="M664 16H936L922 67H678Z" />
+              <path class="pillar pillar--left" d="M0 0H92L174 500L0 615Z" />
+              <path class="pillar pillar--right" d="M1508 0H1600V615L1426 500Z" />
+              <path class="dash-top" d="M0 575L205 500Q380 454 575 496L694 528H1384L1600 574V800H0Z" />
+              <path class="dash-trim" d="M0 645L252 581Q425 547 608 582L742 613H1388L1600 645" />
+              <path class="dash-trim dash-trim--lower" d="M0 706H1368Q1518 706 1600 650" />
+              <path class="vent vent--left" d="M0 672H62L130 741H0Z" />
+              <path class="vent vent--right" d="M1600 672H1538L1470 741H1600Z" />
+            </svg>
+          </div>
+
+          <section class="surface surface--windshield" id="windshield-surface" aria-labelledby="windshield-label">
+            <span class="region-key" aria-hidden="true">B</span>
+            <div class="surface-label" id="windshield-label">
+              <span class="surface-name" data-copy="regions.b"></span>
+              <span class="surface-role" data-copy="surfaces.windshield"></span>
+            </div>
+          </section>
+
+          <section class="surface surface--cluster" id="instrument-cluster-surface" aria-labelledby="cluster-label">
+            <span class="region-key" aria-hidden="true">C</span>
+            <div class="surface-label" id="cluster-label">
+              <span class="surface-name" data-copy="regions.c"></span>
+              <span class="surface-role" data-copy="surfaces.cluster"></span>
+            </div>
+          </section>
+
+          <section class="surface surface--dashboard" id="wide-dashboard-surface" aria-labelledby="dashboard-label">
+            <span class="region-key" aria-hidden="true">D</span>
+            <div class="surface-label" id="dashboard-label">
+              <span class="surface-name" data-copy="regions.d"></span>
+              <span class="surface-role" data-copy="surfaces.dashboard"></span>
+            </div>
+          </section>
+
+          <div class="cockpit-chrome cockpit-chrome--foreground" aria-hidden="true">
+            <svg viewBox="0 0 1600 800" preserveAspectRatio="none" role="presentation">
+              <path class="console-sill" d="M675 762H1510L1458 800H640Z" />
+              <path class="dash-edge" d="M0 784H1600" />
+            </svg>
+          </div>
+
+          <section class="steering-wheel" id="steering-wheel" aria-labelledby="steering-wheel-label">
+            <span class="region-key" aria-hidden="true">F</span>
+            <div class="wheel-rim" aria-hidden="true"></div>
+            <div class="wheel-spoke wheel-spoke--left" aria-hidden="true"></div>
+            <div class="wheel-spoke wheel-spoke--right" aria-hidden="true"></div>
+            <div class="wheel-hub" aria-hidden="true"></div>
+            <span class="visually-hidden" id="steering-wheel-label" data-copy="regions.f"></span>
+          </section>
+        </section>
+
+        <footer class="controls-region" id="prototype-controls" aria-label="Region E: prototype controls">
+          <div class="controls-actions">
+            <button class="control-placeholder" type="button" disabled data-copy="controls.primary"></button>
+            <button class="control-placeholder" type="button" disabled data-copy="controls.secondary"></button>
+          </div>
+          <div class="controls-label">
+            <span class="region-key" aria-hidden="true">E</span>
+            <div>
+              <p class="eyebrow" data-copy="regions.e"></p>
+              <p class="controls-note" data-copy="controls.future"></p>
+            </div>
+          </div>
+          <div class="control-placeholders" aria-label="Provisional controls">
+            <button class="control-placeholder control-placeholder--reset" type="button" disabled data-copy="controls.reset"></button>
+          </div>
+        </footer>
+      </section>
+
+      <section class="unsupported-view" role="status" aria-live="polite">
+        <p class="eyebrow" data-copy="prototype.name"></p>
+        <h2 data-copy="unsupported.title"></h2>
+        <p data-copy="unsupported.message"></p>
+      </section>
+    </main>
+
+    <script type="module" src="cockpit/cockpit.js"></script>
+  </body>
+</html>

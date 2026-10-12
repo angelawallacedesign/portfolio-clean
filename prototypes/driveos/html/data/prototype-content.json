@@ -1,0 +1,33 @@
+{
+  "prototype": {
+    "name": "DriveOS",
+    "version": "v0.1",
+    "pass": "Pass A · Viewport Shell"
+  },
+  "status": {
+    "shell": "Structural shell · surfaces inactive"
+  },
+  "regions": {
+    "a": "Top status region",
+    "b": "Windshield",
+    "c": "Instrument cluster",
+    "d": "Wide dashboard",
+    "e": "Prototype controls",
+    "f": "Steering wheel"
+  },
+  "surfaces": {
+    "windshield": "Independent surface placeholder",
+    "cluster": "Independent surface placeholder",
+    "dashboard": "Independent surface placeholder"
+  },
+  "controls": {
+    "future": "Provisional placeholders · interactions reserved for later gates",
+    "primary": "Primary action",
+    "secondary": "Secondary action",
+    "reset": "Reset"
+  },
+  "unsupported": {
+    "title": "Landscape viewport required",
+    "message": "This structural prototype supports desktop and tablet landscape only. Rotate or widen the viewport to review the fixed cockpit composition."
+  }
+}

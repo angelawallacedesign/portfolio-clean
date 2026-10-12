@@ -532,6 +532,12 @@ html.work-page body.work-archive {
 
 }
 
+@media (min-width: 769px) {
+  .work-index .work-heading {
+    margin-bottom: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .work-archive .global-header {
     --global-nav-fade-height: 18px;

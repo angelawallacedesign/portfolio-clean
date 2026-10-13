@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AWD Case Study - Social Feature</title>
+    <!-- "Inter" Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/dej8pod.css">
+    <link rel="stylesheet" href="../../shared/css/global-tokens.css" />
+    <link rel="stylesheet" href="../../shared/css/global-components.css" />
+    <link rel="stylesheet" href="../../shared/css/utilities.css" />
+    <link rel="stylesheet" href="../../shared/css/motion.css?v=smooth-scroll-3" />
+    <link rel="stylesheet" href="../../css/tokens.css" />
+    <!-- Layer 3 Case Studies -->
+    <link rel="stylesheet" href="../../css/case-study-layout.css" />
+    <link rel="stylesheet" href="../../css/components.css" />
+</head>
+<body id="top" class="case-study-page">
+    
+    
+    <div class="bottom-nav__right" data-back-to-top aria-hidden="true">
+        <a
+            href="#top"
+            class="control control--fixed is-bottom-right">
+
+            <span
+            class="icon rotate-0"
+            data-icon="arrow"
+            aria-hidden="true">
+            </span>
+
+            <span class="sr-only">
+            Back to top
+            </span>
+        </a>
+    </div>
+    
+    <header class="global-header sub-nav">
+        <div class="header-inner container">
+            <div class="back-link">
+                
+                <a class="back" href="../../">
+                    <span
+                        class="icon rotate-360"
+                        data-icon="chevron"
+                        aria-hidden="true">
+                    </span>
+                    <span>Back</span>
+                </a>
+                
+            </div>
+            <nav class="global-nav" aria-label="Primary">
+                <ul class="global-nav__list" id="navList">
+                    <li>
+                        <a href="#overview" class="is-active">
+                            <span class="nav-step">1</span>
+                            <span class="nav-text">OVERVIEW</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#challenge">
+                            <span class="nav-step">2</span>
+                            <span class="nav-text">CHALLENGE</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#reflection">
+                            <span class="nav-step">3</span>
+                            <span class="nav-text">REFLECTION</span>
+                        </a>
+                    </li>
+                    <!--
+                    <li>
+                        <a href="#prototype">
+                            <span class="nav-step">4</span>
+                            <span class="nav-text">PROTOTYPE</span>
+                        </a>
+                    </li>
+                    -->
+                </ul>
+            </nav>
+            
+        </div>
+        </header>
+        
+        <!-- Layer 2: Project Overlay -->
+        <div id="modal-root" class="modal-overlay"></div>
+        
+        <main id="main" class="page-main">
+
+<article class="layer-3 case-study-layout">
+  
+  <section>
+    <div>
+      <img src="../../assets/work/allin/feature/social-feature-hero.png" alt="Social Media Feature Hero Image">
+    </div>
+    <div>
+      <h2 class="section-heading">
+          <span class="heading-main">Communication</span>
+          <span class="heading-accent">feature</span>
+      </h2>
+      <p class="subtitle">Case Study</p>
+    </div>
+  </section>
+  
+  <section class="card-col-3">
+    <div class="cards" role="list" aria-label="Service cards">
+      <article class="card" role="listitem">
+        <h4>Role</h4>
+        <ul>
+          <li>Lead UX Designer </li>
+        </ul>
+      </article>
+      <article class="card" role="listitem">
+        <h4>Team</h4>
+        <ul>
+          <li>Engineering, Design, QA, Cruise Implementation</li>
+        </ul>
+      </article>
+      <article class="card" role="listitem">
+        <h4>Scope</h4>
+        <ul>
+          <li>Integrated core feature into platform</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+  
+  <section>
+    <h3>Context</h3>
+    
+    <p class="project-overview">
+      The core cruise application required a new social communication feature that could scale across vessels, routes, and device types while operating within a managed but bandwidth-constrained ship network. The challenge was not just feature delivery — it was introducing this capability without fragmenting the existing UI architecture.
+    </p>
+
+    <p>
+      The environment required strict UI consistency, optimization of design artifacts to minimize app update size in the app stores, and close coordination between interaction design decisions and frontend implementation.
+    </p>
+    
+    
+    <figure class="fig1">
+      <img src="../../assets/work/allin/feature/communication-feature-thumb.png" alt="wireframe exerpt from social communication feature">
+      <figcaption>
+        <sup>Fig.1</sup> 
+        Wireframe exerpt from the feature.
+      </figcaption>
+    </figure> 
+  </section>
+  
+  <section>
+    <blockquote>
+      Delivered a scalable social feature integrated into the existing UI architecture without introducing system fragmentation.
+    </blockquote>
+  </section>
+  
+  <section class="research">
+    <h3>Problem Framing</h3>
+    
+    <p>
+      Introduced a new social feature without creating UI debt, component drift, or performance regressions.
+    </p>
+    
+    <p>
+      The system needed to extend the design language while preserving component consistency, layout rhythm, and data rendering patterns across new and existing modules.
+    </p>
+    
+    <figure class="fig2">
+      <img src="/assets/work/allin/feature/rccl-cruise-ship.jpg" alt="Royal Caribbean Cruise Ship via royalcaribbean.com">
+      <figcaption>
+        <sup>Fig.2</sup> Constraint: Limited network at sea. <br>
+        (image credit: Royal Caribbean International)
+      </figcaption>
+    </figure> 
+    
+  </section>
+  
+  <section>
+    <blockquote>
+      Reduced UI debt risk, maintained design–code alignment, and strengthened long-term frontend sustainability.
+    </blockquote>
+  </section>
+  
+  <section>
+    <h3>Infrastructure Constraints</h3>
+    
+    <p>
+      Designed within constrained network and performance limitations.
+    </p>
+
+    <p class="list-intro-header">Established constraints:</p>
+    <ul>
+        <li>Standardized avatar ratios and thumbnail dimensions</li>
+        <li>Defined profile layout rules for consistent rendering</li>
+        <li>Controlled asset weight to preserve network performance</li>
+        <li>Maintained cross-platform consistency across ships and builds</li>
+    </ul>
+    
+  </section>
+  
+  <section>
+    <blockquote>
+      Ensured profile components were systemized rather than one-off implementations, reducing long-term maintenance overhead.
+    </blockquote>
+  </section>
+  
+  <section>
+      <h3>Data & Component Architecture</h3>
+
+      <p>
+        Systemized profile components and modular layout structures.
+      </p>
+      
+      <p>
+        Established modular layout structures that could support future social extensions without redesigning the system.
+      </p>
+  </section>
+    
+  <section>
+      <h3>Design–Code Integration</h3>
+      
+      <p>
+        Ensured component integrity and implementation alignment
+      </p>
+
+      <p>
+  Component behavior was validated against real data states to ensure UI patterns remained stable under edge cases and did not require downstream overrides. Continuous feedback loops between design specifications and implementation maintained alignment, reducing inconsistencies prior to release.
+</p>
+  </section>
+    
+  <section>
+      <h3>Outcome</h3>
+      
+      <p>
+        Established a reusable social UI module that supported future feature expansion while preserving performance and consistency.
+      </p>
+
+      <p>
+        The outcome was reduced UI debt risk while maintaining design–code alignment, as well as strengthening long-term frontend sustainability. When we introduced this feature, the goal wasn’t just to ship something new—it was to protect the integrity of the system you had already invested in. We integrated the social layer without fragmenting the existing UI architecture, preserving consistency across modules and ships. By systemizing component structures and validating them against real data states, we reduced implementation ambiguity and prevented visual drift before release. The result is a scalable foundation that supports future expansion while maintaining performance, clarity, and trust in the product experience.
+      </p>
+  </section>
+    
+  <section>
+      <p class="end-of-page">//</p>
+  </section>
+    
+</article>
+
+ </main>
+        
+        <!-- =========================================================
+        Lightbox Overlay
+        ========================================================= -->
+        
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox__inner">
+                <figure class="lightbox__content">
+                    <img />
+                    <figcaption></figcaption>
+                </figure>
+            </div>
+        </div>
+        
+        <!-- =========================================================
+        LAYER 3 — CASE STUDY OVERLAY (Sibling Overlay)
+        Hidden by default. No behavior implied here.
+        ========================================================= -->
+        <div class="layer-3-overlay" id="layer-3-overlay" aria-hidden="true">
+            
+            <!-- Almost-black frame (no padding) -->
+            <div class="layer-3-frame">
+                <!-- Close button (top-right) -->
+                <button
+                class="layer-3-close"
+                id="layer-3-close"
+                aria-label="Close case study"
+                type="button"
+                >
+                ×
+            </button>
+            
+            <!-- Watermark logo (bottom-right) -->
+            <div class="layer-3-watermark" aria-hidden="true">
+                <img src="../../assets/AWD-sticky-logo.svg" alt="Angela Wallace Design" class="logo">
+            </div>
+            
+        </div>
+        
+        <!-- White stage (scroll container) -->
+        <div class="layer-3-stage">
+            <article class="case-study-layout layer-3" id="case-study-root">
+                <!-- Case study content gets injected here -->
+            </article>
+        </div>
+    </div>
+    
+    <!-- Data rendering logic --
+    <script type="module" src="./scripts/data.js"></script>
+    !-- Preload overlay UI -->
+    <script type="module" src="../../js/modal.js"></script>
+    <script src="../../js/lightbox.js?v=responsive-fix"></script>
+    <!-- Load navigation logic --
+    <script type="module" src="./scripts/navigation.js?v=2"></script>-->
+    <script>
+        const nav = document.querySelector('#navList');
+
+        if (nav) {
+            const links = nav.querySelectorAll('a[href^="#"]');
+
+            const map = [...links]
+            .map(link => {
+                const target = document.querySelector(link.getAttribute('href'));
+                return target ? { link, target } : null;
+            })
+            .filter(Boolean);
+
+            const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const match = map.find(item => item.target === entry.target);
+                if (!match) return;
+
+                if (entry.isIntersecting) {
+                links.forEach(link => link.classList.remove('is-active'));
+                match.link.classList.add('is-active');
+                }
+            });
+            }, {
+            root: null,
+            threshold: 0.5
+            });
+
+            map.forEach(item => observer.observe(item.target));
+        }
+    </script>
+    <script type="module" src="../../js/case-study.js?v=smooth-scroll-3"></script>
+    <script type="module" src="../../shared/js/base.js"></script>
+</body>
+</html>

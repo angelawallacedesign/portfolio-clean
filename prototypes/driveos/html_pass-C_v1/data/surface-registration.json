@@ -1,0 +1,41 @@
+{
+  "version": "0.1-pass-b",
+  "status": "temporary-gate-b-calibration",
+  "sceneCoordinateSystem": {
+    "width": 1600,
+    "height": 800,
+    "units": "normalized design pixels"
+  },
+  "surfaces": {
+    "windshield": {
+      "elementId": "windshield-surface",
+      "region": "B",
+      "localCanvas": {"width": 1600, "height": 900},
+      "clipMask": "windshield-clip",
+      "physicalBoundary": "four-point curved trapezoid",
+      "safeZone": {"left": 0.125, "top": 0.105, "right": 0.875, "bottom": 0.875},
+      "exclusions": ["left-pillar", "right-pillar", "rearview-mirror"],
+      "perspective": {"type": "driver-forward", "originX": 0.43, "originY": 0.58}
+    },
+    "cluster": {
+      "elementId": "instrument-cluster-surface",
+      "region": "C",
+      "localCanvas": {"width": 1000, "height": 420},
+      "clipMask": "cluster-clip",
+      "physicalBoundary": "curved binnacle display",
+      "safeZone": {"left": 0.185, "top": 0.185, "right": 0.815, "bottom": 0.78},
+      "exclusions": ["steering-wheel-occlusion"],
+      "perspective": {"type": "driver-facing", "originX": 0.5, "originY": 0.5}
+    },
+    "dashboard": {
+      "elementId": "wide-dashboard-surface",
+      "region": "D",
+      "localCanvas": {"width": 1600, "height": 540},
+      "clipMask": "dashboard-rounded-rect",
+      "physicalBoundary": "wide rounded rectangle",
+      "safeZone": {"left": 0.07, "top": 0.13, "right": 0.93, "bottom": 0.87},
+      "exclusions": [],
+      "perspective": {"type": "minimal-correction", "rotateXDegrees": -1.5, "rotateYDegrees": -0.8}
+    }
+  }
+}

@@ -2,8 +2,8 @@
   "version": "0.1-pass-b",
   "status": "temporary-gate-b-calibration",
   "sceneCoordinateSystem": {
-    "width": 1600,
-    "height": 800,
+    "width": 1463,
+    "height": 664,
     "units": "normalized design pixels"
   },
   "surfaces": {
@@ -12,9 +12,9 @@
       "region": "B",
       "localCanvas": {"width": 1600, "height": 900},
       "clipMask": "windshield-clip",
-      "physicalBoundary": "four-point curved trapezoid",
-      "safeZone": {"left": 0.125, "top": 0.105, "right": 0.875, "bottom": 0.875},
-      "exclusions": ["left-pillar", "right-pillar", "rearview-mirror"],
+      "physicalBoundary": "full-width rectangular glazing plane behind pillar occlusions",
+      "safeZone": {"left": 0.07, "top": 0.08, "right": 0.9, "bottom": 0.82},
+      "exclusions": ["left-pillar", "right-pillar"],
       "perspective": {"type": "driver-forward", "originX": 0.43, "originY": 0.58}
     },
     "cluster": {
@@ -22,7 +22,7 @@
       "region": "C",
       "localCanvas": {"width": 1000, "height": 420},
       "clipMask": "cluster-clip",
-      "physicalBoundary": "curved binnacle display",
+      "physicalBoundary": "flat-bottom display with a deep rounded crown",
       "safeZone": {"left": 0.185, "top": 0.185, "right": 0.815, "bottom": 0.78},
       "exclusions": ["steering-wheel-occlusion"],
       "perspective": {"type": "driver-facing", "originX": 0.5, "originY": 0.5}
@@ -35,7 +35,7 @@
       "physicalBoundary": "wide rounded rectangle",
       "safeZone": {"left": 0.07, "top": 0.13, "right": 0.93, "bottom": 0.87},
       "exclusions": [],
-      "perspective": {"type": "minimal-correction", "rotateXDegrees": -1.5, "rotateYDegrees": -0.8}
+      "perspective": {"type": "minimal-correction", "rotateDegrees": -0.39, "skewXDegrees": 0.75}
     }
   }
 }

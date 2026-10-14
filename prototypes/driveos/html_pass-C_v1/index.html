@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="cockpit/cockpit-treatment.css" />
     <link rel="stylesheet" href="prototype/status.css" />
     <link rel="stylesheet" href="prototype/controls.css" />
+    <link rel="stylesheet" href="../prototype-version-nav.css" />
   </head>
   <body>
     <main class="prototype-viewport" aria-labelledby="prototype-title">
@@ -23,7 +24,7 @@
               <p class="eyebrow" data-copy="regions.a"></p>
               <h1 id="prototype-title" data-copy="prototype.name"></h1>
             </div>
-            <span class="status-meta" data-copy="prototype.pass"></span>
+            <div class="status-meta prototype-version-nav" data-prototype-version="pass-c-initial"></div>
           </div>
 
           <div class="status-bar status-bar--context" id="context-status-bar">
@@ -285,5 +286,6 @@
     </main>
 
     <script type="module" src="cockpit/cockpit.js"></script>
+    <script type="module" src="../prototype-version-nav.js"></script>
   </body>
 </html>

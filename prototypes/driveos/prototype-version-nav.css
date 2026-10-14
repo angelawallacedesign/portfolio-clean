@@ -1,0 +1,96 @@
+.prototype-version-nav {
+  position: relative;
+  z-index: 20;
+}
+
+.prototype-version-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  padding: 0.5em 0.35em;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.prototype-version-trigger:hover {
+  color: var(--ink-250);
+}
+
+.prototype-version-trigger:focus-visible,
+.prototype-version-menu a:focus-visible {
+  outline: 2px solid var(--ink-100);
+  outline-offset: 2px;
+}
+
+.prototype-version-chevron {
+  width: 0.55em;
+  height: 0.55em;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: translateY(-0.15em) rotate(45deg);
+  transition: transform 120ms ease;
+}
+
+.prototype-version-trigger[aria-expanded="true"] .prototype-version-chevron {
+  transform: translateY(0.15em) rotate(225deg);
+}
+
+.prototype-version-menu {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  z-index: 30;
+  width: max-content;
+  min-width: 12.5rem;
+  max-width: calc(100vw - 1.5rem);
+  padding: 0.35rem;
+  border: 1px solid var(--ink-600);
+  border-radius: 0.5rem;
+  background: var(--ink-900);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.48);
+  list-style: none;
+}
+
+.prototype-version-menu[hidden] {
+  display: none;
+}
+
+.prototype-version-menu a {
+  display: block;
+  padding: 0.72rem 0.8rem;
+  border-radius: 0.3rem;
+  color: var(--ink-250);
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.prototype-version-menu a:hover,
+.prototype-version-menu a:focus-visible {
+  background: var(--ink-850);
+  color: var(--ink-100);
+}
+
+.prototype-version-menu a.is-current {
+  background: color-mix(in srgb, var(--ink-600) 32%, transparent);
+  color: var(--ink-100);
+}
+
+.prototype-version-menu a.is-current::after {
+  content: "Current";
+  margin-left: 1rem;
+  color: var(--ink-400);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

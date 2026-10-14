@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="cockpit/cockpit-treatment.css" />
     <link rel="stylesheet" href="prototype/status.css" />
     <link rel="stylesheet" href="prototype/controls.css" />
+    <link rel="stylesheet" href="../prototype-version-nav.css" />
   </head>
   <body>
     <main class="prototype-viewport" aria-labelledby="prototype-title">
@@ -23,7 +24,7 @@
               <p class="eyebrow" data-copy="regions.a"></p>
               <h1 id="prototype-title" data-copy="prototype.name"></h1>
             </div>
-            <span class="status-meta" data-copy="prototype.pass"></span>
+            <div class="status-meta prototype-version-nav" data-prototype-version="pass-c-redesign"></div>
           </div>
 
           <div class="status-bar status-bar--context" id="context-status-bar">
@@ -38,31 +39,31 @@
           <svg class="surface-mask-definitions" width="0" height="0" aria-hidden="true">
             <defs>
               <clipPath id="windshield-clip" clipPathUnits="objectBoundingBox">
-                <path d="M .055 0 H .945 Q .985 0 1 .075 L .91 .87 Q .895 1 .8 1 H .2 Q .105 1 .09 .87 L 0 .075 Q .015 0 .055 0 Z" />
+                <path d="M 0 0 H 1 V 1 H 0 Z" />
               </clipPath>
               <clipPath id="cluster-clip" clipPathUnits="objectBoundingBox">
-                <path d="M .08 1 Q .02 .94 .03 .75 C .075 .26 .25 0 .5 0 C .75 0 .925 .26 .97 .75 Q .98 .94 .92 1 Z" />
+                <path d="M 0 1 V .847 C 0 .38 .16 0 .364 0 H .636 C .84 0 1 .38 1 .847 V 1 Z" />
               </clipPath>
             </defs>
           </svg>
 
           <div class="cockpit-chrome cockpit-chrome--rear" aria-hidden="true">
-            <svg viewBox="0 0 1600 800" preserveAspectRatio="none" role="presentation">
+            <svg viewBox="0 0 1463 664" preserveAspectRatio="none" role="presentation">
               <path class="chrome-fill" d="M0 0H1600V800H0Z" />
               <path class="headliner" d="M0 0H1600V45H1020L970 82H630L580 45H0Z" />
               <path class="mirror" d="M664 16H936L922 67H678Z" />
-              <path class="pillar pillar--left" d="M0 0H92L174 500L0 615Z" />
-              <path class="pillar pillar--right" d="M1508 0H1600V615L1426 500Z" />
-              <path class="dash-top" d="M0 575L205 500Q380 454 575 496L694 528H1384L1600 574V800H0Z" />
-              <path class="dash-trim" d="M0 645L252 581Q425 547 608 582L742 613H1388L1600 645" />
-              <path class="dash-trim dash-trim--lower" d="M0 706H1368Q1518 706 1600 650" />
+              <path class="pillar pillar--left" d="M0 0H60.772L126.904 448.545L0 510.45Z" />
+              <path class="pillar pillar--right" d="M1402.55 0H1463V510.45L1360.78 469.007Z" />
+              <path class="dash-top" d="M0 492.779L187.447 435.706C294.124 412.369 406.897 411.354 525.766 432.662L634.576 457.013H1265.5C1332.31 457.013 1463 492.018 1463 492.018V664H0Z" />
+              <path class="dash-trim" d="M0 535.35L230.423 482.23C335.88 463.417 444.386 463.693 555.94 483.06L678.466 508.79H1269.15L1463 535.35" />
+              <path class="dash-trim dash-trim--lower" d="M0 585.98H1250.87C1342.3 585.98 1413.01 570.487 1463 539.5" />
               <path class="vent vent--left" d="M0 672H62L130 741H0Z" />
               <path class="vent vent--right" d="M1600 672H1538L1470 741H1600Z" />
             </svg>
           </div>
 
           <div class="cockpit-treatment cockpit-materials" aria-hidden="true">
-            <svg viewBox="0 0 1600 800" preserveAspectRatio="none" role="presentation">
+            <svg viewBox="0 0 1463 664" preserveAspectRatio="none" role="presentation">
               <defs>
                 <linearGradient id="headliner-material" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0" stop-color="#0b0f13" />
@@ -121,15 +122,15 @@
               <path class="material-headliner soft-touch" d="M0 0H1600V45H1020L970 82H630L580 45H0Z" />
               <path class="material-mirror-shell" d="M652 8H948L930 75H670Z" />
               <path class="material-mirror" d="M670 18H930L917 63H683Z" />
-              <path class="material-pillar material-pillar--left soft-touch" d="M0 0H92L174 500L0 615Z" />
-              <path class="material-pillar material-pillar--right soft-touch" d="M1508 0H1600V615L1426 500Z" />
-              <path class="pillar-highlight" d="M48 28Q84 214 130 477" />
-              <path class="pillar-highlight" d="M1552 28Q1516 214 1470 477" />
-              <path class="material-dash soft-touch" d="M0 575L205 500Q380 454 575 496L694 528H1384L1600 574V800H0Z" />
-              <path class="material-lower-dash" d="M0 666L252 596Q425 563 610 598L742 628H1392L1600 665V800H0Z" />
-              <path class="dash-seam" d="M18 624L246 563Q421 527 602 566L736 598H1382L1582 625" />
-              <path class="material-trim" d="M0 645L252 581Q425 547 608 582L742 613H1388L1600 645" />
-              <path class="material-trim material-trim--lower" d="M0 706H1368Q1518 706 1600 650" />
+              <path class="material-pillar material-pillar--left soft-touch" d="M0 0H60.772L126.904 448.545L0 510.45Z" />
+              <path class="material-pillar material-pillar--right soft-touch" d="M1402.55 0H1463V510.45L1360.78 469.007Z" />
+              <path class="pillar-highlight" d="M43.89 23.24C65.835 126.16 76.239 290.414 104.28 435.941" />
+              <path class="pillar-highlight" d="M1419.11 23.24C1397.16 126.16 1404.48 286.934 1376.44 432.46" />
+              <path class="material-dash soft-touch" d="M0 492.779L187.447 435.706C294.124 412.369 406.897 411.354 525.766 432.662L634.576 457.013H1265.5C1332.31 457.013 1463 492.018 1463 492.018V664H0Z" />
+              <path class="material-lower-dash" d="M0 552.78L230.423 494.68C335.88 476.42 444.996 476.973 557.769 496.34L678.466 521.24H1272.81L1463 551.95V664H0Z" />
+              <path class="dash-seam" d="M16.459 517.92L224.936 467.29C331.613 447.37 440.119 448.2 550.454 469.78L672.98 496.34H1263.67L1446.54 518.75" />
+              <path class="material-trim" d="M0 535.35L230.423 482.23C335.88 463.417 444.386 463.693 555.94 483.06L678.466 508.79H1269.15L1463 535.35" />
+              <path class="material-trim material-trim--lower" d="M0 585.98H1250.87C1342.3 585.98 1413.01 570.487 1463 539.5" />
               <path class="speaker-grille" d="M0 662H58L126 733H0Z" />
               <path class="speaker-grille" d="M1600 662H1542L1474 733H1600Z" />
               <path class="material-vent material-vent--left" d="M18 620H128L158 648H0Z" />
@@ -146,7 +147,7 @@
                 <div class="environment-layer" id="cockpit-environment" aria-hidden="true">
                   <img
                     class="environment-image"
-                    src="assets/environment/forest-mountain-road-blue-hour-v1.png"
+                    src="assets/environment/grey-dusk-road-scene_designer-edited.webp"
                     alt=""
                   />
                   <div class="environment-atmosphere"></div>
@@ -160,11 +161,10 @@
             </div>
             <div class="surface-registration" aria-hidden="true">
               <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" role="presentation">
-                <path class="registration-boundary" d="M55 0H945Q985 0 1000 75L910 870Q895 1000 800 1000H200Q105 1000 90 870L0 75Q15 0 55 0Z" />
-                <path class="registration-safe-zone" d="M125 105H875L812 810Q802 875 740 875H260Q198 875 188 810Z" />
-                <path class="registration-exclusion" d="M0 0H75L150 780L90 870L0 75Z" />
-                <path class="registration-exclusion" d="M925 0H1000V75L910 870L850 780Z" />
-                <path class="registration-exclusion" d="M405 0H595L582 105H418Z" />
+                <path class="registration-boundary" d="M0 0H1000V1000H0Z" />
+                <path class="registration-safe-zone" d="M70 80H900V820H70Z" />
+                <path class="registration-exclusion" d="M0 0H40L84 950L0 1000Z" />
+                <path class="registration-exclusion" d="M922 0H1000V1000L895 905Z" />
                 <path class="registration-guide registration-guide--cyan" d="M500 0V1000" />
                 <path class="registration-guide registration-guide--magenta" d="M0 500H1000" />
               </svg>
@@ -184,7 +184,7 @@
             </div>
             <div class="surface-registration" aria-hidden="true">
               <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" role="presentation">
-                <path class="registration-boundary" d="M80 1000Q20 940 30 750C75 260 250 0 500 0C750 0 925 260 970 750Q980 940 920 1000Z" />
+                <path class="registration-boundary" d="M0 1000V847C0 380 160 0 364 0H636C840 0 1000 380 1000 847V1000Z" />
                 <path class="registration-safe-zone" d="M185 780C225 330 335 185 500 185C665 185 775 330 815 780Z" />
                 <path class="registration-exclusion" d="M250 1000Q310 655 500 650Q690 655 750 1000Z" />
                 <path class="registration-guide registration-guide--cyan" d="M500 0V1000" />
@@ -216,14 +216,14 @@
           </section>
 
           <div class="cockpit-chrome cockpit-chrome--foreground" aria-hidden="true">
-            <svg viewBox="0 0 1600 800" preserveAspectRatio="none" role="presentation">
+            <svg viewBox="0 0 1463 664" preserveAspectRatio="none" role="presentation">
               <path class="console-sill" d="M675 762H1510L1458 800H640Z" />
               <path class="dash-edge" d="M0 784H1600" />
             </svg>
           </div>
 
           <div class="cockpit-treatment cockpit-reflections" aria-hidden="true">
-            <svg viewBox="0 0 1600 800" preserveAspectRatio="none" role="presentation">
+            <svg viewBox="0 0 1463 664" preserveAspectRatio="none" role="presentation">
               <path class="cluster-binnacle" d="M132 704Q154 548 332 505Q492 468 620 540L666 585" />
               <path class="dashboard-bezel-highlight" d="M704 612H1358Q1390 612 1404 640" />
               <path class="reflection reflection--dash" d="M36 618Q360 510 610 555L730 584H1370Q1500 584 1570 618" />
@@ -285,5 +285,6 @@
     </main>
 
     <script type="module" src="cockpit/cockpit.js"></script>
+    <script type="module" src="../prototype-version-nav.js"></script>
   </body>
 </html>

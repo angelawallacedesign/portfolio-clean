@@ -1,0 +1,39 @@
+{
+  "prototype": {
+    "name": "DriveOS",
+    "version": "v0.1",
+    "pass": "Pass C · Cockpit Environment"
+  },
+  "status": {
+    "shell": "Cockpit treatment · features inactive"
+  },
+  "regions": {
+    "a": "Top status region",
+    "b": "Windshield",
+    "c": "Instrument cluster",
+    "d": "Wide dashboard",
+    "e": "Prototype controls",
+    "f": "Steering wheel"
+  },
+  "surfaces": {
+    "windshield": "Independent surface placeholder",
+    "cluster": "Independent surface placeholder",
+    "dashboard": "Independent surface placeholder"
+  },
+  "controls": {
+    "future": "Gate C material and debug review",
+    "primary": "Primary action",
+    "debugSurfaces": "Debug Surfaces",
+    "reset": "Reset"
+  },
+  "calibration": {
+    "status": "Temporary calibration",
+    "windshield": "TEMP · B · 1600 × 900 local",
+    "cluster": "TEMP · C · 1000 × 420 local",
+    "dashboard": "TEMP · D · 1600 × 540 local"
+  },
+  "unsupported": {
+    "title": "Landscape viewport required",
+    "message": "This structural prototype supports desktop and tablet landscape only. Rotate or widen the viewport to review the fixed cockpit composition."
+  }
+}

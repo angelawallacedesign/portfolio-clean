@@ -1,0 +1,364 @@
+.cockpit-treatment {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cockpit-treatment svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cockpit-materials {
+  z-index: 2;
+}
+
+.soft-touch {
+  filter: url("#soft-touch-texture");
+}
+
+.material-headliner,
+.material-pillar,
+.material-dash,
+.material-lower-dash,
+.material-console,
+.material-vent,
+.material-mirror,
+.material-mirror-shell,
+.speaker-grille {
+  vector-effect: non-scaling-stroke;
+}
+
+.material-headliner {
+  fill: url("#headliner-material");
+  stroke: #030507;
+  stroke-width: 3;
+}
+
+.material-mirror-shell {
+  fill: #080b0e;
+  stroke: #4f5960;
+  stroke-width: 2;
+}
+
+.material-mirror {
+  fill: url("#mirror-glass");
+  stroke: url("#metal-trim");
+  stroke-width: 2;
+}
+
+.material-pillar {
+  stroke: #030507;
+  stroke-width: 3;
+}
+
+.material-pillar--left {
+  fill: url("#pillar-material-left");
+}
+
+.material-pillar--right {
+  fill: url("#pillar-material-right");
+}
+
+.pillar-highlight {
+  fill: none;
+  stroke: rgba(212, 222, 229, 0.16);
+  stroke-width: 14;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  filter: blur(7px);
+}
+
+.material-dash {
+  fill: url("#dash-material");
+  stroke: #05080a;
+  stroke-width: 3;
+}
+
+.material-lower-dash {
+  fill: url("#lower-dash-material");
+  stroke: #090c0e;
+  stroke-width: 2;
+}
+
+.dash-seam {
+  fill: none;
+  stroke: rgba(173, 184, 192, 0.15);
+  stroke-width: 1.2;
+  stroke-dasharray: 2 5;
+  vector-effect: non-scaling-stroke;
+}
+
+.material-trim {
+  fill: none;
+  stroke: url("#metal-trim");
+  stroke-width: 4;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.82;
+}
+
+.material-trim--lower {
+  stroke-width: 2;
+  opacity: 0.45;
+}
+
+.speaker-grille {
+  fill: url("#speaker-mesh");
+  stroke: #6b757c;
+  stroke-width: 1.4;
+}
+
+.material-vent {
+  fill: url("#vent-slats");
+  stroke: #606a71;
+  stroke-width: 1.4;
+}
+
+.material-vent--center {
+  opacity: 0.7;
+}
+
+.material-console {
+  fill: #0c1013;
+  stroke: #6a747b;
+  stroke-width: 2;
+}
+
+.console-highlight {
+  fill: none;
+  stroke: rgba(207, 217, 223, 0.16);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.cockpit-reflections {
+  z-index: 4;
+}
+
+.cluster-binnacle {
+  fill: none;
+  stroke: rgba(3, 6, 8, 0.82);
+  stroke-width: 26;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.dashboard-bezel-highlight {
+  fill: none;
+  stroke: rgba(164, 180, 190, 0.3);
+  stroke-width: 2;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.reflection {
+  fill: none;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.reflection--dash {
+  stroke: rgba(215, 226, 234, 0.11);
+  stroke-width: 1.5;
+}
+
+.reflection--pillar {
+  stroke: rgba(221, 231, 237, 0.14);
+  stroke-width: 5;
+  filter: blur(4px);
+}
+
+.reflection--console {
+  stroke: rgba(196, 208, 216, 0.14);
+  stroke-width: 2;
+}
+
+.reflection--dash-soft {
+  stroke: rgba(141, 183, 208, 0.09);
+  stroke-width: 11;
+  filter: blur(10px);
+}
+
+.ambient-lighting {
+  z-index: 6;
+  background:
+    radial-gradient(ellipse at 64% 77%, rgba(34, 119, 168, 0.07), transparent 37%),
+    radial-gradient(ellipse at 24% 80%, rgba(35, 98, 135, 0.045), transparent 28%),
+    linear-gradient(to bottom, transparent 52%, rgba(5, 18, 27, 0.16) 100%);
+  mix-blend-mode: screen;
+}
+
+.environment-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #0a1722;
+}
+
+.environment-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 54%;
+  filter: saturate(0.78) brightness(0.82) contrast(1.04);
+}
+
+.environment-atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(5, 14, 23, 0.12), transparent 42%, rgba(2, 7, 10, 0.22)),
+    radial-gradient(ellipse at 50% 58%, transparent 46%, rgba(2, 7, 10, 0.32) 100%),
+    linear-gradient(100deg, rgba(183, 207, 222, 0.045), transparent 21%, transparent 78%, rgba(183, 207, 222, 0.035));
+}
+
+.surface-label,
+.surface-local-canvas > .region-key {
+  position: relative;
+  z-index: 1;
+}
+
+.viewport-shell[data-debug-surfaces="false"] .cockpit-scene {
+  background: #070a0d;
+}
+
+.viewport-shell[data-debug-surfaces="false"] .surface--windshield .surface-viewport {
+  border-color: #080c10;
+  background: #0a1722;
+  box-shadow:
+    inset 0 0 0 1px rgba(185, 205, 217, 0.16),
+    inset 0 -54px 90px rgba(2, 7, 10, 0.26);
+}
+
+.viewport-shell[data-debug-surfaces="false"] .surface--cluster .surface-viewport,
+.viewport-shell[data-debug-surfaces="false"] .surface--dashboard .surface-viewport {
+  border-color: #4c565d;
+  background:
+    linear-gradient(148deg, rgba(62, 81, 94, 0.3), transparent 29%),
+    linear-gradient(to bottom, #0a0f14, #030506);
+  box-shadow:
+    inset 0 0 0 1px rgba(185, 201, 211, 0.12),
+    inset 0 1px 12px rgba(126, 171, 198, 0.06),
+    0 9px 24px rgba(0, 0, 0, 0.48);
+}
+
+.viewport-shell[data-debug-surfaces="false"] .surface--dashboard .surface-viewport::after,
+.viewport-shell[data-debug-surfaces="false"] .surface--cluster .surface-viewport::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(112deg, rgba(255, 255, 255, 0.055), transparent 23%, transparent 72%, rgba(128, 172, 199, 0.035));
+  pointer-events: none;
+}
+
+.viewport-shell[data-debug-surfaces="false"] .console-sill {
+  fill: #0b0f12;
+  stroke: #566168;
+}
+
+.viewport-shell[data-debug-surfaces="false"] .surface-label,
+.viewport-shell[data-debug-surfaces="false"] .surface-local-canvas > .region-key,
+.viewport-shell[data-debug-surfaces="false"] .steering-wheel > .region-key {
+  opacity: 0;
+}
+
+.steering-wheel-material {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.wheel-rim-material {
+  position: absolute;
+  inset: 0;
+  border: clamp(18px, 2.2vw, 36px) solid #121619;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow:
+    inset 0 0 0 2px rgba(158, 169, 176, 0.14),
+    inset 0 0 24px rgba(255, 255, 255, 0.055),
+    0 0 0 2px #030506,
+    0 14px 34px rgba(0, 0, 0, 0.58);
+}
+
+.wheel-rim-material::before {
+  content: "";
+  position: absolute;
+  inset: calc(clamp(18px, 2.2vw, 36px) * -0.6);
+  border: 1px dashed rgba(181, 190, 196, 0.17);
+  border-radius: 50%;
+}
+
+.wheel-rim-material::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: conic-gradient(from 195deg, transparent 0 27%, rgba(197, 209, 217, 0.16) 37%, transparent 48% 79%, rgba(197, 209, 217, 0.11) 88%, transparent 96%);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - clamp(18px, 2.2vw, 36px)), #000 calc(100% - clamp(18px, 2.2vw, 36px) + 1px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - clamp(18px, 2.2vw, 36px)), #000 calc(100% - clamp(18px, 2.2vw, 36px) + 1px));
+}
+
+.wheel-spoke-material {
+  position: absolute;
+  top: 52%;
+  width: 42%;
+  height: 18%;
+  border: 1px solid #050709;
+  background:
+    linear-gradient(to bottom, rgba(110, 122, 130, 0.15), transparent 28%),
+    linear-gradient(to bottom, #20262b, #0c1013);
+  box-shadow: inset 0 1px 0 rgba(209, 219, 225, 0.1);
+}
+
+.wheel-spoke-material--left {
+  left: 9%;
+  transform: rotate(17deg);
+  transform-origin: 100% 50%;
+  border-radius: 36% 8% 12% 42%;
+}
+
+.wheel-spoke-material--right {
+  right: 9%;
+  transform: rotate(-17deg);
+  transform-origin: 0 50%;
+  border-radius: 8% 36% 42% 12%;
+}
+
+.wheel-hub-material {
+  position: absolute;
+  top: 44%;
+  left: 31%;
+  width: 38%;
+  height: 34%;
+  border: 1px solid #040608;
+  border-radius: 35% 35% 47% 47%;
+  background:
+    radial-gradient(ellipse at 50% 13%, rgba(136, 149, 158, 0.16), transparent 38%),
+    linear-gradient(to bottom, #181e22, #090c0f);
+  box-shadow:
+    inset 0 1px 0 rgba(205, 218, 226, 0.12),
+    0 7px 18px rgba(0, 0, 0, 0.42);
+}
+
+.wheel-lower-spoke-material {
+  position: absolute;
+  top: 68%;
+  left: 44%;
+  width: 12%;
+  height: 19%;
+  clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
+  background: linear-gradient(to right, #232b30, #737d83 48%, #22292e);
+  opacity: 0.72;
+}
+
+.viewport-shell[data-debug-surfaces="true"] .cockpit-materials,
+.viewport-shell[data-debug-surfaces="true"] .cockpit-reflections,
+.viewport-shell[data-debug-surfaces="true"] .ambient-lighting,
+.viewport-shell[data-debug-surfaces="true"] .steering-wheel-material {
+  opacity: 0;
+}

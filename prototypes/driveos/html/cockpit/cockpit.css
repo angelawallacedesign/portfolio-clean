@@ -14,8 +14,8 @@ body {
 }
 
 .viewport-shell {
-  width: min(100vw, calc(100dvh * 1.6));
-  height: min(100dvh, calc(100vw / 1.6));
+  width: min(100vw, calc(100dvh * 1.76895));
+  height: min(100dvh, calc(100vw / 1.76895));
   aspect-ratio: var(--shell-aspect);
   display: grid;
   grid-template-rows: 9.6% 80.1% 10.3%;
@@ -164,33 +164,33 @@ body {
 
 .surface--windshield {
   z-index: 0;
-  top: 2.2%;
-  left: 1.4%;
-  width: 97.2%;
-  height: 64.8%;
-  border-radius: 5.5% 5.5% 10% 10% / 7% 7% 18% 18%;
+  top: -0.1%;
+  left: 1.91%;
+  width: 103.75%;
+  height: 71.08%;
+  border-radius: 0;
   background: #f5f5f2;
 }
 
 .surface--cluster {
-  left: 9%;
-  bottom: 19%;
-  width: 31%;
-  height: 21.5%;
+  left: 8.11%;
+  top: 64.37%;
+  width: 28.08%;
+  height: 26.66%;
   z-index: 3;
-  border-radius: 34% 34% 12% 12% / 64% 64% 18% 18%;
+  border-radius: 36.4% 36.4% 0 0 / 84.75% 84.75% 0 0;
   background: #d7d8d8;
 }
 
 .surface--dashboard {
-  left: 43.4%;
-  bottom: 7.1%;
-  width: 41.5%;
-  height: 27.6%;
+  left: 39.41%;
+  top: 71.45%;
+  width: 37.15%;
+  height: 27.92%;
   z-index: 3;
-  border-radius: 4.5% / 12%;
+  border-radius: 3.67% / 10.79%;
   background: #e2e3e2;
-  transform: perspective(1200px) rotateX(-1.5deg) rotateY(-0.8deg);
+  transform: rotate(-0.39deg) skewX(0.75deg);
 }
 
 .cockpit-chrome--foreground {
@@ -205,9 +205,9 @@ body {
 .steering-wheel {
   position: absolute;
   z-index: 5;
-  left: 6.6%;
-  bottom: -18.5%;
-  width: 35.5%;
+  left: 5.97%;
+  top: 60.3%;
+  width: 32.13%;
   aspect-ratio: 1;
   color: var(--ink-800);
 }
@@ -232,7 +232,7 @@ body {
 
 .wheel-spoke {
   position: absolute;
-  top: 52%;
+  top: 42.2%;
   width: 42%;
   height: 18%;
   border: 2px solid var(--ink-700);
@@ -240,25 +240,25 @@ body {
 }
 
 .wheel-spoke--left {
-  left: 9%;
-  transform: rotate(17deg);
+  left: 0;
+  transform: rotate(-8deg);
   transform-origin: 100% 50%;
   border-radius: 36% 8% 12% 42%;
 }
 
 .wheel-spoke--right {
-  right: 9%;
-  transform: rotate(-17deg);
+  right: 0;
+  transform: rotate(4deg);
   transform-origin: 0 50%;
   border-radius: 8% 36% 42% 12%;
 }
 
 .wheel-hub {
   position: absolute;
-  top: 44%;
-  left: 31%;
-  width: 38%;
-  height: 34%;
+  top: 38.4%;
+  left: 24.5%;
+  width: 51.6%;
+  height: 24.6%;
   border: 2px solid var(--ink-700);
   border-radius: 35% 35% 47% 47%;
   background: #a9acae;

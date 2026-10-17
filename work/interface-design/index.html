@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="../../css/work-gallery.css">
+  <link rel="stylesheet" href="../../css/navigation-drawer.css">
 </head>
 <body class="long-page work-archive project-list-page" id="top">
   <script type="module" src="../../js/interface-projects.js"></script>
@@ -34,9 +35,40 @@
           </ul>
         </nav>
       </div>
+      <button class="navigation-drawer-trigger" type="button" data-navigation-drawer-trigger aria-controls="site-navigation-drawer" aria-expanded="false" aria-label="Open navigation menu"><span class="navigation-drawer-icon" data-navigation-drawer-icon aria-hidden="true"></span></button>
     </div>
   </header>
 
+  <div class="navigation-drawer-root" data-navigation-drawer aria-hidden="true" hidden>
+      <button class="navigation-drawer-backdrop" type="button" data-navigation-drawer-backdrop tabindex="-1" aria-label="Close navigation menu"></button>
+      <aside class="navigation-drawer" id="site-navigation-drawer" data-navigation-drawer-panel role="dialog" aria-modal="true" aria-label="Navigation menu">
+          <div class="navigation-drawer-meta">
+              <div class="designer-name"><p><a href="../../index.html">Angela Wallace</a></p><p>Senior UI/UX Designer</p></div>
+              <button class="navigation-drawer-close" type="button" data-navigation-drawer-close aria-label="Close navigation menu"><span class="navigation-drawer-icon" data-navigation-drawer-icon aria-hidden="true"></span></button>
+          </div>
+          <nav class="navigation-drawer-nav" aria-label="Mobile primary">
+              <ul class="navigation-drawer-list">
+                  <li><a class="navigation-drawer-primary-link" href="../../index.html">Home</a></li>
+                  <li>
+                      <div class="navigation-drawer-work-row">
+                          <a class="navigation-drawer-work-link" href="../" aria-current="page">Work</a>
+                          <button class="navigation-drawer-work-toggle" type="button" data-navigation-drawer-work-toggle aria-expanded="true" aria-controls="navigation-drawer-work-links" aria-label="Collapse Work categories"><span class="navigation-drawer-icon rotate-90" data-navigation-drawer-icon aria-hidden="true"></span></button>
+                      </div>
+                      <ul class="navigation-drawer-work-links" id="navigation-drawer-work-links" data-navigation-drawer-work-links>
+                          <li><a href="../" data-drawer-work-filter="all">All Work</a></li>
+                          <li><a href="../?filter=prototypes" data-drawer-work-filter="prototypes">Prototypes</a></li>
+                          <li><a href="../?filter=case-studies" data-drawer-work-filter="case-studies">Case Studies</a></li>
+                          <li><a href="../?filter=interface-design" data-drawer-work-filter="interface-design" aria-current="location">Interface Design</a></li>
+                          <li><a href="../?filter=visual-design" data-drawer-work-filter="visual-design">Visual Design</a></li>
+                      </ul>
+                  </li>
+                  <li class="navigation-drawer-divider" aria-hidden="true"></li>
+                  <li><a class="navigation-drawer-primary-link" href="../../index.html#services">Services</a></li>
+                  <li><a class="navigation-drawer-primary-link" href="../../index.html#about">About</a></li>
+              </ul>
+          </nav>
+      </aside>
+  </div>
   <main id="main" class="page-main work-main">
     <nav class="work-breadcrumb" aria-label="Breadcrumb">
       <a href="../">Work</a>
@@ -61,5 +93,6 @@
   </div>
 
   <footer class="work-footer">© Angela Wallace Design</footer>
+  <script type="module" src="../../js/navigation-drawer.js"></script>
 </body>
 </html>

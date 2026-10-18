@@ -43,9 +43,9 @@
     <link rel="stylesheet" href="modules/designing-with-ai-hero/pass-4/designing-ai-hero.css?v=responsive-fix" />
     <link rel="stylesheet" href="css/navigation-drawer.css" />
 </head>
-<body class="long-page intro-layout" data-page="intro" id="top">
+<body class="long-page intro-layout" data-page="intro">
     
-    <header class="global-header" data-nav-root>
+    <header class="global-header" data-nav-root id="top" tabindex="-1">
                     <div class="header-inner">
                         
                         <div class="designer-brand">
@@ -403,8 +403,8 @@
                                 UI/UX designer bridging interface design, design systems, and AI-assisted front-end development.
                             </p>
                             
-                            <div class="cards" role="list" aria-label="Service cards">
-                                <article class="card" role="listitem">
+                            <div class="cards">
+                                <article class="card">
                                     <h3>DESIGN</h3>
                                     <ul>
                                         <li>Visual Design</li>
@@ -416,7 +416,7 @@
                                     </ul>
                                 </article>
                                 
-                                <article class="card" role="listitem">
+                                <article class="card">
                                     <h3>SYSTEMS</h3>
                                     <ul>
                                         <li>Design Systems</li>
@@ -428,7 +428,7 @@
                                     </ul>
                                 </article>
                                 
-                                <article class="card" role="listitem">
+                                <article class="card">
                                     <h3>DELIVERY</h3>
                                     <ul>
                                         <li>AI-Assisted Implementation</li>
@@ -567,7 +567,7 @@
     </main>
 
     <!-- Back to top -->
-    <div class="bottom-nav__right" data-back-to-top aria-hidden="true">
+    <div class="bottom-nav__right" data-back-to-top aria-hidden="true" inert>
         <a href="#top" class="control control--fixed is-bottom-right">
             <span class="icon rotate-0" data-icon="arrow" aria-hidden="true"></span>
             <span class="sr-only">Back to top</span>

@@ -134,13 +134,19 @@ export function initBackToTop() {
   if (!backToTop) return;
 
   const backToTopLink = backToTop.querySelector('a[href="#top"]');
+  const topTarget = document.querySelector("#top");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let scrollUpdatePending = false;
 
   const updateBackToTop = () => {
     const hasScrolled = window.scrollY > 1;
 
+    if (!hasScrolled && backToTop.contains(document.activeElement)) {
+      topTarget?.focus({ preventScroll: true });
+    }
+
     backToTop.classList.toggle("is-visible", hasScrolled);
+    backToTop.inert = !hasScrolled;
     backToTop.setAttribute("aria-hidden", String(!hasScrolled));
 
     if (backToTopLink) {
@@ -158,6 +164,8 @@ export function initBackToTop() {
 
   backToTopLink?.addEventListener("click", (event) => {
     event.preventDefault();
+
+    topTarget?.focus({ preventScroll: true });
 
     if (window.location.hash !== "#top") {
       window.history.pushState(null, "", "#top");

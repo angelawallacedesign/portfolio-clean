@@ -190,6 +190,19 @@ a.utility {
   color: #000;
 }
 
+#about .about-actions .link-btn {
+  color: #D62F59;
+}
+
+html[data-theme="dark"] #about .about-actions .link-btn,
+html[data-theme="night"] #about .about-actions .link-btn {
+  color: var(--color-accent);
+}
+
+#about .about-actions .link-btn:hover {
+  color: #000;
+}
+
 /* TOGGLE SWITCH */
 .toggle-switch ul {
   width: 100%;

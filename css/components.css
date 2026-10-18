@@ -325,7 +325,7 @@ a.utility {
 }
 
 .designer-name p:last-child {
-  color:#868686;
+  color:var(--color-text-secondary);
 }
 
 .back-link a {

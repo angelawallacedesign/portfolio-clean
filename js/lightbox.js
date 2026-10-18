@@ -22,6 +22,7 @@ lightbox?.setAttribute('role', 'dialog');
 lightbox?.setAttribute('aria-modal', 'true');
 lightbox?.setAttribute('aria-label', 'Expanded image viewer');
 lightbox?.setAttribute('aria-hidden', 'true');
+lightbox?.setAttribute('inert', '');
 
 document.addEventListener('click', (e) => {
   if (!lightbox || !img || !caption) return;
@@ -74,16 +75,21 @@ document.addEventListener('keydown', (e) => {
 function closeLightbox() {
   if (!lightbox) return;
 
+  // Restore focus before hiding the dialog.
+  if (activeTrigger?.isConnected) {
+    activeTrigger.focus({ preventScroll: true });
+  } else if (lightbox.contains(document.activeElement)) {
+    document.activeElement.blur();
+  }
+
   lightbox.classList.remove('is-open', 'is-zoomed');
+  lightbox.setAttribute('inert', '');
   lightbox.setAttribute('aria-hidden', 'true');
+
   document.body.classList.remove('is-lightbox-open');
   isOpen = false;
   isZoomed = false;
   img?.removeAttribute('src');
-
-  if (activeTrigger?.isConnected) {
-    activeTrigger.focus({ preventScroll: true });
-  }
 
   activeTrigger = null;
 }

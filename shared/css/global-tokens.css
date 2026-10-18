@@ -35,6 +35,7 @@
 
     /* Text */
     --color-text: #111;
+    --color-text-secondary: #686868;
     --color-text-contrast: #fff;
     --color-text-muted: #C3C3C3;
 

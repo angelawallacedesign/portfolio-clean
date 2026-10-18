@@ -89,7 +89,7 @@ html.work-page body.work-archive {
 }
 
 .work-heading .work-note {
-  color: var(--color-text-muted, #686868);
+  color: var(--color-text-secondary);
   font-size: var(--type-small);
 }
 
@@ -98,7 +98,7 @@ html.work-page body.work-archive {
   flex-wrap: wrap;
   gap: 0.45rem;
   margin-bottom: 2rem;
-  color: var(--color-text-muted, #686868);
+  color: var(--color-text-secondary);
   font-size: var(--type-small);
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -178,7 +178,7 @@ html.work-page body.work-archive {
 
 .work-card p {
   margin: 0;
-  color: var(--color-text-muted, #686868);
+  color: var(--color-text-secondary);
 }
 
 /* Interface design project list */
@@ -316,7 +316,7 @@ html.work-page body.work-archive {
 
 .work-gallery-grid figcaption {
   margin-top: 0.75rem;
-  color: var(--color-text-muted, #686868);
+  color: var(--color-text-secondary);
   font-size: var(--type-small);
   line-height: var(--lh-body);
 }
@@ -348,7 +348,7 @@ html.work-page body.work-archive {
   margin: 0 auto;
   padding: 2rem clamp(1.25rem, 4vw, 3rem) 4rem;
   border-top: 1px solid var(--color-border, #d7d7d7);
-  color: var(--color-text-muted, #686868);
+  color: var(--color-text-secondary);
   font-size: var(--type-small);
 }
 

@@ -83,12 +83,6 @@ a {
   /*padding: 5px;*/
 }
 
-a.text-link {
-  padding-left:3px;
-  text-decoration: underline;
-  font-weight: bold;
-}
-
 a:hover,
 a:focus-visible {
   color: var(--color-accent);
@@ -140,7 +134,13 @@ a.utility {
   box-shadow: 0 1px 2.4px rgba(0, 0, 0, 0.25);
 }
 
-.primary-btn-small {
+.primary-btn.intro {
+  padding: 10px 40px;
+  font-size: 1.5rem;
+  display: inline-block;
+}
+
+.primary-btn.small {
   border: 0;
     padding: 8px 10px;
     background-color: #000;
@@ -155,13 +155,13 @@ a.utility {
     text-align: center;
 }
 
-.primary-btn-small:hover {
+.primary-btn.small:hover {
     background-color: #fff;
     color: #000;
     filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
 }
 
-.media.about .primary-btn-small {
+.media.about .primary-btn.small {
   margin-top: 0;
 }
 
@@ -170,7 +170,7 @@ a.utility {
 }
 
 /* TEXT LINK BUTTON */
-.link-btn {
+.text-link {
   appearance: none;
   background-color: transparent;
   cursor: pointer;
@@ -179,28 +179,196 @@ a.utility {
   padding: 0 0 0 5px;
 }
 /*
-.link-btn:focus-visible {
+.text-link:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 3px;
   color: #000;
 }
-  */
+*/
 
-.link-btn:hover {
+.text-link:hover {
   color: #000;
 }
 
-#about .about-actions .link-btn {
-  color: #D62F59;
+.text-link.actions {
+  font-size: 1.25rem;
 }
 
-html[data-theme="dark"] #about .about-actions .link-btn,
-html[data-theme="night"] #about .about-actions .link-btn {
+.text-link.large {
+  font-size: 1.75rem;
+  color: var(--color-accent);
+  font-family: var(--font-sans);
+  font-weight: 300;
+}
+
+
+html[data-theme="dark"] #about .about-actions .text-link,
+html[data-theme="night"] #about .about-actions .text-link {
   color: var(--color-accent);
 }
 
-#about .about-actions .link-btn:hover {
-  color: #000;
+
+
+/* CTA BUTTON with Motion from Designing with AI Hero Pass 4 */
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  color: var(--color-accent);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 1rem;
+  cursor: pointer;
+
+  /* Hover interaction */
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  /*transition: translate 150ms cubic-bezier(0.2, 0.72, 0.2, 1);*/
+  transition: translate 250ms cubic-bezier(0.2, 0.72, 0.2, 1);
+}
+
+/* Gradient swipe and accent border */
+
+.cta-btn::before,
+.cta-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.cta-btn::before {
+  z-index: -1;
+  background: linear-gradient(
+    112deg,
+    transparent 36%,
+    color-mix(in srgb, var(--color-accent) 22%, transparent) 50%,
+    transparent 64%
+  );
+  transform: translateX(-125%);
+  /*transition: transform 360ms cubic-bezier(0.2, 0.72, 0.2, 1);*/
+  transition: transform 900ms cubic-bezier(0.2, 0.72, 0.2, 1);
+}
+
+.cta-btn::after {
+  border: 1px solid var(--color-accent);
+  opacity: 0;
+  transform: scaleX(0.25);
+  transform-origin: left center;
+  /*transition:
+    transform 180ms cubic-bezier(0.2, 0.72, 0.2, 1),
+    opacity 120ms ease;*/
+  transition:
+    transform 550ms cubic-bezier(0.2, 0.72, 0.2, 1),
+    opacity 250ms ease;
+}
+
+/* Hover */
+
+.cta-btn:hover {
+  translate: -0.125rem -0.125rem;
+}
+
+.cta-btn:hover::before {
+  transform: translateX(125%);
+}
+
+.cta-btn:hover::after,
+.cta-btn:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Keyboard focus */
+
+.cta-btn:focus-visible {
+  outline: 2px solid var(--color-focus, var(--color-accent));
+  outline-offset: 4px;
+}
+
+/* Active */
+
+.cta-btn:active {
+  translate: 0.08rem 0.08rem;
+}
+
+/* XL variant */
+
+.cta-btn.xl {
+  width: 100%;
+  padding: 3rem 5%;
+  font-size: 1.75rem;
+}
+
+@media (max-width: 480px) {
+  .cta-btn.xl {
+    padding: 1.75rem 5%;
+    border-radius: 0.75rem;
+  }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-btn,
+  .cta-btn::before,
+  .cta-btn::after {
+    transition: none;
+  }
+
+  .cta-btn:hover,
+  .cta-btn:active {
+    translate: none;
+  }
+
+  .cta-btn::before {
+    display: none;
+  }
+}
+
+
+
+/* Featured Work — View All Projects link card 
+.cta-btn.xl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;  
+
+  width: 100%;
+  padding: var(--impact-pad-y) var(--impact-pad-x);
+  margin-top: 2.25rem;
+
+  border: 1px solid var(--impact-border);
+  border-radius: var(--impact-radius);
+  background: var(--impact-bg);
+
+  font-family: var(--font-sans);
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.cta-btn.xl:hover {
+  border-color:#DD3353;
+}
+*/
+
+.view-projects-btn:hover {
+  color: var(--color-text);
+}
+
+.view-projects-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 /* TOGGLE SWITCH */
@@ -1046,7 +1214,7 @@ footer a {
 .work-feature__media,
 .global-nav__button,
 .primary-btn,
-.primary-btn-small,
+.primary-btn.small,
 .cta__button {
   transition:
     background-color var(--motion-fast) var(--ease-standard),
@@ -1159,11 +1327,6 @@ footer a {
    IMAGES
 ========================= */
 
-/*.image-treatment--soft-shadow {
-  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.06), 0 1px 10px rgba(0, 0, 0, 0.10);
-}
-*/
-
 .inline-image {
   display: inline;
   max-width: 40dvw;
@@ -1179,77 +1342,6 @@ footer a {
   float: left;
   padding-right: 1rem;
 }
-
-/* ======= PROFILE IMAGE ======= */
-.profile {
-  position: fixed;
-
-  right: 0;
-  bottom: 0;
-
-  width: 320px; /* adjust later */
-  height: auto;
-
-  pointer-events: auto; /* important if clickable */
-
-  opacity: 1;
-  transition: opacity 300ms ease;
-}
-
-.profile__img {
-  display: none;
-  width: 100%;
-  height: auto;
-}
-
-.profile--hero {
-  position: relative;
-  width: 400px;
-  height: 620px;
-
-  display: flex;
-  
-  justify-content: center;
-
-  overflow: hidden;
-}
-
-.profile--hero img {
-  position: absolute;
-  top: 60px; /* lets it dip slightly */
-  left: 0;
-  z-index: 2;
-  width: 320px;
-  opacity: 1;
-  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-  /* Required for Chrome, Safari, and newer Edge versions */
-  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-}
-
-.profile__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.profile__bg svg {
-  height: 100%;
-  object-fit: cover;
-}
-
-.profile.is-hidden {
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
-}
-
-
-.profile-trigger,
-.profile-image-trigger {
-  height: 1px;
-  width: 100%;
-}
-
 
 
 /* =========================
@@ -1515,55 +1607,8 @@ body.is-layer-3-open > footer {
 .pattern-list li {
   position: relative;
   padding-left: 0;
-  /*
-  padding-left: 50px;
-  */
   margin-bottom: 16px;
 }
-
-/* Hide svgs until new set is created
-.pattern-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0px;
-  
-  width: 40px;
-  height: 40px;
-
-  background-color: var(--color-accent);
-
-  /* SVG as mask *
-  -webkit-mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  mask-position: center;
-}
-
-.pattern-list li:nth-child(1)::before {
-  -webkit-mask-image: url('assets/icons/pattern-list_run.svg');
-  mask-image: url('assets/icons/pattern-list_run.svg');
-}
-
-.pattern-list li:nth-child(2)::before {
-  -webkit-mask-image: url('assets/icons/pattern-list_leaf.svg');
-  mask-image: url('assets/icons/pattern-list_leaf.svg');
-}
-
-.pattern-list li:nth-child(3)::before {
-  -webkit-mask-image: url('assets/icons/pattern-list_light.svg');
-  mask-image: url('assets/icons/pattern-list_light.svg');
-}
-
-.pattern-list li:nth-child(4)::before {
-  -webkit-mask-image: url('assets/icons/pattern-list_people.svg');
-  mask-image: url('assets/icons/pattern-list_people.svg');
-}
-*/
-
 
 .pattern-callout {
   display: flex;

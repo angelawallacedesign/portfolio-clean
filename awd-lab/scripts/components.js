@@ -39,7 +39,7 @@ export function renderOverlayPanel(data) {
                   <a 
                     data-open-case-study="true"
                     data-project-id="${data.id}"
-                    class="primary-btn-small"
+                    class="primary-btn small"
                   >
                     View Case Study
                   </a>
@@ -93,7 +93,7 @@ export function renderProjectCard(data) {
           <a
             data-open-case-study="true"
             data-project-id="${data.id}"
-            class="primary-btn-small"
+            class="primary-btn small"
           >
             View Case Study
           </a>

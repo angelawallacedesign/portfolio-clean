@@ -41,7 +41,7 @@ export function renderOverlayPanel(data) {
                   <a 
                     data-open-case-study="true"
                     data-project-id="${data.id}"
-                    class="primary-btn-small"
+                    class="primary-btn small"
                   >
                     View Case Study
                   </a>
@@ -79,14 +79,14 @@ export function renderProjectCard(data, options = {}) {
   if (isSrvdWorkList) {
     const primaryAction = data.hasCaseStudy && caseStudyUrl
       ? `
-        <a href="${caseStudyUrl}" class="primary-btn-small">
+        <a href="${caseStudyUrl}" class="primary-btn small">
           View Case Study
         </a>
       `
       : "";
     const textLinkAction = projectUrl
       ? `
-        <a class="link-btn" href="${projectUrl}">
+        <a class="text-link" href="${projectUrl}">
           View Project &#8594;
         </a>
       `
@@ -151,7 +151,7 @@ export function renderProjectCard(data, options = {}) {
         <p>${data.meta.notes}</p>
 
         <div class="project-card-actions">
-          <a href="${projectUrl}" class="primary-btn-small">
+          <a href="${projectUrl}" class="primary-btn small">
             ${buttonLabel}
           </a>
         </div>
@@ -192,7 +192,7 @@ export function renderProjectCard(data, options = {}) {
       data.hasCaseStudy
         ? `
         <div class="project-card-actions">
-          <a href="${caseStudyUrl}" class="primary-btn-small">
+          <a href="${caseStudyUrl}" class="primary-btn small">
             View Case Study
           </a>
         </div>
@@ -256,7 +256,7 @@ export function renderWorkFeature(data, index, modules = {}) {
         data.hasCaseStudy
           ? `
           <div class="work-feature__actions">
-            <a href="${data.htmlInclude}" class="primary-btn-small"
+            <a href="${data.htmlInclude}" class="primary-btn small"
             >
               View Case Study
             </a>

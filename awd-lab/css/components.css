@@ -223,7 +223,7 @@ a.is-active {
 }
 
 
-.primary-btn-small {
+.primary-btn.small {
   border: 0;
     padding: 8px 10px;
     background-color: #000;
@@ -240,7 +240,7 @@ a.is-active {
 }
 
 
-.primary-btn-small:hover {
+.primary-btn.small:hover {
     background-color: #fff;
     color: #000;
     filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));

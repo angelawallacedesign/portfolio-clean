@@ -326,14 +326,6 @@ body.show-section-nav .intro-hide {
 COMPONENTS
 ========================= */
 
-/* PRIMARY BUTTON */
-.primary-btn.intro {
-  padding: 10px 40px;
-  font-size: 1.5rem;
-  display: inline-block;
-}
-
-
 /* HERO VISUAL */
 
 /* visual container */
@@ -957,25 +949,21 @@ BREAKPOINT QUERIES
     align-items: baseline;
   }
 
-  #about .about-actions .primary-btn-small {
+  #about .about-actions .primary-btn.small {
     display: block;
     width: 100%;
     padding: 12px 16px;
     font-size: 1.125rem;
   }
 
-  #about .about-actions .link-btn {
+  #about .about-actions .text-link {
     display: block;
     width: fit-content;
     margin-inline: auto;
-    font-size: 1.25rem;
   }
 
   .intro-layout footer > p {
     text-align: center;
   }
     
-  /*.feature--payments .work-feature__media img {
-  
-  }*/
 }

@@ -127,15 +127,15 @@ URL caution: many pages deliberately use parent-traversing paths such as `../sha
 |---|---|---|---|
 | Home intro CTA | `index.html:176-177` uses `.primary-btn.intro` | Base in `css/components.css:117-141`; intro size/layout in `css/intro-layout.css:302-334,734-737` | Strong candidate for a shared primary-button primitive plus portfolio size variant. |
 | Intro prototype controls | `.intro-play` (currently commented) and `.intro-close` at `index.html:204-240` | `css/intro-reveal.css:6-59,94-126`; behavior in `js/intro-reveal.js` | Portfolio-specific behavior; keep out of core. Current null-reference risk noted above. |
-| Featured hero, normal | Generated in `js/components.js:242-275` as `.primary-btn-small` | `css/components.css:143-162` plus feature/layout context | Candidate shared button style; feature placement remains portfolio-specific. |
+| Featured hero, normal | Generated in `js/components.js:242-275` as `.primary-btn.small` | `css/components.css:143-162` plus feature/layout context | Candidate shared button style; feature placement remains portfolio-specific. |
 | Featured Designing-with-AI hero | `modules/designing-with-ai-hero/pass-4/component.html:64-65` uses `.designing-ai-hero__cta.primary-btn` | Base button plus extensive pass-specific effects in `pass-4/designing-ai-hero.css:322-398` (pass 7 has a parallel version) | Keep expressive animation as portfolio/project recipe; reuse only base button contract. |
-| Project lists/cards | Generated in `js/components.js:79-95,124-159,191-200` using `.primary-btn-small` and `.link-btn` | Base CSS plus `css/work-gallery.css:269-276,874-885,959-972` | Shared button/link candidates; card/action layout stays portfolio-specific. |
+| Project lists/cards | Generated in `js/components.js:79-95,124-159,191-200` using `.primary-btn.small` and `.text-link` | Base CSS plus `css/work-gallery.css:269-276,874-885,959-972` | Shared button/link candidates; card/action layout stays portfolio-specific. |
 | Work archive filters/view switch | `work/index.html:70-79` uses `.work-nav-control` | `css/work-gallery.css:723-780`; Cruise page adds local override | Portfolio navigation/filter pattern, not a generic button until its state API is formalized. |
-| Individual Work pages | `.primary-btn-small` links in `work/interface-design/norwegian.html`, `cruise-campaign-motion.html`, `work/visual-design/exposed.html`, and `outside-in.html` | Base CSS; hero/campaign overrides in `work-gallery.css:433-438` and `cruise-campaign-motion.css:26` | Reusable visual button, portfolio content/layout. |
+| Individual Work pages | `.primary-btn.small` links in `work/interface-design/norwegian.html`, `cruise-campaign-motion.html`, `work/visual-design/exposed.html`, and `outside-in.html` | Base CSS; hero/campaign overrides in `work-gallery.css:433-438` and `cruise-campaign-motion.css:26` | Reusable visual button, portfolio content/layout. |
 | Shared controls | `.control`, `.theme-switcher__button`; pattern-slide buttons are JS-generated | `shared/css/global-components.css`; pattern slide CSS remains local | `.control` and theme button are closest to extraction-ready. Pattern slides must move as a CSS+JS unit. |
 | App/prototype buttons | Design Inspector and Motion Studio define their own scoped buttons | Module/project-local CSS | Product UI, not portfolio design-system core unless deliberately promoted later. |
 
-Button gaps: no single state/size/disabled contract; `.primary-btn-small` hard-codes black/white instead of semantic theme tokens; link-buttons have their focus-visible rule commented out; anchors and buttons share visual classes without documented semantic/accessibility requirements.
+Button gaps: no single state/size/disabled contract; `.primary-btn.small` hard-codes black/white instead of semantic theme tokens; link-buttons have their focus-visible rule commented out; anchors and buttons share visual classes without documented semantic/accessibility requirements.
 
 ## 5. Reusable Assets vs. Portfolio-Specific Code
 
@@ -242,7 +242,7 @@ Each step is intentionally small and independently verifiable; implementation re
 7. **Make shared foundations self-contained.** Resolve font/spacing/motion token ownership or fallbacks. Verify all shared examples without portfolio CSS.
 8. **Separate global policy from primitives.** Move body fade, root smooth-scroll, and broad reduced-motion rules to an opt-in entry. Verify no page remains transparent when JS fails.
 9. **Move pattern slides as a unit.** Bring its CSS, JS, markup contract, and accessibility fixture together. Verify keyboard, focus, no-JS fallback, and reduced motion.
-10. **Normalize buttons behind compatibility aliases.** Define tokens/states/sizes, implement shared primitives, and retain `.primary-btn`, `.primary-btn-small`, and `.link-btn` aliases initially. Migrate intro, featured hero, project list, then individual Work pages in separate reviews.
+10. **Normalize buttons behind compatibility aliases.** Define tokens/states/sizes, implement shared primitives, and retain `.primary-btn`, `.primary-btn.small`, and `.text-link` aliases initially. Migrate intro, featured hero, project list, then individual Work pages in separate reviews.
 11. **Switch portfolio consumption without changing URLs first.** Publish/copy `dist` into `portfolio-clean/shared` so deployed paths remain stable. Run route, screenshot, keyboard, and console-error checks.
 12. **Version and automate distribution.** Tag the first stable release; only then consider package imports/CDN URLs and automated dependency updates.
 13. **Deprecate compatibility aliases gradually.** Remove aliases and legacy files only after usage search, visual regression, and explicit approval.

@@ -20,7 +20,7 @@ Key outcomes:
 	•	Refactored .pattern-slides into a progressive carousel with controls, dots, keyboard support, focus handling, and subtle motion.
 	•	Kept the existing lightbox and added backdrop/content blur polish.
 	•	Consolidated duplicate nav CSS and fixed the broken AI icon background asset path.
-	•	Added refactor documentation here: architecture-refactor-notes.md
+	•	Added refactor documentation here:architecture-refactor-notes.md
 
 Verification:
 	•	JS syntax checks passed for all changed modules.

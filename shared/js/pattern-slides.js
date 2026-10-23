@@ -61,9 +61,30 @@ export function initPatternSlides(root = document) {
       createPagination(slides.length),
       createButton("Next slide", "next")
     );
+    const playback = slideshow.hasAttribute("data-playback");
+    const playButton = playback ? document.createElement("button") : null;
+    if (playButton) {
+      playButton.type = "button";
+      playButton.className = "pattern-slides__play";
+      playButton.setAttribute("aria-label", "Play slideshow");
+      playButton.setAttribute("aria-pressed", "false");
+      playButton.textContent = "▶";
+      controls.querySelectorAll("[data-slide-direction]").forEach((button) => button.remove());
+      controls.append(playButton);
+    }
     slideshow.append(controls);
 
     let currentIndex = 0;
+    let playbackTimer = null;
+
+    function stopPlayback() {
+      if (!playButton) return;
+      window.clearInterval(playbackTimer);
+      playbackTimer = null;
+      playButton.textContent = "▶";
+      playButton.setAttribute("aria-label", "Play slideshow");
+      playButton.setAttribute("aria-pressed", "false");
+    }
 
     function setSlide(nextIndex) {
       currentIndex = (nextIndex + slides.length) % slides.length;
@@ -96,12 +117,30 @@ export function initPatternSlides(root = document) {
       if (dot) {
         setSlide(Number(dot.dataset.slideIndex));
       }
+      if (playButton && event.target.closest(".pattern-slides__play")) {
+        if (playbackTimer) {
+          stopPlayback();
+        } else {
+          setSlide(currentIndex + 1);
+          playbackTimer = window.setInterval(() => setSlide(currentIndex + 1), 4000);
+          playButton.textContent = "Ⅱ";
+          playButton.setAttribute("aria-label", "Pause slideshow");
+          playButton.setAttribute("aria-pressed", "true");
+        }
+      }
     });
 
     slideshow.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowRight") setSlide(currentIndex + 1);
-      if (event.key === "ArrowLeft") setSlide(currentIndex - 1);
+      if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+        event.preventDefault();
+        setSlide(currentIndex + (event.key === "ArrowRight" ? 1 : -1));
+      }
     });
+    if (playButton) {
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) stopPlayback();
+      });
+    }
 
     setSlide(0);
   });

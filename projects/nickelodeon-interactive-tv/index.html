@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="../../css/components.css?v=responsive-fix-2" />
     <link rel="stylesheet" href="../designing-with-ai/designing-with-ai.css?v=responsive-fix" />
     <link rel="stylesheet" href="../designing-with-ai/image-zoom-lightbox/image-zoom-lightbox.css?v=responsive-fix" />
-    <link rel="stylesheet" href="./nickelodeon-interactive-tv.css" />
+    <link rel="stylesheet" href="./nickelodeon-interactive-tv.css?v=figma-redesign" />
 </head>
 <body id="top" class="case-study-page nickelodeon-page">
     <div class="bottom-nav__right" data-back-to-top aria-hidden="true">
@@ -82,7 +82,13 @@
             <section id="overview" class="case-section case-overview">
                 <div class="overview-content">
                     <header class="section-header"><h2>Overview</h2></header>
-                    <div class="intro-layout"><p>As part of a UX/UI team, I designed the television interface for Nickelodeon Hotels &amp; Resorts Punta Cana guest suites. The work brought Nickelodeon’s visual identity into an in-room experience guests could read from a distance and navigate with a remote.</p></div>
+                    <div class="intro-layout">
+                        <figure class="intro-thumb">
+                            <a class="u-image-lightbox-trigger" href="../../assets/work/allin/nick/remote-and-tv.jpg" data-lightbox-image><img src="../../assets/work/allin/nick/remote-and-tv.jpg" alt="Remote control pointed toward a television in a guest room" loading="lazy" /></a>
+                            <figcaption class="caption">Remote control pointed toward a television in a guest room</figcaption>
+                        </figure>
+                        <p>As part of a UX/UI team, I designed the television interface for Nickelodeon Hotels &amp; Resorts Punta Cana guest suites. The work brought Nickelodeon’s visual identity into an in-room experience guests could read from a distance and navigate with a remote.</p>
+                    </div>
                     <h3 class="list__title">Design priorities</h3>
                     <ul class="list list--check">
                         <li>Keep text and controls legible across the room</li>
@@ -91,87 +97,68 @@
                     </ul>
                 </div>
                 <aside class="component-summary">
-                    <h3>Design Summary</h3>
+                    <h3>Project Summary</h3>
                     <dl>
-                        <dt>Client:</dt><dd>Nickelodeon Hotels &amp; Resorts Punta Cana</dd>
-                        <dt>Role:</dt><dd>UX/UI designer; later lead UI designer</dd>
-                        <dt>Scope:</dt><dd>Interactive TV interface and graphics for related devices</dd>
-                        <dt>Deliverables:</dt><dd>High-fidelity mockups, presentations, and production assets</dd>
-                        <dt>Tools:</dt><dd>Photoshop, Illustrator, Adobe XD, HTML, CSS, and QA tools</dd>
+                        <dt>Roles</dt><dd>Nickelodeon Hotels &amp; Resorts Punta Cana</dd>
+                        <dt>Deliverables:</dt><dd>High-fidelity mockups, presentations, graphic assets (TV, kiosk, iPhone, iPad, Android)</dd>
+                        <dt>Tools</dt><dd>Photoshop, Illustrator, Adobe XD, Xcode, Android Studio, GitHub, HTML, CSS, CMS, Microsoft SQL Server, Jira</dd>
                     </dl>
                 </aside>
             </section>
 
             <section id="constraints" class="case-section">
                 <div class="pattern-intro thumb">
-                    <header class="section-header"><h2>Designing for the room</h2></header>
-                    <div class="intro-layout">
-                        <figure class="intro-thumb">
-                            <a class="u-image-lightbox-trigger" href="../../assets/work/allin/nick/remote-and-tv.jpg" data-lightbox-image><img src="../../assets/work/allin/nick/remote-and-tv.jpg" alt="Remote control and television viewing context" loading="lazy" /></a>
-                            <figcaption class="caption">Viewing distance shaped type size, contrast, and navigation.</figcaption>
-                        </figure>
-                        <p>A TV interface is seen from across a room and controlled one step at a time. I used larger type, clear contrast, and simple screen elements so guests could find information without the precision of a touch screen or mouse.</p>
-                    </div>
-                </div>
-                <blockquote class="component-blockquote result"><span class="result-label">Goal</span><p>Make the in-room experience legible and easy to move through with a remote.</p></blockquote>
-            </section>
-
-            <section class="case-section">
-                <div class="pattern-intro thumb">
                     <header class="section-header"><h2>Researching the brand</h2></header>
                     <div class="intro-layout">
                         <figure class="intro-thumb">
                             <a class="u-image-lightbox-trigger" href="../../assets/work/allin/nick/nick-itv-4.jpg" data-lightbox-image><img src="../../assets/work/allin/nick/nick-itv-4.jpg" alt="Nickelodeon website used as a visual reference" loading="lazy" /></a>
-                            <figcaption class="caption">A reference for the brand’s imagery, color, and tone.</figcaption>
+                            <figcaption class="caption">Nickelodeon website used as a visual reference</figcaption>
                         </figure>
-                        <p>I reviewed Nickelodeon’s style guidance and public-facing materials, including photography, copy, and visual details. Those references helped the TV screens feel connected to the wider resort experience while meeting the practical needs of the room.</p>
+                        <div class="research-copy">
+                            <p>I reviewed Nickelodeon’s style guidance and public-facing materials, including photography, copy, and visual details. I synthesized brand consistencies along with interior design, graphic design and architecture related to the client. Those references helped the TV screens feel connected to the wider resort experience while meeting the practical needs of the room.</p>
+                            <p>I made note of copy voice and tone, photography style, demographics, target audiences, and considerations such as where the app would be used, visibility or accessibility factors, and existing client business units.</p>
+                        </div>
                     </div>
                 </div>
                 <ul class="list"><li>Compared brand references and existing guest touchpoints</li><li>Considered audience, setting, and visibility</li><li>Applied the approved direction to the existing app framework</li></ul>
             </section>
 
             <section id="mockups" class="case-section">
-                <div class="pattern-intro thumb">
-                    <header class="section-header"><h2>Mockups and feedback</h2></header>
-                    <div class="intro-layout">
-                        <figure class="intro-thumb">
-                            <a class="u-image-lightbox-trigger" href="../../assets/work/allin/nick/nick-itv2.jpg" data-lightbox-image><img src="../../assets/work/allin/nick/nick-itv2.jpg" alt="Nickelodeon interactive TV home screen mockup" loading="lazy" /></a>
-                            <figcaption class="caption">A high-fidelity home screen established the visual direction.</figcaption>
-                        </figure>
-                        <p>I started with the home screen and selected inner screens so the client could review the branded experience before the remaining screens were produced. Feedback was discussed with design and development, then carried into the next round of mockups.</p>
-                    </div>
-                </div>
-                <div class="pattern-intro thumb">
-                    <div class="intro-layout">
-                        <figure class="intro-thumb">
-                            <a class="u-image-lightbox-trigger" href="../../assets/work/allin/nick/nick-itv3.jpg" data-lightbox-image><img src="../../assets/work/allin/nick/nick-itv3.jpg" alt="Client-annotated Nickelodeon interactive TV mockup" loading="lazy" /></a>
-                            <figcaption class="caption">Client annotations informed a later design pass.</figcaption>
-                        </figure>
-                        <p>Annotated screens made requested changes concrete. When feedback affected functionality, I checked the proposed behavior with the development team before refining the visual design.</p>
-                    </div>
-                </div>
+                <header class="section-header"><h2>Design Walkthrough</h2></header>
+                <p>I started with the home screen and selected inner screens so the client could review the branded experience before the remaining screens were produced. Feedback was discussed with design and development, then carried into the next round of mockups.</p>
             </section>
 
-            <figure class="nickelodeon-media-break">
-                <img src="../../assets/work/allin/nick/nick-itv-hotel.webp" alt="Nickelodeon interactive TV interface shown in a guest room" loading="lazy" />
-            </figure>
+            <div class="pattern-slides nickelodeon-walkthrough" data-playback aria-label="Nickelodeon interactive TV design walkthrough">
+                <figure class="slide"><img src="../../assets/work/allin/nick/nick-itv-hotel.webp" alt="Nickelodeon interactive TV interface shown in a guest room" loading="lazy" /><figcaption class="slide-caption">Approved photography became the starting point to increase value, not replace or add complexity.</figcaption></figure>
+                <figure class="slide"><img src="../../assets/work/allin/nick/nick-itv2.jpg" alt="Nickelodeon interactive TV home screen mockup" loading="lazy" /><figcaption class="slide-caption">Nickelodeon interactive TV home screen mockup.</figcaption></figure>
+                <figure class="slide"><img src="../../assets/work/allin/nick/nick-itv3.jpg" alt="Client-annotated Nickelodeon interactive TV mockup" loading="lazy" /><figcaption class="slide-caption">Client-annotated Nickelodeon interactive TV mockup.</figcaption></figure>
+                <figure class="slide"><img src="../../assets/work/allin/nick/nick-itv-4.jpg" alt="Nickelodeon website used as a visual reference" loading="lazy" /><figcaption class="slide-caption">Nickelodeon brand reference.</figcaption></figure>
+            </div>
 
             <section id="delivery" class="case-section">
                 <div class="pattern-intro thumb">
-                    <header class="section-header"><h2>Production and validation</h2></header>
+                    <header class="section-header"><h2>Native Icon Sets</h2></header>
                     <div class="intro-layout">
                         <figure class="intro-thumb">
                             <a class="u-image-lightbox-trigger" href="../../assets/work/allin/nick/icons.png" data-lightbox-image><img src="../../assets/work/allin/nick/icons.png" alt="Branded production icon set" loading="lazy" /></a>
-                            <figcaption class="caption">Branded graphics prepared for app use.</figcaption>
+                            <figcaption class="caption">Approved photography became the starting point to increase value, not replace or add complexity.</figcaption>
                         </figure>
-                        <p>Using the approved mockups, I created and exported graphics in the file structures required by development. The TV interface used SVG graphics where appropriate and was styled with HTML and CSS; related assets also supported mobile and kiosk applications.</p>
+                        <p>I was one of the senior designers at the beginning, and toward the end became the Lead UI Designer of the project. Using annotated wireframes and mockups as a guide, I created and exported native graphic assets following the required file and folder naming conventions. Graphics followed Human Interface Guidelines for Apple devices and Material Design guidelines for Android devices. I created interactive TV graphics in SVG format where they made sense and styled the interface front end using HTML and CSS.</p>
                     </div>
                 </div>
-                <h3 class="list__title">Before handoff</h3>
-                <ul class="list"><li>Checked app builds and screen behavior in virtual and available physical devices</li><li>Investigated graphic, code, software, or data issues with the team</li><li>Documented issues in Jira and retested fixes with QA</li><li>Packaged approved assets for development and database handoff</li></ul>
             </section>
 
-            <section class="case-section">
+            <section class="case-section nickelodeon-qa">
+                <header class="section-header"><h2>QA Testing</h2></header>
+                <div class="nickelodeon-qa__grid">
+                    <article><span>01</span><h3>Running Builds</h3><div class="nickelodeon-qa__visual" aria-hidden="true"><i></i><i></i><i></i><b>STATE MODEL</b><small>behavior · constraints · accessibility</small></div><p>First, I ran the build in each specific virtual device to make sure the app runs and functions correctly.</p></article>
+                    <article><span>02</span><h3>Emulator Testing</h3><div class="nickelodeon-qa__visual" aria-hidden="true"><i></i><i></i><i></i><b>STATE MODEL</b><small>behavior · constraints · accessibility</small></div><p>Ran the code through the appropriate IDE to create virtual devices and make sure the application loaded and functioned properly.</p></article>
+                    <article><span>03</span><h3>IDE UI Refinement</h3><div class="nickelodeon-qa__visual" aria-hidden="true"><i></i><i></i><i></i><b>STATE MODEL</b><small>behavior · constraints · accessibility</small></div><p>I noted where the stack trace pointed to an error in the IDE, took screenshots, and highlighted code that might have caused the bug.</p></article>
+                    <article><span>04</span><h3>Developer Handoff</h3><div class="nickelodeon-qa__visual" aria-hidden="true"><i></i><i></i><i></i><b>STATE MODEL</b><small>behavior · constraints · accessibility</small></div><p>After resolving all issues, the process was repeated until QA approved testing and the assets were ready for handoff.</p></article>
+                </div>
+            </section>
+
+            <section class="case-section nickelodeon-reflection">
                 <div class="pattern-intro">
                     <header class="section-header"><h2>Reflection</h2></header>
                     <div class="intro-layout"><p>The project connected brand expression to the realities of television viewing, remote navigation, and cross-device production. Working across mockups, assets, and testing helped the team carry a consistent experience from client review into implementation.</p></div>

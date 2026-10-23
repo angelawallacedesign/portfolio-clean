@@ -55,6 +55,260 @@
   height: auto;
 }
 
+.nickelodeon-case-study {
+  gap: 0;
+}
+
+.nickelodeon-case-study > header {
+  gap: 16px;
+}
+
+.nickelodeon-case-study .case-body {
+  width: min(100% - 48px, 1040px);
+  gap: 0;
+  padding-bottom: 110px;
+}
+
+.nickelodeon-case-study .case-section {
+  padding-top: 70px;
+}
+
+.nickelodeon-case-study .case-section:not(.case-overview) {
+  gap: 24px;
+}
+
+.nickelodeon-case-study .section-header > * {
+  font-size: 25px;
+  line-height: 1.2;
+  padding: 0 0 9px;
+  margin-bottom: 16px;
+}
+
+.nickelodeon-case-study .case-overview {
+  grid-template-columns: 1.25fr .9fr;
+  gap: 24px;
+}
+
+.nickelodeon-case-study .case-overview .intro-layout,
+.nickelodeon-case-study .pattern-intro .intro-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.nickelodeon-case-study .case-overview .intro-thumb,
+.nickelodeon-case-study .pattern-intro .intro-thumb {
+  display: block;
+  flex: 0 0 200px;
+  margin: 0;
+}
+
+.nickelodeon-case-study .intro-thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.nickelodeon-case-study .intro-layout p {
+  flex: 1;
+  margin: 0;
+}
+
+.nickelodeon-case-study .caption,
+.nickelodeon-walkthrough .slide-caption {
+  color: var(--color-accent);
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.nickelodeon-case-study .component-summary {
+  align-self: start;
+  padding: 30px;
+}
+
+.nickelodeon-case-study .component-summary h3 {
+  margin: 0 0 22px;
+  font-size: 19px;
+  text-transform: uppercase;
+}
+
+.nickelodeon-case-study .component-summary dl {
+  display: block;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.nickelodeon-case-study .component-summary dt {
+  margin-top: 18px;
+  font-weight: 700;
+}
+
+.nickelodeon-case-study .component-summary dd {
+  margin: 0;
+}
+
+.nickelodeon-case-study .research-copy p + p {
+  margin-top: 16px;
+}
+
+.nickelodeon-case-study #mockups {
+  padding-bottom: 28px;
+}
+
+.nickelodeon-walkthrough {
+  margin: 0;
+}
+
+.nickelodeon-walkthrough.pattern-slides.is-enhanced {
+  padding-top: 65px;
+}
+
+.nickelodeon-walkthrough .pattern-slides__controls {
+  justify-content: center;
+  gap: 12px;
+  height: 53px;
+  padding: 4px 6px;
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.nickelodeon-walkthrough .pattern-slides__play {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 7px;
+  background: #e7dbdd;
+  color: #545058;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.nickelodeon-walkthrough .pattern-slides__play:hover {
+  background: #d8c5c9;
+}
+
+.nickelodeon-walkthrough .pattern-slides__play:focus-visible,
+.nickelodeon-walkthrough .pattern-slides__dot:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.nickelodeon-walkthrough .slide img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1040 / 696;
+  object-fit: contain;
+}
+
+.nickelodeon-walkthrough .slide-caption {
+  min-height: 18px;
+  margin: 8px 0 0;
+  text-align: center;
+}
+
+.nickelodeon-qa__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.nickelodeon-qa__grid article {
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid var(--theme-divider, #ddd);
+}
+
+.nickelodeon-qa__grid article > span {
+  color: var(--color-accent);
+  font-size: 12px;
+  letter-spacing: .08em;
+}
+
+.nickelodeon-qa__grid h3 {
+  margin: 10px 0;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--theme-text);
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.nickelodeon-qa__visual {
+  display: flex;
+  min-height: 158px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 18px;
+  background: #17252b;
+  color: #57b4c9;
+}
+
+.nickelodeon-qa__visual i {
+  display: block;
+  width: 82%;
+  height: 3px;
+  margin-bottom: 12px;
+  background: #647d85;
+}
+
+.nickelodeon-qa__visual i:nth-child(2) { width: 68%; }
+.nickelodeon-qa__visual i:nth-child(3) { width: 57%; }
+
+.nickelodeon-qa__visual b {
+  margin-top: 10px;
+  font-size: 10px;
+  letter-spacing: .12em;
+}
+
+.nickelodeon-qa__visual small {
+  margin-top: 8px;
+  color: #e0e8e9;
+  font-size: 8px;
+}
+
+.nickelodeon-qa__grid p {
+  margin: 15px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+@media (max-width: 800px) {
+  .nickelodeon-case-study .case-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .nickelodeon-qa__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .nickelodeon-case-study .case-body {
+    width: min(100% - 32px, 1040px);
+    padding-bottom: 60px;
+  }
+
+  .nickelodeon-case-study .case-section {
+    padding-top: 64px;
+  }
+
+  .nickelodeon-case-study .case-overview .intro-layout,
+  .nickelodeon-case-study .pattern-intro .intro-layout {
+    flex-direction: column;
+  }
+
+  .nickelodeon-case-study .case-overview .intro-thumb,
+  .nickelodeon-case-study .pattern-intro .intro-thumb {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  .nickelodeon-qa__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @keyframes nickelodeon-city-glow {
   from { opacity: .16; }
   to { opacity: .42; }

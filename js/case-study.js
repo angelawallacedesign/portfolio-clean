@@ -1,5 +1,5 @@
 import { initThemeControls } from "../../shared/js/theme.js";
-import { initPatternSlides } from "../../shared/js/pattern-slides.js";
+import { initPatternSlides } from "../../shared/js/pattern-slides.js?v=play-pause-icons";
 import {
   initBackToTop,
   initPageLoad,

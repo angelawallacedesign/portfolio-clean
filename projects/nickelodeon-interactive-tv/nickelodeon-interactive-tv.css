@@ -177,12 +177,22 @@
 .nickelodeon-walkthrough .pattern-slides__play {
   width: 36px;
   height: 36px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 36px;
+  padding: 0;
   border: 0;
   border-radius: 7px;
   background: #e7dbdd;
-  color: #545058;
-  font-size: 17px;
   cursor: pointer;
+}
+
+.nickelodeon-walkthrough .pattern-slides__play img {
+  display: block;
+}
+
+.nickelodeon-walkthrough .pattern-slides__play[aria-pressed="true"] img {
+  transform: rotate(90deg);
 }
 
 .nickelodeon-walkthrough .pattern-slides__play:hover {
@@ -235,36 +245,230 @@
 }
 
 .nickelodeon-qa__visual {
+  --qa-panel: #151d2c;
+  --qa-panel-deep: #0c111d;
+  --qa-ink: #f1f6ff;
+  --qa-muted: #9ca8c0;
   display: flex;
   min-height: 158px;
   flex-direction: column;
   justify-content: center;
-  padding: 18px;
-  background: #17252b;
-  color: #57b4c9;
+  padding: 14px;
+  overflow: hidden;
+  background: var(--qa-panel);
+  color: var(--qa-ink);
 }
 
-.nickelodeon-qa__visual i {
-  display: block;
-  width: 82%;
-  height: 3px;
-  margin-bottom: 12px;
-  background: #647d85;
+.qa-window {
+  width: 100%;
+  border: 1px solid #273149;
+  border-radius: 4px;
+  background: var(--qa-panel-deep);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-.nickelodeon-qa__visual i:nth-child(2) { width: 68%; }
-.nickelodeon-qa__visual i:nth-child(3) { width: 57%; }
-
-.nickelodeon-qa__visual b {
-  margin-top: 10px;
-  font-size: 10px;
-  letter-spacing: .12em;
-}
-
-.nickelodeon-qa__visual small {
-  margin-top: 8px;
-  color: #e0e8e9;
+.qa-window__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px;
+  border-bottom: 1px solid #273149;
+  color: var(--qa-muted);
   font-size: 8px;
+  letter-spacing: .06em;
+}
+
+.qa-window__lights,
+.qa-window__lights::before,
+.qa-window__lights::after {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.qa-window__lights {
+  position: relative;
+  margin-right: 13px;
+}
+
+.qa-window__lights::before,
+.qa-window__lights::after {
+  position: absolute;
+  content: "";
+  background: var(--qa-muted);
+}
+
+.qa-window__lights::before { left: 7px; }
+.qa-window__lights::after { left: 14px; }
+
+.qa-build__lines,
+.qa-ide__code {
+  display: grid;
+  gap: 5px;
+  padding: 9px;
+  color: var(--qa-muted);
+  font-size: 9px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.qa-build__status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 9px;
+  border-top: 1px solid #273149;
+  color: var(--color-control);
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.qa-build__status small {
+  margin-left: auto;
+  color: var(--qa-muted);
+  font-size: 8px;
+}
+
+.qa-status-dot {
+  flex: 0 0 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-control);
+}
+
+.nickelodeon-qa__visual--emulator {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.qa-emulator__device {
+  flex: 0 0 66px;
+  height: 125px;
+  padding: 8px 5px;
+  border: 3px solid var(--qa-muted);
+  border-radius: 10px;
+  background: var(--qa-panel-deep);
+}
+
+.qa-emulator__screen {
+  display: grid;
+  height: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: start;
+  gap: 4px;
+  padding: 7px 4px;
+  background: var(--qa-ink);
+}
+
+.qa-emulator__brand {
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+  color: var(--color-accent);
+  font-size: 8px;
+  font-weight: 900;
+}
+
+.qa-emulator__tile {
+  height: 19px;
+  background: var(--color-accent-light);
+}
+
+.qa-emulator__tile:nth-child(even) {
+  background: var(--color-control);
+}
+
+.qa-emulator__status {
+  display: grid;
+  grid-template-columns: 6px 1fr;
+  align-items: center;
+  gap: 5px;
+  color: var(--color-control);
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.qa-emulator__status small {
+  grid-column: 2;
+  color: var(--qa-muted);
+  font-size: 8px;
+  font-weight: 400;
+}
+
+.qa-ide__code strong {
+  margin-inline: -9px;
+  padding: 3px 9px;
+  border-left: 2px solid var(--color-accent);
+  background: var(--color-accent-highlight);
+  color: #111;
+  font-weight: 600;
+}
+
+.qa-ide__issue {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 9px;
+  border-top: 1px solid #273149;
+  color: var(--color-accent);
+  font-size: 8px;
+  white-space: nowrap;
+}
+
+.qa-ide__issue span {
+  display: grid;
+  width: 12px;
+  height: 12px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--qa-panel-deep);
+  font-weight: 800;
+}
+
+.nickelodeon-qa__visual--handoff {
+  gap: 10px;
+}
+
+.qa-handoff__file {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px;
+  border: 1px solid #273149;
+  border-radius: 4px;
+  background: var(--qa-panel-deep);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.qa-handoff__folder {
+  color: var(--color-accent);
+  font-size: 20px;
+}
+
+.qa-handoff__file small {
+  display: block;
+  margin-top: 3px;
+  color: var(--qa-muted);
+  font-size: 8px;
+  font-weight: 400;
+}
+
+.qa-handoff__checks {
+  display: grid;
+  gap: 5px;
+  font-size: 9px;
+}
+
+.qa-handoff__checks b {
+  margin-right: 5px;
+  color: var(--color-control);
 }
 
 .nickelodeon-qa__grid p {

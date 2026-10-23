@@ -1,5 +1,3 @@
-import { createIcon } from './createIcon.js';
-
 function createButton(label, direction) {
   const button = document.createElement("button");
   button.className = `pattern-slides__control pattern-slides__control--${direction}`;
@@ -63,12 +61,18 @@ export function initPatternSlides(root = document) {
     );
     const playback = slideshow.hasAttribute("data-playback");
     const playButton = playback ? document.createElement("button") : null;
+    const playIcon = new URL("../../assets/icons/slideshow-play.svg", import.meta.url);
+    const pauseIcon = new URL("../../assets/icons/slideshow-pause.svg", import.meta.url);
+    const playbackIcon = playback ? document.createElement("img") : null;
     if (playButton) {
       playButton.type = "button";
       playButton.className = "pattern-slides__play";
       playButton.setAttribute("aria-label", "Play slideshow");
       playButton.setAttribute("aria-pressed", "false");
-      playButton.textContent = "▶";
+      playbackIcon.src = playIcon.href;
+      playbackIcon.alt = "";
+      playbackIcon.setAttribute("aria-hidden", "true");
+      playButton.append(playbackIcon);
       controls.querySelectorAll("[data-slide-direction]").forEach((button) => button.remove());
       controls.append(playButton);
     }
@@ -81,7 +85,7 @@ export function initPatternSlides(root = document) {
       if (!playButton) return;
       window.clearInterval(playbackTimer);
       playbackTimer = null;
-      playButton.textContent = "▶";
+      playbackIcon.src = playIcon.href;
       playButton.setAttribute("aria-label", "Play slideshow");
       playButton.setAttribute("aria-pressed", "false");
     }
@@ -123,7 +127,7 @@ export function initPatternSlides(root = document) {
         } else {
           setSlide(currentIndex + 1);
           playbackTimer = window.setInterval(() => setSlide(currentIndex + 1), 4000);
-          playButton.textContent = "Ⅱ";
+          playbackIcon.src = pauseIcon.href;
           playButton.setAttribute("aria-label", "Pause slideshow");
           playButton.setAttribute("aria-pressed", "true");
         }

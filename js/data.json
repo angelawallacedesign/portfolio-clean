@@ -225,7 +225,7 @@
     "id": "nickelodeon-interactive-tv",
     "featured": false,
     "category": "interface-design",
-    "projectUrl": "",
+    "projectUrl": "projects/nickelodeon-interactive-tv/index.html",
     "heading": {
       "title": "Nickelodeon Interactive TV",
       "main": "Nickelodeon",
@@ -241,7 +241,7 @@
       "client": "Allin Interactive",
       "role": "UI Designer",
       "disciplines": "Television UI, Hospitality, Visual design",
-      "notes": "As part of a UX/UI team, I designed an interactive television experience for Nickelodeon Hotels & Resorts Punta Cana. Focused on legibility at viewing distance, intuitive remote-control navigation, and brand consistency across digital guest touchpoints.<br><br><em>Case study in development.</em>",
+      "notes": "As part of a UX/UI team, I designed an interactive television experience for Nickelodeon Hotels & Resorts Punta Cana. Focused on legibility at viewing distance, intuitive remote-control navigation, and brand consistency across digital guest touchpoints.",
       "caption": "Interactive television landing screen",
       "imageUrl": "assets/work/allin/nick/nick-itv_thumb.webp"
     }

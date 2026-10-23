@@ -14,9 +14,10 @@
     <link rel="stylesheet" href="../../shared/css/global-tokens.css">
     <link rel="stylesheet" href="../../css/tokens.css">
     <link rel="stylesheet" href="../../css/main.css">
-    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/components.css?v=lightbox-caption-2">
     <link rel="stylesheet" href="../../css/case-study-layout.css?v=responsive-overflow" />
     <link rel="stylesheet" href="../../css/work-gallery.css">
+    <link rel="stylesheet" href="./creating-icons.css">
     <link rel="stylesheet" href="../../css/navigation-drawer.css">
 </head>
 
@@ -73,7 +74,7 @@
             </nav>
         </aside>
     </div>
-    <main id="main" class="page-main work-main">
+    <main id="main" class="page-main work-main creating-icons-study">
         <figure class="project-hero-media project-hero-media--amr" aria-hidden="true">
             <img src="../../assets/work/projects/creating-icons/pause_default-state.svg" alt="Pause icon with alignment grid">
         </figure>
@@ -86,25 +87,21 @@
                 </h1>
                 <div class="project-hero__copy">
                     <p>Refined an existing SVG icon in Figma to create a reusable play/pause icon set for the AWD Design System. Using a base grid, I adjusted vector paths, stroke alignment, and rotation to maintain visual consistency across icon states.</p>
-                    
-                    <p><a class="primary-btn small" href="https://www.figma.com/design/HxeLi68wxFByOWStEVOGam/AWD-Design-System-2?node-id=7571-1476&t=MHA75JV7ju8L03Kh-1">View in Figma</a></p>
+
+                    <p><small><b>Tools:</b> Figma, Vector Editing, Layout Grids, Component Variants<br>Nested Components</small></p>
+
+                    <p><a class="primary-btn small" href="https://www.figma.com/design/HxeLi68wxFByOWStEVOGam/AWD-Design-System-2?node-id=7571-1476&t=MHA75JV7ju8L03Kh-1" target="_blank">View in Figma</a></p>
                 </div>
             </header>
             <section class="work-gallery-group">
-                <h2 class="project-section-heading">Vector Path Refinement</h2>
+                <h2 class="project-section-heading">Refinement</h2>
                 <p>
-                    During refinement, I encountered an issue where the icon's visual orientation did not match its rotation property.
+                    Starting with the existing filter icon, I adjusted its vector paths to create a new pause icon while preserving the design system's established dimensions and proportions. Using Figma's icon grid, I refined the alignment, spacing, stroke weights, and rounded endpoints.
                 </p>
-                <p>
-                    To resolve this, I reoriented the vector paths within the icon's viewbox rather than relying on a rotation transform.
-                </p>
-                <p>
-                    This allowed the icon to retain its intended appearance at 0° rotation, establishing a consistent baseline for reuse in nested components.
-                </p>
-                <div>
-                    <h3 class="list__title">Solution</h3>
+                <div class="creating-icons-checkpoints">
+                    <h3 class="list__title">Visual Alignment Checkpoints:</h3>
                     <ul class="list list--check">
-                        <li>Repurposed existing vector geometry.</li>
+                        <li>Evolved existing icons in design system library.</li>
                         <li>Aligned paths to the icon grid.</li>
                         <li>Refined spacing, proportions, and stroke positioning.</li>
                         <li>Created Default and Hover variants.</li>
@@ -112,41 +109,32 @@
                 </div>
                 <div class="work-gallery-grid work-gallery-grid--screens">
                     <figure><img src="../../assets/work/projects/creating-icons/01-vector-refinement-filter-source.png"
-                        alt="Screen 1">
-                        <figcaption>Screen 1</figcaption>
+                        alt="Referenced existing filter icon for pause button styling">
+                        <figcaption>Extending the design system</figcaption>
                     </figure>
                     <figure><img src="../../assets/work/projects/creating-icons/02-vector-refinement-pause-variants.png"
-                        alt="Screen 2">
-                        <figcaption>Screen 2</figcaption>
+                        alt="Rotated paths instead of the viewbox for rotation integrity">
+                        <figcaption>Rotating paths instead of the viewbox</figcaption>
                     </figure>
                     <figure><img src="../../assets/work/projects/creating-icons/03-vector-refinement-icon-grid-detail.png"
-                        alt="Screen 3">
-                        <figcaption>Screen 3</figcaption>
+                        alt="Aligned vector paths to the icon grid for consistent spacing and symmetry.">
+                        <figcaption>Aligning to the icon grid</figcaption>
                     </figure>
                     <figure><img src="../../assets/work/projects/creating-icons/04-vector-refinement-path-alignment.png"
-                        alt="Screen 4">
-                        <figcaption>Screen 4</figcaption>
+                        alt="Fine-tuned stroke positioning and proportions for optical balance.">
+                        <figcaption>Fine-tuning optical balance</figcaption>
                     </figure>
                 </div>
             </section>
             <section class="work-gallery-group">
-                <h2 class="project-section-heading">Rotation & Viewbox Alignment</h2>
+                <h2 class="project-section-heading">Alignment</h2>
                 <p>
-                    During refinement, I encountered an issue where the icon's visual orientation did not match its rotation property.
+                    During refinement, I encountered an issue where the icon's visual orientation did not match its rotation property. To resolve this, I reoriented the vector paths within the icon's viewbox rather than relying on a rotation transform. This allowed the icon to retain its intended appearance at 0° rotation, establishing a consistent baseline for reuse in nested components.
                 </p>
-                <p>
-                    To resolve this, I reoriented the vector paths within the icon's viewbox rather than relying on a rotation transform.
-                </p>
-                <blockquote class="component-blockquote result">
-                    <span class="result-label">Solution</span>
-                    <p>
-                        This allowed the icon to retain its intended appearance at 0° rotation, establishing a consistent baseline for reuse in nested components.
-                    </p>
-                </blockquote>
                 <div class="work-gallery-grid work-gallery-grid--single">
                     <figure><img src="../../assets/work/projects/creating-icons/05-vector-refinement-stroke-properties.png"
                         alt="Aligning vector paths in Figma">
-                        <figcaption>Aligning vector paths in Figma</figcaption>
+                        <figcaption>Original filter icon's horizontal alignment, with green guides highlighting misaligned vector paths.</figcaption>
                     </figure>
                     <figure><img src="../../assets/work/projects/creating-icons/06-rotation-viewbox-path-reorientation.png"
                         alt="Reorienting vector paths inside the viewbox">
@@ -156,44 +144,41 @@
             </section>
             
             <section class="work-gallery-group">
-                <h2 class="project-section-heading">Component Integration</h2>
+                <h2 class="project-section-heading">Integration</h2>
                 <p>
                     With the icon geometry corrected, I incorporated the play and pause icons into a reusable Motion Control button.
-                </p>
-                <p>
                     The button uses nested icon components, allowing the icon state to change without rebuilding the surrounding button.
-                </p>
-                <p>
                     I then updated the existing <a href="https://www.figma.com/design/HxeLi68wxFByOWStEVOGam/AWD-Design-System-2?node-id=7571-257&t=MHA75JV7ju8L03Kh-0" target="_blank">Pagination ↗</a> pattern to incorporate the new control, documenting the intended interaction: toggling between play and pause on tap or click.
                 </p>
                 <div class="work-gallery-grid work-gallery-grid--screens">
                     <figure>
                         <img src="../../assets/work/projects/creating-icons/07-component-integration-pagination-spec.png" alt="Norwegian iConcierge dashboard on iPhone">
-                        <figcaption>Documenting the play/pause toggle behavior within the Pagination pattern</figcaption>
+                        <figcaption>Documenting play/pause toggle behavior</figcaption>
                     </figure>
                     <figure>
                         <img src="../../assets/work/projects/creating-icons/08-component-integration-pause-states.png" alt="Documenting the play/pause toggle behavior within the Pagination pattern">
-                        <figcaption>Final pause icon with reusable Default and Hover variants.</figcaption>
+                        <figcaption>Final pause icon</figcaption>
                     </figure>
                     <figure>
                         <img src="../../assets/work/projects/creating-icons/09-component-integration-motion-control-button.png" alt="Nesting play and pause icons into the Motion Control button component">
-                        <figcaption>Nesting play and pause icons into the Motion Control button component.</figcaption>
+                        <figcaption>Motion Control button variants</figcaption>
                     </figure>
                 </div>
             </section>
            
             <section class="work-gallery-group">
                 <h2 class="project-section-heading">Outcome</h2>
-                    <p></p>Transformed an existing icon into a reusable component set and integrated it into a larger interface pattern.
+                    <p>Transformed an existing icon into a reusable component set and integrated it into a larger interface pattern. This exercise demonstrates how precise vector editing, consistent component properties, and nested component architecture support the evolution of a design system without recreating existing UI elements.</p>
 
-                    <p>This exercise demonstrates how precise vector editing, consistent component properties, and nested component architecture support the evolution of a design system without recreating existing UI elements.</p>
 
-                    <p><b>Tools:</b> Figma, Vector Editing, Layout Grids, Component Variants, Nested Components</p>
-
-                    <p><b>Project:</b> AWD Design System<br>
-                    <b>Date:</b> October 23, 2026</p>
-                    </div>
+                    <div class="work-gallery-grid work-gallery-grid--single">
+                    <figure><img src="../../assets/work/projects/creating-icons/10-before-and-after.png"
+                        alt="Before and after Pagination component updates">
+                        <figcaption>Before and after Pagination component updates</figcaption>
+                    </figure>
                 </div>
+
+
             </section>
         </main>
         <footer class="work-footer">© Angela Wallace Design</footer>

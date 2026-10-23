@@ -161,46 +161,6 @@
   padding-top: 65px;
 }
 
-.nickelodeon-walkthrough .pattern-slides__controls {
-  justify-content: center;
-  gap: 12px;
-  height: 53px;
-  padding: 4px 6px;
-  background: transparent;
-  backdrop-filter: none;
-}
-
-.nickelodeon-walkthrough .pattern-slides__play {
-  width: 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  flex: 0 0 36px;
-  padding: 0;
-  border: 0;
-  border-radius: 7px;
-  background: #e7dbdd;
-  cursor: pointer;
-}
-
-.nickelodeon-walkthrough .pattern-slides__play img {
-  display: block;
-}
-
-.nickelodeon-walkthrough .pattern-slides__play[aria-pressed="true"] img {
-  transform: rotate(90deg);
-}
-
-.nickelodeon-walkthrough .pattern-slides__play:hover {
-  background: #d8c5c9;
-}
-
-.nickelodeon-walkthrough .pattern-slides__play:focus-visible,
-.nickelodeon-walkthrough .pattern-slides__dot:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 4px;
-}
-
 .nickelodeon-walkthrough .slide img {
   display: block;
   width: 100%;

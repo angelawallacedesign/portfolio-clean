@@ -28,33 +28,29 @@
     }
   },
   {
-    "id": "driveos",
-    "featured": false,
-    "category": "prototypes",
-    "projectUrl": "prototypes/driveos/html/index.html",
-    "layout": "left",
-    "heading": {
-      "title": "DriveOS",
-      "main": "Drive",
-      "accent": "OS"
-    },
-    "year": 2026,
-    "users": 0,
-    "complexity": 5,
-    "opacity": 1,
-    "hasCaseStudy": false,
-    "htmlInclude": "projects/driveos/",
-    "meta": {
-      "type": "Coded prototype",
-      "client": "Independent R&D",
-      "role": "Visual Designer & Design Engineer",
-      "impact": "Demonstrates the integration of automotive interface design, independent display surfaces, interactive calibration tools, and specification-driven prototyping.",
-      "disciplines": "Visual design, Design systems, UX engineering, Motion design",
-      "notes": "An in-progress automotive cockpit prototype exploring windshield-first interfaces, spatial UI, and motion-driven interactions. Built through an iterative design-to-code workflow with independent display surfaces, responsive geometry, and interactive calibration controls.",
-      "caption": "Interactive prototype · In progress",
-      "imageUrl": "assets/work/prototypes/driveos_thumb.webp",
-      "featuredUrl": ""
-    }
+  "id": "creating-icons",
+  "featured": false,
+  "category": "interface-design",
+  "projectUrl": "work/interface-design/creating-icons.html",
+  "heading": {
+    "title": "Creating Icons",
+    "main": "Creating",
+    "accent": "icons"
+  },
+  "year": 2026,
+  "users": 0,
+  "complexity": 2,
+  "opacity": 0.6,
+  "hasCaseStudy": true,
+  "meta": {
+    "type": "Design System",
+    "client": "AWD Design System",
+    "role": "UI/UX Designer",
+    "disciplines": "Iconography, Vector Editing, Component Design, Design Systems",
+    "notes": "Refined an existing SVG icon in Figma using a construction grid, vector path adjustments, and rotation correction to create reusable play/pause icons. Integrated the icons into a Motion Control button and updated the Pagination pattern.",
+    "caption": "SVG icon construction, vector refinement, and component integration in Figma",
+    "imageUrl": "assets/work/projects/creating-icons/creating-icons_thumb.png"
+  }
   },
   {
     "id": "designing-with-ai",
@@ -225,7 +221,7 @@
     "id": "nickelodeon-interactive-tv",
     "featured": false,
     "category": "interface-design",
-    "projectUrl": "",
+    "projectUrl": "projects/nickelodeon-interactive-tv/index.html",
     "heading": {
       "title": "Nickelodeon Interactive TV",
       "main": "Nickelodeon",
@@ -241,7 +237,7 @@
       "client": "Allin Interactive",
       "role": "UI Designer",
       "disciplines": "Television UI, Hospitality, Visual design",
-      "notes": "As part of a UX/UI team, I designed an interactive television experience for Nickelodeon Hotels & Resorts Punta Cana. Focused on legibility at viewing distance, intuitive remote-control navigation, and brand consistency across digital guest touchpoints.<br><br><em>Case study in development.</em>",
+      "notes": "As part of a UX/UI team, I designed an interactive television experience for Nickelodeon Hotels & Resorts Punta Cana. Focused on legibility at viewing distance, intuitive remote-control navigation, and brand consistency across digital guest touchpoints.",
       "caption": "Interactive television landing screen",
       "imageUrl": "assets/work/allin/nick/nick-itv_thumb.webp"
     }
@@ -273,6 +269,35 @@
       "imageUrl": "assets/work/allin/communication-feature-thumb.png",
       "archiveImageUrl": "assets/work/2019/interface-design/thumbnails/mobile-wireframes.jpg",
       "featuredUrl": "assets/work/allin/communication-feature-thumb.png"
+    }
+  },
+  {
+    "id": "driveos",
+    "featured": false,
+    "category": "prototypes",
+    "projectUrl": "prototypes/driveos/html/index.html",
+    "layout": "left",
+    "heading": {
+      "title": "DriveOS",
+      "main": "Drive",
+      "accent": "OS"
+    },
+    "year": 2026,
+    "users": 0,
+    "complexity": 5,
+    "opacity": 1,
+    "hasCaseStudy": false,
+    "htmlInclude": "projects/driveos/",
+    "meta": {
+      "type": "Coded prototype",
+      "client": "Independent R&D",
+      "role": "Visual Designer & Design Engineer",
+      "impact": "Demonstrates the integration of automotive interface design, independent display surfaces, interactive calibration tools, and specification-driven prototyping.",
+      "disciplines": "Visual design, Design systems, UX engineering, Motion design",
+      "notes": "An in-progress automotive cockpit prototype exploring windshield-first interfaces, spatial UI, and motion-driven interactions. Built through an iterative design-to-code workflow with independent display surfaces, responsive geometry, and interactive calibration controls.",
+      "caption": "Interactive prototype · In progress",
+      "imageUrl": "assets/work/prototypes/driveos_thumb.webp",
+      "featuredUrl": ""
     }
   },
   {

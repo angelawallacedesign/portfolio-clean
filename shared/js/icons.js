@@ -178,4 +178,29 @@ export const icons = {
       },
     },
   ],
+
+  play: [
+    {
+      type: 'path',
+      attrs: {
+        d: 'M1 1L10 8.99127L1 17V1Z',
+      },
+    },
+  ],
+
+  pause: [
+    {
+      type: 'path',
+      attrs: {
+        d: 'M1 1L10 8.99127L1 17V1Z',
+      },
+    },
+    {
+      type: 'path',
+      attrs: {
+        d: 'M10 1V8.99999V17M1 1V17',
+      },
+    },
+  ],
 }
+

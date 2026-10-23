@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en" class="work-page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Mobile wireframes by Angela Wallace.">
+    <title>Creating Icons // Angela Wallace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Serif+Text:ital@0;1&amp;family=Inter:wght@300;400;600;700;900&amp;display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="../../shared/css/global-tokens.css">
+    <link rel="stylesheet" href="../../css/tokens.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/case-study-layout.css?v=responsive-overflow" />
+    <link rel="stylesheet" href="../../css/work-gallery.css">
+    <link rel="stylesheet" href="../../css/navigation-drawer.css">
+</head>
+
+<body class="long-page work-archive project-page" id="top">
+    <script type="module" src="../../js/work-lightbox.js"></script>
+    <header class="global-header" data-nav-root>
+        <div class="header-inner">
+            <div class="designer-brand">
+                <div class="designer-name">
+                    <p><a href="../../index.html">Angela Wallace</a></p>
+                    <p>Senior UI/UX Designer</p>
+                </div>
+            </div>
+            <div class="global-links">
+                <nav class="global-nav" aria-label="Primary">
+                    <ul class="global-nav__list" id="navList">
+                        <li><a href="../../index.html">Home</a></li>
+                        <li><a href="../" class="is-active" aria-current="page">Work</a></li>
+                        <li><a href="../../index.html#services">Services</a></li>
+                        <li><a href="../../index.html#about">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <button class="navigation-drawer-trigger" type="button" data-navigation-drawer-trigger aria-controls="site-navigation-drawer" aria-expanded="false" aria-label="Open navigation menu"><span class="navigation-drawer-icon" data-navigation-drawer-icon aria-hidden="true"></span></button>
+        </div>
+    </header>
+    <div class="navigation-drawer-root" data-navigation-drawer aria-hidden="true" hidden>
+        <button class="navigation-drawer-backdrop" type="button" data-navigation-drawer-backdrop tabindex="-1" aria-label="Close navigation menu"></button>
+        <aside class="navigation-drawer" id="site-navigation-drawer" data-navigation-drawer-panel role="dialog" aria-modal="true" aria-label="Navigation menu">
+            <div class="navigation-drawer-meta">
+                <div class="designer-name"><p><a href="../../index.html">Angela Wallace</a></p><p>Senior UI/UX Designer</p></div>
+                <button class="navigation-drawer-close" type="button" data-navigation-drawer-close aria-label="Close navigation menu"><span class="navigation-drawer-icon" data-navigation-drawer-icon aria-hidden="true"></span></button>
+            </div>
+            <nav class="navigation-drawer-nav" aria-label="Mobile primary">
+                <ul class="navigation-drawer-list">
+                    <li><a class="navigation-drawer-primary-link" href="../../index.html">Home</a></li>
+                    <li>
+                        <div class="navigation-drawer-work-row">
+                            <a class="navigation-drawer-work-link" href="../" aria-current="page">Work</a>
+                            <button class="navigation-drawer-work-toggle" type="button" data-navigation-drawer-work-toggle aria-expanded="true" aria-controls="navigation-drawer-work-links" aria-label="Collapse Work categories"><span class="navigation-drawer-icon rotate-90" data-navigation-drawer-icon aria-hidden="true"></span></button>
+                        </div>
+                        <ul class="navigation-drawer-work-links" id="navigation-drawer-work-links" data-navigation-drawer-work-links>
+                            <li><a href="../" data-drawer-work-filter="all">All Work</a></li>
+                            <li><a href="../?filter=prototypes" data-drawer-work-filter="prototypes">Prototypes</a></li>
+                            <li><a href="../?filter=case-studies" data-drawer-work-filter="case-studies">Case Studies</a></li>
+                            <li><a href="../?filter=interface-design" data-drawer-work-filter="interface-design" aria-current="location">Interface Design</a></li>
+                            <li><a href="../?filter=visual-design" data-drawer-work-filter="visual-design">Visual Design</a></li>
+                        </ul>
+                    </li>
+                    <li class="navigation-drawer-divider" aria-hidden="true"></li>
+                    <li><a class="navigation-drawer-primary-link" href="../../index.html#services">Services</a></li>
+                    <li><a class="navigation-drawer-primary-link" href="../../index.html#about">About</a></li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+    <main id="main" class="page-main work-main">
+        <figure class="project-hero-media project-hero-media--amr" aria-hidden="true">
+            <img src="../../assets/work/projects/creating-icons/pause_default-state.svg" alt="Pause icon with alignment grid">
+        </figure>
+        <nav class="work-breadcrumb" aria-label="Breadcrumb"><a href="../">Work</a><a href="./">Interface
+            Design</a><span>Creating Icons</span></nav>
+            <header class="work-heading project-hero">
+                <h1 class="section-heading">
+                    <span class="heading-main">Creating</span>
+                    <span class="heading-accent">icons</span>
+                </h1>
+                <div class="project-hero__copy">
+                    <p>Refined an existing SVG icon in Figma to create a reusable play/pause icon set for the AWD Design System. Using a base grid, I adjusted vector paths, stroke alignment, and rotation to maintain visual consistency across icon states.</p>
+                    
+                    <p><a class="primary-btn small" href="https://www.figma.com/design/HxeLi68wxFByOWStEVOGam/AWD-Design-System-2?node-id=7571-1476&t=MHA75JV7ju8L03Kh-1">View in Figma</a></p>
+                </div>
+            </header>
+            <section class="work-gallery-group">
+                <h2 class="project-section-heading">Vector Path Refinement</h2>
+                <p>
+                    During refinement, I encountered an issue where the icon's visual orientation did not match its rotation property.
+                </p>
+                <p>
+                    To resolve this, I reoriented the vector paths within the icon's viewbox rather than relying on a rotation transform.
+                </p>
+                <p>
+                    This allowed the icon to retain its intended appearance at 0° rotation, establishing a consistent baseline for reuse in nested components.
+                </p>
+                <div>
+                    <h3 class="list__title">Solution</h3>
+                    <ul class="list list--check">
+                        <li>Repurposed existing vector geometry.</li>
+                        <li>Aligned paths to the icon grid.</li>
+                        <li>Refined spacing, proportions, and stroke positioning.</li>
+                        <li>Created Default and Hover variants.</li>
+                    </ul>
+                </div>
+                <div class="work-gallery-grid work-gallery-grid--screens">
+                    <figure><img src="../../assets/work/projects/creating-icons/01-vector-refinement-filter-source.png"
+                        alt="Screen 1">
+                        <figcaption>Screen 1</figcaption>
+                    </figure>
+                    <figure><img src="../../assets/work/projects/creating-icons/02-vector-refinement-pause-variants.png"
+                        alt="Screen 2">
+                        <figcaption>Screen 2</figcaption>
+                    </figure>
+                    <figure><img src="../../assets/work/projects/creating-icons/03-vector-refinement-icon-grid-detail.png"
+                        alt="Screen 3">
+                        <figcaption>Screen 3</figcaption>
+                    </figure>
+                    <figure><img src="../../assets/work/projects/creating-icons/04-vector-refinement-path-alignment.png"
+                        alt="Screen 4">
+                        <figcaption>Screen 4</figcaption>
+                    </figure>
+                </div>
+            </section>
+            <section class="work-gallery-group">
+                <h2 class="project-section-heading">Rotation & Viewbox Alignment</h2>
+                <p>
+                    During refinement, I encountered an issue where the icon's visual orientation did not match its rotation property.
+                </p>
+                <p>
+                    To resolve this, I reoriented the vector paths within the icon's viewbox rather than relying on a rotation transform.
+                </p>
+                <blockquote class="component-blockquote result">
+                    <span class="result-label">Solution</span>
+                    <p>
+                        This allowed the icon to retain its intended appearance at 0° rotation, establishing a consistent baseline for reuse in nested components.
+                    </p>
+                </blockquote>
+                <div class="work-gallery-grid work-gallery-grid--single">
+                    <figure><img src="../../assets/work/projects/creating-icons/05-vector-refinement-stroke-properties.png"
+                        alt="Aligning vector paths in Figma">
+                        <figcaption>Aligning vector paths in Figma</figcaption>
+                    </figure>
+                    <figure><img src="../../assets/work/projects/creating-icons/06-rotation-viewbox-path-reorientation.png"
+                        alt="Reorienting vector paths inside the viewbox">
+                        <figcaption>Reorienting vector paths inside the viewbox to correct the icon's rotation baseline.</figcaption>
+                    </figure>
+                </div>
+            </section>
+            
+            <section class="work-gallery-group">
+                <h2 class="project-section-heading">Component Integration</h2>
+                <p>
+                    With the icon geometry corrected, I incorporated the play and pause icons into a reusable Motion Control button.
+                </p>
+                <p>
+                    The button uses nested icon components, allowing the icon state to change without rebuilding the surrounding button.
+                </p>
+                <p>
+                    I then updated the existing <a href="https://www.figma.com/design/HxeLi68wxFByOWStEVOGam/AWD-Design-System-2?node-id=7571-257&t=MHA75JV7ju8L03Kh-0" target="_blank">Pagination ↗</a> pattern to incorporate the new control, documenting the intended interaction: toggling between play and pause on tap or click.
+                </p>
+                <div class="work-gallery-grid work-gallery-grid--screens">
+                    <figure>
+                        <img src="../../assets/work/projects/creating-icons/07-component-integration-pagination-spec.png" alt="Norwegian iConcierge dashboard on iPhone">
+                        <figcaption>Documenting the play/pause toggle behavior within the Pagination pattern</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="../../assets/work/projects/creating-icons/08-component-integration-pause-states.png" alt="Documenting the play/pause toggle behavior within the Pagination pattern">
+                        <figcaption>Final pause icon with reusable Default and Hover variants.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="../../assets/work/projects/creating-icons/09-component-integration-motion-control-button.png" alt="Nesting play and pause icons into the Motion Control button component">
+                        <figcaption>Nesting play and pause icons into the Motion Control button component.</figcaption>
+                    </figure>
+                </div>
+            </section>
+           
+            <section class="work-gallery-group">
+                <h2 class="project-section-heading">Outcome</h2>
+                    <p></p>Transformed an existing icon into a reusable component set and integrated it into a larger interface pattern.
+
+                    <p>This exercise demonstrates how precise vector editing, consistent component properties, and nested component architecture support the evolution of a design system without recreating existing UI elements.</p>
+
+                    <p><b>Tools:</b> Figma, Vector Editing, Layout Grids, Component Variants, Nested Components</p>
+
+                    <p><b>Project:</b> AWD Design System<br>
+                    <b>Date:</b> October 23, 2026</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="work-footer">© Angela Wallace Design</footer>
+        <script type="module" src="../../js/navigation-drawer.js"></script>
+    </body>
+    
+    </html>

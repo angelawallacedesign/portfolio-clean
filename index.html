@@ -12,13 +12,13 @@
     <!-- Custom Meta Tags -->
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
-        <meta property="og:title" content="Angela Wallace Design Portfolio"/>
+        <meta property="og:title" content="Design to code: polished interfaces, working prototypes, and reusable design systems by Angela Wallace."/>
         <meta property="og:image" content="awd.png"/>
-        <meta property="og:description" content="Angela Wallace Design Portfolio"/>
+        <meta property="og:description" content="Design to code: polished interfaces, working prototypes, and reusable design systems by Angela Wallace."/>
         <meta property="og:url" content="https://www.angelawallace.net/index.html"/>
         <title>Angela Wallace // Senior UI/UX Designer</title>
         <meta name="viewport" content="width=device-width,initial-scale=1"/> 
-        <meta name="description" content="Angela Wallace Design Portfolio"/>
+        <meta name="description" content="Design to code: polished interfaces, working prototypes, and reusable design systems by Angela Wallace."/>
         <meta name="author" content="Angela Wallace"/>
     <!-- "Inter" Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,10 +27,10 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.typekit.net/dej8pod.css">
-    <link rel="stylesheet" href="../shared/css/global-tokens.css" />
-    <link rel="stylesheet" href="../shared/css/global-components.css" />
-    <link rel="stylesheet" href="../shared/css/utilities.css" />
-    <link rel="stylesheet" href="../shared/css/motion.css?v=smooth-scroll-3" />
+    <link rel="stylesheet" href="shared/css/global-tokens.css" />
+    <link rel="stylesheet" href="shared/css/global-components.css" />
+    <link rel="stylesheet" href="shared/css/utilities.css" />
+    <link rel="stylesheet" href="shared/css/motion.css?v=smooth-scroll-3" />
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/main.css" />
     <!-- Layer 3 Case Studies -->
@@ -42,10 +42,14 @@
     <link rel="stylesheet" href="css/metrics-strip.css" />
     <link rel="stylesheet" href="modules/designing-with-ai-hero/pass-4/designing-ai-hero.css?v=responsive-fix" />
     <link rel="stylesheet" href="css/navigation-drawer.css" />
+    <link rel="stylesheet" href="modules/designing-with-ai-hero/line-pagination.css" />
+    <link rel="stylesheet" href="modules/live-component-preview/live-component-preview.css" />
+    <link rel="stylesheet" href="css/intro-bridge.css" />
 </head>
 <body class="long-page intro-layout" data-page="intro">
     
-    <header class="global-header" data-nav-root id="top" tabindex="-1">
+    <div id="top" tabindex="-1"></div>
+    <header class="global-header is-over-intro" data-theme="dark" data-nav-root>
                     <div class="header-inner">
                         
                         <div class="designer-brand">
@@ -146,69 +150,64 @@
     <main id="main" class="page-main">
         
         <!-- Section 1: Intro -->
-        <section class="intro-stage intro-section" data-section="intro" aria-label="Intro" id="intro">
-            <!-- Global Nav -->
-            
-            <!-- Intro Middle -->
+        <div class="intro-transition" data-theme="dark">
+        <section class="intro-stage intro-section bridge-intro" data-section="intro" data-theme="dark" aria-labelledby="intro-title" id="intro">
+            <div data-intro-background aria-hidden="true"></div>
             <div class="intro-middle">
                 <div class="intro-copy">
-                    <h1 class="intro-title" aria-label="Senior Visual Designer">
-                        <span class="stack-group">
-                            <span class="stack">USER</span>
-                        </span>
-                        <span class="stack-group">
-                            <span class="stack">INTER</span>
-                            <span class="stack">FACE</span>
-                        </span>
-                        
-                        <span class="accent-stack">designer</span>
-                    </h1>
-                    
-                    <p class="intro-description">
-                        I turn business, user, and technical requirements into cohesive visual interfaces aligned with brand, design systems, and engineering feasibility.
-                    </p>
-
-
-                    
-                    
+                    <p class="bridge-intro__eyebrow">Design + development</p>
+                    <h1 id="intro-title">I design interfaces<br>and bring them<br>to life in code<span>.</span></h1>
+                    <p class="intro-description">I turn complex product requirements into polished UI, working prototypes, and reusable design-system patterns.</p>
                     <div class="intro-buttons">
-                        <a class="primary-btn intro" href="#work">Featured work</a>
-                        <a class="intro-link" href="./work/">View all projects &#8594;</a>
+                        <a class="primary-btn bridge-intro__cta" href="https://www.figma.com/design/HxeLi68wxFByOWStEVOGam/AWD-Design-System-2?node-id=7132-2546" target="_blank" rel="noopener noreferrer">Explore the design system <span aria-hidden="true">→</span></a>
+                        <a class="primary-btn bridge-intro__cta bridge-intro__cta--outline" href="#live-component-preview">Try a coded prototype <span aria-hidden="true">→</span></a>
                     </div>
-
-
-
                 </div>
-                <div class="hero-visual">
-                    
-                    <img 
-                    src="assets/AWD_laptop-phone_1400x920.webp" 
-                    alt="Portfolio preview on laptop and mobile"
-                    class="mockup-base"
-                    />
-                    
-                    <!-- Device overlay screens -->
-                    <div class="screen screen--laptop">
-                        <img src="assets/work/intro/design-inspector-laptop.webp" alt="Rotating image pair: Desktop prototype" />
-                        <img src="assets/work/intro/nickelodeon-laptop.webp" alt="Rotating image pair: Desktop Nickelodeon UI Annotation" />
-                        <img src="assets/work/intro/token-laptop.webp" alt="Rotating image pair: Desktop Code Token Validation" />
+                <section class="live-preview" id="live-component-preview" aria-label="Live component preview" data-live-preview>
+                    <header class="live-preview__bar">
+                        <span class="live-preview__traffic" aria-hidden="true">● ● ●</span>
+                        <h2>Design system / Primary button</h2>
+                        <span class="live-preview__mapping">Figma ↔ Code ↔ Behavior</span>
+                    </header>
+                    <div class="live-preview__body">
+                        <div class="live-preview__states" role="group" aria-label="Button state">
+                            <button type="button" data-preview-state="default" aria-pressed="true">Default</button>
+                            <button type="button" data-preview-state="hover" aria-pressed="false">Hover</button>
+                            <button type="button" data-preview-state="focus" aria-pressed="false">Focus</button>
+                            <button type="button" data-preview-state="small" aria-pressed="false">Small</button>
+                            <button type="button" data-preview-state="disabled" aria-pressed="false">Disabled</button>
+                        </div>
+                        <div class="live-preview__workspace">
+                            <div class="live-preview__canvas" data-theme="default">
+                                <div class="live-preview__selection"><button class="primary-btn" type="button" data-preview-button>View project <span aria-hidden="true">→</span></button></div>
+                            </div>
+                            <div class="live-preview__source">
+                                <div class="live-preview__tabs" role="tablist" aria-label="Component source">
+                                    <button type="button" id="preview-tab-html" role="tab" aria-selected="true" aria-controls="preview-source" data-preview-tab="html">HTML</button>
+                                    <button type="button" id="preview-tab-css" role="tab" aria-selected="false" aria-controls="preview-source" tabindex="-1" data-preview-tab="css">CSS</button>
+                                    <button type="button" id="preview-tab-tokens" role="tab" aria-selected="false" aria-controls="preview-source" tabindex="-1" data-preview-tab="tokens">Tokens</button>
+                                    <button type="button" class="live-preview__copy" data-preview-copy aria-label="Copy component source">⧉ Copy</button>
+                                </div>
+                                <pre id="preview-source" role="tabpanel" aria-labelledby="preview-tab-html" tabindex="0"><code data-preview-code></code></pre>
+                            </div>
+                        </div>
+                        <aside class="live-preview__details">
+                            <a class="live-preview__figma" data-preview-figma href="https://www.figma.com/design/HxeLi68wxFByOWStEVOGam/AWD-Design-System-2?node-id=7193-278" target="_blank" rel="noopener noreferrer">
+                                <svg width="24" height="36" viewBox="0 0 24 36" aria-hidden="true"><path fill="#f24e1e" d="M6 0h6v12H6A6 6 0 0 1 6 0"/><path fill="#ff7262" d="M12 0h6a6 6 0 0 1 0 12h-6z"/><path fill="#a259ff" d="M6 12h6v12H6a6 6 0 0 1 0-12"/><circle fill="#1abcfe" cx="18" cy="18" r="6"/><path fill="#0acf83" d="M6 24h6v6a6 6 0 1 1-6-6"/></svg>
+                                <span><strong>Figma component</strong><span data-preview-component-name>Button / Primary</span></span><span aria-hidden="true">↗</span>
+                            </a>
+                            <h3>Design tokens</h3>
+                            <dl data-preview-values></dl>
+                            <p class="live-preview__caption" data-preview-caption>Live HTML · Shared CSS · Real behavior</p>
+                        </aside>
                     </div>
-                    
-                    <div class="screen screen--phone">
-                        <img src="assets/work/intro/design-inspector-phone.webp" alt="Rotating image pair: Mobile prototype" />
-                        <img src="assets/work/intro/nickelodeon-phone.webp" alt="Rotating image pair: Mobile Nickelodeon UI Design" />
-                        <img src="assets/work/intro/token-phone.webp" alt="Rotating image pair: Mobile Code Token Validation" />
-                    </div>
-                   
-                    
-                </div>
+                    <p class="live-preview__status" data-preview-status role="status" aria-live="polite"></p>
+                    <div class="designing-ai-process-visual__states live-preview__pagination" aria-hidden="true"><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span></div>
+                </section>
             </div>
-
-            
-            
         </section>
-        
-        <section class="impact-metrics" aria-label="Selected design impact">
+
+        <section class="impact-metrics" data-theme="default" aria-label="Selected design impact">
             <article class="impact-metric">
                 <div class="impact-metric__top">
                 <svg
@@ -346,6 +345,7 @@
             </article>
             </section>
         
+        </div><!-- Intro background fades to white after the opaque metrics. -->
         <div id="content-rail" class="content-rail page-flow">
             <div class="content-flow section-flow">
 
@@ -585,6 +585,8 @@
 
     
 
+<script type="module" src="./modules/live-component-preview/live-component-preview.js"></script>
+<script type="module" src="./js/intro-bridge.js"></script>
 <script type="module" src="./js/site.js?v=smooth-scroll-3"></script>
 <!-- Data rendering logic -->
 <script type="module" src="./js/data.js?v=2"></script>

@@ -1,0 +1,31 @@
+/* Shared line pagination, originally authored in Pass 7. */
+.designing-ai-process-visual__states {
+  position: absolute;
+  z-index: 6;
+  left: 7%;
+  right: 7%;
+  bottom: 6%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3%;
+}
+
+.designing-ai-process-visual__states span {
+  position: relative;
+  padding-top: 0.45rem;
+  border-top: 1px solid #d3d3d1;
+  color: #8b8b88;
+  font: 650 clamp(0.42rem, 0.66vw, 0.62rem)/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.designing-ai-process-visual__states span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 100%;
+  border-top: 2px solid var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+

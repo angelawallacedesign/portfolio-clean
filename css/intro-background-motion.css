@@ -1,0 +1,84 @@
+/* Homepage-only treatment, linked inside the decorative shadow root.
+   Pass 5 still owns the blueprint geometry and base background styles. */
+.designing-ai-hero {
+  height: 100%;
+  min-height: 0;
+  --dai-field-surface: var(--theme-bg);
+  --dai-field-depth: var(--theme-surface);
+}
+
+/* One fixed mask preserves the approved bar silhouettes. Light moves inside
+   them, so the heavy geometry stays completely still. */
+.intro-bars {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--color-accent);
+  mask-image: linear-gradient(135deg, rgb(255 255 255 / 24%), rgb(255 255 255 / 12%) 28%, transparent 28% 40%, rgb(255 255 255 / 4%) 40% 47%, transparent 47%);
+}
+
+.intro-bars::after {
+  content: '';
+  position: absolute;
+  inset: -150%;
+  background: linear-gradient(45deg, transparent 43%, rgb(255 255 255 / 4%) 47%, rgb(255 255 255 / 32%) 50%, rgb(255 255 255 / 8%) 52%, transparent 57%);
+  animation: intro-bar-current 32s linear -9s infinite;
+  will-change: transform;
+}
+
+/* Equal horizontal/vertical travel follows the bars' exact 45-degree axis:
+   bottom left → upper right. Long, soft falloffs avoid a scanning-light effect. */
+@keyframes intro-bar-current {
+  0% { transform: translate3d(-65vmax, 65vmax, 0); opacity: 0; }
+  18% { opacity: 0.7; }
+  82% { opacity: 0.7; }
+  100% { transform: translate3d(65vmax, -65vmax, 0); opacity: 0; }
+}
+
+/* Replace the source hero's quicker accents with slower, staggered traces. */
+.designing-ai-hero .designing-ai-hero__diagram > path,
+.designing-ai-hero .designing-ai-hero__diagram > circle { animation: none; }
+
+.designing-ai-hero__grid { animation: intro-grid-luminance 26s ease-in-out -8s infinite; }
+.designing-ai-hero .designing-ai-hero__diagram circle { animation: intro-node-luminance 22s ease-in-out -6s infinite; }
+.designing-ai-hero .designing-ai-hero__diagram--right circle { animation-delay: -17s; }
+
+.intro-line-energy {
+  fill: none;
+  stroke: color-mix(in srgb, var(--theme-text) 70%, var(--color-accent));
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--color-accent) 28%, transparent));
+}
+.intro-line-energy path {
+  stroke-dasharray: 0.055 0.945;
+  opacity: 0;
+  animation: intro-line-current 28s linear -5s infinite;
+}
+.intro-line-energy path:nth-child(2) { animation-duration: 34s; animation-delay: -19s; }
+.intro-line-energy path:nth-child(3) { animation-duration: 38s; animation-delay: -29s; }
+
+@keyframes intro-line-current {
+  0% { stroke-dashoffset: 0.08; opacity: 0; }
+  15% { opacity: 0.24; }
+  75% { opacity: 0.24; }
+  95%, 100% { stroke-dashoffset: -1; opacity: 0; }
+}
+@keyframes intro-grid-luminance {
+  0%, 100% { opacity: 0.65; }
+  50% { opacity: 1; }
+}
+@keyframes intro-node-luminance {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.designing-ai-hero.is-paused .designing-ai-hero__technical-field *,
+.designing-ai-hero.is-paused .intro-bars::after { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-bars::after,
+  .intro-line-energy { display: none; }
+  .designing-ai-hero__grid,
+  .designing-ai-hero .designing-ai-hero__diagram circle { animation: none; }
+}

@@ -36,17 +36,10 @@
 
 * { box-sizing: border-box; }
 
-/* html, body { min-height: 100vh; overflow: hidden; } This causes mobile to lock after scrolling */
-
 html, body {
   min-height: 100vh;
-  overflow: hidden;
 }
 
-
-body.long-page {
-  overflow: auto;
-}
 
 body {
   margin: 0;
@@ -222,10 +215,6 @@ img, svg { max-width: 100%; height: auto; display: block; }
 /* =========================
    INTERACTION STATES
 ========================= */
-.content-rail {
-  will-change: transform;
-}
-
 #content-rail[data-locked="true"] {
   overflow: hidden;
   pointer-events: none;
@@ -536,13 +525,6 @@ AI LAB
    BREAKPOINT QUERIES
    -- move to a token (ChatGPT: CSS Media Query Nesting) --
 ========================= */
-
-/* Desktop-only scroll locking */
-@media (hover: hover) and (pointer: fine) {
-  html, body {
-    overflow: hidden;
-  }
-}
 
 @media (max-width: 1180px) {
   /* tablet styles */

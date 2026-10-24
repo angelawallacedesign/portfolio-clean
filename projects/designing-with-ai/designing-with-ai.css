@@ -1,13 +1,7 @@
 /* Standalone page adaptation of the former Layer 3 case-study presentation. */
 
-/*
- * The shared desktop stage locks html and body with overflow: hidden.
- * This standalone case study is a long document, so both scrolling roots must
- * explicitly opt back into vertical scrolling after css/main.css is loaded.
- */
 .case-study-page-root {
   overflow-x: hidden;
-  overflow-y: auto;
 }
 
 .case-study-page {

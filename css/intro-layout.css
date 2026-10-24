@@ -5,11 +5,6 @@
   box-sizing: border-box;
 }
 
-html, body {
-  height: auto !important;
-  overflow-y: auto;
-}
-
 body {
   font-size: 16px;
   font-family: var(--font-sans);
@@ -19,7 +14,6 @@ body {
 
 /* Keep document scrolling on the root so responsive sticky positioning works in Chrome. */
 body.intro-layout {
-  height: auto !important;
   overflow: visible;
 }
 body.intro-layout .section {
@@ -28,17 +22,6 @@ body.intro-layout .section {
 }
 body.intro-layout .page-main {
   height: auto;
-}
-
-.intro-layout #content-rail {
-  transform: none !important;
-}
-
-/* Kill desktop scroll lock override */
-@media (hover: hover) and (pointer: fine) {
-  body.intro-layout {
-    overflow: auto;
-  }
 }
 
 /* =========================

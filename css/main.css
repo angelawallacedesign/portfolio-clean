@@ -39,17 +39,10 @@
 
 * { box-sizing: border-box; }
 
-/* html, body { min-height: 100vh; overflow: hidden; } This causes mobile to lock after scrolling */
-
 html, body {
   min-height: 100vh;
-  /*overflow: hidden; :( */
 }
 
-
-body.long-page {
-  overflow: auto;
-}
 
 body {
   margin: 0;
@@ -177,11 +170,6 @@ header { width: 100%; }
 /* =========================
    INTERACTION STATES
 ========================= */
-.content-rail {
-  will-change: transform;
-}
-
-
 #content-rail[data-locked="true"] {
   overflow: hidden;
   pointer-events: none;
@@ -195,9 +183,6 @@ header { width: 100%; }
   display: grid;
   gap: 0;
 
-  /*scroll breaking on mobile fix below 3/15/26 @ 756pm - AW
-  height: var(--stage-height);
-  overflow: hidden; */
 }
 
 
@@ -267,13 +252,6 @@ header { width: 100%; }
    -- move to a token (ChatGPT: CSS Media Query Nesting) --
 ========================= */
 
-/* Desktop-only scroll locking */
-@media (hover: hover) and (pointer: fine) {
-  html, body {
-    overflow: hidden;
-  }
-}
-
 @media (max-width: 1180px) {
   /* tablet styles */
   #project-list {
@@ -323,10 +301,6 @@ header { width: 100%; }
   }
   .global-nav__list {
     justify-content: center;
-  }
-
-  #content-rail {
-    transform: none !important;
   }
 
   /* page.html (main page w/ 3 sections */

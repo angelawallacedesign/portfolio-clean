@@ -270,7 +270,7 @@ html.work-page body.work-archive {
   margin-top: 0;
 }
 
-.interface-project-list .primary-btn.small {
+.interface-project-list .primary-btn-small {
   width: auto;
   margin-top: 0;
 }
@@ -430,7 +430,7 @@ html.work-page body.work-archive {
   line-height: var(--lh-body);
 }
 
-.project-hero .primary-btn.small {
+.project-hero .primary-btn-small {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -505,11 +505,7 @@ html.work-page body.work-archive {
 }
 
 .project-page .work-gallery-grid figcaption {
-    display: block;
-    margin-top: 0.4rem;
-    color: var(--theme-text-muted, #666);
-    font-size: 0.75rem;
-    line-height: 1.4;
+  color: var(--color-text);
 }
 
 /* Norwegian-specific title and gallery geometry */
@@ -883,7 +879,7 @@ html.work-page body.work-archive {
   margin-top: 0;
 }
 
-.work-project-list .project-card-actions .primary-btn.small {
+.work-project-list .project-card-actions .primary-btn-small {
   margin-top: 0;
   text-decoration: none;
 }
@@ -967,11 +963,11 @@ html.work-page body.work-archive {
   }
 
   .work-project-list .project-card-actions,
-  .work-project-list .project-card-actions .primary-btn.small {
+  .work-project-list .project-card-actions .primary-btn-small {
     width: 100%;
   }
 
-  .work-project-list .project-card-actions .primary-btn.small {
+  .work-project-list .project-card-actions .primary-btn-small {
     margin: 0;
   }
 }

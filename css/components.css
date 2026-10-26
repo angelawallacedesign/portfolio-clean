@@ -135,7 +135,8 @@ a.utility {
 }
 
 .primary-btn:disabled {
-  opacity: 0.4;
+  background-color: #DDDDDD;
+  color: #707070;
   cursor: not-allowed;
 }
 

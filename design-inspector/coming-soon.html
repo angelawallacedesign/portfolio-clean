@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design Inspector — Coming soon · Angela Wallace</title>
+  <meta name="description" content="Design Inspector is taking shape. Explore the connection between interface design, shared code, and design intent. Request email updates from Angela Wallace.">
+  <link rel="icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared/css/global-tokens.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="coming-soon.css">
+  <script type="module" src="coming-soon.js"></script>
+</head>
+<body>
+  <main class="inspector-coming-soon">
+    <header class="inspector-coming-soon__header">
+      <a class="inspector-coming-soon__back" href="../index.html#live-component-preview">← Angela Wallace / Portfolio</a>
+      <p class="inspector-coming-soon__eyebrow">Design + code, in context</p>
+      <h1>Design Inspector<span>.</span></h1>
+      <p class="inspector-coming-soon__intro">A closer look at the decisions behind the interface.</p>
+      <p class="inspector-coming-soon__availability">Coming soon</p>
+    </header>
+
+    <img class="inspector-coming-soon__illustration" src="design-inspector-preview.svg" width="560" height="260" alt="Design Inspector concept: a selected interface button connected to a sidebar showing its code, design tokens, and interaction states.">
+
+    <form class="notify-form" action="mailto:hello@angelawallace.net?subject=Design%20Inspector%20updates" method="post" enctype="text/plain" data-notify-form>
+      <label for="notify-email">Be notified of Design Inspector updates.</label>
+      <div class="notify-form__fields">
+        <input id="notify-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="notify-help">
+        <button class="primary-btn" type="submit">Notify me <span aria-hidden="true">→</span></button>
+      </div>
+      <p id="notify-help" class="notify-form__help">Opens your email app to send an update request to Angela.</p>
+      <p class="notify-form__status" role="status" aria-live="polite" data-notify-status></p>
+    </form>
+  </main>
+</body>
+</html>

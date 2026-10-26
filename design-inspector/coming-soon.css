@@ -1,20 +1,18 @@
 * { box-sizing: border-box; }
 body {
   min-height: 100svh;
-  display: grid;
-  place-items: center;
   margin: 0;
-  padding: 40px 24px;
+  padding: 0;
   background: radial-gradient(ellipse at 50% 44%, color-mix(in srgb, var(--color-control) 6%, transparent), transparent 58%), var(--theme-bg);
   color: var(--theme-text);
   font: 400 16px/1.5 var(--font-sans);
 }
-.inspector-coming-soon { width: min(100%, 640px); text-align: center; }
+.inspector-coming-soon { width: min(100%, 688px); margin-inline: auto; padding: 40px 24px; text-align: center; }
 .inspector-coming-soon__back { display: inline-block; margin-bottom: 32px; color: var(--theme-text-muted); font-size: 12px; text-decoration: none; }
 .inspector-coming-soon__back:hover { color: var(--theme-text); }
 .inspector-coming-soon__eyebrow { margin: 0 0 12px; color: var(--color-accent); font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
-.inspector-coming-soon h1 { margin: 0; color: var(--theme-text); font: 700 clamp(36px, 7vw, 60px)/1.08 var(--font-sans); letter-spacing: -.05em; text-transform: none; }
-.inspector-coming-soon h1 span { color: var(--color-accent); }
+.inspector-coming-soon h2 { margin: 0; color: var(--theme-text); font: 700 clamp(36px, 7vw, 60px)/1.08 var(--font-sans); letter-spacing: -.05em; text-transform: none; }
+.inspector-coming-soon h2 span { color: var(--color-accent); }
 .inspector-coming-soon__intro { margin: 16px 0 0; color: var(--theme-text-muted); font-size: clamp(15px, 2.5vw, 18px); }
 .inspector-coming-soon__availability { display: inline-block; margin: 18px 0 0; padding: 4px 12px; border: 1px solid var(--theme-divider); border-radius: 24px; color: var(--theme-text-muted); font-size: 11px; letter-spacing: .05em; }
 .inspector-coming-soon__illustration { display: block; width: min(100%, 560px); height: auto; margin: 20px auto 24px; }
@@ -29,7 +27,7 @@ body {
 .notify-form__status { min-height: 18px; margin: 8px 0 0; color: var(--theme-text-muted); font-size: 12px; }
 .notify-form input:focus-visible, .notify-form button:focus-visible, .inspector-coming-soon a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
 @media (max-width: 420px) {
-  body { padding: 28px 20px; }
+  .inspector-coming-soon { padding: 28px 20px; }
   .inspector-coming-soon__back { margin-bottom: 28px; }
   .notify-form__fields { flex-direction: column; }
   .notify-form .primary-btn { min-height: 48px; }

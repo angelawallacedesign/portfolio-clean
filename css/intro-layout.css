@@ -248,6 +248,26 @@ body.show-section-nav .intro-hide {
   isolation: isolate;
 }
 
+/* Homepage placement only; pagination keeps its own independent timing. */
+.intro-layout #intro > .bridge-intro__pagination {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: min(339px, 86%);
+  margin-inline: auto;
+}
+
+/* Let the strip follow tall mobile copy instead of overlapping its CTAs. */
+@media (max-width: 768px) {
+  .intro-layout #intro { row-gap: 48px; }
+  .intro-layout #intro > .bridge-intro__pagination {
+    position: relative;
+    inset: auto;
+    flex: 0 0 4px;
+  }
+}
+
 .intro-stage::before {
   content: "";
   position: absolute;

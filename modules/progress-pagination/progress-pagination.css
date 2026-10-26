@@ -1,0 +1,45 @@
+/* Layout-neutral compact progress strip. Host pages own its placement. */
+.progress-pagination {
+  display: grid;
+  grid-template-columns: repeat(var(--progress-pagination-count, 5), minmax(0, 1fr));
+  height: 4px;
+  gap: var(--progress-pagination-gap, 18px);
+}
+
+.progress-pagination > span {
+  position: relative;
+  height: 2px;
+  padding: 0;
+  border-top: 2px solid var(--progress-pagination-track, var(--theme-divider, #d3d3d1));
+  font-size: 0;
+  line-height: 0;
+}
+
+.progress-pagination > span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 100%;
+  border-top: 2px solid var(--progress-pagination-accent, var(--color-accent, #fa4d7e));
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.progress-pagination > span.is-active::before {
+  animation: progress-pagination-fill var(--progress-pagination-duration, 4s) linear both;
+}
+
+.progress-pagination.is-paused > span::before { animation-play-state: paused; }
+
+@keyframes progress-pagination-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-pagination > span.is-active::before {
+    animation: none;
+    transform: scaleX(1);
+  }
+}

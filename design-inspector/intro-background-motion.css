@@ -1,4 +1,4 @@
-/* Homepage-only treatment, linked inside the decorative shadow root.
+/* Intro presentation treatment, linked inside the decorative shadow root.
    Pass 5 still owns the blueprint geometry and base background styles. */
 .designing-ai-hero {
   height: 100%;

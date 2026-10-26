@@ -10,8 +10,9 @@ if (preview) {
   .map(name => preview.querySelector(`[data-preview-state="${name}"]`));
   states.forEach(control => control.parentElement.appendChild(control));
   const figma = preview.querySelector('[data-preview-figma]');
-  const indicator = preview.querySelector('.live-preview__pagination');
-  const steps = [...indicator.querySelectorAll('span')];
+  // A targetless clock preserves the preview cadence without depending on UI
+  // outside the prototype. Its pause/resume behavior matches the former fill.
+  const stateClock = new Animation(new KeyframeEffect(null, [], { duration: 4000 }));
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let pointerInside = false;
   let inView = false;
@@ -212,11 +213,8 @@ if (preview) {
     const rule = selector && ruleFor(selector);
     if (rule) for (const property of rule.style) button.style.setProperty(property, rule.style.getPropertyValue(property));
     states.forEach(control => control.setAttribute('aria-pressed', String(control.dataset.previewState === state)));
-    steps.forEach(line => line.classList.remove('is-active'));
-    const activeStep = steps[states.findIndex(control => control.dataset.previewState === state)];
-    // Restart this existing indicator's fill, including on manual reselection.
-    void activeStep.offsetWidth;
-    activeStep.classList.add('is-active');
+    stateClock.currentTime = 0;
+    updateLoop();
     figma.href = figmaBase + (variants[state] || variants.default);
     const componentName = preview.querySelector('[data-preview-component-name]');
     const caption = preview.querySelector('[data-preview-caption]');
@@ -274,14 +272,12 @@ if (preview) {
   });
   function updateLoop() {
     const paused = reducedMotion.matches || pointerInside || preview.matches(':focus-within') || document.hidden || !inView;
-    indicator.classList.toggle('is-paused', paused);
+    if (paused) stateClock.pause();
+    else stateClock.play();
     if (reducedMotion.matches || document.hidden || !inView) [...crossfades.values()].forEach(entry => entry.cleanup());
   }
 
-  // CSS owns the four-second fill. Advance from its completion event so the
-  // visible progress and the displayed state cannot drift apart.
-  indicator.addEventListener('animationend', event => {
-    if (event.animationName !== 'designing-ai-step-fill' || indicator.classList.contains('is-paused')) return;
+  stateClock.addEventListener('finish', () => {
     const index = states.findIndex(control => control.dataset.previewState === state);
     selectState(states[(index + 1) % states.length].dataset.previewState, false);
   });

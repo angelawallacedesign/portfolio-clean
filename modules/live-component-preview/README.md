@@ -29,9 +29,7 @@ Its compact frame lives here; it does not reproduce the Pattern Inspector UI.
 - The preview card and footer share an outer module container. The footer's
   Design Inspector link opens `/design-inspector/coming-soon.html`.
 
-The Figma links map to verified variants in AWD Design System 2
-(`HxeLi68wxFByOWStEVOGam`): Default `7193:278`, Hover `7193:277`, Focus
-`7193:276`, and Small `7194:286`. Disabled is a native HTML state and links to
+The Figma links map to verified variants in AWD Design System 2: Default, Hover, Focus, and Small. Disabled is a native HTML state and links to
 the base component; the UI explicitly identifies this distinction. These are
 component deep links, not a runtime Figma synchronization service.
 

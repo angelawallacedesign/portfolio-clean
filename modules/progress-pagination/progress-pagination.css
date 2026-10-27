@@ -1,0 +1,85 @@
+/* Layout-neutral compact progress strip. Host pages own its placement. */
+.progress-pagination {
+  display: grid;
+  grid-template-columns: repeat(var(--progress-pagination-count, 5), minmax(0, 1fr));
+  height: 4px;
+  gap: var(--progress-pagination-gap, 18px);
+}
+
+.progress-pagination > span {
+  position: relative;
+  height: 2px;
+  padding: 0;
+  border-top: 2px solid var(--progress-pagination-track, var(--theme-divider, #d3d3d1));
+  font-size: 0;
+  line-height: 0;
+}
+
+.progress-pagination > span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 100%;
+  border-top: 2px solid var(--progress-pagination-accent, var(--color-accent, #fa4d7e));
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.progress-pagination > span.is-active::before {
+  animation: progress-pagination-fill var(--progress-pagination-duration, 4s) linear both;
+}
+
+.progress-pagination.is-paused > span::before { animation-play-state: paused; }
+
+@keyframes progress-pagination-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-pagination > span.is-active::before {
+    animation: none;
+    transform: scaleX(1);
+  }
+}
+
+/* Interactive presentation retains the same line geometry with a larger target. */
+.progress-pagination > button {
+  position: relative;
+  display: block;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 0;
+  cursor: pointer;
+}
+.progress-pagination:has(> button) { height: 40px; }
+.progress-pagination > button::after,
+.progress-pagination > button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 19px;
+  width: 100%;
+  border-top: 2px solid var(--progress-pagination-track, var(--theme-divider, #d3d3d1));
+}
+.progress-pagination > button::before {
+  z-index: 1;
+  border-color: var(--progress-pagination-accent, var(--color-accent, #fa4d7e));
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.progress-pagination > button[aria-current="true"]::after {
+  border-color: color-mix(in srgb, var(--progress-pagination-accent, var(--color-accent, #fa4d7e)) 45%, var(--progress-pagination-track, var(--theme-divider, #d3d3d1)));
+}
+.progress-pagination > button.is-active::before {
+  animation: progress-pagination-fill var(--progress-pagination-duration, 4s) linear both;
+}
+.progress-pagination.is-paused > button::before { animation-play-state: paused; }
+.progress-pagination > button:focus-visible { outline: 2px solid var(--color-focus, #dd3353); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .progress-pagination > button.is-active::before { animation: none; transform: scaleX(1); }
+}

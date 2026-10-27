@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="260" viewBox="0 0 560 260" fill="none">
+  <title>Design Inspector concept preview</title>
+  <style>
+    .surface { fill: var(--theme-surface, #121a1e); stroke: var(--theme-divider, #354148); }
+    .raised { fill: var(--theme-surface-muted, #1b282e); }
+    .line { stroke: var(--theme-divider, #354148); }
+    .text { fill: var(--theme-text, #ffffff); }
+    .muted { fill: var(--theme-text-muted, #bcc2c5); }
+    .accent { fill: var(--color-accent, #FA4D7E); }
+    .control { fill: var(--color-control, #23CDCD); }
+    text { font-family: Inter, system-ui, sans-serif; }
+  </style>
+  <defs>
+    <radialGradient id="halo"><stop stop-color="#23cdcd" stop-opacity=".09"/><stop offset="1" stop-color="#23cdcd" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0V18" stroke="#354148" stroke-opacity=".35"/></pattern>
+  </defs>
+  <g data-theme="dark">
+    <ellipse cx="280" cy="140" rx="270" ry="120" fill="url(#halo)"/>
+    <rect x="30" y="18" width="500" height="224" rx="9" class="surface"/>
+    <path d="M30 52H530M346 52V242" class="line"/>
+    <g class="muted"><circle cx="46" cy="35" r="3"/><circle cx="57" cy="35" r="3"/><circle cx="68" cy="35" r="3"/></g>
+    <text x="84" y="39" font-size="9" font-weight="600" class="text">DESIGN INSPECTOR</text>
+    <text x="464" y="39" font-size="8" class="muted">PREVIEW</text>
+    <rect x="46" y="68" width="284" height="158" rx="4" fill="url(#grid)"/>
+    <rect x="74" y="101" width="230" height="83" rx="3" stroke="#fa4d7e" stroke-opacity=".75"/>
+    <rect x="89" y="116" width="200" height="53" rx="3" class="raised"/>
+    <text x="127" y="147" font-size="12" font-weight="500" class="text">View project</text>
+    <path d="M243 142H258M253 137L258 142L253 147" stroke="#fff" stroke-width="1.3"/>
+    <g class="accent"><circle cx="74" cy="101" r="3"/><circle cx="304" cy="101" r="3"/><circle cx="74" cy="184" r="3"/><circle cx="304" cy="184" r="3"/></g>
+    <path d="M305 143H329L346 126H362" stroke="#fa4d7e" stroke-opacity=".5" stroke-dasharray="3 4"/>
+    <text x="362" y="79" font-size="8" class="muted">COMPONENT / PRIMARY BUTTON</text>
+    <text x="362" y="100" font-size="11" font-weight="600" class="text">Design intent, in context.</text>
+    <rect x="362" y="116" width="150" height="30" rx="4" class="raised"/>
+    <circle cx="374" cy="131" r="3" class="accent"/>
+    <text x="384" y="134" font-size="8" class="text">--color-accent</text>
+    <path d="M362 162H512M362 196H512" class="line"/>
+    <text x="362" y="179" font-size="8" class="control">.primary-btn</text>
+    <text x="462" y="179" font-size="8" class="muted">Shared CSS</text>
+    <text x="362" y="215" font-size="8" class="muted">Default</text>
+    <text x="414" y="215" font-size="8" class="muted">Hover</text>
+    <text x="460" y="215" font-size="8" class="muted">Focus</text>
+    <path d="M362 222H394" stroke="#fa4d7e" stroke-width="1.5"/>
+  </g>
+</svg>

@@ -1,0 +1,41 @@
+/* Homepage navigation, transition, and pagination placement. */
+body.intro-layout { padding: 0; }
+.intro-layout .page-main { padding: 0; }
+.intro-transition {
+  padding-bottom: 60px;
+  background: linear-gradient(
+    var(--theme-bg) calc(100% - 460px),
+    color-mix(in srgb, var(--color-control) 18%, #343f3f) calc(100% - 220px),
+    color-mix(in srgb, var(--color-control) 4%, #e6eae7) calc(100% - 60px),
+    #fff 100%
+  );
+}
+.bridge-intro__pagination {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  bottom: 28px;
+  margin-inline: auto;
+  max-width: 339px;
+}
+.intro-layout .global-header { height: auto; width: 100%; right: 0; }
+.intro-layout .global-header::after { display: none; }
+.intro-layout .global-header .header-inner { padding: 28px 7%; align-items: center; background: transparent; transition: background 200ms; }
+.intro-layout .global-header.is-over-intro { color: var(--theme-text); }
+.intro-layout .global-header.is-over-intro .designer-name a,
+.intro-layout .global-header.is-over-intro .global-nav a { color: inherit; }
+.intro-layout .global-header.is-over-intro .designer-name p:last-child { color: var(--theme-text-muted); }
+.intro-layout .global-header:not(.is-over-intro) .header-inner { background: var(--theme-bg); }
+.intro-layout .global-header.is-over-intro.is-scrolled .header-inner { background: color-mix(in srgb, var(--theme-bg) 96%, transparent); }
+.intro-layout .global-header .global-nav a[aria-current="page"] { color: var(--color-accent); }
+.intro-layout .global-nav a[aria-current="page"]::after { transform: scaleX(1); }
+.intro-transition .impact-metrics { position: relative; width: 86%; max-width: 1600px; }
+.intro-layout #content-rail { padding-inline: 40px; }
+@media (max-width: 900px) {
+.intro-layout .global-header { position: fixed; background: transparent; }
+.intro-layout .global-header .header-inner { flex-direction: row; }
+.intro-layout #content-rail { padding-inline: 20px; }
+}
+@media (max-width: 480px) {
+.intro-layout .global-header .header-inner { padding: 20px 5%; }
+}

@@ -1,4 +1,5 @@
-:root {
+:root,
+[data-theme="default"] {
 
 /* =========================
    GLOBAL COLOR TOKENS \\ SHARED BY ALL PRODUCTS (DO NOT DUPLICATE INTO PRODUCT FOLDERS)
@@ -55,25 +56,26 @@
     --theme-accent: var(--color-accent);
 }
 
-html[data-theme="dark"] {
-    --color-primary: #f7f4f5;
-    --color-secondary: #303033;
-    --color-case-study-frame: #17171a;
-    --color-surface: #17171a;
-    --color-surface-muted: #242428;
-    --color-divider: #3b3b40;
-    --color-text: #f7f4f5;
-    --color-text-contrast: #111;
-    --color-text-muted: #a9a4a7;
-    --color-icon: #dedade;
+html[data-theme="dark"],
+[data-theme="dark"] {
+    --color-primary: #ffffff;
+    --color-secondary: #233037;
+    --color-case-study-frame: #0b1113;
+    --color-surface: #0b1113;
+    --color-surface-muted: #172329;
+    --color-divider: #354148;
+    --color-text: #ffffff;
+    --color-text-contrast: #000000;
+    --color-text-muted: #bcc2c5;
+    --color-icon: #dce2e5;
 
-    --theme-bg: #17171a;
-    --theme-surface: #1f1f23;
-    --theme-surface-muted: #2a2a30;
-    --theme-text: #f7f4f5;
-    --theme-text-muted: #a9a4a7;
-    --theme-divider: #3b3b40;
-    --theme-frame: #303033;
+    --theme-bg: #0b1113;
+    --theme-surface: #121a1e;
+    --theme-surface-muted: #1b282e;
+    --theme-text: #ffffff;
+    --theme-text-muted: #bcc2c5;
+    --theme-divider: #354148;
+    --theme-frame: #233037;
 }
 
 html[data-theme="night"] {

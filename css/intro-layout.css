@@ -17,6 +17,25 @@ body {
   margin:0;
 }
 
+.intro-layout .theme-utility {
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid var(--theme-divider);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--theme-surface) 92%, transparent);
+  box-shadow: 0 4px 20px rgb(0 0 0 / 12%);
+}
+
+.intro-layout .theme-utility > .label {
+  color: var(--theme-text-muted);
+  font: 600 10px/1.2 var(--font-sans);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* Enable only the homepage control; retain the shared theme event handler. */
+.intro-layout .theme-utility .theme-switcher { display: inline-flex; }
+
 /* Keep document scrolling on the root so responsive sticky positioning works in Chrome. */
 body.intro-layout {
   height: auto !important;
@@ -246,6 +265,26 @@ body.show-section-nav .intro-hide {
   flex-direction: column;
   justify-content: space-between;
   isolation: isolate;
+}
+
+/* Homepage placement only; pagination keeps its own independent timing. */
+.intro-layout #intro > .bridge-intro__pagination {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: min(339px, 86%);
+  margin-inline: auto;
+}
+
+/* Let the strip follow tall mobile copy instead of overlapping its CTAs. */
+@media (max-width: 768px) {
+  .intro-layout #intro { row-gap: 48px; }
+  .intro-layout #intro > .bridge-intro__pagination {
+    position: relative;
+    inset: auto;
+    flex: 0 0 4px;
+  }
 }
 
 .intro-stage::before {

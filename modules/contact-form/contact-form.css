@@ -1,0 +1,26 @@
+.contact-dialog {
+  width: min(560px, calc(100% - 32px));
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
+  padding: clamp(24px, 5vw, 48px);
+  border: 1px solid var(--theme-divider);
+  border-radius: 16px;
+  background: var(--theme-bg);
+  color: var(--theme-text);
+  box-shadow: 0 24px 80px rgb(0 0 0 / 30%);
+}
+.contact-dialog::backdrop { background: rgb(0 0 0 / 65%); backdrop-filter: blur(8px); }
+body:has(.contact-dialog[open]) { overflow: hidden; }
+.contact-dialog h2 { margin: 0 0 24px; font: 750 clamp(28px, 4vw, 38px)/1.1 var(--font-sans); letter-spacing: -.04em; text-transform: none; }
+.contact-dialog h2 span { color: var(--color-accent); }
+.contact-dialog__eyebrow { margin: 0 0 12px; color: var(--theme-text); opacity: .65; font: 600 11px/1.4 var(--font-sans); text-transform: uppercase; letter-spacing: .1em; }
+.contact-dialog form { display: grid; gap: 10px; }
+.contact-dialog label { margin-top: 8px; font: 600 13px/1.5 var(--font-sans); }
+.contact-dialog input, .contact-dialog textarea { width: 100%; box-sizing: border-box; padding: 12px 14px; border: 1px solid var(--theme-divider); border-radius: 5px; background: var(--theme-surface); color: var(--theme-text); font: 400 16px/1.4 var(--font-sans); }
+.contact-dialog textarea { resize: vertical; }
+.contact-dialog input:focus-visible, .contact-dialog textarea:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.contact-dialog .primary-btn { width: 100%; margin-top: 12px; font-size: 18px; }
+.contact-dialog__error { min-height: 20px; color: var(--color-focus); font: 400 13px/1.5 var(--font-sans); }
+.contact-dialog__trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.contact-dialog [hidden] { display: none !important; }
+.contact-dialog__confirmation { padding-block: 32px; text-align: center; }

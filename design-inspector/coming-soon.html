@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Design Inspector — Coming soon · Angela Wallace</title>
+  <meta name="description" content="Design Inspector is taking shape. Explore the connection between interface design, shared code, and design intent. Request email updates from Angela Wallace.">
+  <link rel="icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/dej8pod.css">
+  <link rel="stylesheet" href="../shared/css/global-tokens.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../modules/intro-presentation/intro-presentation.css">
+  <link rel="stylesheet" href="../modules/live-component-preview/live-component-preview.css">
+  <link rel="stylesheet" href="coming-soon.css">
+  <link rel="stylesheet" href="intro.css">
+  <script type="module" src="../modules/live-component-preview/live-component-preview.js"></script>
+  <script type="module" src="intro.js"></script>
+  <script type="module" src="coming-soon.js"></script>
+</head>
+<body>
+  <main>
+    <section class="intro-presentation inspector-intro" data-theme="dark" aria-labelledby="inspector-intro-title">
+      <div data-intro-background aria-hidden="true"></div>
+      <div class="intro-middle">
+                <div class="intro-copy">
+                    <p class="intro-presentation__eyebrow">Design + development</p>
+                    <h1 id="inspector-intro-title">I design interfaces<br>and bring them<br>to life in code<span>.</span></h1>
+                    <p class="intro-description">I turn complex product requirements into polished UI, working prototypes, and reusable design-system patterns.</p>
+                    <div class="intro-buttons">
+                        <a class="primary-btn intro-presentation__cta" href="https://www.figma.com/design/HxeLi68wxFByOWStEVOGam/AWD-Design-System-2?node-id=7132-2546" target="_blank" rel="noopener noreferrer">Explore the design system <span aria-hidden="true">→</span></a>
+                        <a class="primary-btn intro-presentation__cta intro-presentation__cta--outline" href="#live-component-preview">Try a coded prototype <span aria-hidden="true">→</span></a>
+                    </div>
+                </div>
+                <div class="live-preview-module" data-live-preview>
+                <section class="live-preview" id="live-component-preview" aria-label="Live component preview">
+                    <header class="live-preview__bar">
+                        <span class="live-preview__traffic" aria-hidden="true">● ● ●</span>
+                        <h2>Design system / Primary button</h2>
+                        <span class="live-preview__mapping">Figma ↔ Code ↔ Behavior</span>
+                    </header>
+                    <div class="live-preview__body">
+                        <div class="live-preview__states" role="group" aria-label="Button state">
+                            <button type="button" data-preview-state="default" aria-pressed="true">Default</button>
+                            <button type="button" data-preview-state="hover" aria-pressed="false">Hover</button>
+                            <button type="button" data-preview-state="focus" aria-pressed="false">Focus</button>
+                            <button type="button" data-preview-state="small" aria-pressed="false">Small</button>
+                            <button type="button" data-preview-state="disabled" aria-pressed="false">Disabled</button>
+                        </div>
+                        <div class="live-preview__workspace">
+                            <div class="live-preview__canvas">
+                                <div class="live-preview__selection" data-theme="default"><button class="primary-btn" type="button" data-preview-button>View project <span aria-hidden="true">→</span></button></div>
+                            </div>
+                            <div class="live-preview__source">
+                                <div class="live-preview__tabs" role="tablist" aria-label="Component source">
+                                    <button type="button" id="preview-tab-html" role="tab" aria-selected="true" aria-controls="preview-source" data-preview-tab="html">HTML</button>
+                                    <button type="button" id="preview-tab-css" role="tab" aria-selected="false" aria-controls="preview-source" tabindex="-1" data-preview-tab="css">CSS</button>
+                                    <button type="button" id="preview-tab-tokens" role="tab" aria-selected="false" aria-controls="preview-source" tabindex="-1" data-preview-tab="tokens">Tokens</button>
+                                    <button type="button" class="live-preview__copy" data-preview-copy aria-label="Copy component source">⧉ Copy</button>
+                                </div>
+                                <pre id="preview-source" role="tabpanel" aria-labelledby="preview-tab-html" tabindex="0"><code data-preview-code></code></pre>
+                            </div>
+                        </div>
+                        <aside class="live-preview__details">
+                            <a class="live-preview__figma" data-preview-figma href="https://www.figma.com/design/HxeLi68wxFByOWStEVOGam/AWD-Design-System-2?node-id=7193-278" target="_blank" rel="noopener noreferrer">
+                                <svg width="24" height="36" viewBox="0 0 24 36" aria-hidden="true"><path fill="#f24e1e" d="M6 0h6v12H6A6 6 0 0 1 6 0"/><path fill="#ff7262" d="M12 0h6a6 6 0 0 1 0 12h-6z"/><path fill="#a259ff" d="M6 12h6v12H6a6 6 0 0 1 0-12"/><circle fill="#1abcfe" cx="18" cy="18" r="6"/><path fill="#0acf83" d="M6 24h6v6a6 6 0 1 1-6-6"/></svg>
+                                <span><strong>Figma component</strong><span data-preview-component-name>Button / Primary</span></span><span aria-hidden="true">↗</span>
+                            </a>
+                            <h3>Design tokens</h3>
+                            <dl data-preview-values></dl>
+                            <p class="live-preview__caption" data-preview-caption>* Live Demo · Shared CSS · Real behavior</p>
+                        </aside>
+                    </div>
+                    <p class="live-preview__status" data-preview-status role="status" aria-live="polite"></p>
+                </section>
+                <div class="live-preview__footer">
+                    <a class="live-preview__inspector-link" href="#updates">View in Design Inspector <span aria-hidden="true">→</span></a>
+                </div>
+                </div>
+      </div>
+    </section>
+    <section class="inspector-coming-soon" id="updates" aria-label="Design Inspector updates">
+    <header class="inspector-coming-soon__header">
+      <a class="inspector-coming-soon__back" href="../index.html#intro">← Angela Wallace / Portfolio</a>
+      <p class="inspector-coming-soon__eyebrow">Design + code, in context</p>
+      <h2>Design Inspector<span>.</span></h2>
+      <p class="inspector-coming-soon__intro">A closer look at the decisions behind the interface.</p>
+      <p class="inspector-coming-soon__availability">Coming soon</p>
+    </header>
+
+    <img class="inspector-coming-soon__illustration" src="design-inspector-preview.svg" width="560" height="260" alt="Design Inspector concept: a selected interface button connected to a sidebar showing its code, design tokens, and interaction states.">
+
+    <form class="notify-form" action="mailto:hello@angelawallace.net?subject=Design%20Inspector%20updates" method="post" enctype="text/plain" data-notify-form>
+      <label for="notify-email">Be notified of Design Inspector updates.</label>
+      <div class="notify-form__fields">
+        <input id="notify-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="notify-help">
+        <button class="primary-btn" type="submit">Notify me <span aria-hidden="true">→</span></button>
+      </div>
+      <p id="notify-help" class="notify-form__help">Opens your email app to send an update request to Angela.</p>
+      <p class="notify-form__status" role="status" aria-live="polite" data-notify-status></p>
+    </form>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,61 @@
+/* Shared intro composition; host pages own content, visuals, and background. */
+.intro-presentation {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100svh;
+  height: auto;
+  padding: 150px 0 100px;
+  background: transparent;
+  isolation: isolate;
+  color: var(--theme-text);
+  opacity: 1;
+  transform: none;
+  overflow: hidden;
+}
+.intro-presentation::before {
+  content: none;
+}
+.intro-presentation .intro-middle {
+  flex: 1;
+  width: 86%;
+  max-width: 1600px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 0.95fr 1.1fr;
+  gap: clamp(28px, 3vw, 56px);
+  align-items: center;
+}
+.intro-presentation .intro-copy { display: flex; flex-direction: column; max-width: none; margin: 0; gap: 24px; }
+.intro-presentation__eyebrow { margin: 0; color: var(--color-accent); text-transform: uppercase; letter-spacing: .12em; font-size: 13px; font-weight: 650; }
+.intro-presentation h1 { margin: 0; font: 750 clamp(44px, 4.5vw, 80px)/1.02 var(--font-sans); letter-spacing: -.055em; }
+.intro-presentation h1 span { color: var(--color-accent); }
+.intro-presentation .intro-description { margin: 0; max-width: 48ch; font-size: clamp(17px, 1.45vw, 24px); line-height: 1.5; font-weight: 400; color: var(--theme-text-muted); }
+.intro-presentation .intro-buttons { display: flex; align-items: center; gap: 16px; margin-top: 16px; flex-wrap: wrap; }
+.intro-presentation .intro-presentation__cta { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 52px; padding: 16px 20px; border: 1px solid var(--color-accent); border-radius: 3px; background: var(--color-accent); color: var(--theme-text); font: 600 clamp(11px, .85vw, 14px)/1.2 var(--font-sans); }
+.intro-presentation .intro-presentation__cta--outline { border-color: var(--theme-text); background: transparent; }
+.intro-presentation .intro-presentation__cta:hover { background: var(--theme-text); color: var(--theme-bg); }
+@media (max-width: 1150px) {
+.intro-presentation { padding-block: 130px 50px; }
+.intro-presentation .intro-middle { width: 90%; grid-template-columns: .9fr 1.1fr; gap: 24px; }
+.intro-presentation h1 { font-size: clamp(40px, 4.5vw, 56px); }
+.intro-presentation .intro-buttons { align-items: stretch; flex-direction: column; }
+}
+@media (max-width: 900px) {
+.intro-presentation { padding: 160px 0 70px; }
+.intro-presentation .intro-middle { grid-template-columns: 1fr; gap: 48px; }
+.intro-presentation .intro-copy { max-width: 620px; }
+.intro-presentation h1 { font-size: clamp(42px, 7.5vw, 68px); }
+.intro-presentation .intro-buttons { flex-direction: row; }
+}
+@media (max-width: 480px) {
+.intro-presentation { padding-top: 130px; }
+.intro-presentation .intro-description { font-size: 18px; max-width: none; }
+.intro-presentation .intro-buttons { flex-direction: column; gap: 12px; }
+.intro-presentation .intro-presentation__cta { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+.intro-presentation .intro-copy { opacity: 1; transform: none; transition: none; }
+}
+@media (max-width: 768px) { .intro-presentation { gap: 80px; } }

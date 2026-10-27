@@ -19,7 +19,7 @@ if (hero) {
   }
   const progress = initProgressPagination(pagination, { duration: 6000, onChange: showSlide });
   function updateMotion() {
-    const suspended = paused || pointerInside || focusInside || document.hidden || !inView || Boolean(document.querySelector('[data-prototype-lightbox]')?.open);
+    const suspended = paused || pointerInside || focusInside || document.hidden || !inView || document.body.classList.contains('is-lightbox-open');
     progress.setPaused(suspended);
     hero.classList.toggle('is-motion-paused', suspended);
     hero.querySelectorAll('[data-live-preview]').forEach(preview => {
@@ -52,7 +52,6 @@ if (hero) {
   hero.addEventListener('focusout', () => queueMicrotask(() => { focusInside = hero.matches(':focus-within'); updateMotion(); }));
   reducedMotion.addEventListener('change', () => { paused = reducedMotion.matches; updateMotion(); });
   document.addEventListener('visibilitychange', updateMotion);
-  document.querySelector('[data-prototype-lightbox]')?.addEventListener('close', updateMotion);
   new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; updateMotion(); }).observe(hero);
   hero.classList.add('is-carousel');
   updateMotion();

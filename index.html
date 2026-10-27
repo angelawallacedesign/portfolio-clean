@@ -272,7 +272,7 @@
                             </div>
                         </div>
                         <aside class="live-preview__details">
-                            <a class="live-preview__figma" data-preview-figma href="assets/work/awd/design-inspector/primary-button-figma.png" data-preview-design-lightbox>
+                            <a class="live-preview__figma" data-preview-figma href="assets/work/awd/design-inspector/primary-button-figma.png" data-lightbox>
                                 <svg width="24" height="36" viewBox="0 0 24 36" aria-hidden="true"><path fill="#f24e1e" d="M6 0h6v12H6A6 6 0 0 1 6 0"/><path fill="#ff7262" d="M12 0h6a6 6 0 0 1 0 12h-6z"/><path fill="#a259ff" d="M6 12h6v12H6a6 6 0 0 1 0-12"/><circle fill="#1abcfe" cx="18" cy="18" r="6"/><path fill="#0acf83" d="M6 24h6v6a6 6 0 1 1-6-6"/></svg>
                                 <span><strong>Figma component</strong><span data-preview-component-name>Button / Primary</span></span><span aria-hidden="true">↗</span>
                             </a>
@@ -665,12 +665,14 @@
         </div>
     </main>
 
-    <dialog class="prototype-lightbox" data-prototype-lightbox aria-labelledby="prototype-lightbox-title">
-        <button class="lightbox__close" type="button" data-prototype-lightbox-close aria-label="Close Figma screenshot">×</button>
-        <h2 id="prototype-lightbox-title">Figma component / Primary button</h2>
-        <img src="assets/work/awd/design-inspector/primary-button-figma.png" alt="Primary button component as authored in Figma: View project" width="181" height="52">
-        <p><a href="https://www.figma.com/design/HxeLi68wxFByOWStEVOGam/AWD-Design-System-2?node-id=7193-278" target="_blank" rel="noopener noreferrer">Open the component in Figma ↗</a></p>
-    </dialog>
+    <div class="lightbox" id="lightbox" aria-hidden="true" inert>
+        <div class="lightbox__inner">
+            <figure class="lightbox__content">
+                <img alt="Primary button component as authored in Figma: View project">
+                <figcaption></figcaption>
+            </figure>
+        </div>
+    </div>
     <dialog class="contact-dialog" data-contact-dialog aria-labelledby="contact-heading">
         <button class="lightbox__close" type="button" data-contact-close aria-label="Close contact form">×</button>
         <div data-contact-fields>
@@ -707,7 +709,7 @@
 
 <script type="module" src="./modules/live-component-preview/live-component-preview.js"></script>
 <script type="module" src="./modules/hero-carousel/hero-carousel.js"></script>
-<script type="module" src="./modules/hero-carousel/prototype-lightbox.js"></script>
+<script type="module" src="./js/lightbox.js"></script>
 <script type="module" src="./modules/contact-form/contact-form.js"></script>
 <script type="module" src="./js/site.js?v=smooth-scroll-3"></script>
 <!-- Data rendering logic -->

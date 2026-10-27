@@ -50,20 +50,6 @@
 #intro .hero-visual--inspector::after { content: none; }
 #intro .hero-visual--inspector .live-preview-module { border-radius: 9px; background: #111; }
 #intro .hero-visual--inspector .live-preview { --color-primary: #000; }
-.prototype-lightbox {
-  width: min(640px, calc(100% - 40px));
-  padding: 48px 32px;
-  border: 1px solid var(--theme-divider);
-  border-radius: 12px;
-  background: var(--theme-surface);
-  color: var(--theme-text);
-  text-align: center;
-}
-.prototype-lightbox::backdrop { background: rgb(0 0 0 / 70%); backdrop-filter: blur(8px); }
-.prototype-lightbox h2 { margin: 0 0 32px; font: 600 18px/1.4 var(--font-sans); text-transform: none; }
-.prototype-lightbox > img { display: block; margin: 0 auto 32px; max-width: 100%; height: auto; }
-.prototype-lightbox p { font: 400 14px/1.5 var(--font-sans); }
-body:has(.prototype-lightbox[open]) { overflow: hidden; }
 @media (max-width: 900px) {
   #intro .intro-middle--inspector { grid-template-columns: 1fr; gap: 40px; }
   #intro .intro-middle--inspector .intro-copy { max-width: none; }

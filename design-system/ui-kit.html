@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/awd-design-system.css">
+  <link rel="stylesheet" href="../awd-lab/modules/surface-node/surface-node.css">
   <link rel="stylesheet" href="ui-kit.css">
 </head>
 <body class="ui-kit-page is-loaded">
@@ -46,6 +47,18 @@
       </table>
     </div>
     <p class="kit-footnote">To map a row, place its stable ID in the Figma component Description, link Figma’s Link field to this row, then add the Figma component URL to <code>design-system/components.js</code>. Mapping changes are saved through Git.</p>
+    <section class="kit-motion" aria-labelledby="kit-motion-heading">
+      <h2 id="kit-motion-heading">Motion</h2>
+      <p>Existing reusable behaviors, with production values and interactive previews. Shared duration and easing tokens are motion foundations; component-specific sequences remain in their component documentation.</p>
+      <p id="kit-motion-status" class="kit-source" role="status"></p>
+      <div class="kit-table-scroll" role="region" aria-label="Motion behaviors" tabindex="0">
+        <table class="kit-table">
+          <caption class="sr-only">Reusable motion behaviors and production specifications</caption>
+          <thead><tr><th scope="col">Behavior / Stable ID</th><th scope="col">Live preview / source</th><th scope="col">Motion specifications</th></tr></thead>
+          <tbody id="kit-motion-rows"></tbody>
+        </table>
+      </div>
+    </section>
   </main>
   <script type="module" src="ui-kit.js"></script>
 </body>

@@ -1,3 +1,4 @@
+import { motion, initializeMotionPreviews } from "./motion.js";
 import { components } from "./components.js";
 import { initializeIcons } from "../shared/js/createIcon.js";
 
@@ -80,3 +81,25 @@ render();
 if (location.hash) {
   requestAnimationFrame(() => document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView());
 }
+
+// A separate section preserves the component inventory, filtering and mappings.
+for (const item of motion) {
+  const row = element("tr");
+  row.id = item.id;
+  const identity = element("td");
+  identity.append(element("span", "kit-kind", "Motion behavior"), element("strong", "kit-name", item.name), element("code", "kit-id", item.id), element("p", "", item.description), link("Link to row", `#${item.id}`));
+  const example = element("td");
+  const stage = element("div", "kit-preview kit-preview--motion");
+  stage.innerHTML = item.preview;
+  const source = element("p", "kit-source");
+  source.append(element("code", "", item.selector), document.createTextNode(" · "), link(item.source.slice(3), item.source));
+  if (item.css) source.append(document.createTextNode(" · "), link(item.css.slice(3), item.css));
+  example.append(stage, source);
+  const specs = element("td");
+  const list = element("dl", "kit-motion-specs");
+  for (const [label, value] of item.specs) list.append(element("dt", "", label), element("dd", "", value));
+  specs.append(list);
+  row.append(identity, example, specs);
+  document.querySelector("#kit-motion-rows").append(row);
+}
+initializeMotionPreviews();

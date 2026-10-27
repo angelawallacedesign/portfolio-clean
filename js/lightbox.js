@@ -40,6 +40,7 @@ document.addEventListener('click', (e) => {
     caption.innerHTML = figcaption ? figcaption.innerHTML : '';
 
     lightbox.classList.add('is-open');
+    lightbox.removeAttribute('inert');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.classList.add('is-lightbox-open');
     activeTrigger = trigger;

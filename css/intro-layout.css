@@ -24,6 +24,7 @@ body {
   border-radius: 14px;
   background: color-mix(in srgb, var(--theme-surface) 92%, transparent);
   box-shadow: 0 4px 20px rgb(0 0 0 / 12%);
+  display: none;
 }
 
 .intro-layout .theme-utility > .label {

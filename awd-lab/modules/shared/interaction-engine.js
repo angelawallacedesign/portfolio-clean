@@ -67,7 +67,10 @@ export function createActiveState(elements, options = {}) {
   };
 }
 
-export function initSurfaceMotion({ surface, nodeField, nodes = [], maxRotation = 38 }) {
+export function initSurfaceMotion({
+  surface, nodeField, nodes = [], maxRotation = 38,
+  pointerTarget = surface, orientation, enabled = true
+}) {
   const disposables = createDisposables();
   const root = surface.closest("[data-sn-root]");
   const activeState = createActiveState(nodes, {
@@ -77,6 +80,22 @@ export function initSurfaceMotion({ surface, nodeField, nodes = [], maxRotation 
     }
   });
   let isInteracting = false;
+  const orientationLayer = surface.querySelector("[data-sn-orientation]");
+  let currentOrientation;
+
+  function setOrientation(nextOrientation) {
+    if (!["default", "left", "right"].includes(nextOrientation)) {
+      throw new RangeError(`Unknown Surface orientation: ${nextOrientation}`);
+    }
+    if (!orientationLayer) throw new Error("Surface orientation requires a [data-sn-orientation] layer.");
+    currentOrientation = nextOrientation;
+    resetSurface();
+    orientationLayer.dataset.snOrientation = currentOrientation;
+    if (root) root.dataset.snOrientation = currentOrientation;
+  }
+
+  // Orientation is opt-in; existing consumers retain their original transform.
+  if (orientation !== undefined) setOrientation(orientation);
 
   function nodeVerticalRotation(normY) {
     const centeredY = normY * 2;
@@ -93,7 +112,7 @@ export function initSurfaceMotion({ surface, nodeField, nodes = [], maxRotation 
     const {
       xMultiplier = 1,
       yMultiplier = 1,
-      scale = 1.05,
+      scale = currentOrientation ? 1 : 1.05,
       resolveY
     } = options;
 
@@ -107,7 +126,7 @@ export function initSurfaceMotion({ surface, nodeField, nodes = [], maxRotation 
       ? resolveY(normY)
       : easeSigned(normY) * -maxRotation * yMultiplier;
 
-    surface.style.setProperty("--light-x", normX);
+    surface.style.setProperty("--light-x", currentOrientation === "right" ? -normX : normX);
     surface.style.setProperty("--light-y", normY);
     surface.style.transform = `
       rotateY(${x}deg)
@@ -117,6 +136,7 @@ export function initSurfaceMotion({ surface, nodeField, nodes = [], maxRotation 
   }
 
   function resetSurface() {
+    isInteracting = false;
     activeState.clear();
     root?.classList.remove("is-responding");
     surface.style.setProperty("--light-x", 0);
@@ -124,13 +144,13 @@ export function initSurfaceMotion({ surface, nodeField, nodes = [], maxRotation 
     surface.style.transform = "rotateY(0deg) rotateX(0deg) scale(1)";
   }
 
-  disposables.listen(surface, "pointermove", (event) => {
-    if (event.pointerType === "mouse" || isInteracting) {
+  disposables.listen(pointerTarget, "pointermove", (event) => {
+    if (enabled && (event.pointerType === "mouse" || isInteracting)) {
       root?.classList.add("is-responding");
       projectPointer(
         event.clientX,
         event.clientY,
-        surface.getBoundingClientRect(),
+        pointerTarget.getBoundingClientRect(),
         {
           xMultiplier: 2.6,
           yMultiplier: 2.6
@@ -139,15 +159,15 @@ export function initSurfaceMotion({ surface, nodeField, nodes = [], maxRotation 
     }
   });
 
-  disposables.listen(surface, "pointerdown", () => {
-    isInteracting = true;
+  disposables.listen(pointerTarget, "pointerdown", () => {
+    isInteracting = enabled;
   });
 
-  disposables.listen(surface, "pointerup", () => {
+  disposables.listen(pointerTarget, "pointerup", () => {
     isInteracting = false;
   });
 
-  disposables.listen(surface, "pointerleave", () => {
+  disposables.listen(pointerTarget, "pointerleave", () => {
     isInteracting = false;
     resetSurface();
   });
@@ -159,6 +179,7 @@ export function initSurfaceMotion({ surface, nodeField, nodes = [], maxRotation 
 
   nodes.forEach((node) => {
     disposables.listen(node, "mouseenter", () => {
+      if (!enabled) return;
       const nodeRect = node.getBoundingClientRect();
       const fieldRect = nodeField?.getBoundingClientRect() ?? surface.getBoundingClientRect();
 
@@ -169,7 +190,7 @@ export function initSurfaceMotion({ surface, nodeField, nodes = [], maxRotation 
         fieldRect,
         {
           xMultiplier: 1.8,
-          scale: 1.06,
+          scale: currentOrientation ? 1 : 1.06,
           resolveY: nodeVerticalRotation
         }
       );
@@ -181,6 +202,13 @@ export function initSurfaceMotion({ surface, nodeField, nodes = [], maxRotation 
   });
 
   return {
+    setOrientation,
+    setEnabled(value) {
+      enabled = Boolean(value);
+      isInteracting = false;
+      resetSurface();
+    },
+    reset: resetSurface,
     destroy() {
       activeState.destroy();
       root?.classList.remove("is-responding");

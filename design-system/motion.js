@@ -8,16 +8,37 @@ export const motion = [
     source: "../awd-lab/modules/shared/interaction-engine.js",
     css: "../awd-lab/modules/surface-node/surface-node.css",
     selector: "initSurfaceMotion() · .sn-surface-node__motion",
-    preview: '<div class="sn-surface-node kit-motion-surface" data-sn-root><div class="sn-surface-node__motion" data-kit-surface><img src="../awd-lab/assets/surface/surface_face.svg" alt="Interactive Surface preview"></div></div><button type="button" data-kit-reset>Reset Surface Tilt</button>',
+    preview: `<div class="kit-toolbar kit-surface-controls">
+      <label for="kit-surface-orientation">Orientation</label>
+      <select id="kit-surface-orientation" aria-controls="kit-surface-stage">
+        <option value="default">Default</option><option value="left">Left</option><option value="right">Right</option>
+      </select>
+    </div>
+    <div id="kit-surface-stage" class="sn-surface-node kit-motion-surface" data-sn-root aria-describedby="kit-surface-help">
+      <div class="sn-surface-node__motion" data-kit-surface>
+        <div class="sn-surface-node__orientation" data-sn-orientation>
+          <div class="sn-surface-node__content">
+            <img class="sn-surface-node__face" data-sn-flat src="../awd-lab/assets/surface/surface_flat.svg" alt="Flat Surface face">
+            <img class="sn-surface-node__face" data-sn-face src="../awd-lab/assets/surface/surface_face.svg" alt="Surface face">
+            <img class="sn-surface-node__edge" data-sn-edge src="../awd-lab/assets/surface/surface_edge.svg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" data-kit-reset>Reset Surface Tilt</button>
+    <p id="kit-surface-help" class="kit-source">Choose Default, Left, or Right. Move across the preview; leave to return to that orientation.</p>
+    <p id="kit-surface-state" class="kit-source" role="status"></p>`,
     specs: [
       ["Purpose", "Give a surface spatial feedback as the pointer moves."],
       ["Trigger", "Mouse pointer movement; touch or pen movement while pressed."],
-      ["Animated properties", "transform: rotateY, rotateX, scale; --light-x and --light-y updated for lighting consumers."],
+      ["Animated properties", "Outer transform: pointer-driven rotateY and rotateX. Inner orientation layer: flat rectangle, original SVG projection, or reflection. --light-x and --light-y drive lighting. Oriented variants use scale(1); perspective rotation creates the edge-size changes."],
       ["Duration / easing", "320ms while responding; 440ms on exit. cubic-bezier(0.22, 1, 0.36, 1). Pointer mapping uses easeSigned(v) = v × v × sign(v)."],
-      ["States", "Rest: rotateY(0deg) rotateX(0deg) scale(1). Active: clamped normalized coordinates (−0.5…0.5), signed square × 38 × 2.6 (Y rotation; negative for X rotation), scale(1.05)."],
-      ["Exit", "Pointer leave or window pointer cancel resets rotation, scale, lighting and responding state."],
-      ["Reduced motion", "Production utility has no preference check. This preview unbinds it and clears transforms when reduced motion is requested; shared CSS also limits transitions to 1ms."],
-      ["Keyboard", "Spatial pointer demonstration has no keyboard action. Reset is a native keyboard-accessible button."],
+      ["States", "Default: front-facing 160 × 470 rectangle from surface_flat.svg. Left: original SVG silhouette, unchanged. Right: horizontally mirrored Left. Resting geometry stays on the inner layer; the outer layer adds signed-square × 38 × 2.6 rotation (±24.7° per axis; X rotation inverted). No interaction scale is applied to oriented variants."],
+      ["Perspective / reference", "Original perspective: 1200px, origin 80% 50%; transform origin 60% 50%. Right mirrors those origins to 20% 50% and 40% 50%, plus the horizontal lighting response. The compact preview scales the perspective distance with artwork height (180 / 470) to preserve depth proportions. Git b1c466d retains the signed-square gain from 1bb4651 and sets 320ms / 440ms timing. The SVG already encodes Left; no arbitrary resting angle is added."],
+      ["API", "initSurfaceMotion({ surface, orientation: \"default\" | \"left\" | \"right\", pointerTarget }) requires an inner [data-sn-orientation] layer. setOrientation() changes rest geometry; reset() clears offsets; setEnabled(false) keeps a static variant. createSurfaceNodeMap accepts options.orientation. Omit orientation to retain legacy behavior."],
+      ["Exit", "Pointer leave, window pointer cancel, or Reset clears pointer offsets, lighting and responding state, preserving the selected resting orientation."],
+      ["Reduced motion", "The preview calls setEnabled(false) under reduced motion: pointer motion is disabled and offsets reset, while the selected resting orientation remains visible. Shared CSS limits transitions to 1ms."],
+      ["Keyboard", "Tab to the native Orientation selector and use arrow keys to choose a variant; Reset is a native button. Pointer movement is a spatial demonstration."],
     ],
   },
   {
@@ -56,23 +77,28 @@ export const motion = [
 
 export function initializeMotionPreviews() {
   const surface = document.querySelector("[data-kit-surface]");
+  const selector = document.querySelector("#kit-surface-orientation");
+  const state = document.querySelector("#kit-surface-state");
   const preference = matchMedia("(prefers-reduced-motion: reduce)");
   const status = document.querySelector("#kit-motion-status");
-  let interaction;
+  const interaction = initSurfaceMotion({
+    surface,
+    pointerTarget: document.querySelector("#kit-surface-stage"),
+    orientation: selector.value,
+    enabled: !preference.matches,
+  });
   function update() {
-    interaction?.destroy();
-    surface.style.removeProperty("transform");
-    surface.style.removeProperty("--light-x");
-    surface.style.removeProperty("--light-y");
-    interaction = preference.matches ? null : initSurfaceMotion({ surface });
+    interaction.setEnabled(!preference.matches);
+    state.textContent = `${selector.selectedOptions[0].textContent} orientation · ${preference.matches ? "static preview" : "pointer interaction enabled"}`;
     status.textContent = preference.matches
       ? "Reduced motion: tilt disabled; shimmer and press movement suppressed by production CSS."
       : "Motion enabled. Hover the highlight, press the button, or move across the Surface.";
   }
-  document.querySelector("[data-kit-reset]").addEventListener("click", () => {
-    // Use the production reset handler rather than recreating its motion logic.
-    surface.dispatchEvent(new PointerEvent("pointerleave"));
+  selector.addEventListener("change", () => {
+    interaction.setOrientation(selector.value);
+    update();
   });
+  document.querySelector("[data-kit-reset]").addEventListener("click", interaction.reset);
   preference.addEventListener("change", update);
   update();
 }

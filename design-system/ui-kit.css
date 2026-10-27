@@ -50,8 +50,14 @@
 .kit-motion-specs dt { font-size: 12px; margin-top: 12px; }
 .kit-motion-specs dt:first-child { margin-top: 0; }
 .kit-motion-specs dd { margin: 3px 0 0; }
-.kit-motion-surface.sn-surface-node { min-height: 0; width: 100%; height: 180px; display: grid; place-items: center; pointer-events: auto; }
+.kit-motion-surface.sn-surface-node { min-height: 0; width: 100%; height: 240px; perspective: calc(1200px * 180 / 470); display: grid; place-items: center; pointer-events: auto; }
 .kit-motion-surface .sn-surface-node__motion { width: auto; }
-.kit-motion-surface img { display: block; width: auto; height: 150px; }
+.kit-motion-surface img { display: block; width: auto; height: 180px; }
 .kit-preview--motion > button:not(.cta-btn) { min-height: 44px; padding: 8px 12px; font: inherit; cursor: pointer; }
 .kit-motion :focus-visible { outline: 2px solid #8d3150; outline-offset: 4px; }
+
+.kit-surface-controls { width: 100%; margin-bottom: 0; }
+.kit-motion-surface .sn-surface-node__motion { line-height: 0; pointer-events: none; }
+.kit-motion-surface .sn-surface-node__face,
+.kit-motion-surface .sn-surface-node__edge { max-width: none; border-radius: 0; }
+.kit-motion-surface.sn-surface-node { margin-top: 0; touch-action: none; }

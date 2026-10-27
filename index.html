@@ -43,6 +43,9 @@
     <link rel="stylesheet" href="modules/designing-with-ai-hero/pass-4/designing-ai-hero.css?v=responsive-fix" />
     <link rel="stylesheet" href="css/navigation-drawer.css" />
     <link rel="stylesheet" href="modules/progress-pagination/progress-pagination.css" />
+    <link rel="stylesheet" href="modules/live-component-preview/live-component-preview.css" />
+    <link rel="stylesheet" href="modules/hero-carousel/hero-carousel.css" />
+    <link rel="stylesheet" href="modules/contact-form/contact-form.css" />
 </head>
 <body class="long-page intro-layout" data-page="intro">
     
@@ -144,13 +147,41 @@
             <button class="button--depress">Inspector Mode</button>
         </div>
     </div>-->
+
+    <div class="c-utility-nav is-bottom-left theme-utility">
+        <div class="label" id="theme-switcher-label">theme switcher</div>
+        <div class="theme-switcher" role="group" aria-labelledby="theme-switcher-label">
+            <button class="theme-switcher__button" type="button" data-theme-option="default" aria-pressed="true">AWD</button>
+            <button class="theme-switcher__button" type="button" data-theme-option="dark" aria-pressed="false">Dark</button>
+            <button class="theme-switcher__button" type="button" data-theme-option="night" aria-pressed="false">Night</button>
+        </div>
+        
+        <!--<div>
+            <a class="text-link utility" href="design-inspector/coming-soon.html">
+                <span
+                class="icon rotate-0"
+                data-icon="ai"
+                aria-hidden="true">
+                </span>
+                Design Inspector
+            </a>
+        </div>
+        <div>
+            <button class="button--depress">Inspector Mode <span
+                class="icon rotate-0"
+                data-icon="ai"
+                aria-hidden="true">
+                </span></button>
+        </div>-->
+    </div>
     
     <main id="main" class="page-main">
         
         <!-- Section 1: Intro -->
         <div class="intro-transition">
-        <section class="intro-stage intro-section" data-section="intro" aria-label="Intro" id="intro">
-            <div class="intro-middle">
+        <section class="intro-stage intro-section" data-section="intro" aria-label="Portfolio highlights" aria-roledescription="carousel" id="intro" data-hero-carousel>
+            <div class="intro-carousel__slides">
+            <div class="intro-middle" role="group" aria-roledescription="slide" aria-label="1 of 3" id="intro-slide-1" data-hero-slide>
                 <div class="intro-copy">
                     <h1 class="intro-title" aria-label="Senior Visual Designer">
                         <span class="stack-group">
@@ -160,17 +191,17 @@
                             <span class="stack">INTER</span>
                             <span class="stack">FACE</span>
                         </span>
-
+                        
                         <span class="accent-stack">designer</span>
                     </h1>
-
+                    
                     <p class="intro-description">
                         I turn business, user, and technical requirements into cohesive visual interfaces aligned with brand, design systems, and engineering feasibility.
                     </p>
 
 
-
-
+                    
+                    
                     <div class="intro-buttons">
                         <a class="primary-btn intro" href="#work">Featured work</a>
                         <a class="intro-link" href="./work/">View all projects &#8594;</a>
@@ -180,33 +211,99 @@
 
                 </div>
                 <div class="hero-visual">
-
-                    <img
-                    src="assets/AWD_laptop-phone_1400x920.webp"
+                    
+                    <img 
+                    src="assets/AWD_laptop-phone_1400x920.webp" 
                     alt="Portfolio preview on laptop and mobile"
                     class="mockup-base"
                     />
-
+                    
                     <!-- Device overlay screens -->
                     <div class="screen screen--laptop">
                         <img src="assets/work/intro/design-inspector-laptop.webp" alt="Rotating image pair: Desktop prototype" />
                         <img src="assets/work/intro/nickelodeon-laptop.webp" alt="Rotating image pair: Desktop Nickelodeon UI Annotation" />
                         <img src="assets/work/intro/token-laptop.webp" alt="Rotating image pair: Desktop Code Token Validation" />
                     </div>
-
+                    
                     <div class="screen screen--phone">
                         <img src="assets/work/intro/design-inspector-phone.webp" alt="Rotating image pair: Mobile prototype" />
                         <img src="assets/work/intro/nickelodeon-phone.webp" alt="Rotating image pair: Mobile Nickelodeon UI Design" />
                         <img src="assets/work/intro/token-phone.webp" alt="Rotating image pair: Mobile Code Token Validation" />
                     </div>
-
-
+                   
+                    
                 </div>
             </div>
 
-            <div class="bridge-intro__pagination">
-                <div class="progress-pagination" data-progress-pagination aria-hidden="true"><span class="is-active">01</span><span>02</span><span>03</span><span>04</span><span>05</span></div>
+            <div class="intro-middle intro-middle--inspector" role="group" aria-roledescription="slide" aria-label="2 of 3" id="intro-slide-2" data-hero-slide hidden>
+                <div class="intro-copy">
+                    <h1 class="intro-title"><span class="stack-group"><span class="stack">HIGH-FIDELITY</span></span><span class="accent-stack">prototypes</span></h1>
+                    <p class="intro-description">I create validated coded prototypes aligned to stakeholder requirements to explore designs quickly before delivering designs to engineering teams.</p>
+                    <div class="intro-buttons"><a class="primary-btn intro" href="./work/?filter=prototypes">View my prototypes</a><a class="intro-link" href="#about">About my approach →</a></div>
+                </div>
+                <div class="hero-visual hero-visual--inspector">
+                <div class="live-preview-module" data-live-preview data-preview-no-callout data-preview-design-order data-preview-accent-token="--color-focus" data-preview-figma-image="assets/work/awd/design-inspector/primary-button-figma.png" data-theme="dark">
+                <section class="live-preview" id="live-component-preview" aria-label="Live component preview">
+                    <header class="live-preview__bar">
+                        <span class="live-preview__traffic" aria-hidden="true">● ● ●</span>
+                        <h2>Design system / Primary button</h2>
+                        <span class="live-preview__mapping">Figma ↔ Code ↔ Behavior</span>
+                    </header>
+                    <div class="live-preview__body">
+                        <div class="live-preview__states" role="group" aria-label="Button state">
+                            <button type="button" data-preview-state="default" aria-pressed="true">Default</button>
+                            <button type="button" data-preview-state="hover" aria-pressed="false">Hover</button>
+                            <button type="button" data-preview-state="focus" aria-pressed="false">Focus</button>
+                            <button type="button" data-preview-state="small" aria-pressed="false">Small</button>
+                            <button type="button" data-preview-state="disabled" aria-pressed="false">Disabled</button>
+                        </div>
+                        <div class="live-preview__workspace">
+                            <div class="live-preview__canvas">
+                                <div class="live-preview__selection" data-theme="default"><button class="primary-btn" type="button" data-preview-button>View project <span aria-hidden="true">→</span></button></div>
+                            </div>
+                            <div class="live-preview__source">
+                                <div class="live-preview__tabs" role="tablist" aria-label="Component source">
+                                    <button type="button" id="preview-tab-html" role="tab" aria-selected="true" aria-controls="preview-source" data-preview-tab="html">HTML</button>
+                                    <button type="button" id="preview-tab-css" role="tab" aria-selected="false" aria-controls="preview-source" tabindex="-1" data-preview-tab="css">CSS</button>
+                                    <button type="button" id="preview-tab-tokens" role="tab" aria-selected="false" aria-controls="preview-source" tabindex="-1" data-preview-tab="tokens">Tokens</button>
+                                    <button type="button" class="live-preview__copy" data-preview-copy aria-label="Copy component source">⧉ Copy</button>
+                                </div>
+                                <pre id="preview-source" role="tabpanel" aria-labelledby="preview-tab-html" tabindex="0"><code data-preview-code></code></pre>
+                            </div>
+                        </div>
+                        <aside class="live-preview__details">
+                            <a class="live-preview__figma" data-preview-figma href="assets/work/awd/design-inspector/primary-button-figma.png" data-preview-design-lightbox>
+                                <svg width="24" height="36" viewBox="0 0 24 36" aria-hidden="true"><path fill="#f24e1e" d="M6 0h6v12H6A6 6 0 0 1 6 0"/><path fill="#ff7262" d="M12 0h6a6 6 0 0 1 0 12h-6z"/><path fill="#a259ff" d="M6 12h6v12H6a6 6 0 0 1 0-12"/><circle fill="#1abcfe" cx="18" cy="18" r="6"/><path fill="#0acf83" d="M6 24h6v6a6 6 0 1 1-6-6"/></svg>
+                                <span><strong>Figma component</strong><span data-preview-component-name>Button / Primary</span></span><span aria-hidden="true">↗</span>
+                            </a>
+                            <h3>Design tokens</h3>
+                            <dl data-preview-values></dl>
+                            <p class="live-preview__caption" data-preview-caption>* Live Demo · Shared CSS · Real behavior</p>
+                        </aside>
+                    </div>
+                    <p class="live-preview__status" data-preview-status role="status" aria-live="polite"></p>
+                </section>
+                </div>
+                </div>
             </div>
+            <div class="intro-middle" role="group" aria-roledescription="slide" aria-label="3 of 3" id="intro-slide-3" data-hero-slide hidden>
+                <div class="intro-copy">
+                    <h1 class="intro-title"><span class="stack-group"><span class="stack">DIGITAL</span></span><span class="accent-stack">hospitality</span></h1>
+                    <p class="intro-description">Bringing useful services and memorable brand experiences together across connected guest interfaces.</p>
+                    <div class="intro-buttons"><a class="primary-btn intro" href="./work/">Explore the work</a><a class="intro-link" href="#about">About my approach →</a></div>
+                </div>
+                <div class="hero-visual hero-visual--project hero-visual--amr"><img src="assets/work/allin/amr-project-hero.webp" alt="AMR Resorts digital guest experience" width="900" height="600" decoding="async"></div>
+            </div>
+            </div>
+            <div class="bridge-intro__pagination pattern-slides--pagination">
+                <div class="progress-pagination" data-hero-pagination role="group" aria-label="Choose intro slide">
+                    <button type="button" class="is-active" aria-label="Show slide 1: User interface designer" aria-controls="intro-slide-1" aria-current="true">01</button>
+                    <button type="button" aria-label="Show slide 2: High-fidelity prototypes" aria-controls="intro-slide-2">02</button>
+                    <button type="button" aria-label="Show slide 3: Digital hospitality" aria-controls="intro-slide-3">03</button>
+                </div>
+                <button class="pattern-slides__play intro-carousel__motion" type="button" data-hero-motion aria-label="Pause intro carousel" aria-pressed="true"><img src="assets/icons/slideshow-pause.svg" width="24" height="24" alt=""></button>
+            </div>
+            <p class="sr-only" data-hero-status role="status" aria-live="polite"></p>
         </section>
 
         <section class="impact-metrics" data-theme="default" aria-label="Selected design impact">
@@ -328,10 +425,10 @@
                     />
                     <circle cx="16" cy="9" r="2" fill="currentColor" />
                     <path
-                    d="M10 13.5h12M16 13.5v10M12.5 16.5 16 19l3.5-2.5M13.5 23 16 19l2.5 4"
+                    d="M9 13 14 14h4l5-1M16 14v5M16 19l-3 6M16 19l3 6"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
+                    stroke-width="2.8"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     />
@@ -556,7 +653,7 @@
                                 <p>I use AI to extend that work—prototyping in code, auditing design systems, creating documentation, and exploring new ways to validate design-to-code.
                                 </p>
                                 <p class="about-actions">
-                                    <button class="primary-btn small" type="button" data-copy-email="hello@angelawallace.net">Copy Email</button>
+                                    <button class="primary-btn small" type="button" data-contact-open>Send Email</button>
                                     <a class="text-link" href="https://www.linkedin.com/in/angelawallacedesign" target="_blank" rel="noreferrer">LinkedIn Profile ↗</a>
                                 </p>
                             </article>
@@ -568,6 +665,32 @@
         </div>
     </main>
 
+    <dialog class="prototype-lightbox" data-prototype-lightbox aria-labelledby="prototype-lightbox-title">
+        <button class="lightbox__close" type="button" data-prototype-lightbox-close aria-label="Close Figma screenshot">×</button>
+        <h2 id="prototype-lightbox-title">Figma component / Primary button</h2>
+        <img src="assets/work/awd/design-inspector/primary-button-figma.png" alt="Primary button component as authored in Figma: View project" width="181" height="52">
+        <p><a href="https://www.figma.com/design/HxeLi68wxFByOWStEVOGam/AWD-Design-System-2?node-id=7193-278" target="_blank" rel="noopener noreferrer">Open the component in Figma ↗</a></p>
+    </dialog>
+    <dialog class="contact-dialog" data-contact-dialog aria-labelledby="contact-heading">
+        <button class="lightbox__close" type="button" data-contact-close aria-label="Close contact form">×</button>
+        <div data-contact-fields>
+            <p class="contact-dialog__eyebrow">Let’s work together</p>
+            <h2 id="contact-heading" tabindex="-1">Send an email<span>.</span></h2>
+            <form action="api/contact.php" method="post" data-contact-form>
+                <label for="contact-name">Name</label><input id="contact-name" name="name" autocomplete="name" maxlength="100" required>
+                <label for="contact-email">Email</label><input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+                <label for="contact-comments">Comments</label><textarea id="contact-comments" name="comments" rows="5" maxlength="5000" required></textarea>
+                <div class="contact-dialog__trap" aria-hidden="true"><label for="contact-website">Leave this empty</label><input id="contact-website" name="website" tabindex="-1" autocomplete="off"></div>
+                <p class="contact-dialog__error" data-contact-error role="alert"></p>
+                <button class="primary-btn" type="submit">Send email <span aria-hidden="true">→</span></button>
+            </form>
+        </div>
+        <div class="contact-dialog__confirmation" data-contact-confirmation hidden>
+            <h2 id="contact-confirmation-heading" tabindex="-1">Email has been sent!</h2>
+            <button class="primary-btn" type="button" data-contact-close>Close</button>
+        </div>
+    </dialog>
+
     <!-- Back to top -->
     <div class="bottom-nav__right" data-back-to-top aria-hidden="true" inert>
         <a href="#top" class="control control--fixed is-bottom-right">
@@ -578,16 +701,14 @@
 
     <footer>
         <p>&#169; 2026 Angela Wallace Design</p>
-        <div class="theme-switcher" aria-label="Color theme">
-            <button class="theme-switcher__button" type="button" data-theme-option="default" aria-pressed="true">AWD</button>
-            <button class="theme-switcher__button" type="button" data-theme-option="dark" aria-pressed="false">Dark</button>
-            <button class="theme-switcher__button" type="button" data-theme-option="night" aria-pressed="false">Night</button>
-        </div>
     </footer>
 
     
 
-<script type="module" src="./modules/progress-pagination/progress-pagination.js"></script>
+<script type="module" src="./modules/live-component-preview/live-component-preview.js"></script>
+<script type="module" src="./modules/hero-carousel/hero-carousel.js"></script>
+<script type="module" src="./modules/hero-carousel/prototype-lightbox.js"></script>
+<script type="module" src="./modules/contact-form/contact-form.js"></script>
 <script type="module" src="./js/site.js?v=smooth-scroll-3"></script>
 <!-- Data rendering logic -->
 <script type="module" src="./js/data.js?v=2"></script>
@@ -596,14 +717,7 @@
 <!-- Load navigation logic -->
 <script type="module" src="./js/navigation.js?v=2"></script>
 <script type="module" src="./js/navigation-drawer.js"></script>
-<script>
-    document.querySelector('[data-copy-email]')?.addEventListener('click', async (event) => {
-        const button = event.currentTarget;
-        await navigator.clipboard.writeText(button.dataset.copyEmail);
-        button.textContent = 'Copied!';
-        window.setTimeout(() => { button.textContent = 'Copy Email'; }, 2000);
-    });
-</script>
+
 <script type="module" src="../shared/js/base.js"></script>
 </body>
 </html>

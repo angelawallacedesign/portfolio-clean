@@ -21,3 +21,11 @@ Colors inherit generic theme tokens when available and have standalone defaults.
 For dynamically mounted strips, import `initProgressPagination(element)`;
 its returned controller exposes `select(zeroBasedIndex)` and `destroy()`.
 Initialize each element once and call `destroy()` before removing it.
+
+Interactive consumers may supply buttons instead of spans, with `aria-label`
+and `aria-controls` on each button. Initialize without the auto-mount attribute:
+`initProgressPagination(root, { duration: 6000, onChange(index, { manual }) {} })`.
+Use `controller.select(index, { manual: true })` for user selection and
+`controller.setPaused(true/false)` for a play/pause control. Progress pauses
+when offscreen or the document is hidden and preserves its remaining time.
+Reduced motion defaults to paused; explicit resume is available to consumers.

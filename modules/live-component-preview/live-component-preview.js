@@ -6,7 +6,10 @@ if (preview) {
   const values = preview.querySelector('[data-preview-values]');
   const status = preview.querySelector('[data-preview-status]');
   const tabs = [...preview.querySelectorAll('[data-preview-tab]')];
-  const states = ['default', 'hover', 'focus', 'disabled', 'small']
+  const stateOrder = preview.hasAttribute('data-preview-design-order')
+    ? ['default', 'hover', 'focus', 'small', 'disabled']
+    : ['default', 'hover', 'focus', 'disabled', 'small'];
+  const states = stateOrder
   .map(name => preview.querySelector(`[data-preview-state="${name}"]`));
   states.forEach(control => control.parentElement.appendChild(control));
   const figma = preview.querySelector('[data-preview-figma]');
@@ -15,6 +18,7 @@ if (preview) {
   const stateClock = new Animation(new KeyframeEffect(null, [], { duration: 4000 }));
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let pointerInside = false;
+  let externallyPaused = false;
   let inView = false;
   const figmaBase = 'https://www.figma.com/design/HxeLi68wxFByOWStEVOGam/AWD-Design-System-2?node-id=';
   // Existing AWD component variants, verified in the design system file.
@@ -25,12 +29,12 @@ if (preview) {
   const authoredRules = new Map();
   const crossfades = new Map();
 
-  // Try it out! 
- const tryItOut = document.createElement('div');
-  tryItOut.className = 'try-it-out';
-  tryItOut.setAttribute('aria-hidden', 'true');
-
-  preview.closest('.live-preview-module').prepend(tryItOut);
+  if (!preview.hasAttribute('data-preview-no-callout')) {
+    const tryItOut = document.createElement('div');
+    tryItOut.className = 'try-it-out';
+    tryItOut.setAttribute('aria-hidden', 'true');
+    preview.closest('.live-preview-module').prepend(tryItOut);
+  }
 
   function crossfade(target, update, animate = true) {
     const current = crossfades.get(target);
@@ -147,7 +151,7 @@ if (preview) {
     return [
       [interactive ? '--theme-surface' : '--color-primary', color(destination.get('background-color') || style.backgroundColor), true],
       [interactive ? '--theme-text' : '--color-text-contrast', color(destination.get('color') || style.color), true],
-      ['--color-accent', color(style.getPropertyValue('--color-accent').trim()), true],
+      [preview.dataset.previewAccentToken || '--color-accent', color(style.getPropertyValue(preview.dataset.previewAccentToken || '--color-accent').trim()), true],
       ['border-radius', style.borderRadius, false],
       ['padding', style.padding, false],
     ];
@@ -215,7 +219,7 @@ if (preview) {
     states.forEach(control => control.setAttribute('aria-pressed', String(control.dataset.previewState === state)));
     stateClock.currentTime = 0;
     updateLoop();
-    figma.href = figmaBase + (variants[state] || variants.default);
+    figma.href = preview.dataset.previewFigmaImage || figmaBase + (variants[state] || variants.default);
     const componentName = preview.querySelector('[data-preview-component-name]');
     const caption = preview.querySelector('[data-preview-caption]');
     crossfade(componentName, () => { componentName.textContent = state === 'small' ? 'Button / Primary Small' : 'Button / Primary'; });
@@ -271,7 +275,7 @@ if (preview) {
     renderValues(false);
   });
   function updateLoop() {
-    const paused = reducedMotion.matches || pointerInside || preview.matches(':focus-within') || document.hidden || !inView;
+    const paused = externallyPaused || reducedMotion.matches || pointerInside || preview.matches(':focus-within') || document.hidden || !inView;
     if (paused) stateClock.pause();
     else stateClock.play();
     if (reducedMotion.matches || document.hidden || !inView) [...crossfades.values()].forEach(entry => entry.cleanup());
@@ -282,6 +286,10 @@ if (preview) {
     selectState(states[(index + 1) % states.length].dataset.previewState, false);
   });
   preview.addEventListener('pointerenter', () => { pointerInside = true; updateLoop(); });
+  preview.addEventListener('previewmotionchange', event => {
+    externallyPaused = Boolean(event.detail?.paused);
+    updateLoop();
+  });
   preview.addEventListener('pointerleave', () => { pointerInside = false; updateLoop(); });
   preview.addEventListener('focusin', updateLoop);
   preview.addEventListener('focusout', () => queueMicrotask(updateLoop));

@@ -1,0 +1,73 @@
+/* Homepage composition only; copy, visual assets, and theme components stay reusable. */
+#intro .intro-carousel__slides { display: grid; flex: 1; align-items: center; }
+#intro .intro-middle { grid-area: 1 / 1; min-width: 0; width: 100%; }
+#intro [data-hero-slide][hidden] { display: none !important; }
+#intro .hero-visual--project img { width: 100%; height: clamp(280px, 34vw, 480px); object-fit: contain; }
+/* Same project-hero fade stops and device offset as work-gallery.css. */
+#intro .hero-visual::after {
+  content: "";
+  inset: 0;
+  height: auto;
+  background: linear-gradient(to bottom, transparent calc(27.4% + 90px), var(--color-surface) calc(76.4% + 90px));
+}
+.intro-layout #intro > .bridge-intro__pagination { display: flex; align-items: center; gap: 18px; width: min(406px, 86%); bottom: 4px; }
+#intro .progress-pagination { flex: 1; min-width: 0; width: 280px; }
+#intro .intro-carousel__motion { flex-shrink: 0; }
+#intro .intro-carousel__motion::after { content: ""; position: absolute; width: 44px; height: 44px; }
+#intro.is-motion-paused .screen img,
+#intro [data-hero-slide][hidden] .screen img { animation-play-state: paused; }
+@keyframes hero-slide-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: no-preference) {
+  #intro.is-carousel [data-hero-slide]:not([hidden]) { animation: hero-slide-in 450ms ease both; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #intro .screen img { animation: none; }
+  #intro .screen img:first-child { opacity: 1; }
+}
+@media (max-width: 768px) {
+  .intro-layout #intro > .bridge-intro__pagination { bottom: auto; flex-basis: auto; }
+  #intro .intro-carousel__slides { min-width: 0; display: none; }
+}
+@media (max-width: 768px) {
+  #intro [data-hero-slide]:not(:first-child) .stack,
+  #intro [data-hero-slide]:not(:first-child) .accent-stack { font-size: clamp(32px, 10vw, 64px); }
+}
+
+/* AMR's tall device composition has its own scale; other slide assets are unchanged. */
+#intro .hero-visual--amr img { height: 50vw; }
+
+/* Figma slide 2: live UI, with no image fade or callout above the component. */
+#intro .intro-middle--inspector {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+#intro .intro-middle--inspector .intro-copy { min-width: 0; }
+#intro .intro-middle--inspector .stack { font-size: clamp(32px, 6.3vw, 93px); white-space: nowrap; }
+#intro .intro-middle--inspector .intro-buttons { flex-wrap: wrap; }
+#intro .hero-visual--inspector { display: block; min-width: 0; max-width: none; }
+#intro .hero-visual--inspector::after { content: none; }
+#intro .hero-visual--inspector .live-preview-module { border-radius: 9px; background: #111; }
+#intro .hero-visual--inspector .live-preview { --color-primary: #000; }
+.prototype-lightbox {
+  width: min(640px, calc(100% - 40px));
+  padding: 48px 32px;
+  border: 1px solid var(--theme-divider);
+  border-radius: 12px;
+  background: var(--theme-surface);
+  color: var(--theme-text);
+  text-align: center;
+}
+.prototype-lightbox::backdrop { background: rgb(0 0 0 / 70%); backdrop-filter: blur(8px); }
+.prototype-lightbox h2 { margin: 0 0 32px; font: 600 18px/1.4 var(--font-sans); text-transform: none; }
+.prototype-lightbox > img { display: block; margin: 0 auto 32px; max-width: 100%; height: auto; }
+.prototype-lightbox p { font: 400 14px/1.5 var(--font-sans); }
+body:has(.prototype-lightbox[open]) { overflow: hidden; }
+@media (max-width: 900px) {
+  #intro .intro-middle--inspector { grid-template-columns: 1fr; gap: 40px; }
+  #intro .intro-middle--inspector .intro-copy { max-width: none; }
+}
+@media (max-width: 768px) {
+  #intro .hero-visual--inspector { display: none; }
+}

@@ -267,12 +267,13 @@ header { width: 100%; }
    -- move to a token (ChatGPT: CSS Media Query Nesting) --
 ========================= */
 
-/* Desktop-only scroll locking */
+/* Desktop-only scroll locking
 @media (hover: hover) and (pointer: fine) {
   html, body {
     overflow: hidden;
   }
 }
+*/
 
 @media (max-width: 1180px) {
   /* tablet styles */

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AWD UI Kit — Index page components</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=DM+Serif+Display:ital@0;1&family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/dej8pod.css">
+  <link rel="stylesheet" href="../shared/css/global-tokens.css">
+  <link rel="stylesheet" href="../shared/css/global-components.css">
+  <link rel="stylesheet" href="../shared/css/utilities.css">
+  <link rel="stylesheet" href="../shared/css/motion.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/awd-design-system.css">
+  <link rel="stylesheet" href="../awd-lab/modules/surface-node/surface-node.css">
+  <link rel="stylesheet" href="ui-kit.css">
+</head>
+<body class="ui-kit-page is-loaded">
+  <main class="kit-shell">
+    <header class="kit-header">
+      <p class="kit-eyebrow">AWD Design System / Web</p>
+      <h1>UI Kit</h1>
+      <p>Implemented components from the <a href="../index.html">portfolio home page</a>, ready to map to their Figma counterparts and review in Design Inspector.</p>
+    </header>
+
+    <section class="kit-toolbar" aria-label="Catalog filters">
+      <label for="kit-search">Find a component</label>
+      <input id="kit-search" type="search" placeholder="Search name, ID, selector, or source">
+      <label for="kit-kind">Type</label>
+      <select id="kit-kind">
+        <option value="all">All</option>
+        <option value="Component">Components</option>
+        <option value="Pattern">Patterns</option>
+      </select>
+      <span id="kit-count" aria-live="polite"></span>
+    </section>
+
+    <div class="kit-table-scroll">
+      <table class="kit-table">
+        <caption class="sr-only">Root index page component inventory and Figma mappings</caption>
+        <thead><tr><th scope="col">Component / Stable ID</th><th scope="col">Live preview / source</th><th scope="col">Variants and states</th><th scope="col">Figma mapping</th><th scope="col">Review</th></tr></thead>
+        <tbody id="kit-rows"></tbody>
+      </table>
+    </div>
+    <p class="kit-footnote">To map a row, place its stable ID in the Figma component Description, link Figma’s Link field to this row, then add the Figma component URL to <code>design-system/components.js</code>. Mapping changes are saved through Git.</p>
+    <section class="kit-motion" aria-labelledby="kit-motion-heading">
+      <h2 id="kit-motion-heading">Motion</h2>
+      <p>Existing reusable behaviors, with production values and interactive previews. Shared duration and easing tokens are motion foundations; component-specific sequences remain in their component documentation.</p>
+      <p id="kit-motion-status" class="kit-source" role="status"></p>
+      <div class="kit-table-scroll" role="region" aria-label="Motion behaviors" tabindex="0">
+        <table class="kit-table">
+          <caption class="sr-only">Reusable motion behaviors and production specifications</caption>
+          <thead><tr><th scope="col">Behavior / Stable ID</th><th scope="col">Live preview / source</th><th scope="col">Motion specifications</th></tr></thead>
+          <tbody id="kit-motion-rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="ui-kit.js"></script>
+</body>
+</html>

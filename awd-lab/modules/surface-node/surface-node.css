@@ -31,6 +31,47 @@
   transition-duration: 320ms;
 }
 
+/* Optional resting geometry layer. Pointer offsets remain on __motion.
+   Default uses the flat SVG; Left retains the authored projection;
+   Right mirrors the full original silhouette. */
+/* Pass perspective through the positioned wrapper only for opted-in variants. */
+.sn-surface-node[data-sn-orientation] .sn-surface-node__surface {
+  transform-style: preserve-3d;
+}
+
+.sn-surface-node__orientation {
+  display: inline-flex;
+  transform-style: preserve-3d;
+  transform: none;
+  transform-origin: 0 0;
+}
+
+.sn-surface-node__orientation[data-sn-orientation="right"] {
+  transform: scaleX(-1);
+  transform-origin: center;
+}
+
+.sn-surface-node[data-sn-orientation="right"] {
+  perspective-origin: 20% 50%;
+}
+
+.sn-surface-node[data-sn-orientation="right"] .sn-surface-node__motion {
+  transform-origin: 40% 50%;
+}
+
+.sn-surface-node .sn-surface-node__orientation [data-sn-flat] {
+  display: none;
+}
+
+.sn-surface-node__orientation[data-sn-orientation="default"] [data-sn-flat] {
+  display: block;
+}
+
+.sn-surface-node__orientation[data-sn-orientation="default"] [data-sn-face],
+.sn-surface-node__orientation[data-sn-orientation="default"] [data-sn-edge] {
+  display: none;
+}
+
 .sn-surface-node__content {
   display: inline-flex;
   align-items: flex-start;

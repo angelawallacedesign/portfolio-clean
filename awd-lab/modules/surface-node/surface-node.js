@@ -13,16 +13,20 @@ const DEFAULT_OPTIONS = {
   mobileBreakpoint: 768,
   revealClass: "is-visible",
   revealStagger: 80,
-  interactive: true
+  interactive: true,
+  orientation: undefined
 };
 
 const TEMPLATE = `
   <div class="sn-surface-node" data-sn-root aria-hidden="true">
     <div class="sn-surface-node__surface">
       <div class="sn-surface-node__motion" data-sn-surface>
-        <div class="sn-surface-node__content">
-          <img class="sn-surface-node__face" data-sn-face alt="Surface face" />
-          <img class="sn-surface-node__edge" data-sn-edge alt="Surface edge" />
+        <div class="sn-surface-node__orientation" data-sn-orientation>
+          <div class="sn-surface-node__content">
+            <img class="sn-surface-node__face" data-sn-flat alt="Flat Surface face" />
+            <img class="sn-surface-node__face" data-sn-face alt="Surface face" />
+            <img class="sn-surface-node__edge" data-sn-edge alt="Surface edge" />
+          </div>
         </div>
       </div>
     </div>
@@ -121,9 +125,14 @@ function mountTemplate(state) {
 
 function renderSurface(state) {
   const face = state.root.querySelector("[data-sn-face]");
+  const flat = state.root.querySelector("[data-sn-flat]");
   const edge = state.root.querySelector("[data-sn-edge]");
   const surface = state.data.surface ?? {};
 
+  if (flat) {
+    flat.src = new URL("../../assets/surface/surface_flat.svg", import.meta.url).href;
+    flat.alt = surface.faceAlt ?? "Surface face";
+  }
   face.src = resolveAssetUrl(surface.faceSrc, state.options.assetBaseUrl);
   face.alt = surface.faceAlt ?? "";
   edge.src = resolveAssetUrl(surface.edgeSrc, state.options.assetBaseUrl);
@@ -153,9 +162,11 @@ async function initializeWhenMeasured(state) {
   if (state.destroyed) return;
 
   state.motion?.destroy();
-  state.motion = state.options.interactive
+  state.motion = (state.options.interactive || state.options.orientation !== undefined)
     ? initSurfaceMotion({
       surface: state.surface,
+      orientation: state.options.orientation,
+      enabled: state.options.interactive,
       nodeField: state.nodesRoot,
       nodes: state.nodes
     })

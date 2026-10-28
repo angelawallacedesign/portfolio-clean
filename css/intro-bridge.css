@@ -39,3 +39,5 @@ body.intro-layout { padding: 0; }
 @media (max-width: 480px) {
 .intro-layout .global-header .header-inner { padding: 20px 5%; }
 }
+
+

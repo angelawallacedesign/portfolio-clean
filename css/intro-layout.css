@@ -199,8 +199,6 @@ VERTICAL CONTAINERS
   flex-direction: row;
 }
 
-
-
 .intro-layout .global-header {
   position: fixed;
   top:0;
@@ -298,6 +296,11 @@ body.show-section-nav .intro-hide {
     linear-gradient(180deg, rgba(226, 244, 252, 0.5) 0%, rgba(244, 249, 252, 0.18) 56%, transparent 100%);
   pointer-events: none;
 }
+
+ .intro-layout .intro-transition {
+    display: grid;
+    row-gap: 5rem;
+  }
 
 /* Top Intro section */
 .intro-top {
@@ -754,7 +757,6 @@ BREAKPOINT QUERIES
     flex-direction: column;
   }
   
-  
   .stack-group {
     flex-direction: column;
   }
@@ -904,6 +906,7 @@ BREAKPOINT QUERIES
 
 
 @media (max-width: 480px) {
+  /* Separate the intro carousel from the impact metrics on mobile. */
   .container {
     margin-inline:unset;
   }

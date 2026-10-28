@@ -24,9 +24,14 @@
   #intro .screen img { animation: none; }
   #intro .screen img:first-child { opacity: 1; }
 }
-@media (max-width: 768px) {
-  .intro-layout #intro > .bridge-intro__pagination { bottom: auto; flex-basis: auto; }
-  #intro .intro-carousel__slides { min-width: 0; display: none; }
+@media (max-width: 480px) {
+  .intro-layout #intro > .bridge-intro__pagination { display: none; }
+  #intro .intro-carousel__slides { min-width: 0; }
+  #intro [data-hero-slide]:not(:first-child) { display: none !important; }
+  #intro.is-carousel [data-hero-slide] { animation: none; transition: none; }
+  #intro [data-hero-slide]:first-child .hero-visual { display: none; }
+  #intro .screen img { animation: none; }
+  #intro .screen img:first-child { opacity: 1; }
 }
 @media (max-width: 768px) {
   #intro [data-hero-slide]:not(:first-child) .stack,
@@ -55,5 +60,5 @@
   #intro .intro-middle--inspector .intro-copy { max-width: none; }
 }
 @media (max-width: 768px) {
-  #intro .hero-visual--inspector { display: none; }
+  #intro .hero-visual { display: block; }
 }

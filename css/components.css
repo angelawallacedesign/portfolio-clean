@@ -1808,7 +1808,8 @@ body.is-layer-3-open > footer {
 }
 
 .pattern-slides--pagination .pattern-slides__play {
-  display: grid;
+  /*display: grid;*/
+  display: none;
   width: 40px;
   height: 40px;
   flex: 0 0 40px;

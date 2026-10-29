@@ -1,0 +1,56 @@
+/* Inherit the portfolio palette; consumers may override the three ink tokens. */
+.interlocking-planes {
+  --planes-pink: var(--color-accent, #fa4d7e);
+  --planes-teal: var(--color-control, #23cdcd);
+  --planes-yellow: var(--color-accent-yellow, #ffe066);
+  --planes-paper: var(--theme-bg, #fff);
+  --planes-ink: var(--theme-text, #111);
+  --planes-edge: color-mix(in srgb, var(--planes-paper) 86%, var(--planes-yellow));
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  isolation: isolate;
+  opacity: 1;
+  /* A true alpha fade also works over a dark or colored containing surface. */
+  mask-image: linear-gradient(to bottom, #000 0%, #000 60%, rgb(0 0 0 / .8) 74%, transparent 98%);
+}
+.interlocking-planes[data-active="false"] { visibility: hidden; opacity: 0; }
+.interlocking-planes__art {
+  position: absolute;
+  left: var(--planes-left, 0%);
+  top: var(--planes-top, 0%);
+  width: var(--planes-width, 100%);
+  height: var(--planes-height, 100%);
+  perspective: 1200px;
+  perspective-origin: 60% 45%;
+}
+.interlocking-planes__pointer,
+.interlocking-planes [data-sn-orientation],
+.interlocking-planes svg { display: block; width: 100%; height: 100%; }
+.interlocking-planes__pointer {
+  transform-origin: 55% 45%;
+  transition: transform var(--motion-reveal-duration, 460ms) var(--motion-ease-standard, cubic-bezier(.22, 1, .36, 1));
+}
+.interlocking-planes__atmosphere {
+  position: absolute;
+  inset: 30% 0 0 30%;
+  background:
+    radial-gradient(ellipse at 64% 70%, color-mix(in srgb, var(--planes-teal) 8%, transparent), transparent 58%),
+    radial-gradient(ellipse at 78% 68%, color-mix(in srgb, var(--planes-pink) 6%, transparent), transparent 48%);
+}
+/* The group floats independently; each plane's transform is controlled by a spring. */
+.interlocking-planes__assembly {
+  transform-origin: 1050px 450px;
+  animation: planes-ambient 8s ease-in-out infinite alternate;
+}
+.interlocking-planes__plane { transform-box: view-box; transform-origin: 1050px 460px; will-change: transform; }
+.interlocking-planes[data-running="false"] .interlocking-planes__assembly { animation-play-state: paused; }
+@keyframes planes-ambient {
+  from { transform: translate(-8px, -12px) rotate(-1deg); }
+  to { transform: translate(14px, 15px) rotate(1.3deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .interlocking-planes__assembly { animation: none; }
+  .interlocking-planes__plane { transform: none !important; }
+}

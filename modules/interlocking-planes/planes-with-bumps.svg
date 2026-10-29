@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 850 820">
+  <!-- Generator: Adobe Illustrator 30.8.2, SVG Export Plug-In . SVG Version: 2.1.4 Build 7)  -->
+  <defs>
+    <linearGradient id="linear-gradient" x1="110.24" y1="749.18" x2="511.87" y2="136.69" gradientTransform="translate(116.7 768.4) scale(.85 -.85)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#000" stop-opacity=".75"/>
+      <stop offset=".32" stop-color="#000" stop-opacity=".88"/>
+      <stop offset=".57" stop-color="#000" stop-opacity=".72"/>
+      <stop offset=".82" stop-color="#000" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".08"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient1" x1="-350.87" y1="511.2" x2="-85.87" y2="-153.8" gradientTransform="translate(839.2 853.4) scale(.85 -.85)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#000" stop-opacity=".8"/>
+      <stop offset=".22" stop-color="#000" stop-opacity=".9"/>
+      <stop offset=".48" stop-color="#000" stop-opacity=".7"/>
+      <stop offset=".7" stop-color="#000" stop-opacity=".58"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".08"/>
+    </linearGradient>
+    <clipPath id="clippath">
+      <path d="M-297.79,44.01c39.15-30.12,67.97-13.38,89.62,5.62L22.9,263.41c30.16,29.2,29.88,59.35-11.1,91.54l-239.03,199.35c-32.29,26.6-61.16,6.14-77.98-24.48-16.82-30.62-113.89-207.3-140.18-255.19-6.64-12.09-15.13-45.07-3.85-68.2,18.57-38.11,106.51-127.84,151.45-162.42Z" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient" cx="647.71" cy="466.65" fx="647.71" fy="466.65" r="220" gradientTransform="translate(116.7 768.4) scale(.85 -.85)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#000" stop-opacity=".3"/>
+      <stop offset=".6" stop-color="#000" stop-opacity=".09"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="linear-gradient2" x1="222.48" y1="690.63" x2="549.26" y2="126.19" gradientTransform="translate(116.7 768.4) scale(.85 -.85)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#000" stop-opacity=".95"/>
+      <stop offset=".27" stop-color="#000" stop-opacity=".9"/>
+      <stop offset=".52" stop-color="#000" stop-opacity=".9"/>
+      <stop offset=".76" stop-color="#000" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".1"/>
+    </linearGradient>
+    <clipPath id="clippath-1">
+      <path d="M187,342c-29.75-41.65-21.25-60.35,21.25-76.5l272-89.25c47.6-15.3,75.65-1.7,93.5,46.75l93.5,280.5c17.85,51.85,3.4,71.4-42.5,89.25l-212.5,76.5c-49.3,17-69.7,4.25-85-38.25l-140.25-289Z" fill="none"/>
+    </clipPath>
+    <radialGradient id="radial-gradient1" cx="19.16" cy="461.65" fx="19.16" fy="461.65" r="210" gradientTransform="translate(297.91 768.4) scale(.57 -.85)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#000" stop-opacity=".38"/>
+      <stop offset=".38" stop-color="#000" stop-opacity=".25"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient2" cx="131.71" cy="488.65" fx="131.71" fy="488.65" r="140" gradientTransform="translate(116.7 768.4) scale(.85 -.85)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#000" stop-opacity=".48"/>
+      <stop offset=".3" stop-color="#000" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g id="_x33_-planes" focusable="false">
+    <g>
+      <g id="teal" data-plane="teal">
+        <path d="M164.96,210c20.82-54.4,69.75-67.7,128.29-50.75l314.5,102c62.9,20.4,72.25,52.7,38.25,110.5l-157.25,276.25c-28.9,50.15-71.4,59.5-127.5,25.5l-221-144.5c-44.12-27.87-42.65-55.23-32.4-104.9,7.47-36.21,42.21-175.17,57.11-214.09Z" fill="url(#linear-gradient)"/>
+      </g>
+      <g id="pink" data-plane="pink" display="none">
+        <path d="M424.71,129.01c39.15-30.12,67.97-13.38,89.62,5.62l231.06,213.78c30.16,29.2,29.88,59.35-11.1,91.54l-239.03,199.35c-32.29,26.6-61.16,6.14-77.98-24.48-16.82-30.62-113.89-207.3-140.18-255.19-6.64-12.09-15.13-45.07-3.85-68.2,18.57-38.11,106.51-127.84,151.45-162.42Z" fill="url(#linear-gradient1)"/>
+        <g clip-path="url(#clippath)">
+          <rect x="72.25" y="78.5" width="697" height="646" fill="url(#radial-gradient)"/>
+        </g>
+      </g>
+      <g id="gold" data-plane="gold">
+        <path d="M191.26,353.27c-21.03-50.55-3.11-79.07,37.37-94.46l251.62-82.56c47.6-15.3,75.65-1.7,93.5,46.75l93.5,280.5c17.85,51.85,3.4,71.4-42.5,89.25l-212.5,76.5c-49.3,17-74.43-1.28-89.61-34.27s-115.52-243.59-131.37-281.71Z" fill="url(#linear-gradient2)"/>
+        <g display="none">
+          <g clip-path="url(#clippath-1)">
+            <g>
+              <rect x="72.25" y="78.5" width="697" height="646" fill="url(#radial-gradient1)"/>
+              <rect x="72.25" y="78.5" width="697" height="646" fill="url(#radial-gradient2)"/>
+              <g opacity=".08">
+                <path d="M195.5,337.75c46.75,72.25,178.5,318.75,433.5,250.75" fill="none"/>
+                <path d="M196.65,336.95c47.73,74.29,180.1,318.93,433.15,249.51" fill="none"/>
+                <path d="M197.8,336.16c48.7,76.32,181.69,319.1,432.79,248.27" fill="none"/>
+                <path d="M198.95,335.36c49.67,78.36,183.29,319.28,432.44,247.03" fill="none"/>
+                <path d="M200.11,334.56c50.64,80.39,184.88,319.46,432.08,245.79" fill="none"/>
+                <path d="M201.25,333.76c51.62,82.43,186.47,319.63,431.73,244.55" fill="none"/>
+                <path d="M202.41,332.97c52.59,84.46,188.06,319.81,431.38,243.31" fill="none"/>
+                <path d="M203.56,332.17c53.57,86.5,189.65,319.99,431.02,242.07" fill="none"/>
+                <path d="M204.71,331.38c54.54,88.54,191.25,320.17,430.67,240.83" fill="none"/>
+                <path d="M205.86,330.58c55.51,90.58,192.84,320.35,430.31,239.6" fill="none"/>
+                <path d="M207.01,329.79c56.49,92.61,194.44,320.52,429.96,238.35" fill="none"/>
+                <path d="M208.17,328.99c57.46,94.65,196.03,320.7,429.6,237.12" fill="none"/>
+                <path d="M209.31,328.19c58.44,96.69,197.63,320.88,429.25,235.88" fill="none"/>
+                <path d="M210.46,327.39c59.42,98.73,199.22,321.05,428.9,234.63" fill="none"/>
+                <path d="M211.62,326.6c60.38,100.76,200.81,321.22,428.54,233.39" fill="none"/>
+                <path d="M212.76,325.8c61.36,102.8,202.41,321.4,428.19,232.15" fill="none"/>
+                <path d="M213.92,325c62.33,104.83,204,321.58,427.83,230.92" fill="none"/>
+                <path d="M215.07,324.2c63.31,106.87,205.6,321.76,427.48,229.68" fill="none"/>
+                <path d="M216.22,323.41c64.28,108.9,207.19,321.94,427.13,228.44" fill="none"/>
+                <path d="M217.37,322.61c65.25,110.94,208.78,322.12,426.77,227.2" fill="none"/>
+                <path d="M218.52,321.81c66.23,112.98,210.37,322.29,426.42,225.96" fill="none"/>
+                <path d="M219.67,321.01c67.2,115.02,211.96,322.47,426.06,224.72" fill="none"/>
+                <path d="M220.82,320.22c68.18,117.04,213.56,322.64,425.71,223.47" fill="none"/>
+                <path d="M221.98,319.42c69.15,119.09,215.15,322.82,425.35,222.24" fill="none"/>
+                <path d="M223.13,318.63c70.13,121.13,216.75,323,425,221" fill="none"/>
+                <path d="M224.27,317.83c71.1,123.16,218.35,323.18,424.65,219.76" fill="none"/>
+                <path d="M225.43,317.04c72.07,125.2,219.94,323.35,424.29,218.52" fill="none"/>
+                <path d="M226.58,316.24c73.05,127.24,221.54,323.53,423.94,217.28" fill="none"/>
+                <path d="M227.73,315.44c74.02,129.27,223.13,323.71,423.58,216.04" fill="none"/>
+                <path d="M228.88,314.64c75,131.31,224.72,323.88,423.23,214.8" fill="none"/>
+                <path d="M230.04,313.85c75.96,133.34,226.31,324.06,422.88,213.56" fill="none"/>
+                <path d="M231.18,313.05c76.94,135.38,227.9,324.24,422.52,212.32" fill="none"/>
+                <path d="M232.33,312.25c77.92,137.42,229.5,324.42,422.17,211.08" fill="none"/>
+                <path d="M233.49,311.45c78.89,139.46,231.09,324.6,421.81,209.85" fill="none"/>
+                <path d="M234.63,310.66c79.87,141.48,232.69,324.77,421.46,208.6" fill="none"/>
+                <path d="M235.79,309.86c80.83,143.52,234.28,324.95,421.1,207.37" fill="none"/>
+                <path d="M236.94,309.06c81.81,145.56,235.88,325.13,420.75,206.13" fill="none"/>
+                <path d="M238.08,308.26c82.79,147.6,237.47,325.3,420.4,204.88" fill="none"/>
+                <path d="M239.24,307.47c83.76,149.63,239.06,325.47,420.04,203.64" fill="none"/>
+                <path d="M240.39,306.67c84.74,151.67,240.66,325.65,419.69,202.4" fill="none"/>
+                <path d="M241.54,305.88c85.71,153.71,242.25,325.83,419.33,201.17" fill="none"/>
+                <path d="M242.69,305.08c86.68,155.75,243.85,326.01,418.98,199.93" fill="none"/>
+                <path d="M243.85,304.29c87.65,157.78,245.44,326.19,418.63,198.69" fill="none"/>
+                <path d="M245,303.49c88.63,159.82,247.03,326.37,418.27,197.45" fill="none"/>
+                <path d="M246.14,302.69c89.61,161.86,248.62,326.54,417.92,196.21" fill="none"/>
+                <path d="M247.3,301.89c90.58,163.9,250.21,326.72,417.56,194.97" fill="none"/>
+                <path d="M248.45,301.1c91.55,165.92,251.81,326.89,417.21,193.72" fill="none"/>
+                <path d="M249.6,300.3c92.52,167.96,253.4,327.07,416.85,192.49" fill="none"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

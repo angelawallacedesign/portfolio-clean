@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interlocking planes — standalone module</title>
+  <link rel="stylesheet" href="../../shared/css/global-tokens.css">
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="./interlocking-planes.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 32px; background: #f3f3f3; color: #111; font: 16px/1.5 system-ui, sans-serif; }
+    h1 { font-size: 24px; margin: 0 0 12px; }
+    .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 20px 0; }
+    button, select { font: inherit; padding: 8px 12px; }
+    .examples { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+    .stage { position: relative; height: 650px; min-width: 0; overflow: hidden; background: var(--theme-bg); border-radius: 16px; }
+    #secondary { height: 430px; }
+    @media (max-width: 700px) { body { padding: 20px; } .examples { grid-template-columns: 1fr; } .stage { height: 500px; } }
+  </style>
+</head>
+<body>
+  <h1>Interlocking planes</h1>
+  <p>Two independent instances, with no carousel. Move over either surface to inspect its restrained parallax.</p>
+  <div class="controls">
+    <button id="pause" aria-pressed="false">Pause motion</button>
+    <button id="active" aria-pressed="true">Deactivate</button>
+    <button id="mount">Destroy instances</button>
+    <label>Theme <select id="theme"><option value="default">Light</option><option value="dark">Dark</option></select></label>
+  </div>
+  <p id="status" role="status">Mounted</p>
+  <div class="examples">
+    <div class="stage" id="primary"></div>
+    <div class="stage" id="secondary"></div>
+  </div>
+  <script type="module">
+    import { mountInterlockingPlanes } from './interlocking-planes.js';
+    const stages = [...document.querySelectorAll('.stage')];
+    const pause = document.querySelector('#pause');
+    const activeButton = document.querySelector('#active');
+    const mountButton = document.querySelector('#mount');
+    const status = document.querySelector('#status');
+    let paused = false;
+    let active = true;
+    let instances = stages.map(stage => mountInterlockingPlanes(stage));
+    pause.addEventListener('click', () => {
+      paused = !paused;
+      instances.forEach(instance => instance.setPaused(paused));
+      pause.setAttribute('aria-pressed', String(paused));
+      pause.textContent = paused ? 'Resume motion' : 'Pause motion';
+    });
+    activeButton.addEventListener('click', () => {
+      active = !active;
+      instances.forEach(instance => instance.setActive(active));
+      activeButton.setAttribute('aria-pressed', String(active));
+      activeButton.textContent = active ? 'Deactivate' : 'Activate';
+    });
+    mountButton.addEventListener('click', () => {
+      if (instances.length) {
+        instances.forEach(instance => instance.destroy());
+        instances = [];
+        mountButton.textContent = 'Mount instances';
+        status.textContent = 'Destroyed — listeners, observers and scenes removed';
+      } else {
+        instances = stages.map(stage => mountInterlockingPlanes(stage, { paused, active }));
+        mountButton.textContent = 'Destroy instances';
+        status.textContent = 'Mounted';
+      }
+    });
+    document.querySelector('#theme').addEventListener('change', event => {
+      stages.forEach(stage => { stage.dataset.theme = event.target.value; });
+    });
+  </script>
+</body>
+</html>

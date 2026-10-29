@@ -42,7 +42,7 @@
 /* The group floats independently; each plane's transform is controlled by a spring. */
 .interlocking-planes__assembly {
   transform-origin: 1050px 450px;
-  animation: planes-ambient 11s ease-in-out infinite alternate;
+  animation: planes-ambient 8s ease-in-out infinite alternate;
 }
 .interlocking-planes__plane { transform-box: view-box; transform-origin: 1050px 460px; will-change: transform; }
 .interlocking-planes[data-running="false"] .interlocking-planes__assembly { animation-play-state: paused; }

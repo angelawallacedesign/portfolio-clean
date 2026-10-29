@@ -1,9 +1,9 @@
 /* Native vector interpretation of the approved Version 2 study. All color is
    resolved from the host's tokens; no baked white background or raster asset. */
 const shapes = {
-  teal: 'M720 235 C750 158 804 133 880 155 L1250 275 C1324 299 1335 337 1295 405 L1110 730 C1076 789 1026 800 960 760 L700 590 C643 554 636 514 670 450 Z',
+  teal: 'M76.47,154.79c30-77,84-102,160-80l370,120c74,24,85,62,45,130l-185,325c-34,59-84,70-150,30L38.6,498.11C15.71,479.03-3.25,452.42.47,419.79c12.74-111.96,76-265,76-265Z',
   pink: 'M184.66,19.42c46.06-35.44,79.96-15.74,105.44,6.61l271.84,251.51c35.48,34.35,35.15,69.82-13.06,107.69l-281.21,234.53c-37.99,31.29-71.95,7.22-91.74-28.8-19.79-36.02-133.99-243.88-164.92-300.22-7.81-14.22-17.8-53.02-4.53-80.24C28.33,165.66,131.79,60.1,184.66,19.42Z',
-  gold: 'M755 370 C720 321 730 299 780 280 L1100 175 C1156 157 1189 173 1210 230 L1320 560 C1341 621 1324 644 1270 665 L1020 755 C962 775 938 760 920 710 Z',
+  gold: 'M108.32,285.27c-24.57-49.72-20.29-67.08,28.15-85.48l320-105c56-18,89-2,110,55l110,330c21,61,4,84-50,105l-250,90c-56.93,19.63-76.7,3.65-99-42.28-61.07-125.74-150.09-308.68-169.15-347.24Z',
   front: 'M720 235 C750 158 804 133 880 155 L1250 275 C1324 299 1335 337 1295 405 L1235 510 C1203 549 1143 538 1090 495 L890 345 C831 300 791 313 755 370 C728 332 726 275 720 235 Z',
 };
 const fold = 'M755 370 C791 313 831 300 890 345 L1090 495 C1143 538 1203 549 1235 510';
@@ -71,20 +71,26 @@ export function createPlanesArtwork(prefix) {
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="610 40 850 820" preserveAspectRatio="xMidYMin meet" focusable="false">
     <defs>${definitions}</defs>
-    <g transform="translate(1035 450) scale(0.85) translate(-1035 -450)">
+    <g transform="translate(1035 450) scale(0.75) translate(-1035 -450) translate(-150 -120)">
       <g class="interlocking-planes__assembly">
-      <g class="interlocking-planes__plane" data-plane="teal">${path(shapes.teal, url('teal'))}</g>
-      <g class="interlocking-planes__plane interlocking-planes__rear" data-plane="pink">
-      <g transform="translate(850 100)">
-        ${path(shapes.pink, url('pink'))}
+      <g class="interlocking-planes__plane" data-plane="teal">
+        <g transform="translate(850 100)">
+          ${path(shapes.teal, url('teal'))}
+        </g>
       </g>
-      ${clipped('pink', wash('pink-depth'))}
-    </g>
+      <g class="interlocking-planes__plane interlocking-planes__rear" data-plane="pink">
+        <g transform="translate(850 100)">
+          ${path(shapes.pink, url('pink'))}
+        </g>
+        ${clipped('pink', wash('pink-depth'))}
+      </g>
       <g class="interlocking-planes__plane interlocking-planes__middle" data-plane="gold">
-        ${path(shapes.gold, url('gold'))}
+        <g transform="translate(850 100)">
+          ${path(shapes.gold, url('gold'))}
+        </g>
+        </g>
+      </g>
         ${clipped('gold', `${wash('gold-fold')}${wash('gold-light')}<g fill="none" stroke="${ink('paper')}" stroke-width=".65" opacity=".075">${goldTraces}</g>`)}
-        ${path('M755 370 C720 321 730 299 780 280 L1100 175 C1156 157 1189 173 1210 230', 'none', `stroke="${url('edge')}" stroke-width="1.4"`)}
-        ${clipped('gold', path(fold, 'none', `stroke="${shade('teal', 60)}" stroke-opacity=".15" stroke-width="14" filter="${url('contact')}" transform="translate(0 9)"`))}
       </g>
       </g>
     </g>

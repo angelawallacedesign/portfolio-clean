@@ -45,6 +45,7 @@
     <link rel="stylesheet" href="modules/progress-pagination/progress-pagination.css" />
     <link rel="stylesheet" href="modules/live-component-preview/live-component-preview.css" />
     <link rel="stylesheet" href="modules/hero-carousel/hero-carousel.css" />
+    <link rel="stylesheet" href="modules/interlocking-planes/interlocking-planes.css" />
     <link rel="stylesheet" href="modules/contact-form/contact-form.css" />
 </head>
 <body class="long-page intro-layout" data-page="intro">
@@ -178,12 +179,13 @@
     <main id="main" class="page-main">
         
         <!-- Section 1: Intro -->
-        <div class="intro-transition">
+        <div class="intro-transition" data-hero-active="0">
+        <div class="intro-planes" data-intro-planes aria-hidden="true"></div>
         <section class="intro-stage intro-section" data-section="intro" aria-label="Portfolio highlights" aria-roledescription="carousel" id="intro" data-hero-carousel>
             <div class="intro-carousel__slides">
-            <div class="intro-middle" role="group" aria-roledescription="slide" aria-label="1 of 3" id="intro-slide-1" data-hero-slide>
+            <div class="intro-middle intro-middle--interface" role="group" aria-roledescription="slide" aria-label="1 of 3" id="intro-slide-1" data-hero-slide>
                 <div class="intro-copy">
-                    <h1 class="intro-title" aria-label="Senior Visual Designer">
+                    <h1 class="intro-title" aria-label="User interface design">
                         <span class="stack-group">
                             <span class="stack">USER</span>
                         </span>
@@ -192,46 +194,23 @@
                             <span class="stack">FACE</span>
                         </span>
                         
-                        <span class="accent-stack">designer</span>
+                        <span class="accent-stack">design</span>
                     </h1>
                     
                     <p class="intro-description">
-                        I turn business, user, and technical requirements into cohesive visual interfaces aligned with brand, design systems, and engineering feasibility.
+                        I combine design judgment, visual craft, and technical feasibility to create cohesive interfaces and experiences.
                     </p>
 
 
                     
                     
                     <div class="intro-buttons">
-                        <a class="primary-btn intro" href="#work">Featured work</a>
-                        <a class="intro-link" href="./work/">View all projects &#8594;</a>
+                        <a class="primary-btn intro" href="#work">Explore Work</a>
+                        <a class="intro-link" href="#about">My approach &#8594;</a>
                     </div>
 
 
 
-                </div>
-                <div class="hero-visual">
-                    
-                    <img 
-                    src="assets/AWD_laptop-phone_1400x920.webp" 
-                    alt="Portfolio preview on laptop and mobile"
-                    class="mockup-base"
-                    />
-                    
-                    <!-- Device overlay screens -->
-                    <div class="screen screen--laptop">
-                        <img src="assets/work/intro/design-inspector-laptop.webp" alt="Rotating image pair: Desktop prototype" />
-                        <img src="assets/work/intro/nickelodeon-laptop.webp" alt="Rotating image pair: Desktop Nickelodeon UI Annotation" />
-                        <img src="assets/work/intro/token-laptop.webp" alt="Rotating image pair: Desktop Code Token Validation" />
-                    </div>
-                    
-                    <div class="screen screen--phone">
-                        <img src="assets/work/intro/design-inspector-phone.webp" alt="Rotating image pair: Mobile prototype" />
-                        <img src="assets/work/intro/nickelodeon-phone.webp" alt="Rotating image pair: Mobile Nickelodeon UI Design" />
-                        <img src="assets/work/intro/token-phone.webp" alt="Rotating image pair: Mobile Code Token Validation" />
-                    </div>
-                   
-                    
                 </div>
             </div>
 
@@ -297,7 +276,7 @@
             </div>
             <div class="bridge-intro__pagination pattern-slides--pagination">
                 <div class="progress-pagination" data-hero-pagination role="group" aria-label="Choose intro slide">
-                    <button type="button" class="is-active" aria-label="Show slide 1: User interface designer" aria-controls="intro-slide-1" aria-current="true">01</button>
+                    <button type="button" class="is-active" aria-label="Show slide 1: User interface design" aria-controls="intro-slide-1" aria-current="true">01</button>
                     <button type="button" aria-label="Show slide 2: High-fidelity prototypes" aria-controls="intro-slide-2">02</button>
                     <button type="button" aria-label="Show slide 3: Digital hospitality" aria-controls="intro-slide-3">03</button>
                 </div>
@@ -444,7 +423,7 @@
             </article>
             </section>
         
-        </div><!-- Intro background fades to white after the opaque metrics. -->
+        </div><!-- Shared background fades through the metrics toward Featured Work. -->
         <div id="content-rail" class="content-rail page-flow">
             <div class="content-flow section-flow">
 

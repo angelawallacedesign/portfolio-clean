@@ -1,7 +1,11 @@
 import { initProgressPagination } from '../progress-pagination/progress-pagination.js';
+import { mountInterlockingPlanes } from '../interlocking-planes/interlocking-planes.js';
 
 const hero = document.querySelector('[data-hero-carousel]');
 if (hero) {
+  const composition = hero.closest('.intro-transition');
+  const backgroundHost = composition?.querySelector('[data-intro-planes]');
+  const planes = backgroundHost ? mountInterlockingPlanes(backgroundHost, { pointerTarget: hero }) : null;
   const slides = [...hero.querySelectorAll('[data-hero-slide]')];
   const pagination = hero.querySelector('[data-hero-pagination]');
   const controls = [...pagination.querySelectorAll('button')];
@@ -17,6 +21,8 @@ if (hero) {
   function showSlide(index, { manual }) {
     if (mobile.matches) index = 0;
     slides.forEach((slide, i) => { slide.hidden = i !== index; slide.inert = i !== index; });
+    if (composition) composition.dataset.heroActive = String(index);
+    planes?.setActive(index === 0);
     if (manual) status.textContent = `Slide ${index + 1} of ${slides.length}.`;
   }
   const progress = initProgressPagination(pagination, { duration: 6000, onChange: showSlide });
@@ -24,6 +30,9 @@ if (hero) {
     const suspended = mobile.matches || paused || pointerInside || focusInside || document.hidden || !inView || document.body.classList.contains('is-lightbox-open');
     progress.setPaused(suspended);
     hero.classList.toggle('is-motion-paused', suspended);
+    // Hover/focus pause slide advancement, but selecting Slide 01 should leave
+    // its decorative motion running. Explicit pause and visibility stop both.
+    planes?.setPaused(mobile.matches || paused || document.hidden || !inView || document.body.classList.contains('is-lightbox-open'));
     hero.querySelectorAll('[data-live-preview]').forEach(preview => {
       preview.dispatchEvent(new CustomEvent('previewmotionchange', { detail: { paused: suspended } }));
     });
@@ -61,6 +70,7 @@ if (hero) {
   });
   reducedMotion.addEventListener('change', () => { paused = reducedMotion.matches; updateMotion(); });
   document.addEventListener('visibilitychange', updateMotion);
+  new MutationObserver(updateMotion).observe(document.body, { attributes: true, attributeFilter: ['class'] });
   new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; updateMotion(); }).observe(hero);
   hero.classList.add('is-carousel');
   updateMotion();

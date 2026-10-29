@@ -1,0 +1,74 @@
+/* Inherit the portfolio palette; consumers may override the three ink tokens. */
+.interlocking-planes {
+  --planes-pink: var(--color-accent, #fa4d7e);
+  --planes-teal: var(--color-control, #23cdcd);
+  --planes-yellow: var(--color-accent-yellow, #ffe066);
+  --planes-paper: var(--theme-bg, #fff);
+  --planes-ink: var(--theme-text, #111);
+  --planes-edge: color-mix(in srgb, var(--planes-paper) 86%, var(--planes-yellow));
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  isolation: isolate;
+  opacity: 1;
+  /* A true alpha fade also works over a dark or colored containing surface. */
+  mask-image: linear-gradient(to bottom, #000 0%, #000 60%, rgb(0 0 0 / .8) 74%, transparent 98%);
+}
+.interlocking-planes[data-active="false"] { visibility: hidden; opacity: 0; }
+.interlocking-planes__art {
+  position: absolute;
+  left: var(--planes-left, 0%);
+  top: var(--planes-top, 0%);
+  width: var(--planes-width, 100%);
+  height: var(--planes-height, 100%);
+  perspective: 1200px;
+  perspective-origin: 60% 45%;
+}
+.interlocking-planes__pointer,
+.interlocking-planes [data-sn-orientation],
+.interlocking-planes svg { display: block; width: 100%; height: 100%; }
+.interlocking-planes__pointer {
+  transform-origin: 55% 45%;
+  transition: transform var(--motion-reveal-duration, 460ms) var(--motion-ease-standard, cubic-bezier(.22, 1, .36, 1));
+}
+.interlocking-planes__atmosphere {
+  position: absolute;
+  inset: 30% 0 0 30%;
+  background:
+    radial-gradient(ellipse at 64% 70%, color-mix(in srgb, var(--planes-teal) 8%, transparent), transparent 58%),
+    radial-gradient(ellipse at 78% 68%, color-mix(in srgb, var(--planes-pink) 6%, transparent), transparent 48%);
+}
+/* A single phase drives the assembly. Tiny differences in depth keep its
+   intersections joined; these are not independent floating animations. */
+.interlocking-planes__assembly {
+  transform-origin: 1050px 450px;
+  animation: planes-breathe 28s ease-in-out infinite;
+}
+.interlocking-planes__rear,
+.interlocking-planes__middle {
+  transform-origin: 1080px 440px;
+  animation: planes-flex 28s ease-in-out infinite;
+}
+.interlocking-planes__rear { --planes-flex-angle: -.45deg; --planes-flex-shift: -2px; }
+.interlocking-planes__middle { --planes-flex-angle: .25deg; --planes-flex-shift: 1px; }
+.interlocking-planes__assembly,
+.interlocking-planes__rear,
+.interlocking-planes__middle { animation-play-state: paused; }
+.interlocking-planes[data-running="true"] .interlocking-planes__assembly,
+.interlocking-planes[data-running="true"] .interlocking-planes__rear,
+.interlocking-planes[data-running="true"] .interlocking-planes__middle { animation-play-state: running; }
+@keyframes planes-breathe {
+  0%, 100% { transform: translate(0, 0) rotate(-.35deg) scale(1, 1); }
+  50% { transform: translate(-10px, 10px) rotate(.45deg) scale(1.006, .992); }
+}
+@keyframes planes-flex {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(var(--planes-flex-shift)) rotate(var(--planes-flex-angle)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .interlocking-planes__assembly,
+  .interlocking-planes__rear,
+  .interlocking-planes__middle { animation: none; transform: none; }
+  .interlocking-planes__pointer { transition: none; }
+}

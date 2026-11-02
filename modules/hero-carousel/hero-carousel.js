@@ -14,6 +14,11 @@ if (hero) {
   const status = hero.querySelector('[data-hero-status]');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const mobile = window.matchMedia('(max-width: 480px)');
+  // Match the actual navigation height, including wrapped text and font loading.
+  const header = document.querySelector('.global-header');
+  if (header) new ResizeObserver(() => {
+    hero.style.setProperty('--intro-nav-height', `${header.getBoundingClientRect().height}px`);
+  }).observe(header);
   let paused = reducedMotion.matches;
   let pointerInside = false;
   let inView = true;

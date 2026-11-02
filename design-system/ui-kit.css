@@ -1,8 +1,53 @@
-.ui-kit-page { padding: 0; background: #f4f3f1; color: #171717; }
+.ui-kit-page {
+  position: relative;
+  padding: 0;
+  background: #ffffff;
+  color: #171717;
+}
+
+.ui-kit-page::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 720px;
+
+  background: url("ui-kit-hero.png") center top / cover no-repeat;
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 calc(100% - 100px),
+    transparent 100%
+  );
+
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 calc(100% - 100px),
+    transparent 100%
+  );
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ui-kit-page > header,
+.ui-kit-page > main {
+  position: relative;
+  z-index: 1;
+}
+.ui-kit-page .global-header.sub-nav {
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
 .kit-shell { max-width: 1600px; margin: 0 auto; padding: clamp(20px, 4vw, 64px); }
-.kit-header { max-width: 760px; margin-bottom: 34px; }
-.kit-eyebrow { margin: 0 0 12px; color: #8d3150; font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
-.kit-header h1 { margin: 0 0 12px; font-family: var(--font-serif); font-size: clamp(42px, 6vw, 78px); line-height: 1; }
+.kit-header {
+    max-width: 760px;
+    margin-bottom: 34px;
+}
+.kit-eyebrow { margin: 0 0 12px; color: var(--color-accent); font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.kit-header h1 { margin: 0 0 12px; font-family: var(--font-serif); font-size: clamp(42px, 6vw, 78px); line-height: 1; font-weight: 300; }
 .kit-header p:last-child { max-width: 65ch; line-height: 1.5; }
 .kit-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 16px; }
 .kit-toolbar label { font-size: 13px; font-weight: 700; }
@@ -17,7 +62,7 @@
 .kit-table td:first-child { width: 18%; }
 .kit-table td:nth-child(2) { width: 34%; }
 .kit-table tr:target { outline: 3px solid #fa4d7e; outline-offset: -3px; background: #fff6f8; }
-.kit-kind { display: block; margin-bottom: 7px; color: #8d3150; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.kit-kind { display: block; margin-bottom: 7px; color: var(--color-accent); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .kit-name { display: block; margin-bottom: 8px; font-size: 16px; }
 .kit-id { display: block; margin-bottom: 9px; overflow-wrap: anywhere; font-size: 12px; color: #505050; }
 .kit-row-link { font-size: 12px; }
@@ -43,6 +88,7 @@
 /* Documentation layout only; motion is supplied by production CSS and JS. */
 .kit-motion { margin-top: 48px; }
 .kit-motion > p { margin: 12px 0 20px; max-width: 85ch; }
+.kit-motion h2 { color: var(--color-text); }
 .kit-motion .kit-table td:first-child { width: 20%; }
 .kit-motion .kit-table td:nth-child(2) { width: 35%; }
 .kit-motion .kit-table td:last-child { width: 45%; }
@@ -61,3 +107,6 @@
 .kit-motion-surface .sn-surface-node__face,
 .kit-motion-surface .sn-surface-node__edge { max-width: none; border-radius: 0; }
 .kit-motion-surface.sn-surface-node { margin-top: 0; touch-action: none; }
+.ui-kit-page .container {
+    max-width: 100%;
+}

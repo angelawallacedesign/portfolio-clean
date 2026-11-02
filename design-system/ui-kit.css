@@ -61,3 +61,6 @@
 .kit-motion-surface .sn-surface-node__face,
 .kit-motion-surface .sn-surface-node__edge { max-width: none; border-radius: 0; }
 .kit-motion-surface.sn-surface-node { margin-top: 0; touch-action: none; }
+.ui-kit-page .container {
+    max-width: 100%;
+}

@@ -28,13 +28,13 @@
     }
   },
   {
-  "id": "creating-icons",
+  "id": "refining-icons",
   "featured": false,
   "category": "interface-design",
-  "projectUrl": "work/interface-design/creating-icons.html",
+  "projectUrl": "work/interface-design/refining-icons.html",
   "heading": {
-    "title": "Creating Icons",
-    "main": "Creating",
+    "title": "Refining Icons",
+    "main": "Refining",
     "accent": "icons"
   },
   "year": 2026,
@@ -47,7 +47,7 @@
     "client": "AWD Design System",
     "role": "UI/UX Designer",
     "disciplines": "Iconography, Vector Editing, Component Design, Design Systems",
-    "notes": "Refined an existing SVG icon in Figma using a construction grid, vector path adjustments, and rotation correction to create reusable play/pause icons. Integrated the icons into a Motion Control button and updated the Pagination pattern.",
+    "notes": "Fine-tuned an existing SVG icon in Figma using a construction grid, vector path adjustments, and rotation correction to create reusable play/pause icons. Integrated the icons into a Motion Control button and updated the Pagination pattern.",
     "caption": "SVG icon construction, vector refinement, and component integration in Figma",
     "imageUrl": "assets/work/projects/creating-icons/creating-icons_thumb.png"
   }

@@ -163,3 +163,43 @@
 @media (max-width: 768px) {
   #intro .hero-visual { display: block; }
 }
+
+/* Slide 03 reuses the original interactive component preview. */
+#intro #intro-slide-3 { gap: var(--gap-4, 32px); }
+#intro #intro-slide-3 .hero-visual--inspector { display: block; min-width: 0; }
+#intro #intro-slide-3 .hero-visual--inspector::after { content: none; }
+#intro #intro-slide-3 .live-preview-module { width: 100%; }
+#intro #intro-slide-3 .live-preview { background: var(--theme-bg); }
+#intro #intro-slide-3 .try-it-out {
+  top: 16px;
+  width: clamp(180px, 18vw, 260px);
+  transform: translate(-50%, -65%);
+}
+@media (max-width: 768px) {
+  .intro-transition[data-hero-active="2"] > #intro::before {
+    inset: 0 -20px -3rem;
+  }
+  #intro #intro-slide-3 {
+    width: min(100%, 36rem);
+    margin-inline: auto;
+    align-items: stretch;
+  }
+  #intro #intro-slide-3 .intro-copy {
+    width: 100%;
+    max-width: none;
+    margin-block: 0;
+    text-align: left;
+    align-items: stretch;
+  }
+  #intro #intro-slide-3 .intro-description { max-width: none; }
+  #intro #intro-slide-3 .intro-buttons,
+  #intro #intro-slide-3 .primary-btn { width: 100%; }
+  #intro #intro-slide-3 .hero-visual--inspector { display: none; }
+  .intro-transition[data-hero-active="2"] #intro .intro-carousel__motion { display: none; }
+  .intro-layout .intro-transition[data-hero-active="2"] > #intro > .bridge-intro__pagination {
+    position: relative;
+    inset: auto;
+    flex: 0 0 auto;
+    margin-block: var(--gap-4, 32px) 0;
+  }
+}

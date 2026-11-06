@@ -22,8 +22,6 @@ export function mountInterlockingPlanes(container, { active = true, paused = fal
   scene.innerHTML = `<div class="interlocking-planes__atmosphere"></div><div class="interlocking-planes__art"><div class="interlocking-planes__pointer"><div data-sn-orientation>${createPlanesArtwork(`planes-${++nextId}`)}</div></div></div>`;
   host.append(scene);
   const planes = [...scene.querySelectorAll('[data-plane]')];
-  const hitPaths = [...scene.querySelectorAll('[data-plane] path')];
-  const svg = scene.querySelector('svg');
   const pointer = pointerTarget ?? host;
   const configs = {
     teal: { x: -1, y: -.58, angle: -13, scale: .055 },
@@ -33,7 +31,6 @@ export function mountInterlockingPlanes(container, { active = true, paused = fal
   const states = planes.map(el => ({ el, config: configs[el.dataset.plane], p: [0,0,0,1], v: [0,0,0,0] }));
   let intensity = 0, desired = 0, pointerX = 0, pointerY = 0;
   let inView = true, destroyed = false, raf = 0, last = 0;
-  let exitTimer = 0;
   const observer = typeof IntersectionObserver === 'undefined' ? null : new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; update(); });
   observer?.observe(host);
   function enabled() { return active && !paused && inView && !document.hidden && !reduced.matches; }
@@ -67,41 +64,22 @@ export function mountInterlockingPlanes(container, { active = true, paused = fal
     scene.dataset.running = String(enabled());
     if (enabled() && !raf) { last = 0; raf = requestAnimationFrame(tick); }
     if (!enabled()) {
-      clearTimeout(exitTimer); exitTimer = 0;
       cancelAnimationFrame(raf); raf = 0; last = 0; desired = 0; intensity = 0;
       states.forEach(({el,p,v}) => { p.splice(0,4,0,0,0,1); v.fill(0); el.style.transform = ''; });
     }
   }
   function move(e) {
     if (!enabled() || !fine.matches) return;
-    // Test the painted geometry in its current animated coordinate space,
-    // including expanded positions outside the original SVG/intro rectangle.
-    const point = svg.createSVGPoint();
-    point.x = e.clientX; point.y = e.clientY;
-    const overCopy = e.target instanceof Element && e.target.closest('.intro-copy, button, a, input, textarea, select');
-    const overPlane = !overCopy && hitPaths.some(path => {
-      const matrix = path.getScreenCTM();
-      return matrix && path.isPointInFill(point.matrixTransform(matrix.inverse()));
-    });
-    if (!overPlane) {
-      // Crossings between separated planes should not start a recoil mid-gap.
-      if (!exitTimer) exitTimer = window.setTimeout(leave, 160);
-      return;
-    }
-    clearTimeout(exitTimer); exitTimer = 0;
     const r = pointer.getBoundingClientRect();
     if (!r.width || !r.height) return;
     pointerX = clamp((e.clientX-r.left)/r.width*2-1,-1,1);
     pointerY = clamp((e.clientY-r.top)/r.height*2-1,-1,1);
-    // Preserve the existing resistance and displacement once a plane is hit.
+    // Respond to the whole interactive region, with greater tension near center.
     desired = clamp(1 - .28 * Math.hypot(pointerX,pointerY), .6, 1);
   }
-  function leave() {
-    clearTimeout(exitTimer); exitTimer = 0;
-    desired = 0; pointerX = pointerY = 0;
-  }
-  document.addEventListener('pointermove',move);
-  document.documentElement.addEventListener('pointerleave',leave);
+  function leave() { desired = 0; pointerX = pointerY = 0; }
+  pointer.addEventListener('pointermove',move);
+  pointer.addEventListener('pointerleave',leave);
   document.addEventListener('visibilitychange',update);
   reduced.addEventListener('change',update);
   fine.addEventListener('change',update);
@@ -112,9 +90,8 @@ export function mountInterlockingPlanes(container, { active = true, paused = fal
       if (destroyed) return;
       destroyed = true;
       cancelAnimationFrame(raf); observer?.disconnect();
-      clearTimeout(exitTimer);
-      document.removeEventListener('pointermove',move);
-      document.documentElement.removeEventListener('pointerleave',leave);
+      pointer.removeEventListener('pointermove',move);
+      pointer.removeEventListener('pointerleave',leave);
       document.removeEventListener('visibilitychange',update);
       reduced.removeEventListener('change',update);
       fine.removeEventListener('change',update);

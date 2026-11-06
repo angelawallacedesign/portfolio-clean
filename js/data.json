@@ -28,13 +28,13 @@
     }
   },
   {
-  "id": "refining-icons",
+  "id": "creating-icons",
   "featured": false,
   "category": "interface-design",
-  "projectUrl": "work/interface-design/refining-icons.html",
+  "projectUrl": "work/interface-design/creating-icons.html",
   "heading": {
-    "title": "Refining Icons",
-    "main": "Refining",
+    "title": "Creating Icons",
+    "main": "Creating",
     "accent": "icons"
   },
   "year": 2026,
@@ -47,7 +47,7 @@
     "client": "AWD Design System",
     "role": "UI/UX Designer",
     "disciplines": "Iconography, Vector Editing, Component Design, Design Systems",
-    "notes": "Fine-tuned an existing SVG icon in Figma using a construction grid, vector path adjustments, and rotation correction to create reusable play/pause icons. Integrated the icons into a Motion Control button and updated the Pagination pattern.",
+    "notes": "Refined an existing SVG icon in Figma using a construction grid, vector path adjustments, and rotation correction to create reusable play/pause icons. Integrated the icons into a Motion Control button and updated the Pagination pattern.",
     "caption": "SVG icon construction, vector refinement, and component integration in Figma",
     "imageUrl": "assets/work/projects/creating-icons/creating-icons_thumb.png"
   }
@@ -137,7 +137,7 @@
   {
     "id": "florida-blue-data-sharing",
     "featured": false,
-    "category": "visual-design",
+    "category": "case-studies",
     "layout": "right",
     "heading": {
       "title": "Privacy & Data Interface",
@@ -193,7 +193,7 @@
   {
     "id": "florida-blue-payments-experience",
     "featured": true,
-    "category": "visual-design",
+    "category": "case-studies",
     "heading": {
       "title": "Payments Experience",
       "main": "Payments",
@@ -303,6 +303,7 @@
   {
     "id": "outside-in-art-exhibition-campaign",
     "featured": false,
+    "category": "visual-design",
     "projectUrl": "work/visual-design/outside-in.html",
     "heading": {
       "title": "Outside In Campaign",
@@ -328,6 +329,7 @@
   {
     "id": "exposed-exhibition-campaign",
     "featured": false,
+    "category": "visual-design",
     "projectUrl": "work/visual-design/exposed.html",
     "heading": {
       "title": "Exposed Campaign",
@@ -353,6 +355,7 @@
   {
     "id": "flamingo-gardens-style-guide",
     "featured": false,
+    "category": "visual-design",
     "projectUrl": "work/visual-design/flamingo-gardens.html",
     "heading": {
       "title": "Flamingo Gardens Style Guide",

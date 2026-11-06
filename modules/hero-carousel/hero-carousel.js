@@ -14,16 +14,12 @@ if (hero) {
   const status = hero.querySelector('[data-hero-status]');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const mobile = window.matchMedia('(max-width: 480px)');
-  // Match the actual navigation height, including wrapped text and font loading.
-  const header = document.querySelector('.global-header');
-  if (header) new ResizeObserver(() => {
-    hero.style.setProperty('--intro-nav-height', `${header.getBoundingClientRect().height}px`);
-  }).observe(header);
   let paused = reducedMotion.matches;
   let pointerInside = false;
   let inView = true;
   let focusInside = false;
   function showSlide(index, { manual }) {
+    if (mobile.matches) index = 0;
     slides.forEach((slide, i) => { slide.hidden = i !== index; slide.inert = i !== index; });
     if (composition) composition.dataset.heroActive = String(index);
     planes?.setActive(index === 0);
@@ -31,7 +27,7 @@ if (hero) {
   }
   const progress = initProgressPagination(pagination, { duration: 6000, onChange: showSlide });
   function updateMotion() {
-    const suspended = paused || pointerInside || focusInside || document.hidden || !inView || document.body.classList.contains('is-lightbox-open');
+    const suspended = mobile.matches || paused || pointerInside || focusInside || document.hidden || !inView || document.body.classList.contains('is-lightbox-open');
     progress.setPaused(suspended);
     hero.classList.toggle('is-motion-paused', suspended);
     // Hover/focus pause slide advancement, but selecting Slide 01 should leave
@@ -44,8 +40,9 @@ if (hero) {
     motion.setAttribute('aria-pressed', String(!paused));
     icon.src = paused ? 'assets/icons/slideshow-play.svg' : 'assets/icons/slideshow-pause.svg';
   }
-  controls.forEach((control, index) => control.addEventListener('click', () => { progress.select(index, { manual: true }); }));
+  controls.forEach((control, index) => control.addEventListener('click', () => { if (!mobile.matches) progress.select(index, { manual: true }); }));
   pagination.addEventListener('keydown', event => {
+    if (mobile.matches) return;
     const focused = controls.indexOf(document.activeElement);
     if (focused < 0) return;
     const next = { ArrowRight: (focused + 1) % slides.length, ArrowLeft: (focused + slides.length - 1) % slides.length, Home: 0, End: slides.length - 1 }[event.key];
@@ -55,6 +52,7 @@ if (hero) {
     controls[next].focus();
   });
   motion.addEventListener('click', () => {
+    if (mobile.matches) return;
     paused = !paused;
     if (!paused) focusInside = false;
     updateMotion();
@@ -67,6 +65,7 @@ if (hero) {
   hero.addEventListener('focusout', () => queueMicrotask(() => { focusInside = hero.matches(':focus-within'); updateMotion(); }));
   mobile.addEventListener('change', () => {
     updateMotion();
+    progress.select(0);
     status.textContent = '';
   });
   reducedMotion.addEventListener('change', () => { paused = reducedMotion.matches; updateMotion(); });

@@ -169,7 +169,6 @@
 @media (max-width: 380px) {
   .live-preview__mapping { display: none; }
   .live-preview__canvas .primary-btn { padding-inline: 18px; font-size: 17px; }
-  .try-it-out { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .live-preview__canvas .primary-btn,

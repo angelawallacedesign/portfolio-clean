@@ -1809,7 +1809,7 @@ body.is-layer-3-open > footer {
 
 .pattern-slides--pagination .pattern-slides__play {
   /*display: grid;*/
-  display: none;
+  display: contents;
   width: 40px;
   height: 40px;
   flex: 0 0 40px;

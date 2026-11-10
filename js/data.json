@@ -165,7 +165,7 @@
   {
     "id": "florida-blue-data-sharing",
     "featured": false,
-    "category": "visual-design",
+    "category": "case-studies",
     "layout": "right",
     "heading": {
       "title": "Privacy & Data Interface",
@@ -221,7 +221,7 @@
   {
     "id": "florida-blue-payments-experience",
     "featured": true,
-    "category": "visual-design",
+    "category": "case-studies",
     "heading": {
       "title": "Payments Experience",
       "main": "Payments",
@@ -331,6 +331,7 @@
   {
     "id": "outside-in-art-exhibition-campaign",
     "featured": false,
+    "category": "visual-design",
     "projectUrl": "work/visual-design/outside-in.html",
     "heading": {
       "title": "Outside In Campaign",
@@ -356,6 +357,7 @@
   {
     "id": "exposed-exhibition-campaign",
     "featured": false,
+    "category": "visual-design",
     "projectUrl": "work/visual-design/exposed.html",
     "heading": {
       "title": "Exposed Campaign",
@@ -381,6 +383,7 @@
   {
     "id": "flamingo-gardens-style-guide",
     "featured": false,
+    "category": "visual-design",
     "projectUrl": "work/visual-design/flamingo-gardens.html",
     "heading": {
       "title": "Flamingo Gardens Style Guide",

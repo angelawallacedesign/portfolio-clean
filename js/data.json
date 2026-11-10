@@ -27,6 +27,34 @@
       "featuredUrl": "assets/work/prototypes/motion-studio-featured.png"
     }
   },
+{
+  "id": "interlocking-planes",
+  "featured": false,
+  "category": "prototypes",
+  "layout": "left",
+  "heading": {
+    "title": "Interlocking Planes",
+    "main": "Interlocking",
+    "accent": "planes"
+  },
+  "year": 2026,
+  "users": 0,
+  "complexity": 4,
+  "opacity": 1,
+  "hasCaseStudy": false,
+  "projectUrl": "modules/interlocking-planes/demo.html",
+  "meta": {
+    "type": "Interactive SVG prototype",
+    "client": "Independent R&D",
+    "role": "Design Engineer",
+    "impact": "Demonstrates reusable SVG components, independent instances, interactive motion, and runtime lifecycle management.",
+    "disciplines": "SVG engineering, Motion design, Interaction design, Front-end development",
+    "notes": "A reusable interactive SVG composition featuring layered translucent surfaces, restrained pointer-driven parallax, independent component instances, theme switching, and lifecycle controls.",
+    "caption": "Interactive component prototype",
+    "imageUrl": "assets/intro/interlocking-planes_thumb.webp",
+    "featuredUrl": ""
+  }
+},
   {
   "id": "creating-icons",
   "featured": false,

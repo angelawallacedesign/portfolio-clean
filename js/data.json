@@ -1,7 +1,7 @@
 [
   {
     "id": "motion-studio",
-    "featured": true,
+    "featured": false,
     "category": "prototypes",
     "layout": "left",
     "heading": {
@@ -54,7 +54,7 @@
   },
   {
     "id": "designing-with-ai",
-    "featured": false,
+    "featured": true,
     "category": "case-studies",
     "layout": "left",
     "heading": {

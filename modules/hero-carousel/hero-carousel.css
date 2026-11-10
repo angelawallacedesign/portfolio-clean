@@ -2,37 +2,41 @@
 .intro-layout .intro-transition[data-hero-active] { position: relative; isolation: isolate; }
 .intro-transition[data-hero-active] > #intro,
 .intro-transition[data-hero-active] > .impact-metrics { position: relative; z-index: 1; }
-.intro-planes {
-  --planes-left: 40%;
-  --planes-width: 64%;
-  position: absolute;
-  inset: 0 -40px -100px;
-  z-index: 0;
-  pointer-events: none;
-}
-.intro-transition[data-hero-active="0"] > #intro::before { content: none; }
 .intro-transition[data-hero-active="0"] > .impact-metrics {
   --impact-bg: color-mix(in srgb, var(--color-surface) 82%, transparent);
 }
-#intro .intro-middle--interface { justify-content: flex-start; }
-@media (max-width: 1100px) {
-  .intro-planes { --planes-left: 38%; --planes-width: 68%; }
-  .intro-planes .interlocking-planes__art {
-    mask-image: linear-gradient(to right, transparent, #000 28%);
-  }
+/* Slide 01 scales the complete featured composition beyond the right edge. */
+#intro .intro-middle--motion-studio { position: relative; justify-content: flex-start; }
+#intro .intro-middle--motion-studio .intro-copy { position: relative; z-index: 2; }
+#intro .hero-visual--motion-studio {
+  position: absolute;
+  top: 50%;
+  left: 48%;
+  width: 900px;
+  max-width: none;
+  transform: translateY(-50%) scale(1.053);
+  transform-origin: left center;
+  pointer-events: none;
 }
-@media (max-width: 768px) {
-  .intro-planes { --planes-left: 30%; --planes-width: 86%; }
-  .intro-planes .interlocking-planes__art { opacity: .35; }
+#intro .hero-visual--motion-studio [data-hero-slot] { width: 100%; }
+#intro .hero-visual--motion-studio .motion-hero {
+  width: 100%;
+  border-radius: 16px;
 }
-@media (max-width: 480px) {
-  .intro-planes { --planes-left: 8%; --planes-width: 112%; inset-inline: -20px; }
-  .intro-planes .interlocking-planes__art { opacity: .18; }
+#intro .hero-visual--motion-studio .motion-hero__stage { width: 82%; }
+@media (max-width: 900px) {
+  #intro .intro-middle--motion-studio .stack { font-size: clamp(42px, 6.5vw, 68px); }
+  #intro .hero-visual--motion-studio { left: 42%; width: 760px; transform: translateY(-50%) scale(.9); opacity: .32; }
 }
 @media (prefers-reduced-transparency: reduce) {
   .intro-transition[data-hero-active="0"] > .impact-metrics { --impact-bg: var(--color-surface); }
 }
-#intro .intro-carousel__slides { display: grid; flex: 1; align-items: center; }
+#intro .intro-carousel__slides {
+  display: grid;
+  flex: 1 1 0;
+  min-height: 0;
+  align-items: center;
+}
 #intro .intro-middle { grid-area: 1 / 1; min-width: 0; width: 100%; }
 #intro [data-hero-slide][hidden] { display: none !important; }
 #intro .hero-visual--project img { width: 100%; height: clamp(280px, 34vw, 480px); object-fit: contain; }
@@ -42,6 +46,21 @@
   inset: 0;
   height: auto;
   background: linear-gradient(to bottom, transparent calc(27.4% + 90px), var(--color-surface) calc(76.4% + 90px));
+}
+/* Cross-platform artwork: stronger white fade behind pagination */
+/* Cross-platform: stronger white fade toward pagination */
+#intro .hero-visual--amr::after {
+  background: linear-gradient(
+    to bottom,
+    transparent 35%,
+    rgba(255, 255, 255, 0.35) 48%,
+    rgba(255, 255, 255, 0.85) 65%,
+    #fff 80%,
+    #fff 100%
+  );
+}
+#intro .hero-visual--motion-studio::after {
+  content: none;
 }
 .intro-layout #intro > .bridge-intro__pagination { display: flex; align-items: center; gap: 18px; width: min(406px, 86%); bottom: 4px; }
 #intro .progress-pagination { flex: 1; min-width: 0; width: 280px; }
@@ -58,13 +77,21 @@
   #intro .screen img:first-child { opacity: 1; }
 }
 @media (max-width: 480px) {
-  .intro-layout #intro > .bridge-intro__pagination { display: none; }
   #intro .intro-carousel__slides { min-width: 0; }
-  #intro [data-hero-slide]:not(:first-child) { display: none !important; }
+  #intro .intro-carousel__motion { display: grid; }
   #intro.is-carousel [data-hero-slide] { animation: none; transition: none; }
   #intro [data-hero-slide]:first-child .hero-visual { display: none; }
   #intro .screen img { animation: none; }
   #intro .screen img:first-child { opacity: 1; }
+  #intro .intro-middle--motion-studio .intro-copy { min-width: 0; max-width: 100%; }
+  #intro .intro-middle--motion-studio .stack { font-size: clamp(30px, 9vw, 42px); }
+  #intro [data-hero-slide]:first-child .hero-visual--motion-studio {
+    display: flex;
+    top: 48%;
+    left: 32%;
+    width: 620px;
+    opacity: .22;
+  }
 }
 @media (max-width: 768px) {
   #intro [data-hero-slide]:not(:first-child) .stack,
@@ -74,7 +101,7 @@
 /* AMR's tall device composition has its own scale; other slide assets are unchanged. */
 #intro .hero-visual--amr img { height: 50vw; }
 
-/* Figma slide 2: live UI, with no image fade or callout above the component. */
+/* Slide 2: UI kit artwork fades into the shared intro background. */
 #intro .intro-middle--inspector {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
@@ -84,10 +111,80 @@
 #intro .intro-middle--inspector .intro-copy { min-width: 0; }
 #intro .intro-middle--inspector .stack { font-size: clamp(32px, 6.3vw, 93px); white-space: nowrap; }
 #intro .intro-middle--inspector .intro-buttons { flex-wrap: wrap; }
-#intro .hero-visual--inspector { display: block; min-width: 0; max-width: none; }
-#intro .hero-visual--inspector::after { content: none; }
-#intro .hero-visual--inspector .live-preview-module { border-radius: 9px; background: #111; }
-#intro .hero-visual--inspector .live-preview { --color-primary: #000; }
+/* Independent decorative layers use the stage as their positioning context.
+   Reference: 1390px stage, gradient 1140px at x418, screens 953px at x537.
+   The page-main already clips viewport overflow without clipping focus rings. */
+.intro-transition[data-hero-active="1"] > #intro {
+  background: var(--color-surface);
+}
+.intro-transition[data-hero-active="1"] > #intro::before,
+.intro-transition[data-hero-active="1"] > #intro::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  bottom: auto;
+  right: auto;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  mask-composite: intersect;
+}
+.intro-transition[data-hero-active="1"] > #intro::before {
+  left: 30%;
+  top: -4.1vw;
+  width: 82%;
+  aspect-ratio: 1672 / 941;
+  background-image: url("../../design-system/ui-kit-hero.png");
+  background-position: center;
+  mask-image: linear-gradient(to right, transparent 12%, #000 40%),
+    linear-gradient(to bottom, transparent, #000 8%, #000 78%, transparent);
+}
+.intro-transition[data-hero-active="1"] > #intro::after {
+  left: 38.6%;
+  top: -.66vw;
+  width: 68.6%;
+  aspect-ratio: 1000 / 563;
+  background-image: url("../../assets/intro/UI-kit-intro-hero_no-bg_EDITED.png");
+  mask-image: linear-gradient(to right, transparent 8%, #000 36%),
+    linear-gradient(to bottom, #000 82%, transparent);
+}
+/* Follow the existing 1100px artwork breakpoint, including larger touch tablets. */
+@media (max-width: 1100px), (max-width: 1366px) and (hover: none) and (pointer: coarse) {
+  .intro-transition[data-hero-active="1"] > #intro::after { display: none; }
+  .intro-transition[data-hero-active="1"] > #intro::before {
+    left: 35%;
+    top: -6vw;
+    width: 110%;
+  }
+}
+/* Portrait reference crops a 1140px image by 114px horizontally and 34px
+   vertically. Combine that crop with its container offset, scaled to the stage. */
+@media (max-width: 900px) and (orientation: portrait) {
+  .intro-layout .intro-transition[data-hero-active="1"] > #intro {
+    min-height: max(600px, 65dvh);
+  }
+  .intro-transition[data-hero-active="1"] > #intro::before {
+    left: 40%;
+    top: -11.5vw;
+    width: 149%;
+  }
+  .intro-layout .intro-transition[data-hero-active="1"] > #intro > .bridge-intro__pagination {
+    position: relative;
+    inset: auto;
+    margin-block: 0 48px;
+    flex: 0 0 auto;
+  }
+}
+@media (max-width: 480px) {
+  .intro-transition[data-hero-active="1"] > #intro::before {
+    left: 40%;
+    top: 0;
+    width: 190%;
+    opacity: .25;
+  }
+  #intro .intro-middle--inspector .stack { font-size: var(--type-hero); }
+  #intro .intro-middle--inspector .accent-stack { font-size: var(--type-hero-accent); }
+}
 @media (max-width: 900px) {
   #intro .intro-middle--inspector { grid-template-columns: 1fr; gap: 40px; }
   #intro .intro-middle--inspector .intro-copy { max-width: none; }

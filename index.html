@@ -45,7 +45,6 @@
     <link rel="stylesheet" href="modules/progress-pagination/progress-pagination.css" />
     <link rel="stylesheet" href="modules/live-component-preview/live-component-preview.css" />
     <link rel="stylesheet" href="modules/hero-carousel/hero-carousel.css" />
-    <link rel="stylesheet" href="modules/interlocking-planes/interlocking-planes.css" />
     <link rel="stylesheet" href="modules/contact-form/contact-form.css" />
 </head>
 <body class="long-page intro-layout" data-page="intro">
@@ -180,103 +179,38 @@
         
         <!-- Section 1: Intro -->
         <div class="intro-transition" data-hero-active="0">
-        <div class="intro-planes" data-intro-planes aria-hidden="true"></div>
         <section class="intro-stage intro-section" data-section="intro" aria-label="Portfolio highlights" aria-roledescription="carousel" id="intro" data-hero-carousel>
             <div class="intro-carousel__slides">
-            <div class="intro-middle intro-middle--interface" role="group" aria-roledescription="slide" aria-label="1 of 3" id="intro-slide-1" data-hero-slide>
+            <div class="intro-middle intro-middle--motion-studio" role="group" aria-roledescription="slide" aria-label="1 of 3" id="intro-slide-1" data-hero-slide>
                 <div class="intro-copy">
-                    <h1 class="intro-title" aria-label="User interface design">
-                        <span class="stack-group">
-                            <span class="stack">USER</span>
-                        </span>
-                        <span class="stack-group">
-                            <span class="stack">INTER</span>
-                            <span class="stack">FACE</span>
-                        </span>
-                        
-                        <span class="accent-stack">design</span>
-                    </h1>
-                    
-                    <p class="intro-description">
-                        I combine design judgment, visual craft, and technical feasibility to create cohesive interfaces and experiences.
-                    </p>
-
-
-                    
-                    
+                    <h1 class="intro-title"><span class="stack-group"><span class="stack">HIGH-FIDELITY</span></span><span class="accent-stack">prototypes</span></h1>
+                    <p class="intro-description">I build interactive, high-fidelity prototypes to explore motion, validate interactions, and refine interface behavior before development.</p>
                     <div class="intro-buttons">
-                        <a class="primary-btn intro" href="#work">Explore Work</a>
-                        <a class="intro-link" href="#about">My approach &#8594;</a>
+                        <a class="primary-btn intro" href="./projects/motion-studio/">EXPLORE MOTION STUDIO</a>
                     </div>
-
-
-
                 </div>
+                <div class="hero-visual hero-visual--motion-studio"><div data-hero-slot="motion-studio-hero"></div></div>
             </div>
 
             <div class="intro-middle intro-middle--inspector" role="group" aria-roledescription="slide" aria-label="2 of 3" id="intro-slide-2" data-hero-slide hidden>
                 <div class="intro-copy">
-                    <h1 class="intro-title"><span class="stack-group"><span class="stack">HIGH-FIDELITY</span></span><span class="accent-stack">prototypes</span></h1>
-                    <p class="intro-description">I create validated coded prototypes aligned to stakeholder requirements to explore designs quickly before delivering designs to engineering teams.</p>
-                    <div class="intro-buttons"><a class="primary-btn intro" href="./work/?filter=prototypes">View my prototypes</a><a class="intro-link" href="#about">About my approach →</a></div>
-                </div>
-                <div class="hero-visual hero-visual--inspector">
-                <div class="live-preview-module" data-live-preview data-preview-no-callout data-preview-design-order data-preview-accent-token="--color-focus" data-preview-figma-image="assets/work/awd/design-inspector/primary-button-figma.png" data-theme="dark">
-                <section class="live-preview" id="live-component-preview" aria-label="Live component preview">
-                    <header class="live-preview__bar">
-                        <span class="live-preview__traffic" aria-hidden="true">● ● ●</span>
-                        <h2>Design system / Primary button</h2>
-                        <span class="live-preview__mapping">Figma ↔ Code ↔ Behavior</span>
-                    </header>
-                    <div class="live-preview__body">
-                        <div class="live-preview__states" role="group" aria-label="Button state">
-                            <button type="button" data-preview-state="default" aria-pressed="true">Default</button>
-                            <button type="button" data-preview-state="hover" aria-pressed="false">Hover</button>
-                            <button type="button" data-preview-state="focus" aria-pressed="false">Focus</button>
-                            <button type="button" data-preview-state="small" aria-pressed="false">Small</button>
-                            <button type="button" data-preview-state="disabled" aria-pressed="false">Disabled</button>
-                        </div>
-                        <div class="live-preview__workspace">
-                            <div class="live-preview__canvas">
-                                <div class="live-preview__selection" data-theme="default"><button class="primary-btn" type="button" data-preview-button>View project <span aria-hidden="true">→</span></button></div>
-                            </div>
-                            <div class="live-preview__source">
-                                <div class="live-preview__tabs" role="tablist" aria-label="Component source">
-                                    <button type="button" id="preview-tab-html" role="tab" aria-selected="true" aria-controls="preview-source" data-preview-tab="html">HTML</button>
-                                    <button type="button" id="preview-tab-css" role="tab" aria-selected="false" aria-controls="preview-source" tabindex="-1" data-preview-tab="css">CSS</button>
-                                    <button type="button" id="preview-tab-tokens" role="tab" aria-selected="false" aria-controls="preview-source" tabindex="-1" data-preview-tab="tokens">Tokens</button>
-                                    <button type="button" class="live-preview__copy" data-preview-copy aria-label="Copy component source">⧉ Copy</button>
-                                </div>
-                                <pre id="preview-source" role="tabpanel" aria-labelledby="preview-tab-html" tabindex="0"><code data-preview-code></code></pre>
-                            </div>
-                        </div>
-                        <aside class="live-preview__details">
-                            <a class="live-preview__figma" data-preview-figma href="assets/work/awd/design-inspector/primary-button-figma.png" data-lightbox>
-                                <svg width="24" height="36" viewBox="0 0 24 36" aria-hidden="true"><path fill="#f24e1e" d="M6 0h6v12H6A6 6 0 0 1 6 0"/><path fill="#ff7262" d="M12 0h6a6 6 0 0 1 0 12h-6z"/><path fill="#a259ff" d="M6 12h6v12H6a6 6 0 0 1 0-12"/><circle fill="#1abcfe" cx="18" cy="18" r="6"/><path fill="#0acf83" d="M6 24h6v6a6 6 0 1 1-6-6"/></svg>
-                                <span><strong>Figma component</strong><span data-preview-component-name>Button / Primary</span></span><span aria-hidden="true">↗</span>
-                            </a>
-                            <h3>Design tokens</h3>
-                            <dl data-preview-values></dl>
-                            <p class="live-preview__caption" data-preview-caption>* Live Demo · Shared CSS · Real behavior</p>
-                        </aside>
-                    </div>
-                    <p class="live-preview__status" data-preview-status role="status" aria-live="polite"></p>
-                </section>
-                </div>
+                    <h1 class="intro-title"><span class="stack-group"><span class="stack">DESIGN</span></span><span class="accent-stack">systems</span></h1>
+                    <p class="intro-description">I design and develop framework-agnostic components, patterns, and motion systems that power consistent interfaces.</p>
+                    <div class="intro-buttons"><a class="primary-btn intro" href="./design-system/ui-kit.html">Test UI Kit</a><a class="intro-link" href="./design-inspector/coming-soon.html">Design Inspector &#8594;</a></div>
                 </div>
             </div>
             <div class="intro-middle" role="group" aria-roledescription="slide" aria-label="3 of 3" id="intro-slide-3" data-hero-slide hidden>
                 <div class="intro-copy">
-                    <h1 class="intro-title"><span class="stack-group"><span class="stack">CROSS-PLATFORM</span></span><span class="accent-stack">experiences</span></h1>
+                    <h1 class="intro-title"><span class="stack-group"><span class="stack">CROSS-PLATFORM</span></span><span class="accent-stack">alignment</span></h1>
                     <p class="intro-description">I create consistent experiences across web, mobile, and connected devices through reusable interface patterns and design systems.</p>
-                    <div class="intro-buttons"><a class="primary-btn intro" href="./work/">Explore work</a><a class="intro-link" href="#about">My approach →</a></div>
+                    <div class="intro-buttons"><a class="primary-btn intro" href="method.html">How I collaborate</a></div>
                 </div>
                 <div class="hero-visual hero-visual--project hero-visual--amr"><img src="assets/work/allin/amr-project-hero.webp" alt="AMR Resorts digital guest experience" width="900" height="600" decoding="async"></div>
             </div>
             </div>
             <div class="bridge-intro__pagination pattern-slides--pagination">
                 <div class="progress-pagination" data-hero-pagination role="group" aria-label="Choose intro slide">
-                    <button type="button" class="is-active" aria-label="Show slide 1: User interface design" aria-controls="intro-slide-1" aria-current="true">01</button>
+                    <button type="button" class="is-active" aria-label="Show slide 1: High-fidelity prototypes" aria-controls="intro-slide-1" aria-current="true">01</button>
                     <button type="button" aria-label="Show slide 2: High-fidelity prototypes" aria-controls="intro-slide-2">02</button>
                     <button type="button" aria-label="Show slide 3: Digital hospitality" aria-controls="intro-slide-3">03</button>
                 </div>

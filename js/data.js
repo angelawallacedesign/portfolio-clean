@@ -53,7 +53,7 @@ Promise.all([
       })
       .join("");
 
-    mountMotionStudioHero(listRoot);
+    mountMotionStudioHero(document);
     initWorkReveal();
   });
 

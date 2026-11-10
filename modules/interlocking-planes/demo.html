@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Interlocking planes — standalone module</title>
   <link rel="stylesheet" href="../../shared/css/global-tokens.css">
+  <link rel="stylesheet" href="../../shared/css/global-components.css">
   <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/components.css">
   <link rel="stylesheet" href="./interlocking-planes.css">
   <style>
     * { box-sizing: border-box; }
-    body { margin: 0; padding: 32px; background: #f3f3f3; color: #111; font: 16px/1.5 system-ui, sans-serif; }
+    body { margin: 0; padding: 0; background: #ffffff; color: #111; font: 16px/1.5 system-ui, sans-serif; }
     h1 { font-size: 24px; margin: 0 0 12px; }
     .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 20px 0; }
     button, select { font: inherit; padding: 8px 12px; }
@@ -20,6 +22,22 @@
   </style>
 </head>
 <body>
+  <header class="global-header sub-nav">
+        <div class="header-inner container">
+            <div class="back-link">
+                <a class="back" href="/">
+                    <span
+                        class="icon rotate-360"
+                        data-icon="chevron"
+                        aria-hidden="true">
+                    </span>
+                    <span>Back to Portfolio</span>
+                </a>
+            </div>
+            
+        </div>
+    </header>
+    <main style="padding: 32px;">
   <h1>Interlocking planes</h1>
   <p>Two independent instances, with no carousel. Move over either surface to inspect its restrained parallax.</p>
   <div class="controls">
@@ -33,6 +51,7 @@
     <div class="stage" id="primary"></div>
     <div class="stage" id="secondary"></div>
   </div>
+  </main>
   <script type="module">
     import { mountInterlockingPlanes } from './interlocking-planes.js';
     const stages = [...document.querySelectorAll('.stage')];
@@ -71,5 +90,6 @@
       stages.forEach(stage => { stage.dataset.theme = event.target.value; });
     });
   </script>
+  <script type="module" src="../../shared/js/base.js"></script>
 </body>
 </html>

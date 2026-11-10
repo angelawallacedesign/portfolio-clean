@@ -1,0 +1,25 @@
+.mobile-intro { display: none; }
+
+@media (max-width: 480px) {
+  .intro-layout .mobile-intro {
+    display: flex;
+    align-items: center;
+    position: relative;
+    isolation: isolate;
+    min-height: 80dvh;
+    padding: 20px;
+  }
+
+  .intro-layout .mobile-intro::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -125px -20px -7rem;
+    background: radial-gradient(ellipse at 74% 36%, rgba(167, 216, 242, .34), transparent 48%),
+      linear-gradient(180deg, rgba(226, 244, 252, .5), rgba(244, 249, 252, .18) 56%, transparent);
+    pointer-events: none;
+  }
+
+  .intro-layout .intro-transition > #intro { display: none; }
+
+}

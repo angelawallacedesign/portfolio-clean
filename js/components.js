@@ -252,18 +252,32 @@ export function renderWorkFeature(data, index, modules = {}) {
           ${data.meta.impact}
         </p>
 
-        ${
-        data.hasCaseStudy
+        
+        ${data.hasCaseStudy || data.projectUrl
           ? `
-          <div class="work-feature__actions">
-            <a href="${data.htmlInclude}" class="primary-btn small"
-            >
-              View Case Study
-            </a>
-          </div>
+            <div class="work-feature__actions">
+              ${data.hasCaseStudy && data.htmlInclude
+                ? `
+                  <a href="${data.htmlInclude}" class="primary-btn small">
+                    View Case Study
+                  </a>
+                `
+                : ""
+              }
+
+              ${data.projectUrl
+                ? `
+                  <a href="${data.projectUrl}" class="text-link">
+                    View Project &#8594;
+                  </a>
+                `
+                : ""
+              }
+            </div>
           `
           : ""
         }
+
 
       </div>
 

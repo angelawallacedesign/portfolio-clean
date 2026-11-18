@@ -163,6 +163,32 @@
     }
   },
   {
+  "id": "digital-production-asset-lifecycle",
+  "featured": false,
+  "category": "visual-design",
+  "layout": "left",
+  "heading": {
+    "title": "Digital Design Lifecycle",
+    "main": "Digital Design",
+    "accent": "Lifecycle"
+  },
+  "year": 2026,
+  "users": 0,
+  "complexity": 3,
+  "opacity": 1,
+  "hasCaseStudy": false,
+  "projectUrl": "projects/production-design-references/",
+  "meta": {
+    "type": "Production reference",
+    "client": "Selected client work",
+    "role": "Visual designer and front-end developer",
+    "disciplines": "Visual design, Digital production, Design specifications, Front-end delivery",
+    "notes": "A visual reference to how I carry brand, business, and technical requirements through interface specifications, asset production, content governance, developer review, and QA.",
+    "caption": "Florida Blue interface branding specifications",
+    "imageUrl": "assets/work/fb/process/specs-branding_thumb.png"
+  }
+},
+  {
     "id": "florida-blue-data-sharing",
     "featured": false,
     "category": "visual-design",

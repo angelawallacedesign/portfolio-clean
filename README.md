@@ -1,4 +1,4 @@
-# Angela Wallace — Visual Product Design & Front-End Implementation
+# Angela Wallace — Senior Digital Design & Front-End Implementation
 
 This repository contains the ongoing development of my primary portfolio: a full-width, visual-focused implementation built to support deeper project storytelling, interaction, and motion.
 

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chart geometry regression</title>
+  <link rel="stylesheet" href="../chart.css">
+  <style>body { font: 16px system-ui; min-height: 160vh; padding: 24px; } #result { white-space: pre-wrap; } .simulate-reduced .chart-module__triangle, .simulate-reduced .chart-module__card { transition-duration: 0s; }</style>
+</head>
+<body>
+  <h1>Chart geometry regression</h1>
+  <output id="result">Running…</output>
+  <div id="mount"></div>
+  <script type="module">
+    import { createChart } from "../index.js";
+    if (new URLSearchParams(location.search).has("reduced")) document.documentElement.classList.add("simulate-reduced");
+    const result = document.querySelector("#result");
+    const chart = createChart({ container: document.querySelector("#mount") });
+    const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve));
+    function assert(condition, message) { if (!condition) throw Error(message); }
+    function checkGeometry(circle) {
+      const card = document.querySelector(".chart-module__card");
+      const svg = document.querySelector(".chart-module__triangle");
+      const panel = card.getBoundingClientRect();
+      const bounds = svg.getBoundingClientRect();
+      const node = circle.getBoundingClientRect();
+      const polygon = svg.querySelector("polygon");
+      const points = polygon?.getAttribute("points")?.split(" ").map((point) => point.split(",").map(Number));
+      assert(points?.length === 3, "triangle polygon missing");
+      assert(Math.abs(bounds.top - panel.top) < 1, "top anchor misses panel");
+      assert(Math.abs(bounds.bottom - panel.bottom) < 1, "bottom anchor misses panel");
+      assert(Math.abs(bounds.height - panel.height) < 1, "SVG height differs from panel");
+      assert(Number(svg.getAttribute("height")) === panel.height, "SVG height attribute is stale");
+      assert(Number(svg.viewBox.baseVal.height) === panel.height, "SVG viewBox height is stale");
+      assert(svg.getAttribute("preserveAspectRatio") === "none", "SVG aspect ratio mode changed");
+      assert(Math.abs(points[0][1]) < 1 && Math.abs(points[1][1] - panel.height) < 1, "outer anchors miss panel edges");
+      assert(Math.abs(bounds.top + points[2][1] - (node.top + node.height / 2)) < 1, "node anchor misses center");
+    }
+    try {
+      const start = scrollY;
+      for (let cycle = 0; cycle < 2; cycle++) {
+        await chart.open();
+        assert(document.body.style.position === "fixed", "scroll lock missing");
+        for (let frame = 0; frame < 30 && !chart.element.querySelector(".sp-scatterplot__dot"); frame++) await nextFrame();
+        const dot = chart.element.querySelector(".sp-scatterplot__dot");
+        assert(dot, "chart dots did not render");
+        dot.focus();
+        dot.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+        const card = chart.element.querySelector(".chart-module__card");
+        const triangle = chart.element.querySelector(".chart-module__triangle");
+        const completed = new Set();
+        triangle.addEventListener("transitionend", (event) => completed.add(event.propertyName));
+        const panelReveal = new Promise((resolve) => {
+          const observer = new MutationObserver(() => {
+            if (!card.classList.contains("is-visible")) return;
+            observer.disconnect();
+            resolve({
+              opacity: getComputedStyle(triangle).opacity,
+              clipPath: getComputedStyle(triangle).clipPath,
+              completed: new Set(completed)
+            });
+          });
+          observer.observe(card, { attributes: true, attributeFilter: ["class"] });
+        });
+        assert(!card.classList.contains("is-visible"), "panel revealed before triangle start");
+        await new Promise((resolve) => {
+          const image = card.querySelector("img");
+          if (!image || image.complete) resolve();
+          else { image.addEventListener("load", resolve, { once: true }); image.addEventListener("error", resolve, { once: true }); }
+        });
+        for (let frame = 0; frame < 30 && !triangle.classList.contains("is-visible"); frame++) await nextFrame();
+        assert(triangle.classList.contains("is-visible"), "triangle reveal did not start");
+        checkGeometry(dot);
+        const reveal = await panelReveal;
+        assert(reveal.opacity === "1", "panel revealed before triangle opacity completed");
+        assert(!reveal.clipPath.includes("100%"), "panel revealed during triangle extrusion");
+        if (parseFloat(getComputedStyle(triangle).transitionDuration) > 0) {
+          assert(reveal.completed.has("opacity"), "triangle opacity did not complete");
+          assert(reveal.completed.has("clip-path"), "triangle extrusion did not complete");
+        }
+        await nextFrame();
+        checkGeometry(dot);
+        await chart.close();
+        assert(!document.querySelector(".chart-module"), "chart DOM leaked");
+        assert(document.body.style.position === "", "scroll lock not released");
+        assert(scrollY === start, "scroll position changed");
+      }
+      await chart.open();
+      for (let frame = 0; frame < 30 && !chart.element.querySelector(".sp-scatterplot__dot"); frame++) await nextFrame();
+      const dot = chart.element.querySelector(".sp-scatterplot__dot");
+      dot.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      chart.element.querySelector(".chart-module__card-close").click();
+      dot.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      for (let frame = 0; frame < 90 && !chart.element.querySelector(".chart-module__card.is-visible"); frame++) await nextFrame();
+      assert(chart.element.querySelector(".chart-module__card.is-visible"), "interrupted reveal prevented subsequent card");
+      await chart.close();
+      chart.destroy();
+      result.textContent = "PASS: triangle completion precedes panel reveal; geometry, cycles, interruption, scroll cleanup";
+      result.dataset.result = "pass";
+    } catch (error) {
+      result.textContent = `FAIL: ${error.stack}`;
+      result.dataset.result = "fail";
+      chart.destroy();
+    }
+  </script>
+</body>
+</html>

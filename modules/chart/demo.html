@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Standalone chart demo</title>
+  <link rel="stylesheet" href="./chart.css">
+  <style>
+    body { margin: 0; font: 16px system-ui; background: #f6f6f6; }
+    main { min-height: 180vh; max-width: 640px; margin: auto; padding: 40px; }
+    button { padding: 12px 18px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Standalone chart demo</h1>
+    <p>Scroll down, open the chart, select a project, close it, and reopen it. The chart loads the same root /js/data.json used by the Work page on each opening.</p>
+    <button id="open" type="button">Open chart</button>
+    <p id="status" role="status">Chart inactive</p>
+  </main>
+  <div id="chart-mount"></div>
+  <script type="module">
+    import { createChart } from "./index.js";
+    const status = document.querySelector("#status");
+    const chart = createChart({ container: document.querySelector("#chart-mount"), onClose: () => { status.textContent = "Chart closed"; } });
+    document.querySelector("#open").addEventListener("click", async () => {
+      try { await chart.open(); status.textContent = `Chart open: ${chart.projects.length} projects`; }
+      catch (error) { status.textContent = error.message; }
+    });
+    window.chartDemo = chart;
+  </script>
+</body>
+</html>

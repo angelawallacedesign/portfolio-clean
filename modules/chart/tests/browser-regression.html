@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chart geometry regression</title>
+  <link rel="stylesheet" href="../chart.css">
+  <style>body { font: 16px system-ui; min-height: 160vh; padding: 24px; } #result { white-space: pre-wrap; } .simulate-reduced .chart-module__triangle, .simulate-reduced .chart-module__card { transition-duration: 0s; }</style>
+</head>
+<body>
+  <h1>Chart geometry regression</h1>
+  <output id="result">Running…</output>
+  <div id="mount"></div>
+  <script type="module">
+    import { createChart } from "../index.js";
+    if (new URLSearchParams(location.search).has("reduced")) document.documentElement.classList.add("simulate-reduced");
+    const result = document.querySelector("#result");
+    const chart = createChart({ container: document.querySelector("#mount") });
+    const nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve));
+    function assert(condition, message) { if (!condition) throw Error(message); }
+    function checkGeometry(circle) {
+      const card = document.querySelector(".chart-module__card");
+      const svg = document.querySelector(".chart-module__triangle");
+      const panel = card.getBoundingClientRect();
+      const bounds = svg.getBoundingClientRect();
+      const node = circle.getBoundingClientRect();
+      const polygon = svg.querySelector("polygon");
+      const points = polygon?.getAttribute("points")?.split(" ").map((point) => point.split(",").map(Number));
+      assert(points?.length === 3, "triangle polygon missing");
+      assert(Math.abs(bounds.top - panel.top) < 1, "top anchor misses panel");
+      assert(Math.abs(bounds.bottom - panel.bottom) < 1, "bottom anchor misses panel");
+      assert(Math.abs(bounds.height - panel.height) < 1, "SVG height differs from panel");
+      assert(Number(svg.getAttribute("height")) === panel.height, "SVG height attribute is stale");
+      assert(Number(svg.viewBox.baseVal.height) === panel.height, "SVG viewBox height is stale");
+      assert(svg.getAttribute("preserveAspectRatio") === "none", "SVG aspect ratio mode changed");
+      assert(Math.abs(points[0][1]) < 1 && Math.abs(points[1][1] - panel.height) < 1, "outer anchors miss panel edges");
+      assert(Math.abs(bounds.top + points[2][1] - (node.top + node.height / 2)) < 1, "node anchor misses center");
+    }
+    function checkPresentation() {
+      const overlay = document.querySelector(".chart-module__card-overlay");
+      const card = document.querySelector(".chart-module__card");
+      const image = card.querySelector("img");
+      const content = card.querySelector(".chart-module__card-content");
+      const close = document.querySelector(".chart-module__card-close");
+      const chartClose = document.querySelector(".chart-module__close");
+      const cta = card.querySelector("a");
+      const triangle = document.querySelector(".chart-module__triangle");
+      const box = card.getBoundingClientRect();
+      const imageBox = image.getBoundingClientRect();
+      const contentBox = content.getBoundingClientRect();
+      const buttonBox = close.getBoundingClientRect();
+      const chartButtonBox = chartClose.getBoundingClientRect();
+      assert(getComputedStyle(overlay).backgroundColor === "rgba(0, 0, 0, 0.65)", "overlay background changed");
+      assert(getComputedStyle(overlay).opacity === "1", "overlay opacity dims descendants");
+      assert(getComputedStyle(card).opacity === "1", "card content is not fully opaque");
+      assert(getComputedStyle(card).padding === "24px", "card padding changed");
+      assert(getComputedStyle(card).boxSizing === "border-box", "card box sizing changed");
+      assert(Math.abs(imageBox.left - (box.left + 24)) < 1 && Math.abs(contentBox.left - imageBox.left) < 1, "image and content misaligned");
+      assert(imageBox.right <= box.right - 24 + 1, "image exceeds padded panel");
+      assert(getComputedStyle(image).maxHeight === "none", "image height is constrained");
+      assert(getComputedStyle(close).backgroundColor === "rgb(255, 255, 255)" && getComputedStyle(close).color === "rgb(0, 0, 0)", "close button colors changed");
+      assert(getComputedStyle(close).padding === "12px" && Math.abs(buttonBox.width - buttonBox.height) < 1, "close hit area is not circular");
+      assert(Math.abs((buttonBox.left + buttonBox.width / 2) - (chartButtonBox.left + chartButtonBox.width / 2)) < 1, "close X shifts horizontally");
+      assert(Math.abs((buttonBox.top + buttonBox.height / 2) - (chartButtonBox.top + chartButtonBox.height / 2)) < 1, "close X shifts vertically");
+      assert(cta.classList.contains("primary-btn") && cta.classList.contains("small"), "project link is not the primary button component");
+      assert(getComputedStyle(cta).backgroundColor === "rgb(0, 0, 0)" && getComputedStyle(cta).textDecorationLine === "none", "primary button presentation missing");
+      assert(getComputedStyle(triangle.querySelector("polygon")).fill === "rgba(0, 0, 0, 0.35)", "triangle fill differs from AWD Lab");
+      assert(getComputedStyle(triangle).opacity === "1", "triangle final opacity changed");
+    }
+    try {
+      const start = scrollY;
+      for (let cycle = 0; cycle < 2; cycle++) {
+        await chart.open();
+        assert(document.body.style.position === "fixed", "scroll lock missing");
+        for (let frame = 0; frame < 30 && !chart.element.querySelector(".sp-scatterplot__dot"); frame++) await nextFrame();
+        const dot = chart.element.querySelector(".sp-scatterplot__dot");
+        assert(dot, "chart dots did not render");
+        dot.focus();
+        dot.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+        const card = chart.element.querySelector(".chart-module__card");
+        const triangle = chart.element.querySelector(".chart-module__triangle");
+        const completed = new Set();
+        triangle.addEventListener("transitionend", (event) => completed.add(event.propertyName));
+        const panelReveal = new Promise((resolve) => {
+          const observer = new MutationObserver(() => {
+            if (!card.classList.contains("is-visible")) return;
+            observer.disconnect();
+            resolve({
+              opacity: getComputedStyle(triangle).opacity,
+              clipPath: getComputedStyle(triangle).clipPath,
+              completed: new Set(completed)
+            });
+          });
+          observer.observe(card, { attributes: true, attributeFilter: ["class"] });
+        });
+        assert(!card.classList.contains("is-visible"), "panel revealed before triangle start");
+        await new Promise((resolve) => {
+          const image = card.querySelector("img");
+          if (!image || image.complete) resolve();
+          else { image.addEventListener("load", resolve, { once: true }); image.addEventListener("error", resolve, { once: true }); }
+        });
+        for (let frame = 0; frame < 30 && !triangle.classList.contains("is-visible"); frame++) await nextFrame();
+        assert(triangle.classList.contains("is-visible"), "triangle reveal did not start");
+        checkGeometry(dot);
+        const reveal = await panelReveal;
+        assert(reveal.opacity === "1", "panel revealed before triangle opacity completed");
+        assert(!reveal.clipPath.includes("100%"), "panel revealed during triangle extrusion");
+        if (parseFloat(getComputedStyle(triangle).transitionDuration) > 0) {
+          assert(reveal.completed.has("opacity"), "triangle opacity did not complete");
+          assert(reveal.completed.has("clip-path"), "triangle extrusion did not complete");
+        }
+        await nextFrame();
+        checkGeometry(dot);
+        for (let frame = 0; frame < 30 && getComputedStyle(card).opacity !== "1"; frame++) await nextFrame();
+        checkPresentation();
+        await chart.close();
+        assert(!document.querySelector(".chart-module"), "chart DOM leaked");
+        assert(document.body.style.position === "", "scroll lock not released");
+        assert(scrollY === start, "scroll position changed");
+      }
+      await chart.open();
+      for (let frame = 0; frame < 30 && !chart.element.querySelector(".sp-scatterplot__dot"); frame++) await nextFrame();
+      const dot = chart.element.querySelector(".sp-scatterplot__dot");
+      dot.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      chart.element.querySelector(".chart-module__card-close").click();
+      dot.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      for (let frame = 0; frame < 90 && !chart.element.querySelector(".chart-module__card.is-visible"); frame++) await nextFrame();
+      assert(chart.element.querySelector(".chart-module__card.is-visible"), "interrupted reveal prevented subsequent card");
+      await chart.close();
+      chart.destroy();
+      result.textContent = "PASS: triangle completion precedes panel reveal; geometry, cycles, interruption, scroll cleanup";
+      result.dataset.result = "pass";
+    } catch (error) {
+      result.textContent = `FAIL: ${error.stack}`;
+      result.dataset.result = "fail";
+      chart.destroy();
+    }
+  </script>
+</body>
+</html>

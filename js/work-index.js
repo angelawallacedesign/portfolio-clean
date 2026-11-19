@@ -2,7 +2,8 @@ import { renderProjectCard } from "./components.js";
 
 const listRoot = document.getElementById("project-list");
 const listPanel = document.querySelector('[data-work-panel="list"]');
-const chartPanel = document.querySelector('[data-work-panel="chart"]');
+const chartMount = document.getElementById("work-chart-mount");
+const chartButton = document.querySelector('[data-work-view="chart"]');
 const filterButtons = [...document.querySelectorAll("[data-work-filter]")];
 const viewButtons = [...document.querySelectorAll("[data-work-view]")];
 const localNav = document.querySelector("[data-work-local-nav]");
@@ -15,6 +16,70 @@ let activeFilter = filterButtons.some((button) => button.dataset.workFilter === 
   ? requestedFilter
   : "all";
 let activeView = "list";
+let chartInstance = null;
+let chartResourcesPromise = null;
+let chartRequested = false;
+let activationId = 0;
+
+function loadChartResources() {
+  if (chartResourcesPromise) return chartResourcesPromise;
+  const stylesheet = document.createElement("link");
+  stylesheet.rel = "stylesheet";
+  stylesheet.href = new URL("../modules/chart/chart.css", import.meta.url).href;
+  const styleReady = new Promise((resolve, reject) => {
+    stylesheet.addEventListener("load", resolve, { once: true });
+    stylesheet.addEventListener("error", () => {
+      stylesheet.remove();
+      reject(new Error("Unable to load chart styles."));
+    }, { once: true });
+  });
+  document.head.append(stylesheet);
+  chartResourcesPromise = Promise.all([
+    import("../modules/chart/index.js"),
+    styleReady
+  ]).then(([module]) => module).catch((error) => {
+    chartResourcesPromise = null;
+    throw error;
+  });
+  return chartResourcesPromise;
+}
+
+async function openChart() {
+  if (chartRequested) return;
+  chartRequested = true;
+  const requestId = ++activationId;
+  setView("chart");
+  try {
+    const { createChart } = await loadChartResources();
+    if (requestId !== activationId) return;
+    chartInstance ??= createChart({
+      container: chartMount,
+      onClose: () => {
+        chartRequested = false;
+        ++activationId;
+        setView("list");
+        chartButton.focus();
+      }
+    });
+    await chartInstance.open();
+    if (requestId !== activationId && chartInstance.isOpen) await chartInstance.close();
+  } catch (error) {
+    if (requestId !== activationId) return;
+    console.error("Unable to open chart:", error);
+    chartRequested = false;
+    ++activationId;
+    setView("list");
+    chartButton.focus();
+    if (resultStatus) resultStatus.textContent = "Chart unavailable. List view restored.";
+  }
+}
+
+function closeChart() {
+  chartRequested = false;
+  ++activationId;
+  if (chartInstance?.isOpen) chartInstance.close();
+  else setView("list");
+}
 
 function setFilter(nextFilter) {
   activeFilter = nextFilter;
@@ -51,10 +116,7 @@ function setFilter(nextFilter) {
 
 function setView(nextView) {
   activeView = nextView;
-  const showList = activeView === "list";
-
-  listPanel.dataset.visible = String(showList);
-  chartPanel.dataset.visible = String(!showList);
+  listPanel.dataset.visible = "true";
 
   viewButtons.forEach((button) => {
     const isActive = button.dataset.workView === activeView;
@@ -62,20 +124,27 @@ function setView(nextView) {
     button.setAttribute("aria-pressed", String(isActive));
   });
 
-  if (!showList) {
-    requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
-  }
 }
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    if (activeView !== "list") setView("list");
+    if (activeView !== "list") closeChart();
     setFilter(button.dataset.workFilter);
   });
 });
 
 viewButtons.forEach((button) => {
-  button.addEventListener("click", () => setView(button.dataset.workView));
+  button.addEventListener("click", () => {
+    if (button.dataset.workView === "chart") openChart();
+    else closeChart();
+  });
+});
+
+window.addEventListener("pagehide", () => {
+  chartRequested = false;
+  ++activationId;
+  chartInstance?.destroy();
+  chartInstance = null;
 });
 
 function setupStickyNavigation() {

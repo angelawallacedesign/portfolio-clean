@@ -63,7 +63,7 @@
 .chart-module__triangle { position: absolute; z-index: 1; opacity: 0; clip-path: inset(0 100% 0 0); transition: opacity 240ms ease, clip-path 240ms ease; pointer-events: none; }
 .chart-module__triangle.is-visible { opacity: 1; clip-path: inset(0 0 0 0); }
 @media (prefers-reduced-motion: reduce) {
-  .chart-module__triangle, .chart-module__card { transition-duration: 0s; }
+  .chart-module, .chart-module__frame, .chart-module__triangle, .chart-module__card { transition-duration: 0s; }
 }
 @media (max-width: 480px) {
   .chart-module__frame { border-width: 12px; }

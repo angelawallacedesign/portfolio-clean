@@ -22,6 +22,7 @@ export function createChart({ container, projects, onClose, onNavigate, projectB
   let timer = 0;
   let finishOpen = null;
   let cleanupCardLayout = null;
+  let closingPromise = null;
 
   function clearMotion() {
     cancelAnimationFrame(raf);
@@ -199,6 +200,8 @@ export function createChart({ container, projects, onClose, onNavigate, projectB
 
   async function open() {
     if (destroyed) throw new Error("Chart has been destroyed.");
+    if (closingPromise) await closingPromise;
+    if (destroyed) throw new Error("Chart has been destroyed.");
     if (active) return;
     controller = new AbortController();
     const signal = controller.signal;
@@ -234,27 +237,52 @@ export function createChart({ container, projects, onClose, onNavigate, projectB
     }
   }
 
-  async function close() {
+  async function close({ immediate = false } = {}) {
     controller?.abort();
     controller = null;
+    if (closingPromise) return closingPromise;
     if (!active) return;
     active = false;
     clearMotion();
     closeCard();
     document.removeEventListener("keydown", handleKeydown);
-    scatterplot?.destroy();
-    scatterplot = null;
-    root?.remove();
-    root = null;
-    lock.unlock();
-    previousFocus?.focus?.();
-    onClose?.();
+    const closingRoot = root;
+    closingPromise = (async () => {
+      if (!immediate && closingRoot?.classList.contains("is-open")) {
+        await new Promise((resolve) => {
+          let finished = false;
+          const done = () => {
+            if (finished) return;
+            finished = true;
+            closingRoot.removeEventListener("transitionend", onEnd);
+            resolve();
+          };
+          const onEnd = (event) => {
+            if (event.target === closingRoot && event.propertyName === "opacity") done();
+          };
+          closingRoot.addEventListener("transitionend", onEnd);
+          closingRoot.classList.remove("is-open");
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            if (getComputedStyle(closingRoot).transitionDuration === "0s" || getComputedStyle(closingRoot).opacity === "0") done();
+          }));
+        });
+      }
+      scatterplot?.destroy();
+      scatterplot = null;
+      closingRoot?.remove();
+      root = null;
+      lock.unlock();
+      previousFocus?.focus?.();
+      onClose?.();
+      closingPromise = null;
+    })();
+    return closingPromise;
   }
 
   function destroy() {
     if (destroyed) return;
     destroyed = true;
-    close();
+    close({ immediate: true });
   }
 
   return { open, close, destroy, get isOpen() { return active; }, get element() { return root; }, get projects() { return [...currentProjects]; } };

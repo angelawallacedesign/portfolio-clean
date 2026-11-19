@@ -36,6 +36,37 @@
       assert(Math.abs(points[0][1]) < 1 && Math.abs(points[1][1] - panel.height) < 1, "outer anchors miss panel edges");
       assert(Math.abs(bounds.top + points[2][1] - (node.top + node.height / 2)) < 1, "node anchor misses center");
     }
+    function checkPresentation() {
+      const overlay = document.querySelector(".chart-module__card-overlay");
+      const card = document.querySelector(".chart-module__card");
+      const image = card.querySelector("img");
+      const content = card.querySelector(".chart-module__card-content");
+      const close = document.querySelector(".chart-module__card-close");
+      const chartClose = document.querySelector(".chart-module__close");
+      const cta = card.querySelector("a");
+      const triangle = document.querySelector(".chart-module__triangle");
+      const box = card.getBoundingClientRect();
+      const imageBox = image.getBoundingClientRect();
+      const contentBox = content.getBoundingClientRect();
+      const buttonBox = close.getBoundingClientRect();
+      const chartButtonBox = chartClose.getBoundingClientRect();
+      assert(getComputedStyle(overlay).backgroundColor === "rgba(0, 0, 0, 0.65)", "overlay background changed");
+      assert(getComputedStyle(overlay).opacity === "1", "overlay opacity dims descendants");
+      assert(getComputedStyle(card).opacity === "1", "card content is not fully opaque");
+      assert(getComputedStyle(card).padding === "24px", "card padding changed");
+      assert(getComputedStyle(card).boxSizing === "border-box", "card box sizing changed");
+      assert(Math.abs(imageBox.left - (box.left + 24)) < 1 && Math.abs(contentBox.left - imageBox.left) < 1, "image and content misaligned");
+      assert(imageBox.right <= box.right - 24 + 1, "image exceeds padded panel");
+      assert(getComputedStyle(image).maxHeight === "none", "image height is constrained");
+      assert(getComputedStyle(close).backgroundColor === "rgb(255, 255, 255)" && getComputedStyle(close).color === "rgb(0, 0, 0)", "close button colors changed");
+      assert(getComputedStyle(close).padding === "12px" && Math.abs(buttonBox.width - buttonBox.height) < 1, "close hit area is not circular");
+      assert(Math.abs((buttonBox.left + buttonBox.width / 2) - (chartButtonBox.left + chartButtonBox.width / 2)) < 1, "close X shifts horizontally");
+      assert(Math.abs((buttonBox.top + buttonBox.height / 2) - (chartButtonBox.top + chartButtonBox.height / 2)) < 1, "close X shifts vertically");
+      assert(cta.classList.contains("primary-btn") && cta.classList.contains("small"), "project link is not the primary button component");
+      assert(getComputedStyle(cta).backgroundColor === "rgb(0, 0, 0)" && getComputedStyle(cta).textDecorationLine === "none", "primary button presentation missing");
+      assert(getComputedStyle(triangle.querySelector("polygon")).fill === "rgba(0, 0, 0, 0.35)", "triangle fill differs from AWD Lab");
+      assert(getComputedStyle(triangle).opacity === "1", "triangle final opacity changed");
+    }
     try {
       const start = scrollY;
       for (let cycle = 0; cycle < 2; cycle++) {
@@ -80,6 +111,8 @@
         }
         await nextFrame();
         checkGeometry(dot);
+        for (let frame = 0; frame < 30 && getComputedStyle(card).opacity !== "1"; frame++) await nextFrame();
+        checkPresentation();
         await chart.close();
         assert(!document.querySelector(".chart-module"), "chart DOM leaked");
         assert(document.body.style.position === "", "scroll lock not released");

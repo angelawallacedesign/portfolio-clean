@@ -41,6 +41,7 @@ export function createChart({ container, projects, onClose, onNavigate, projectB
   function showCard(project, anchor) {
     closeCard();
     selectedAnchor = anchor;
+    const currentAnchor = () => anchor.isConnected ? anchor : scatterplot?.dots.get(project.id)?.element;
     const layer = root.querySelector(".chart-module__card-layer");
     const overlay = document.createElement("div");
     overlay.className = "chart-module__card-overlay";
@@ -75,6 +76,7 @@ export function createChart({ container, projects, onClose, onNavigate, projectB
     const destination = project.projectUrl ?? project.htmlInclude;
     if (destination) {
       const link = document.createElement("a");
+      link.className = "primary-btn small";
       link.href = new URL(destination, projectBaseUrl).href;
       link.textContent = project.hasCaseStudy ? "View Case Study" : "View Project";
       link.addEventListener("click", (event) => {
@@ -89,7 +91,16 @@ export function createChart({ container, projects, onClose, onNavigate, projectB
     const triangle = createSvgElement("svg", { class: "chart-module__triangle", "aria-hidden": "true" });
     overlay.append(close, card, triangle);
     layer.append(overlay);
-    close.addEventListener("click", () => { closeCard(); anchor.focus(); });
+    function positionCloseButton() {
+      const chartClose = root?.querySelector(".chart-module__close");
+      if (!chartClose) return;
+      const source = chartClose.getBoundingClientRect();
+      const target = close.getBoundingClientRect();
+      close.style.left = `${source.left + source.width / 2 - target.width / 2}px`;
+      close.style.top = `${source.top + source.height / 2 - target.height / 2}px`;
+    }
+    positionCloseButton();
+    close.addEventListener("click", () => { const target = currentAnchor(); closeCard(); target?.focus(); });
     overlay.addEventListener("click", (event) => { if (event.target === overlay) closeCard(); });
     let disposed = false;
     let layoutFrame = 0;
@@ -97,12 +108,16 @@ export function createChart({ container, projects, onClose, onNavigate, projectB
     const observer = new ResizeObserver(() => scheduleLayout());
     function layout() {
       layoutFrame = 0;
-      if (disposed || !anchor.isConnected) return;
-      positionPanelNearAnchor(anchor, { overlay, panel: card, insets: { top: 105, side: 100 } });
+      if (disposed) return;
+      positionCloseButton();
+      const node = currentAnchor();
+      if (!node?.isConnected) return;
+      selectedAnchor = node;
+      positionPanelNearAnchor(node, { overlay, panel: card, insets: { top: 105, side: 100 } });
       const panelRect = card.getBoundingClientRect();
       if (!panelRect.width || !panelRect.height) return;
       const connector = calculateTriangleConnector({
-        nodeRect: anchor.getBoundingClientRect(), panelRect,
+        nodeRect: node.getBoundingClientRect(), panelRect,
         overlayRect: overlay.getBoundingClientRect()
       });
       renderTriangleConnector(triangle, connector, "var(--chart-triangle, #141414)");

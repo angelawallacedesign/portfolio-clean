@@ -51,29 +51,54 @@ export function createChart({ container, projects, onClose, onNavigate, projectB
     close.className = "chart-module__card-close";
     close.textContent = "×";
     close.setAttribute("aria-label", "Close project details");
-    const card = document.createElement("article");
-    card.className = "chart-module__card";
+    const card = document.createElement("div");
+    card.className = "chart-module__card overlay__panel";
     card.setAttribute("role", "dialog");
-    card.setAttribute("aria-label", project.title);
+    const grid = document.createElement("div");
+    grid.className = "overlay__grid";
+    const mediaColumn = document.createElement("div");
+    mediaColumn.className = "overlay__col overlay__col--left";
+    const mediaSlot = document.createElement("div");
+    mediaSlot.className = "media-slot";
+    mediaSlot.setAttribute("aria-label", "Overlay media");
     const imageUrl = project.meta?.imageUrl;
     if (imageUrl) {
       const img = document.createElement("img");
       img.src = new URL(imageUrl, projectBaseUrl).href;
       img.alt = project.meta?.caption ?? `${project.title} cover image`;
-      card.append(img);
+      mediaSlot.append(img);
     }
-    const content = document.createElement("div");
-    content.className = "chart-module__card-content";
-    const category = document.createElement("p");
-    category.className = "chart-module__eyebrow";
-    category.textContent = project.category;
+    mediaColumn.append(mediaSlot);
+    const content = document.createElement("article");
+    content.className = "overlay__col chart-module__card-content";
+    const header = document.createElement("header");
     const title = document.createElement("h2");
-    title.textContent = project.title;
-    const role = document.createElement("p");
+    title.className = "section-heading";
+    title.id = `chart-card-heading-${project.id}`;
+    const main = document.createElement("span");
+    main.className = "heading-main";
+    main.textContent = project.heading?.main ?? project.title;
+    title.append(main);
+    if (project.heading?.accent) {
+      const accent = document.createElement("span");
+      accent.className = "heading-accent";
+      accent.textContent = project.heading.accent;
+      title.append(accent);
+    }
+    card.setAttribute("aria-labelledby", title.id);
+    header.append(title);
+    const details = document.createElement("dl");
+    const roleLabel = document.createElement("dt");
+    roleLabel.textContent = "ROLE";
+    const role = document.createElement("dd");
     role.textContent = project.meta?.role ?? "";
-    const description = document.createElement("p");
-    description.textContent = project.description;
-    content.append(category, title, role, description);
+    const solutionLabel = document.createElement("dt");
+    solutionLabel.textContent = "SOLUTION";
+    const solution = document.createElement("dd");
+    solution.className = "scroll-notes";
+    solution.textContent = project.meta?.notes ?? "";
+    details.append(roleLabel, role, solutionLabel, solution);
+    content.append(header, details);
     const destination = project.projectUrl ?? project.htmlInclude;
     if (destination) {
       const link = document.createElement("a");
@@ -88,7 +113,8 @@ export function createChart({ container, projects, onClose, onNavigate, projectB
       });
       content.append(link);
     }
-    card.append(content);
+    grid.append(mediaColumn, content);
+    card.append(grid);
     const triangle = createSvgElement("svg", { class: "chart-module__triangle", "aria-hidden": "true" });
     overlay.append(close, card, triangle);
     layer.append(overlay);

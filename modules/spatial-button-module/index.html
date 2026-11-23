@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elastic Spatial Button — Standalone Demo</title>
+  <link rel="stylesheet" href="./css/spatial-button.css">
+</head>
+<body>
+  <main class="demo-shell">
+    <header class="demo-header"><span class="eyebrow">INTERACTION STUDY / 001</span><h1>A little room to move.</h1><p>Press, drag, or resize the button. Reveal the spatial field to see the system respond.</p></header>
+    <section class="spatial-button-module" aria-label="Interactive elastic spatial button demonstration" data-spatial-button>
+      <div class="spatial-controls">
+        <label class="field-toggle"><input type="checkbox" data-field-toggle checked><span>Show spatial field</span></label>
+        <label class="depth-control"><span>Elastic depth</span><input data-depth type="range" min="0" max="100" value="55" step="5"><output data-depth-output>55%</output></label>
+        <label class="field-toggle"><input type="checkbox" data-motion-toggle><span>Reduce motion</span></label>
+        <button type="button" class="reset-control" data-reset>Reset</button>
+      </div>
+      <div class="spatial-stage" data-stage>
+        <canvas class="spatial-mesh" data-mesh aria-hidden="true"></canvas>
+        <div class="spatial-object" data-object>
+          <button type="button" class="elastic-button" data-button aria-label="Press the elastic button"><span class="elastic-button__label">PRESS ME</span><span class="elastic-button__shine" aria-hidden="true"></span></button>
+          <div class="resize-handle resize-handle--nw" data-handle="nw" role="button" tabindex="0" aria-label="Resize button from top left"></div>
+          <div class="resize-handle resize-handle--ne" data-handle="ne" role="button" tabindex="0" aria-label="Resize button from top right"></div>
+          <div class="resize-handle resize-handle--sw" data-handle="sw" role="button" tabindex="0" aria-label="Resize button from bottom left"></div>
+          <div class="resize-handle resize-handle--se" data-handle="se" role="button" tabindex="0" aria-label="Resize button from bottom right"></div>
+        </div>
+        <div class="stage-hint" data-hint>Drag the button · Press to squish · Pull a corner to resize</div>
+      </div>
+      <div class="spatial-footer"><span data-status role="status" aria-live="polite">Ready to interact</span><a href="#" data-ui-kit-link>Explore the UI kit <span aria-hidden="true">↗</span></a></div>
+    </section>
+  </main>
+  <script type="module" src="./js/spatial-button.js"></script>
+</body>
+</html>

@@ -165,6 +165,7 @@
   {
   "id": "digital-production-asset-lifecycle",
   "featured": false,
+  "hidden": true,
   "category": "visual-design",
   "layout": "left",
   "heading": {

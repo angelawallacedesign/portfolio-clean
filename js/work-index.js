@@ -179,7 +179,7 @@ fetch(new URL("./data.json", import.meta.url))
     return response.json();
   })
   .then((loadedProjects) => {
-    projects = loadedProjects;
+    projects = loadedProjects.filter((project) => !project.hidden);
     listRoot.innerHTML = projects
       .map((project) => renderProjectCard(project, {
         basePath: "../",

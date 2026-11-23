@@ -26,7 +26,7 @@ fetch("../../js/data.json")
     const projectsById = new Map(projects.map((project) => [project.id, project]));
     const selectedProjects = projectIds
       .map((id) => projectsById.get(id))
-      .filter(Boolean);
+      .filter((project) => project && !project.hidden);
 
     listRoot.innerHTML = selectedProjects
       .map((project) => renderProjectCard(project, {

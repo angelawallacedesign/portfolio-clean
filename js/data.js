@@ -35,7 +35,7 @@ Promise.all([
 
 
     const listRoot = document.getElementById("project-list");
-    const featuredProjects = projects.filter((p) => p.featured);
+    const featuredProjects = projects.filter((p) => p.featured && !p.hidden);
 
     listRoot.innerHTML = featuredProjects
       .map((data, index) => {

@@ -40,6 +40,7 @@
       const overlay = document.querySelector(".chart-module__card-overlay");
       const card = document.querySelector(".chart-module__card");
       const image = card.querySelector("img");
+      const mediaSlot = card.querySelector(".media-slot");
       const content = card.querySelector(".chart-module__card-content");
       const close = document.querySelector(".chart-module__card-close");
       const chartClose = document.querySelector(".chart-module__close");
@@ -47,6 +48,7 @@
       const triangle = document.querySelector(".chart-module__triangle");
       const box = card.getBoundingClientRect();
       const imageBox = image.getBoundingClientRect();
+      const mediaBox = mediaSlot.getBoundingClientRect();
       const contentBox = content.getBoundingClientRect();
       const buttonBox = close.getBoundingClientRect();
       const chartButtonBox = chartClose.getBoundingClientRect();
@@ -57,7 +59,11 @@
       assert(getComputedStyle(card).boxSizing === "border-box", "card box sizing changed");
       assert(Math.abs(imageBox.left - (box.left + 24)) < 1 && Math.abs(contentBox.left - imageBox.left) < 1, "image and content misaligned");
       assert(imageBox.right <= box.right - 24 + 1, "image exceeds padded panel");
-      assert(getComputedStyle(image).maxHeight === "none", "image height is constrained");
+      assert(Math.abs(mediaBox.width / mediaBox.height - 1.5) < .01, "AWD Lab media slot ratio changed");
+      assert(Math.abs(imageBox.height - mediaBox.height) < 1, "image does not fill media slot");
+      assert(getComputedStyle(image).objectFit === "cover" && getComputedStyle(image).objectPosition === "50% 0%", "AWD Lab image crop changed");
+      assert(card.querySelector(".section-heading .heading-main") && card.querySelector(".section-heading .heading-accent"), "AWD Lab heading structure missing");
+      assert([...card.querySelectorAll("dt")].map((item) => item.textContent).join(",") === "ROLE,SOLUTION", "ROLE/SOLUTION labels missing");
       assert(getComputedStyle(close).backgroundColor === "rgb(255, 255, 255)" && getComputedStyle(close).color === "rgb(0, 0, 0)", "close button colors changed");
       assert(getComputedStyle(close).padding === "12px" && Math.abs(buttonBox.width - buttonBox.height) < 1, "close hit area is not circular");
       assert(Math.abs((buttonBox.left + buttonBox.width / 2) - (chartButtonBox.left + chartButtonBox.width / 2)) < 1, "close X shifts horizontally");

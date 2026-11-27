@@ -1,6 +1,6 @@
 # Standalone chart
 
-The chart uses AWD Lab's SVG scatterplot renderer, its 120 ms dot hover and 240 ms connector reveal, and its 750 ms frame transition. It mounts in a supplied container without loading AWD Lab code or data. The Work page is not wired to this module yet.
+The chart uses AWD Lab's SVG scatterplot renderer, its 120 ms dot hover and 240 ms connector reveal, and its 750 ms frame transition. It mounts in a supplied container without loading AWD Lab code or data. The production Work toggle loads it on demand.
 
 ## Use
 
@@ -16,6 +16,8 @@ chart.destroy();
 `open()` loads the root `/js/data.json` on each opening, just as the Work page does. Alternatively, supply `projects` as an array or an async function. Optional callbacks are `onClose()` and `onNavigate(project, url)`; the latter intercepts a card's project link. `projectBaseUrl` overrides the repository root used to resolve image and project paths. Initialization leaves the page untouched. `destroy()` ends the instance permanently.
 
 Each project needs a unique `id`, `year`, `complexity` (1–5), and `heading.title` or `title`. Optional fields include `opacity`, `category`, `heading.main`, `heading.accent`, `meta.notes`, `meta.role`, `meta.caption`, `meta.imageUrl`, `projectUrl`, `htmlInclude`, and `hasCaseStudy`. Chart projection and animation settings stay in this module. Content stays in the production JSON.
+
+Cards retain AWD Lab's `.section-heading` with main and accent spans, ROLE/SOLUTION definition list, and 3:2 `.media-slot` with top-centered `object-fit: cover`. The source chart-card CSS has no explicit image `max-height`; the slot's aspect ratio limits its height. The standalone card keeps its 24px padding and scrollable viewport limit.
 
 The chart creates a fixed layer inside its host with stacking level 1000. Its own frame and card overlay stay inside that layer. It does not take over the site's Layer 3 case study overlay. While open, it preserves scroll coordinates and inline overflow/position styles, fixes the body, and restores them on close. It refuses to open if another instance or inline overflow lock already owns scrolling.
 

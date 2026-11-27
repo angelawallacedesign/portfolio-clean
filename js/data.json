@@ -73,7 +73,7 @@
   "meta": {
     "type": "Design System",
     "client": "AWD Design System",
-    "role": "UI/UX Designer",
+    "role": "Senior UI/UX Designer",
     "disciplines": "Iconography, Vector Editing, Component Design, Design Systems",
     "notes": "Refined an existing SVG icon in Figma using a construction grid, vector path adjustments, and rotation correction to create reusable play/pause icons. Integrated the icons into a Motion Control button and updated the Pagination pattern.",
     "caption": "SVG icon construction, vector refinement, and component integration in Figma",
